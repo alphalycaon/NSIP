@@ -140,7 +140,7 @@
                                             </div>
                                         </li-->                                        
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" >
+                                            <li class="unread clickable-row" data-href="home/detail" >
                                                 <div class="chbox">
                                                     <div class="checkbox-nice">
                                                         <input type="checkbox" id="m-checkbox-2">

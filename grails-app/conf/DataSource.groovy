@@ -18,10 +18,10 @@ environments {
     development {
         dataSource {
              dbCreate = "update"
-                     username = "indicadores"
-                     password = "indicadores"
+                     username = "nsip"
+                     password = "nsip"
                      driverClassName = "com.mysql.jdbc.Driver"
-                     url = "jdbc:mysql://localhost/nsip"            
+                     url = "jdbc:mysql://192.168.1.11/nsip"            
                      properties { 
                             validationQuery="select 1" 
                             testWhileIdle=true 
