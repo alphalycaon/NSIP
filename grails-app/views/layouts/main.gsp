@@ -312,7 +312,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
         $('.autocomplete').typeahead({
-        prefetch: '/App/busqueda/suggest',
+        prefetch: '${request.contextPath}/busqueda/suggest',
         limit: 10
         });
         });
