@@ -30,44 +30,10 @@
                                     <i class="fa fa-inbox"></i> Inbox
                                 </div>
                                 <div id="email-header-tools">
-                                    <g:link controller="ministerio" action="denuncia" class="btn btn-primary btn-lg">
-                                        <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA
-                                    </g:link>
-                                                        <!--div class="btn-group">
-                                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle has-tooltip" type="button" title="" data-original-title="Select">
-                                                                <i class="fa fa-square-o"></i> <span class="caret"></span>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#">All</a></li>
-                                                                <li><a href="#">None</a></li>
-                                                                <li><a href="#">Read</a></li>
-                                                                <li><a href="#">Unread</a></li>
-                                                                <li><a href="#">Starred</a></li>
-                                                                <li><a href="#">Unstarred</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="btn-group">
-                                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Refresh">
-                                                                <i class="fa fa-refresh"></i>
-                                                            </button>
-                                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Spam">
-                                                                <i class="fa fa-exclamation-circle"></i>
-                                                            </button>
-                                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Erase">
-                                                                <i class="fa fa-trash-o"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="btn-group">
-                                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle has-tooltip" type="button" title="" data-original-title="Labels">
-                                                                <i class="fa fa-tag"></i> <span class="caret"></span>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#"><i class="fa fa-circle green"></i> Work</a></li>
-                                                                <li><a href="#"><i class="fa fa-circle red"></i> Home</a></li>
-                                                                <li><a href="#"><i class="fa fa-circle yellow"></i> Personal</a></li>
-                                                                <li><a href="#"><i class="fa fa-circle purple"></i> Documents</a></li>
-                                                            </ul>
-                                                        </div-->
+                                                                                                                 
+                                        <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
+                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA
+                                        </g:link>                                    
                                 </div>
                                 <div id="email-header-pagination" class="pull-right">
                                     <div class="btn-group pagination pull-right">
@@ -205,70 +171,73 @@
                 </div>
             </div>
         </div>
-        <script>
-            function setHeightEmailContent() {
-		if ($( document ).width() >= 992) {
-            var windowHeight = $(window).height();
-            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+        <script type="text/javascript">
 
-            $('#email-content').css('height', windowHeight - staticContentH);
-            }
-            else {
-            $('#email-content').css('height', '');
-            }
-            }
+function setHeightEmailContent() {
+    if ($(document).width() >= 992) {
+        var windowHeight = $(window).height();
+        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-            function initEmailScroller() {
-		if ($( document ).width() >= 992) {
-            $('#email-navigation').nanoScroller({
+        $('#email-content').css('height', windowHeight - staticContentH);
+    }
+    else {
+        $('#email-content').css('height', '');
+    }
+}
+
+function initEmailScroller() {
+    if ($(document).width() >= 992) {
+        $('#email-navigation').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-nav-nano-content'
-            });
+        });
 
-            $('#email-content').nanoScroller({
+        $('#email-content').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-content-nano-content'
-            });
-            }
-            }            
-            $(document).ready(function() {
-		$('#email-list li > .star > a').on('click', function() {
-            $(this).toggleClass('starred');
-            });
+        });
+    }
+}
+$(document).ready(function() {
+    $('#email-list li > .star > a').on('click', function() {
+        $(this).toggleClass('starred');
+    });
 
-            $(".has-tooltip").each(function (index, el) {
-            $(el).tooltip({
+    $(".has-tooltip").each(function(index, el) {
+        $(el).tooltip({
             placement: $(this).data("placement") || 'bottom'
-            });
-            });
+        });
+    });
 
-            setHeightEmailContent();
+    setHeightEmailContent();
 
-            initEmailScroller();
+    initEmailScroller();
+    
 
-		$(".clickable-row > div:not(.chbox,.star)").click(function(e) {
-            if ((e.target instanceof HTMLAnchorElement) == true) {
+    
+
+    $(".clickable-row > div:not(.chbox,.star)").click(function(e) {
+        if ((e.target instanceof HTMLAnchorElement) == true) {
             return;
-            }
+        }
+        var href = $(this).parent().data('href');
 
-            var href = $(this).parent().data('href');
-
-            if (href != '' && typeof href != 'undefined') {
+        if (href != '' && typeof href != 'undefined') {
             window.document.location = href;
-            }
-            });
-            });
+        }
+    });
+});
 
-            $(window).smartresize(function(){
-            setHeightEmailContent();
+$(window).smartresize(function() {
+    setHeightEmailContent();
 
-            initEmailScroller();
-            });
+    initEmailScroller();
+});
 
 
         </script>

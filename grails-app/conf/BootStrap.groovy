@@ -8,6 +8,7 @@ class BootStrap {
             ministerioRole = new Role(name:"Ministerio")
             ministerioRole.addToPermissions("ministerio:*")
             ministerioRole.addToPermissions("home:*")
+            ministerioRole.addToPermissions("busqueda:*")
             ministerioRole.save()
         }
         def adminTribunalRole = Role.findByName("Administrador Tribunal")
@@ -15,6 +16,7 @@ class BootStrap {
             adminTribunalRole = new Role(name:"Administrador Tribunal")
             adminTribunalRole.addToPermissions("tribAdmin:*")
             adminTribunalRole.addToPermissions("home:*")
+            adminTribunalRole.addToPermissions("busqueda:*")
             adminTribunalRole.save()
         }
         def ministerio1 = User.findByUsername("ministerio1")
