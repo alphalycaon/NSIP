@@ -212,12 +212,7 @@
                                         <li><a href="#"><i class="fa fa-envelope-o"></i>Mensajes</a></li>
                                         <li><g:link controller="auth" action="signOut"><i class="fa fa-power-off"></i>Salir</g:link></li>
                                         </ul>
-                                    </li>
-                                    <li class="hidden-xxs">
-                                        <a class="btn">
-                                            <i class="fa fa-power-off"></i>
-                                        </a>
-                                    </li>
+                                    </li>                                    
                                 </ul>
                             </div>
                         </div>
@@ -309,6 +304,9 @@
     <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
         $('.autocomplete').typeahead({

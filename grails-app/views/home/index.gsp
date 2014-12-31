@@ -20,10 +20,7 @@
                             <div id="email-header-mobile" class="visible-xs visible-sm clearfix">
                                 <div id="email-header-title-mobile" class="pull-left">
                                     <i class="fa fa-inbox"></i> Expedientes
-                                </div>
-                                <a href="email-compose.html" class="btn btn-success email-compose-btn pull-right">
-                                    <i class="fa fa-pencil-square-o"></i> Compose email
-                                </a>
+                                </div>                                
                             </div>
                             <header id="email-header" class="clearfix">
                                 <div id="email-header-title" class="visible-md visible-lg">
@@ -91,7 +88,8 @@
                                         </li>
                                     </ul>                                    
                                 </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div></div>
+                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
+                            </div>
                             <div id="email-content" class="email-content-nano has-scrollbar" style="height: 100%; ">
                                 <div class="email-content-nano-content" tabindex="0" style="right: -16px;">
                                     <ul id="email-list">
