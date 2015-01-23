@@ -56,34 +56,52 @@
                                         <li class="active">
                                             <a href="#">
                                                 <i class="fa fa-inbox"></i>
-                                                Inbox
+                                                Denuncias/Querellas
                                                 <span class="label label-primary pull-right">83</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-star"></i>
-                                                Marcados
+                                                Carpetas de Corroboracion
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-pencil"></i>
-                                                En proceso
+                                                Carpetas de Investigacion
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-envelope"></i>
-                                                Compartidos
+                                                Puestas a Disposicion
                                                 <span class="label label-default pull-right">11</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                                Terminados
+                                                <i class="fa fa-clock-o"></i>
+                                                Solicitud de Audiencia
+                                                <!--
                                                 <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-arrow-circle-o-up"></i>
+                                                Solicitudes
+                                                <span class="label label-default pull-right">19</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-play-circle-o"></i>
+                                                Notificar
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
                                             </a>
                                         </li>
                                     </ul>                                    

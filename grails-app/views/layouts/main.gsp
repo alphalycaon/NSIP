@@ -110,7 +110,7 @@
         <div id="theme-wrapper">
             <header class="navbar" id="header-navbar">
                 <div class="container">
-                    <a href="index-2.html" id="logo" class="navbar-brand">
+                    <a href="${request.contextPath}" id="logo" class="navbar-brand">
                         <img src="${resource(dir: 'centaurus/img', file: 'logo.png')}" alt="" class="normal-logo logo-white"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-black.png')}" alt="" class="normal-logo logo-black"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-small.png')}" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
