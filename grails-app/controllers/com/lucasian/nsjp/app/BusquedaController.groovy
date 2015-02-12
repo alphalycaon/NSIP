@@ -6,7 +6,7 @@ class BusquedaController {
         
     }
     def suggest(){
-        def data = ["Robo", "Robo con violencia", "Robo con arma blanca", "Secuestro", "Narcomenudeo", "Saltillo", "Revolver"]
+        def data = ["Robo", "Robo con violencia", "Robo con arma blanca", "Secuestro", "Narcomenudeo", "Saltillo", "Revolver", "IPH"]
         render data as JSON
     }
 }

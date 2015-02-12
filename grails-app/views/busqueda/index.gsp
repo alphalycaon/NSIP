@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sample title</title>
+        <title>Resultados</title>
         <meta name="layout" content="main"/>
     </head>
     <body>
@@ -49,7 +49,7 @@
                                     <ul class="search-results">
                                         <li>
                                             <h3 class="title">
-                                                <a href="#">
+                                                <a href="../home/detail">
                                                     COA/FG/XX/PGU/2014/AA-3
                                                 </a>
                                             </h3>
@@ -82,7 +82,7 @@
                                     <ul class="search-results">
                                         <li>
                                             <h3 class="title">
-                                                <a href="#">
+                                                <a href="../home/detail">
                                                     COA/FG/XX/PGU/2014/AA-1
                                                 </a>
                                             </h3>
@@ -115,7 +115,7 @@
                                     <ul class="search-results">
                                         <li>
                                             <h3 class="title">
-                                                <a href="#">
+                                                <a href="../home/detail">
                                                     COA/FG/XX/PGU/2014/AA-2
                                                 </a>
                                             </h3>
@@ -148,7 +148,7 @@
                                     <ul class="search-results">
                                         <li>
                                             <h3 class="title">
-                                                <a href="#">
+                                                <a href="../home/detail">
                                                     COA/FG/XX/PGU/2014/AA-4
                                                 </a>
                                             </h3>

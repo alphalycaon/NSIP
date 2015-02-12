@@ -40,14 +40,14 @@ class AuthController {
             // password is incorrect.
             SecurityUtils.subject.login(authToken)
 
-            log.info "Redirecting to '${targetUri}'."
+            log.info "Redireccionando a '${targetUri}'."
             redirect(uri: targetUri)
         }
         catch (AuthenticationException ex){
             // Authentication failed, so display the appropriate message
             // on the login page.
             ex.printStackTrace()
-            log.info "Authentication failure for user '${params.username}'."
+            log.info "Autentificación fallida para el usuario '${params.username}'."
             flash.message = message(code: "login.failed")
 
             // Keep the username and "remember me" setting so that the
@@ -77,6 +77,6 @@ class AuthController {
     }
 
     def unauthorized = {
-        render "You do not have permission to access this page."
+        render "No tiene permisos para accesar a la página."
     }
 }

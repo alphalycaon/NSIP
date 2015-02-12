@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sample title</title>
+        <title>Generar denuncia</title>
         <meta name="layout" content="main"/>
     </head>
     <body>
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="${request.contextPath}">Home</a></li>
                             <li class="active"><span>Denuncia</span></li>
                         </ol>
                         <h1>Denunicia guardada: ${expediente.numeroExpediente}</h1>

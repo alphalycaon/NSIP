@@ -43,19 +43,21 @@
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'theme_styles.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'wizard.css')}"/>
-
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input-facebook.css')}"/>
 
         <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
-        <!--[if lt IE 9]>
-                        <script src="js/html5shiv.js"></script>
-                        <script src="js/respond.min.js"></script>
-                <![endif]-->
+        
+        
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-
+        <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
+        
         <script type="text/javascript">
             /* <![CDATA[ */
             var _gaq = _gaq || [];
@@ -105,6 +107,65 @@
             })(window);
             /* ]]> */
         </script>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Multiple DataSet
+
+                $('input.countries-cities').typeahead([
+                    {
+                        name: 'Imputados',
+                        local: ["Carlos Navarrete del Bosque", "Dante Astudillo"],
+                        header: '<h6>Imputados</h6>'
+
+                    },
+                    {
+                        name: 'Delitos',
+                        local: ["Violación", "Acoso sexual", "Asalto", "extorción", "Delincuencia organizada","Robo", "Robo a mano armada", "Robo con violencia", "Narcomenudeo", "Secuestro"],
+                        header: '<h6>Delitos</h6>'
+
+                    },
+                                    {
+                        name: 'Victimas',
+                        local: ["Yoselin  Sanchez", "Francisco Vazquez "],
+                        header: '<h6>Victimas</h6>'
+
+                    },
+                                    {
+                        name: 'Audiencias',
+                        local: ["Audiencia oral", "Audencia escrita", "Audencia Presencial", ],
+                        header: '<h6>Audiencias</h6>'
+
+                    }
+
+
+                ]);            
+            });
+        </script>
+        
+        <style>
+            h6 {
+              margin: 0 0 10px 0;
+              color: #fff;
+              background-color: #56bd9b;              
+              font-size: 14px;
+              font-weight: bold;
+            }
+            
+            #buscar {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 18px;
+                background-color: #FFFFFF;
+                border:2px solid #FFFFFF;
+            }
+            
+            #buscar:focus {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 18px;
+                background-color: #FFFFFF;
+                border:2px solid #FFFFFF;
+            }
+        </style>
     </head>
     <body class="theme-turquoise  fixed-header pace-done fixed-footer">
         <div id="theme-wrapper">
@@ -121,11 +182,11 @@
                             <span class="fa fa-bars"></span>
                         </button>
                         <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                            <g:form name="buscar" controller="busqueda" action="index" class="form-inline" role="form">                                                                                
+                            <g:form name="buscarForm" controller="Busqueda" action="index" class="form-inline" role="form">                                                                                
                                 <ul class="nav navbar-nav pull-left">
                                     <li style="margin-top: 7px;"> 
 
-                                        <input type="text" class="form-control autocomplete" style="font-size: 14px;" id="buscar" name="buscar" placeholder="Buscar ...">
+                                        <input type="text" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
                                         <a class="btn" id="make-small-nav" onclick="$('#buscar').submit();">
@@ -140,7 +201,7 @@
                                 <li class="dropdown hidden-xs">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-warning"></i>
-                                        <span class="count">8</span>
+                                        <span class="count">6</span>
                                     </a>
                                     <ul class="dropdown-menu notifications-list">
                                         <li class="pointer">
@@ -207,7 +268,7 @@
                                         <span class="hidden-xs"><shiro:principal/></span> <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="user-profile.html"><i class="fa fa-user"></i>Perfil</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>Perfil</a></li>
                                         <li><a href="#"><i class="fa fa-cog"></i>Configuracion</a></li>
                                         <li><a href="#"><i class="fa fa-envelope-o"></i>Mensajes</a></li>
                                         <li><g:link controller="auth" action="signOut"><i class="fa fa-power-off"></i>Salir</g:link></li>
@@ -305,7 +366,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
     
     <script type="text/javascript">
         $(document).ready(function() {

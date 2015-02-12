@@ -23,15 +23,42 @@
                                 </div>                                
                             </div>
                             <header id="email-header" class="clearfix">
+                                <shiro:hasRole name="Ministerio">
                                 <div id="email-header-title" class="visible-md visible-lg">
                                     <i class="fa fa-inbox"></i> Inbox
                                 </div>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Juez">
+                                <div id="email-header-title" class="visible-md visible-lg">
+                                    <i class="fa fa-inbox"></i> Lista de Casos
+                                </div>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="CES">
+                                <div id="email-header-title" class="visible-md visible-lg">
+                                    <i class="fa fa-inbox"></i> Lista de IPH
+                                </div>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Defensor">
+                                <div id="email-header-title" class="visible-md visible-lg">
+                                    <i class="fa fa-inbox"></i> Inbox
+                                </div>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Ministerio">
                                 <div id="email-header-tools">
                                                                                                                  
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA
                                         </g:link>                                    
                                 </div>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="CES">
+                                <div id="email-header-tools">
+                                                                                                                 
+                                        <g:link controller="ces" action="iph" class="btn btn-primary">
+                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR IPH
+                                        </g:link>                                    
+                                </div>
+                                </shiro:hasRole>
                                 <div id="email-header-pagination" class="pull-right">
                                     <div class="btn-group pagination pull-right">
                                         <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
@@ -50,6 +77,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
+                        <shiro:hasRole name="Ministerio">
                             <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
                                 <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
                                     <ul id="email-nav-items" class="clearfix">
@@ -104,10 +132,268 @@
                                                 -->
                                             </a>
                                         </li>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <li>
+                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b></big>
+                                        </li>
+                                    </ul>                                    
+                                </div>
+                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
+                            </div>                
+                        </shiro:hasRole>
+                        <shiro:hasRole name="CES">   
+                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
+                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
+                                    <ul id="email-nav-items" class="clearfix">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-user"></i>
+                                                Usuario
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-folder-o"></i>
+                                                Denuncias
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-times-circle"></i>
+                                                Hecho delictivo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-briefcase"></i>
+                                                Objetos asegurados
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fa fa-inbox"></i>
+                                                Informe policial
+                                                <span class="label label-primary pull-right">12</span>
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-medkit"></i>
+                                                Servicio médico
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-link"></i>
+                                                Cadena de custodia
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-bullhorn"></i>
+                                                Notifica a M.P.
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <li>
+                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b></big>
+                                        </li>
                                     </ul>                                    
                                 </div>
                                 <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
                             </div>
+                        </shiro:hasRole>
+                        <shiro:hasRole name="Juez">
+                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
+                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
+                                    <ul id="email-nav-items" class="clearfix">
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fa fa-inbox"></i>
+                                                1era-2da Instancia
+                                                <span class="label label-primary pull-right">20</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-user"></i>
+                                                Usuario
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-pencil"></i>
+                                                Registro de causas
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-flag"></i>
+                                                Solicitud de audiencia
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-envelope-o"></i>
+                                                Solicitudes diversas
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home/calendar">
+                                                <i class="fa fa-calendar"></i>
+                                                Agenda de audiencias
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-bullhorn"></i>
+                                                Notificar
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-check-circle"></i>
+                                                Resoluciones
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <li>
+                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b></big>
+                                        </li>
+                                    </ul>                                    
+                                </div>
+                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                        </shiro:hasRole>    
+                        <shiro:hasRole name="Defensor">
+                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
+                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
+                                    <ul id="email-nav-items" class="clearfix">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-user"></i>
+                                                Usuario
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fa fa-inbox"></i>
+                                                Solicitudes de defensor
+                                                <span class="label label-primary pull-right">1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-times-circle"></i>
+                                                Notificación de detenido
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                Notificaciones
+                                                <span class="label label-default pull-right">6</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-flag"></i>
+                                                Solicitud de Audiencia
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-taxi"></i>
+                                                Peritos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-file-o"></i>
+                                                Reg. de medios de prueba
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-university"></i>
+                                                Apelaciones
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
+                                            </a>
+                                        </li>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <li>
+                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b></big>
+                                        </li>
+                                    </ul>                                    
+                                </div>
+                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                        </shiro:hasRole>   
                             <div id="email-content" class="email-content-nano has-scrollbar" style="height: 100%; ">
                                 <div class="email-content-nano-content" tabindex="0" style="right: -16px;">
                                     <ul id="email-list">
@@ -154,15 +440,10 @@
                                                 </a>
                                                 <span class="date">Sep 14</span>
                                             </div>
-                                        </li-->                                        
+                                        </li-->      
+                                        <shiro:hasRole name="Ministerio">
                                         <g:each in="${expedientes}">
                                             <li class="unread clickable-row" data-href="home/detail" >
-                                                <div class="chbox">
-                                                    <div class="checkbox-nice">
-                                                        <input type="checkbox" id="m-checkbox-2">
-                                                        <label for="m-checkbox-2"></label>
-                                                    </div>
-                                                </div>
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>
@@ -175,10 +456,66 @@
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span class="date"><g:formatDate date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
                                                 </div>
                                             </li>                                             
-                                        </g:each>
+                                        </g:each>                                        
+                                        </shiro:hasRole> 
+                                        <shiro:hasRole name="Juez">
+                                        <g:each in="${expedientes}">
+                                            <li class="unread clickable-row" data-href="home/detail" >
+                                                <div class="name">
+                                                    ${it.numeroExpediente}
+                                                </div>
+                                                <div class="message">
+                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${it.delito.imputado.nombre}</span>
+                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                </div>
+                                                <div class="meta-info">
+                                                    <a href="#" class="attachment">
+                                                        <i class="fa fa-paperclip"></i>
+                                                    </a>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                </div>
+                                            </li>                                             
+                                        </g:each>                                        
+                                        </shiro:hasRole> 
+                                        <shiro:hasRole name="Defensor">
+                                        <g:each in="${expedientes}">
+                                            <li class="unread clickable-row" data-href="home/detail" >
+                                                <div class="name">
+                                                    ${it.numeroExpediente}
+                                                </div>
+                                                <div class="message">
+                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${it.delito.imputado.nombre}</span>
+                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                </div>
+                                                <div class="meta-info">
+                                                    <a href="#" class="attachment">
+                                                        <i class="fa fa-paperclip"></i>
+                                                    </a>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                </div>
+                                            </li>                                             
+                                        </g:each>                                        
+                                        </shiro:hasRole>
+                                        <shiro:hasRole name="CES"> 
+                                        <g:each in="${iphs}">
+                                            <li class="unread clickable-row" data-href="home/detail">
+                                                <div class="name">
+                                                    ${it.numeroIph}
+                                                </div>
+                                                <div class="meta-info">
+                                                    <a href="#" class="attachment">
+                                                        <i class="fa fa-paperclip"></i>
+                                                    </a>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                </div>
+                                            </li>                                             
+                                        </g:each>                                     
+                                        </shiro:hasRole>
                                     </ul>
                                 </div>
                                 <div class="nano-pane"><div class="nano-slider" style="height: 104px; transform: translate(0px, 0px);"></div></div></div>
@@ -187,6 +524,33 @@
                 </div>
             </div>
         </div>
+        <!--Modal-->
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                            </a>
+                        </li>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                            </a>
+                        </li>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!--Fin Modal-->
         <script type="text/javascript">
 
 function setHeightEmailContent() {

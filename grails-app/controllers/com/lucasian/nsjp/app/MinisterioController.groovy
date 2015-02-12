@@ -13,26 +13,34 @@ class MinisterioController {
         expediente.save()                
         expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
         expediente.save()
-        File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
-        File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+expediente.numeroExpediente)
-        FileUtils.copyDirectory(srcDir, destDir)
+        try{
+            File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
+            File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+expediente.numeroExpediente)
+            FileUtils.copyDirectory(srcDir, destDir)
+        }catch(Exception e){
+            println(e)
+        }
         [expediente: expediente]
     }
     def subirArchivo(FileUploadCommand command){
-        if(!command.file.empty){
-            def storagePath = ''+grailsApplication.config.grails.images.temp+'/'+session.id+'/'+params.id
-            def storagePathDirectory = new File(storagePath)
-            if (!storagePathDirectory.exists()) {
-                print "CREATING DIRECTORY "+storagePath
-                if (storagePathDirectory.mkdirs()) {
-                    println "SUCCESS"
-                } else {
-                    println "FAILED"
+        if(!command.file.empty){            
+            try{
+                def storagePath = ''+grailsApplication.config.grails.images.temp+'/'+session.id+'/'+params.id
+                def storagePathDirectory = new File(storagePath)
+                if (!storagePathDirectory.exists()) {
+                    print "CREATING DIRECTORY "+storagePath
+                    if (storagePathDirectory.mkdirs()) {
+                        println "SUCCESS"
+                    } else {
+                        println "FAILED"
+                    }
                 }
-            }
-            def archivo = new File(storagePath+"/"+command.file.originalFilename)
-            println(archivo)
-            command.file.transferTo(archivo)
+                def archivo = new File(storagePath+"/"+command.file.originalFilename)
+                println(archivo)
+                command.file.transferTo(archivo)
+            }catch(Exception e){
+                println(e)
+            }                
         }
         render ""
     }

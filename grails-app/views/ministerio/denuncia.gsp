@@ -18,10 +18,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="${request.contextPath}">Home</a></li>
                             <li class="active"><span>Denuncia</span></li>
                         </ol>
                         <h1>Generar Denuncia</h1>
+                    </div>
+                    <div class="col-lg-12">
+                        <a href="${request.contextPath}" class="btn btn-danger" onclick="if(!confirm('Está seguro que desea cancelar el registro?'))return false;" >                                            
+                            <span class="fa fa-times" style="padding-right: 10px;"></span> Cancelar
+                        </a>
                     </div>
                 </div>
                 <div class="row">
@@ -38,7 +43,8 @@
                                             <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Presunto Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step4"><span class="badge">3</span>Archivos<span class="chevron"></span></li>
+                                            <li data-target="#step4"><span class="badge">4</span>IPH<span class="chevron"></span></li>
+                                            <li data-target="#step5"><span class="badge">5</span>Archivos<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions">
                                             <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
@@ -72,7 +78,10 @@
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Genero </label>
-                                                    <input type="text" class="form-control" name="victima.genero" placeholder="Genero de la victima">
+                                                    <select class="form-control" name="victima.genero">
+                                                      <option>Femenino</option>
+                                                      <option>Masculino</option>
+                                                    </select>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Edad</label>
@@ -97,7 +106,10 @@
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Genero </label>
-                                                    <input type="text" class="form-control" name="imputado.genero" placeholder="Genero del presunto responsable">
+                                                    <select class="form-control" name="imputado.genero">
+                                                      <option>Femenino</option>
+                                                      <option>Masculino</option>
+                                                    </select>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Edad</label>
@@ -112,9 +124,17 @@
                                                     <input type="text" class="form-control" name="imputado.escolaridad" placeholder="Escolaridad del presunto responsable">
                                                 </div>                                                 
                                             </div>
+                                            <div class="step-pane" id="step4">
+                                                <br/>
+                                                <h4>4.- IPH</h4>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  ">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
+                                                </div>
+                                            </div>
                                         </g:form>
 
-                                        <div class="step-pane" id="step4">
+                                        <div class="step-pane" id="step5">
                                             <br/>
                                             <div class="panel-group accordion" id="accordion">
                                                 <div class="panel panel-default">
@@ -171,6 +191,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                                Plantillas
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseFour" class="panel-collapse collapse" style="height: 1px;">
+                                                        <div class="panel-body">
+                                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>                                                                                        
 
                                         </div>
@@ -183,5 +219,57 @@
                 </div>
             </div>
         </div>
+        <!--Modal-->
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
+                      <input class="form-control" type="search" id="SearchBox" />
+                    </div>
+                    <div class="modal-body">
+                       <div class="scrollable" id="CustomerSelectDiv">
+                           <select size="2" class="form-control" id="CustomerSelect">
+                              <option>IPH/FG/XX/PGU/2015/BB-9</option>
+                              <option>IPH/FG/XX/PGU/2015/BB-10</option>
+                              <option>IPH/FG/XX/PGU/2015/BB-11</option>
+                              <option>IPH/FG/XX/PGU/2015/BB-12</option>
+                              <option>IPH/FG/XX/PGU/2015/BB-8</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!--Fin Modal-->
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+                if (isCaseSensitive)
+                    str = str.toLowerCase();
+                // cache the jQuery object of the <select> element
+                var $el = $(selectionEl);
+                if (!$el.data("options")) {
+                    // cache all the options inside the <select> element for easy recover
+                    $el.data("options", $el.find("option").clone());
+                }
+                var newOptions = $el.data("options").filter(function () {
+                        var text = $(this).text();
+                        if (isCaseSensitive)
+                            text = text.toLowerCase();
+                        return text.match(str);
+                    });
+                $el.empty().append(newOptions);
+            };
+
+            $("#SearchBox").on("keyup", function () {
+                var userInput = $("#SearchBox").val();
+                showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+            });
+        </script>
     </body>
 </html>
