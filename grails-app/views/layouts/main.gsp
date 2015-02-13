@@ -167,7 +167,7 @@
             }
         </style>
     </head>
-    <body class="theme-turquoise  fixed-header pace-done fixed-footer">
+    <body class="pace-done theme-red  fixed-header pace-done fixed-footer">
         <div id="theme-wrapper">
             <header class="navbar" id="header-navbar">
                 <div class="container">

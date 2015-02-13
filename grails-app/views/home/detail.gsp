@@ -3,12 +3,10 @@
         <meta charset="utf-8">
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
-        <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/styles.css">
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input-facebook.css')}"/>
-            
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jquery.tokenize.css')}"/>
+  
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jquery.tokenize.js')}"></script>
         <title>Detalles</title>
     </head>
     <body>
@@ -26,7 +24,7 @@
                                 <div id="email-header-title" class="visible-md visible-lg">
                                     <i class="fa fa-inbox"></i> Inbox
                                 </div>
-                                <div id="email-header-tools">
+                                <div id="email-header-tools" style=" left: 985px">
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>

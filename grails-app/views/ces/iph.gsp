@@ -196,6 +196,44 @@
               }
         </script>
         
+                <script type="text/javascript">
+
+            // ref: http://diveintohtml5.org/detect.html
+            function supports_input_placeholder()
+            {
+            var i = document.createElement('input');
+            return 'placeholder' in i;
+            }
+
+            if(!supports_input_placeholder()) {
+            var fields = document.getElementsByTagName('INPUT');
+            for(var i=0; i < fields.length; i++) {
+            if(fields[i].hasAttribute('placeholder')) {
+            fields[i].defaultValue = fields[i].getAttribute('placeholder');
+            fields[i].onfocus = function() { if(this.value == this.defaultValue) this.value = ''; }
+            fields[i].onblur = function() { if(this.value == '') this.value = this.defaultValue; }
+            }
+            }
+            }
+
+        </script>
+
+        <style type="text/css">
+
+            input:required:invalid, input:focus:invalid {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
+            background-position: right top;
+            background-repeat: no-repeat;
+            -moz-box-shadow: none;
+            }
+            input:required:valid {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+            background-position: right top;
+            background-repeat: no-repeat;
+            }
+
+        </style>
+        
         <title>Generar Iph</title>
     </head>
     <body>
@@ -216,20 +254,37 @@
                         </ol>
                         <h1>Generar Iph</h1>
                     </div>
-                    <div class="col-lg-12">
-                        <a href="${request.contextPath}" class="btn btn-danger" onclick="if(!confirm('Está seguro que desea cancelar el registro?'))return false;" >                                            
-                            <span class="fa fa-times" style="padding-right: 10px;"></span> Cancelar
-                        </a>
-                    </div>
-                </div>
+                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="main-box clearfix" style="min-height: 820px;">
                             <header class="main-box-header clearfix">
                                 <h2>Captura los datos en el orden presentado</h2>
                             </header>
-                            <div class="main-box-body clearfix">
-
+                            <div class="main-box-body clearfix">                                
+                                <div class="modal fade" id="myModalVentanaEmer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Registro de IPH</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    ¿Está seguro que desea cancelar el registro?
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="${request.contextPath}" class="btn btn-primary" >                                            
+                                                    <span  style="padding-right: 10px;"></span> Si
+                                                </a>   
+                                                <a data-dismiss="modal" class="btn btn-danger">                                            
+                                                    <span style="padding-right: 10px;"></span> No
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="myWizard" class="wizard">
                                     <div class="wizard-inner">
                                         <ul class="steps">
@@ -238,7 +293,8 @@
                                             <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
                                             <li data-target="#step4"><span class="badge">4</span>Archivos<span class="chevron"></span></li>
                                         </ul>
-                                        <div class="actions">
+                                        <div class="actions" style="z-index: 1">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                             <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
                                             <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#iph').submit();}">Siguiente</i></button>
                                         </div>
@@ -255,7 +311,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Asunto</label>
-                                                    <input type="text" class="form-control" name="datosIph.asunto" placeholder="Asunto">
+                                                    <input type="text" class="form-control" name="datosIph.asunto" placeholder="Asunto" required>
                                                 </div>     
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Participación</label>
@@ -271,21 +327,21 @@
                                                 </div>   
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Ubicación</label>
-                                                    <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación">                                              
+                                                    <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
                                                 </div>
                                                 <div>
                                                      <table>
                                                       <tr>
                                                       <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="button" class="btn btn-success" value="Buscar" onclick="codeAddress()"/>
+                                                         <input type="button" class="btn btn-success" value="Buscar" onclick="codeAddress()" required/>
                                                       </p>
                                                       </td>
                                                       <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="text" name="latitud" id="latitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" />	    
+                                                         <input type="text" name="latitud" id="latitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
                                                       </p>
                                                       </td>
                                                       <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="text" name="longitud" id="longitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" />	
+                                                         <input type="text" name="longitud" id="longitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
                                                       </p>
                                                       </td>	
                                                       </tr>
@@ -299,19 +355,19 @@
                                                 <h4>2.- Datos de la victima</h4>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" name="victimaIph.apellidoPaterno" placeholder="Apellido paterno de la victima">
+                                                    <input type="text" class="form-control" name="victimaIph.apellidoPaterno" placeholder="Apellido paterno de la victima" required>
                                                 </div>                       
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Apellido Materno</label>
-                                                    <input type="text" class="form-control" name="victimaIph.apellidoMaterno" placeholder="Apellido materno de la victima">
+                                                    <input type="text" class="form-control" name="victimaIph.apellidoMaterno" placeholder="Apellido materno de la victima" required>
                                                 </div>                       
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre(s)</label>
-                                                    <input type="text" class="form-control" name="victimaIph.nombre" placeholder="Nombres de la victima">
+                                                    <input type="text" class="form-control" name="victimaIph.nombre" placeholder="Nombres de la victima" required>
                                                 </div>                  
                                                 <div class="form-group">      
                                                     <label for="exampleInputEmail1">Edad</label>
-                                                    <input type="text" class="form-control" name="victimaIph.edad" placeholder="Edad de la victima">
+                                                    <input type="text" class="form-control" name="victimaIph.edad" placeholder="Edad de la victima" required>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Sexo</label>
@@ -327,19 +383,19 @@
                                                 <h4>3.- Datos del probable responsable</h4>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" name="imputadoIph.apellidoPaterno" placeholder="Apellido paterno del probable responsable">
+                                                    <input type="text" class="form-control" name="imputadoIph.apellidoPaterno" placeholder="Apellido paterno del probable responsable" required>
                                                 </div>                       
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Apellido Materno</label>
-                                                    <input type="text" class="form-control" name="imputadoIph.apellidoMaterno" placeholder="Apellido materno del probable responsable">
+                                                    <input type="text" class="form-control" name="imputadoIph.apellidoMaterno" placeholder="Apellido materno del probable responsable" required>
                                                 </div>                       
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre(s)</label>
-                                                    <input type="text" class="form-control" name="imputadoIph.nombre" placeholder="Nombres del probable responsable">
+                                                    <input type="text" class="form-control" name="imputadoIph.nombre" placeholder="Nombres del probable responsable" required>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Edad</label>
-                                                    <input type="text" class="form-control" name="imputadoIph.edad" placeholder="Edad del probable responsable">
+                                                    <input type="text" class="form-control" name="imputadoIph.edad" placeholder="Edad del probable responsable" required>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Sexo </label>
@@ -350,7 +406,7 @@
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Probables delitos o faltas administrativas</label>
-                                                    <input type="text" class="form-control" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa">
+                                                    <input type="text" class="form-control" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" required>
                                                 </div>                                                   
                                             </div>
                                         </g:form>
