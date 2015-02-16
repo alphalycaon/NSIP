@@ -17,6 +17,7 @@ class BootStrap {
             adminTribunalRole.addToPermissions("tribAdmin:*")
             adminTribunalRole.addToPermissions("home:*")
             adminTribunalRole.addToPermissions("busqueda:*")
+            adminTribunalRole.addToPermissions("repository:*")
             adminTribunalRole.save()
         }
         def ministerio1 = User.findByUsername("ministerio1")

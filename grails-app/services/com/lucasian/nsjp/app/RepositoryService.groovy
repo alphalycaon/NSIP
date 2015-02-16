@@ -12,28 +12,26 @@ import org.apache.jackrabbit.oak.jcr.Jcr
 @Transactional
 class RepositoryService {
 
-    Repository repository = null;
-    String repositoryName = null;
+    Repository repository = null
+    String repositoryName = null
+    boolean lazyInit = false
 
     @PostConstruct
     void init() {
+
+        println("STARTING RESPOSITORY")
         try {
-            Repository repo = new Jcr(new Oak()).createRepository();
+            repository = new Jcr(new Oak()).createRepository();
         } catch (Throwable e) {
             e.printStackTrace();
         }
-        System.out.println("Engine starterd");
-        System.out.println("Repository "+repositoryName+"  started");
     }
 
     def storeNode(RepositoryCommand documento){
         Session session = null;
         try {
-            // Get the repository
-            repository = engine.getRepository(repositoryName);
 
-            // Create a session ...
-            session = repository.login("default");
+            session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
             Node documentRoot = session.getRootNode();
             String[] folders = documento.ruta.split("/");
             for(String folder: folders){
@@ -62,29 +60,31 @@ class RepositoryService {
                 return fileNode.getPath()
             }else{
                 fileNode = documentRoot.addNode(documento.nombre,"nt:file");
-                if(documento.tipo){
+                /*if(documento.tipo){
                     fileNode.addMixin(documento.tipo);
-                }
+                }*/
                 fileNode.addMixin("mix:versionable");
                 if(documento.propiedades){
                     documento.propiedades.each{ k, v ->
                         fileNode.setProperty(k,v);
                     }
                 }
+                /*
                 if(!documento.userId){
                     //Usuario usuario = (Usuario)SecurityUtils.getSubject().getPrincipal();
                     //fileNode.setProperty("userId", usuario.id)
                 }else{
                     fileNode.setProperty("userId", documento.userId)
-                }
-
-                fileNode.checkout();
+                }*/
                 Node contentNode = fileNode.addNode("jcr:content", "nt:resource");
+
                 Binary binary = session.getValueFactory().createBinary(documento.binario);
                 contentNode.setProperty("jcr:data", binary);
                 contentNode.setProperty("jcr:mimeType", documento.mime);
                 session.save();
+                fileNode.checkout();
                 fileNode.checkin();
+                session.save();
                 return fileNode.getPath()
             }
 
@@ -107,15 +107,13 @@ class RepositoryService {
     def query(String queryText){
         Session session = null;
         try {
-            repository = engine.getRepository(repositoryName);
-            session = repository.login("default");
+            session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
             def items = []
 
             QueryManager queryManager = session.getWorkspace().getQueryManager();
             Query query = queryManager.createQuery(queryText, "JCR-SQL2");
             QueryResult result = query.execute();
             NodeIterator it = result.getNodes();
-
             while (it.hasNext()) {
                 Node node = it.nextNode();
                 def tipos = "";
@@ -165,7 +163,7 @@ class RepositoryService {
                             documento.mime = currentNode.getNode("jcr:content").getProperty("jcr:mimeType").getString();
                             documento.version = v.getName();
                             documento.propiedades = propiedades
-                            printTree(currentNode);
+                            //printTree(currentNode);
                         }
                         items<<documento;
                     }
@@ -193,8 +191,8 @@ class RepositoryService {
         Session session = null;
         try{
 
-            String queryText = "select * from [nt:file] where PATH() = '"+path+"'";
-            session = repository.login("default");
+            String queryText = "select * from [nt:file] where [jcr:path] = '"+path+"'";
+            session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
             def items = []
             QueryManager queryManager = session.getWorkspace().getQueryManager();
             Query query = queryManager.createQuery(queryText, "JCR-SQL2");
@@ -205,7 +203,7 @@ class RepositoryService {
             hasPermissions(node)
             if(version != null){
                 VersionIterator i = node.getVersionHistory().getAllVersions();
-                printTree(node.getVersionHistory().getRootVersion().getNodes().nextNode());
+                //printTree(node.getVersionHistory().getRootVersion().getNodes().nextNode());
                 while (i.hasNext()) {
                     Version v = i.nextVersion();
                     if(v.getName().toString().equals(version)){
@@ -237,8 +235,6 @@ class RepositoryService {
     @PreDestroy
     void shutDown(){
         try {
-            engine.shutdown().get();
-            System.out.println("ShutDown Successfull!");
         } catch (Exception e) {
             e.printStackTrace();
         }

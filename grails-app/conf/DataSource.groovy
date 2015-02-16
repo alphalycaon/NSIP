@@ -15,14 +15,14 @@ hibernate {
 
 // environment specific settings
 environments {
-    development {
+    production {
         dataSource {
              dbCreate = "update"
                      username = "nsip"
                      password = "nsip"
                      driverClassName = "com.mysql.jdbc.Driver"
                      //url = "jdbc:mysql://cloud.lucasianmexico.com:3307/nsip"      
-                     url = "jdbc:mysql://cloud.lucasianmexico.com/nsip"
+                     url = "jdbc:mysql://localhost/nsip"
                      properties { 
                             validationQuery="select 1" 
                             testWhileIdle=true 
@@ -30,13 +30,13 @@ environments {
                      } 
         }
     }
-    test {
+    development {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
-    production {
+    test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
