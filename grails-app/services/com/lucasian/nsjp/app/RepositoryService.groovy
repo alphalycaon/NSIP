@@ -6,8 +6,12 @@ import javax.jcr.nodetype.*
 import javax.jcr.query.*
 import javax.jcr.version.*
 import javax.annotation.*
-import org.apache.jackrabbit.oak.Oak
-import org.apache.jackrabbit.oak.jcr.Jcr
+import org.apache.jackrabbit.oak.*
+import org.apache.jackrabbit.oak.jcr.*
+import com.mongodb.DB
+import com.mongodb.MongoClient
+import org.apache.jackrabbit.oak.plugins.document.DocumentNodeStore
+import org.apache.jackrabbit.oak.plugins.document.DocumentMK
 
 @Transactional
 class RepositoryService {
@@ -21,9 +25,16 @@ class RepositoryService {
 
         println("STARTING RESPOSITORY")
         try {
-            repository = new Jcr(new Oak()).createRepository();
+            DB db = new MongoClient("127.0.0.1", 27017).getDB("nsip");
+            DocumentNodeStore ns = new DocumentMK.Builder().
+                    setMongoDB(db).getNodeStore();
+            repository = new Jcr(new Oak(ns)).createRepository();
+
         } catch (Throwable e) {
             e.printStackTrace();
+            println("CREATING IN MEMORY REPOSITORY")
+            repository = new Jcr(new Oak()).createRepository();
+
         }
     }
 

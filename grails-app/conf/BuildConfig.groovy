@@ -52,6 +52,7 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         compile 'org.apache.jackrabbit:oak-jcr:1.0.0'
         compile 'javax.jcr:jcr:2.0'
+        compile 'org.mongodb:mongo-java-driver:2.12.0'
 
     }
 
