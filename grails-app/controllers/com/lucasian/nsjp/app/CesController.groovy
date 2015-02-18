@@ -5,20 +5,20 @@ import org.apache.commons.io.FileUtils
 class CesController {
     def grailsApplication
     def iph() { }
-    def guardarIph(){   
-        Iph iph = new Iph();      
-        iph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'
-        iph.save()                
-        iph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'+iph.id
-        iph.save()
+    def guardarIph(){          
+        ExpedienteIph expedienteIph = new ExpedienteIph();
+        expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'
+        expedienteIph.save()     
+        expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'+expedienteIph.id
+        expedienteIph.save()
         try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
-            File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+iph.numeroIph)
+            File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+expedienteIph.numeroIph)
             FileUtils.copyDirectory(srcDir, destDir)
         }catch(Exception e){
             println(e)
         }
-        [iph: iph]
+        [expedienteIph: expedienteIph]
     }
     def subirArchivo(FileUploadCommand command){
         if(!command.file.empty){           

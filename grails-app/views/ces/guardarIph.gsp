@@ -21,14 +21,14 @@
                             <li><a href="${request.contextPath}">Home</a></li>
                             <li class="active"><span>Iph</span></li>
                         </ol>
-                        <h1>Iph guardado: ${iph.numeroIph}</h1>
+                        <h1>Iph guardado: ${expedienteIph.numeroIph}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="main-box clearfix" style="min-height: 820px;">
                             <header class="main-box-header clearfix">
-                                <h2>El iph fue generado y se le asigno el numero ${iph.numeroIph} creada el ${iph.dateCreated}</h2>
+                                <h2>El iph fue generado y se le asigno el numero ${expedienteIph.numeroIph} creada el ${expedienteIph.dateCreated}</h2>
                             </header>
                         </div>
 

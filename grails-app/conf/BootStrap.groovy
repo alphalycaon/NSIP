@@ -52,15 +52,15 @@ class BootStrap {
         def juezRole = Role.findByName("Juez")
         if(!juezRole){
             juezRole = new Role(name:"Juez")
-            cesRole.addToPermissions("home:*")
-            cesRole.addToPermissions("busqueda:*")
+            juezRole.addToPermissions("home:*")
+            juezRole.addToPermissions("busqueda:*")
             juezRole.save()
         }
         def defensorRole = Role.findByName("Defensor")
         if(!defensorRole){
             defensorRole = new Role(name:"Defensor")
-            cesRole.addToPermissions("home:*")
-            cesRole.addToPermissions("busqueda:*")
+            defensorRole.addToPermissions("home:*")
+            defensorRole.addToPermissions("busqueda:*")
             defensorRole.save()
         }
         def ces1 = User.findByUsername("ces1")

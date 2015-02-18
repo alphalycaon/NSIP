@@ -9,9 +9,9 @@ class MinisterioController {
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
         delito.expediente = expediente        
-        expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'
-        expediente.save()                
-        expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
+        expediente.numeroExpediente = params.numeroExpediente //'COA/FG/XX/PGU/2014/AA-'
+        //expediente.save()                
+        //expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
         expediente.save()
         try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)

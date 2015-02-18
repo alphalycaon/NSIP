@@ -11,6 +11,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="layout" content="main"/>
         <title>Generar denuncia</title>
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'nanoscroller.css')}"/>
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'theme_styles.css')}"/>
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
     </head>
     <body>
         <div class="row">
@@ -43,12 +53,12 @@
                                             <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Presunto Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step4"><span class="badge">4</span>IPH<span class="chevron"></span></li>
+                                            <li data-target="#step4"><span class="badge">4</span>Datos de la Denuncia<span class="chevron"></span></li>
                                             <li data-target="#step5"><span class="badge">5</span>Archivos<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions">
                                             <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                            <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denuncia').submit();}">Siguiente</i></button>
+                                            <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){ $('#numeroExpediente').val($('#numExpediente').text()); $('#denuncia').submit();}">Siguiente</i></button>
                                         </div>
                                     </div>
                                     <g:form controller="ministerio" action="guardarDenuncia" name="denuncia">
@@ -126,9 +136,17 @@
                                             </div>
                                             <div class="step-pane" id="step4">
                                                 <br/>
-                                                <h4>4.- IPH</h4>
+                                                <h4>4.- Datos de la denuncia</h4>
                                                 <div class="form-group">
+                                                    <label for="expediente">Número de denuncia</label>
+                                                    <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
+                                                    </br>
+                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA/FG/XX/PGU/2014/AA-</a>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">IPH de la denuncia</label>
                                                     <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  ">
+                                                    </br>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
                                                 </div>
                                             </div>
@@ -270,6 +288,28 @@
                 var userInput = $("#SearchBox").val();
                 showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
             });
-        </script>
+        </script>        
+        
+         
+        <script src="${resource(dir: 'centaurus/js/', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'demo.js')}"></script>  
+
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-editable.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'select2.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'moment.min.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js/', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'pace.min.js')}"></script>
+        <script>
+            $(document).ready(function(){
+		//toggle `popup` / `inline` mode
+		$.fn.editable.defaults.mode = 'popup';     
+		
+		//make numExpediente editable
+		$("#numExpediente").editable();
+            });
+	</script>
     </body>
 </html>
