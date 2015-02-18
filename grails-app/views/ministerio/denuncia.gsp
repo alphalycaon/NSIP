@@ -252,7 +252,7 @@
                                                 <br/>
                                                 <h4>4.- IPH</h4>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required>
+                                                    <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required></br>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
                                                 </div>
                                             </div>

@@ -346,7 +346,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div id="myWizard" class="wizard">
                                     <div class="wizard-inner">

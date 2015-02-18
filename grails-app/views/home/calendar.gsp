@@ -77,6 +77,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
     </a>
 </div>    
+</br>
 </div>
 </div>
 <div class="row">

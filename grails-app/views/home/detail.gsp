@@ -12,7 +12,9 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-attached.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-other.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-theme.css')}"/>
-                
+        
+          <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.4/themes/default/style.min.css">
+        
         <title>Detalles</title>
     </head>
     <body>
@@ -541,6 +543,19 @@
                                                      <!--  -->
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
                                                             <div class="col-md-6 dd nestable" >
+                                                                
+                                                                <div id="contenedor">
+                                                                    <ul>
+                                                                      <li data-jstree='{"opened":true}'>Root node
+                                                                        <ul>
+                                                                          <li>Child node 1</li>
+                                                                          <li>Child node 2</li>
+                                                                        </ul>
+                                                                      </li>
+                                                                    </ul>
+                                                                </div>
+                                                                
+                                                                
                                                                 <ol class="dd-list dd-nodrag">                                         
                                                                     <li class="dd-item dd-item-list " data-id="13"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
                                                                         <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
@@ -692,7 +707,7 @@
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
                                                         <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs">
+                                                            <ul class="nav nav-tabs nav-justified" style="background-color:#EE7600;">
                                                                 <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
                                                                 <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
                                                                 <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
@@ -931,7 +946,7 @@
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
                                                         <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs">
+                                                            <ul class="nav nav-tabs nav-justified" style="background-color:#EE7600;">
                                                                 <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
                                                                 <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
                                                                 <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
@@ -1429,7 +1444,15 @@
         <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
         
-        
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.4/jstree.min.js"></script>
+            
+        <script>
+            
+            $('#contenedor').jstree({  
+                "plugins" : ["checkbox"] 
+              });
+            
+        </script>    
         
         <script type="text/javascript">
 
