@@ -3,7 +3,14 @@
         <meta charset="utf-8">
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
+<<<<<<< HEAD
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+=======
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jquery.tokenize.css')}"/>
+  
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="${resource(dir: 'js', file: 'jquery.tokenize.js')}"></script>
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
         <title>Detalles</title>
     </head>
     <body>

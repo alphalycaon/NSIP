@@ -74,6 +74,7 @@
                 <div class="row">
                     <div class="col-lg-12">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <div class="main-box clearfix" style="min-height: 820px;">
                             <header class="main-box-header clearfix">
                                 <h2>Captura los datos en el orden presentado</h2>
@@ -107,6 +108,8 @@
                                                     <label for="exampleInputEmail1">Modalidad </label>
                                                     <input type="text" class="form-control" name="clasificacionDelito.modalidad" placeholder="Modalidad del delito">
 =======
+=======
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
                             <div class="main-box clearfix" style="min-height: 820px;">
                                 <header class="main-box-header clearfix">
                                     <h2>Captura los datos en el orden presentado</h2>
@@ -132,6 +135,7 @@
                                                             <span style="padding-right: 10px;"></span> No
                                                         </a>
                                                     </div>
+<<<<<<< HEAD
 >>>>>>> origin/master
                                                 </div>
                                             </div>
@@ -151,6 +155,10 @@
                                                     </br>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
 =======
+=======
+                                                </div>
+                                            </div>
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
                                         </div>
                                         <div id="myWizard" class="wizard">
                                             <div class="wizard-inner">
@@ -165,7 +173,10 @@
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                                     <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
                                                     <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denuncia').submit();}">Siguiente</i></button>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
                                                 </div>
                                             </div>
                                             <g:form controller="ministerio" action="guardarDenuncia" name="denuncia">
@@ -384,6 +395,7 @@
                     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             $("#SearchBox").on("keyup", function () {
                 var userInput = $("#SearchBox").val();
                 showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
@@ -414,6 +426,8 @@
     </body>
 </html>
 =======
+=======
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
                     $("#SearchBox").on("keyup", function () {
                     var userInput = $("#SearchBox").val();
                     showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
@@ -421,4 +435,7 @@
                 </script>
             </body>
         </html>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
