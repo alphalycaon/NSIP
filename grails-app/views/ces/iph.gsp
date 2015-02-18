@@ -10,6 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="layout" content="main"/>
+        <!--Codigo head-->
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}/"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'theme_styles.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'datepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-timepicker.css')}"/>
+        <!--Fin Codigo head-->
         <script src="${resource(dir: 'js', file: 'datetimepicker_css.js')}"></script>        
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
         </script>
@@ -362,15 +371,39 @@
                                             <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#iph').submit();}">Siguiente</i></button>
                                         </div>
                                     </div>
+<<<<<<< HEAD
                                     <g:form controller="ces" action="guardarIph" name="iph" id="iph" onsubmit="return validarCampos()">
+=======
+                                    <g:form controller="ces" action="guardarIph" name="iph">
+>>>>>>> origin/master
                                         <div class="step-content">
                                             <div class="step-pane active" id="step1">
                                                 <br/>
-                                                <h4>1.- Datos Generales</h4>
+                                                <h4>1.- Datos Generales</h4> 
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Fecha y hora del Evento</label>
-                                                    <input type="Text" class="form-control" id="fecha" maxlength="25" size="25" disabled/>
-                                                    <img src="${resource(dir: 'images', file: 'cal.gif')}" onclick="javascript:NewCssCal('fecha','ddMMyyyy','dropdown',true,'12')" style="cursor:pointer"/> 
+                                                    <label for="iph">Fecha y hora del Evento</label>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                        <input type="text" class="form-control" name="datosIph.fechaEvento" placeholder="Fecha del evento" id="datepickerDate">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="input-group input-append bootstrap-timepicker">
+                                                                        <input type="text" class="form-control" name="datosIph.horaEvento" id="timepicker">
+                                                                        <span class="add-on input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Asunto</label>
@@ -386,8 +419,11 @@
                                                 </div>     
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Operativo</label>
-                                                    </br><g:checkBox name="datosIph.operativo"/>
-                                                </div>   
+                                                    <select class="form-control" name="datosIph.operativo">
+                                                      <option>Si</option>
+                                                      <option>No</option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Ubicación</label>
                                                     <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
@@ -538,6 +574,47 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
+        
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'jquery.maskedinput.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-datepicker.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-timepicker.min.js')}"></script>
+
+        <script>
+            $(function($) {	
+                    //masked inputs
+                    $("#maskedDate").mask("99/99/9999");
+
+                    $.fn.datepicker.dates['es'] = {
+			days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
+			daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+			daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+			months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Novienbre", "Diciembre"],
+			monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+			today: "Hoy",
+			clear: "Limpiar"
+                    };
+
+                    //datepicker
+                    $('#datepickerDate').datepicker({
+                        format: 'dd/mm/yyyy',
+                        language: 'es',
+                        clearBtn: true
+                    });
+
+                    $('#datepickerDateComponent').datepicker();
+
+                    //timepicker
+                    $('#timepicker').timepicker({
+                            minuteStep: 1,
+                            showMeridian: true,
+                            disableFocus: false,
+                            showWidget: true
+                    }).focus(function() {
+                            $(this).next().trigger('click');
+                    });		
+            });
+	</script>
     </body>
 </html>

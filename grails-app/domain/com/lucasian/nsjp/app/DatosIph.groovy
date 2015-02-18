@@ -12,9 +12,6 @@ class DatosIph {
     String operativo
     String ubicacion
     String toString(){
-        ""+asunto+" el "+fechaEvento+" a las "+horaEvento+", en "+ubicacion
-    }
-    static mapping = {
-        table "datos_iph"
+        ""+asunto+":"+fechaEvento+":"+horaEvento+":"+ubicacion
     }
 }

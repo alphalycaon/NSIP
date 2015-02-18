@@ -132,19 +132,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a></b></big>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -213,18 +205,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a></b></big>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -293,19 +278,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a></b></big>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -375,19 +352,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <big><b><a href="#" data-toggle="modal" data-target="#myModal">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a></b></big>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -502,7 +471,7 @@
                                         </g:each>                                        
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${iphs}">
+                                        <g:each in="${expedientesIph}">
                                             <li class="unread clickable-row" data-href="home/detail">
                                                 <div class="name">
                                                     ${it.numeroIph}

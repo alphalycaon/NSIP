@@ -4,8 +4,7 @@ class Iph {
 
     static constraints = {
     }
-    Date dateCreated 
-    Date lastUpdated 
-    String numeroIph
-    static hasOne = [datosIph: DatosIph, victimaIph: VictimaIph, imputadoIph: ImputadoIph]
+    static hasOne = [victimaIph: VictimaIph, imputadoIph: ImputadoIph, datosIph: DatosIph]
+    static belongsTo = [expedienteIph: ExpedienteIph]
+    
 }

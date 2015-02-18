@@ -3,7 +3,7 @@ package com.lucasian.nsjp.app
 class HomeController {
 
     def index() { 
-        [expedientes: Expediente.list(), iphs: Iph.list()]
+        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list()]
     }
     def detail(){
         

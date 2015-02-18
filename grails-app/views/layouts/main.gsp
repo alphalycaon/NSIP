@@ -34,7 +34,7 @@
         </script>        
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}/"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}"></script>
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'dropzone.css')}"/>
@@ -144,23 +144,24 @@
             h6 {
               margin: 0 0 10px 0;
               color: #fff;
-              background-color: #56bd9b;              
+              background-color: #B60808;              
               font-size: 14px;
               font-weight: bold;
             }
             
             #buscar {
                 font-family: Tahoma, Verdana, Arial;
-                font-size: 18px;
+                font-size: 14px;
                 background-color: #FFFFFF;
-                border:2px solid #FFFFFF;
+                border:6px solid #FFFFFF;
+                border-radius: none;
             }
             
             #buscar:focus {
                 font-family: Tahoma, Verdana, Arial;
-                font-size: 18px;
+                font-size: 14px;
                 background-color: #FFFFFF;
-                border:2px solid #FFFFFF;
+                border:6px solid #FFFFFF;
             }
         </style>
     </head>
@@ -186,7 +187,7 @@
                                         <input type="text" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
-                                        <a class="btn" id="make-small-nav" onclick="$('#buscar').submit();">
+                                        <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
                                             <i class="fa fa-search" style="margin-right: 5px;"></i> <strong>Buscar</strong>
                                         </a>
                                     </li>
