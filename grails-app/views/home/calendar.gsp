@@ -72,7 +72,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <ol class="breadcrumb">
 </ol>
 <h1>Agenda de Audencias</h1>
-<div class="col-lg-12">  
+<div class="col-lg-12" style="left: 1107px">  
     <a href="${request.contextPath}" class="btn btn-primary">                                            
         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
     </a>
