@@ -492,9 +492,11 @@
                                                     </div>
                                                     <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
                                                         <div class="panel-body">
-                                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                                            <!--<a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
                                                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
                                                             </a>
+                                                            </br>-->
+                                                            <g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />
                                                         </div>
                                                     </div>
                                                 </div>

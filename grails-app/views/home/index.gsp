@@ -56,7 +56,7 @@
                                                                                                                  
                                         <g:link controller="ces" action="iph" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR IPH
-                                        </g:link>                                    
+                                        </g:link> 
                                 </div>
                                 </shiro:hasRole>
                                 <div id="email-header-pagination" class="pull-right">
@@ -503,14 +503,21 @@
                     </div>
                     <div class="modal-body">
                         <li>
-                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                            <!--<a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
-                            </a>
+                            </a>-->
+                            <g:form controller="home" action="plantillaIPH" name="plantillaIPH">
+                                <g:actionSubmit id="btnPlantillaIPH" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="home" />
+                            </g:form>
                         </li>
+                        </br>
                         <li>
-                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                            <!--<a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                            </a>
+                            </a>-->
+                            <g:form controller="home" action="plantillaDenuncia" name="plantillaDenuncia">
+                                <g:actionSubmit id="btnPlantillaDenuncia" class="btn btn-primary" value="Plantilla Denuncia" action="plantillaDenuncia" controller="home" />
+                            </g:form>
                         </li>
                     </div>
                     <div class="modal-footer">

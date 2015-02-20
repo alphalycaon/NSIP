@@ -3,14 +3,10 @@
         <meta charset="utf-8">
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
-<<<<<<< HEAD
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-=======
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jquery.tokenize.css')}"/>
-  
+
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="${resource(dir: 'js', file: 'jquery.tokenize.js')}"></script>
->>>>>>> 487559461a79d5ac26113a6778c923bf0760303e
+      
         <title>Detalles</title>
     </head>
     <body>
@@ -106,20 +102,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -188,18 +175,11 @@
                                                 -->
                                             </a>
                                         </li>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
-                                        </br>
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
-                                            </a>
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
@@ -268,6 +248,12 @@
                                                 -->
                                             </a>
                                         </li>
+                                        <li>
+                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b>
+                                        </li>
                                     </ul>                                    
                                 </div>
                                 <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
@@ -335,6 +321,12 @@
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
+                                        </li>
+                                        <li>
+                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                            <i class="fa fa-file-word-o"></i>
+                                                Plantillas
+                                            </a></b>
                                         </li>
                                     </ul>                                    
                                 </div>
