@@ -371,11 +371,9 @@
                                             <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#iph').submit();}">Siguiente</i></button>
                                         </div>
                                     </div>
-<<<<<<< HEAD
+
                                     <g:form controller="ces" action="guardarIph" name="iph" id="iph" onsubmit="return validarCampos()">
-=======
-                                    <g:form controller="ces" action="guardarIph" name="iph">
->>>>>>> origin/master
+
                                         <div class="step-content">
                                             <div class="step-pane active" id="step1">
                                                 <br/>
@@ -559,11 +557,10 @@
                                                     </div>
                                                     <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
                                                         <div class="panel-body">
-                                                            <!--<a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
                                                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
                                                             </a>
-                                                            </br>-->
-                                                            <g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />
+                                                            <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />-->
                                                         </div>
                                                     </div>
                                                 </div>

@@ -268,9 +268,8 @@
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">IPH de la denuncia</label>
-                                                    <input type="text" class="form-control" id="textoIph" name="textoIph" size="40" placeholder="Seleccione un IPH  ">
+                                                    <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required>
                                                     </br>
-                                                    <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required></br>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
                                                 </div>
                                             </div>
@@ -343,14 +342,10 @@
                                                     </div>
                                                     <div id="collapseFour" class="panel-collapse collapse" style="height: 1px;">
                                                         <div class="panel-body">
-                                                            <!--<a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
-                                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                                                            </a>
-                                                            </br>   --> 
-                                                            <g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla Denuncia" action="exportWord" controller="ministerio" />
                                                             <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                                                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
                                                             </a>
+                                                            <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla Denuncia" action="exportWord" controller="ministerio" />-->                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -418,17 +413,32 @@
             showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
             });
         </script>
-        <script>            
+       <script>            
             $("#btnPlantilla").click(function () {
                 $('#numeroExpediente').val($('#numExpediente').text());
             });
-            $el.empty().append(newOptions);
-            };
+        </script>        
+        
+         
+        <script src="${resource(dir: 'centaurus/js/', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'demo.js')}"></script>  
 
-            $("#SearchBox").on("keyup", function () {
-            var userInput = $("#SearchBox").val();
-            showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-editable.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'select2.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'moment.min.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js/', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/', file: 'pace.min.js')}"></script>
+        <script>
+            $(document).ready(function(){
+		//toggle `popup` / `inline` mode
+		$.fn.editable.defaults.mode = 'popup';     
+		
+		//make numExpediente editable
+		$("#numExpediente").editable();
             });
-        </script>
+	</script>
     </body>
 </html>

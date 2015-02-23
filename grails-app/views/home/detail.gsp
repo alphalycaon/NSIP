@@ -3,15 +3,8 @@
         <meta charset="utf-8">
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
-<<<<<<< HEAD
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      
-=======
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap', file: 'bootstrap.min.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'elements.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-default.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-growl.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-bar.css')}"/>
@@ -21,7 +14,6 @@
         
           <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.4/themes/default/style.min.css">
         
->>>>>>> origin/master
         <title>Detalles</title>
     </head>
     <body>
@@ -62,290 +54,6 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-<<<<<<< HEAD
-                        <shiro:hasRole name="Ministerio">
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="${request.contextPath}">
-                                                <i class="fa fa-inbox"></i>
-                                                Denuncias/Querellas
-                                                <span class="label label-primary pull-right">83</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-star"></i>
-                                                Carpetas de Corroboracion
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-pencil"></i>
-                                                Carpetas de Investigacion
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                                Puestas a Disposicion
-                                                <span class="label label-default pull-right">11</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-clock-o"></i>
-                                                Solicitud de Audiencia
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-arrow-circle-o-up"></i>
-                                                Solicitudes
-                                                <span class="label label-default pull-right">19</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-play-circle-o"></i>
-                                                Notificar
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Plantillas
-                                            </a></b>
-                                        </li>
-                                    </ul>                                    
-                                </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                            </div>                
-                        </shiro:hasRole>
-                        <shiro:hasRole name="CES">   
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user"></i>
-                                                Usuario
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-folder-o"></i>
-                                                Denuncias
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-times-circle"></i>
-                                                Hecho delictivo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-briefcase"></i>
-                                                Objetos asegurados
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="${request.contextPath}">
-                                                <i class="fa fa-inbox"></i>
-                                                Informe policial
-                                                <span class="label label-primary pull-right">12</span>
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-medkit"></i>
-                                                Servicio médico
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-link"></i>
-                                                Cadena de custodia
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-bullhorn"></i>
-                                                Notifica a M.P.
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Plantillas
-                                            </a></b>
-                                        </li>
-                                    </ul>                                    
-                                </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                            </div>
-                        </shiro:hasRole>
-                        <shiro:hasRole name="Juez">
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="${request.contextPath}">
-                                                <i class="fa fa-inbox"></i>
-                                                1era-2da Instancia
-                                                <span class="label label-primary pull-right">20</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user"></i>
-                                                Usuario
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-pencil"></i>
-                                                Registro de causas
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-flag"></i>
-                                                Solicitud de audiencia
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Solicitudes diversas
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="calendar">
-                                                <i class="fa fa-calendar"></i>
-                                                Agenda de audiencias
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-bullhorn"></i>
-                                                Notificar
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-check-circle"></i>
-                                                Resoluciones
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Plantillas
-                                            </a></b>
-                                        </li>
-                                    </ul>                                    
-                                </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                            </div>
-                        </shiro:hasRole>    
-                        <shiro:hasRole name="Defensor">
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user"></i>
-                                                Usuario
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="${request.contextPath}">
-                                                <i class="fa fa-inbox"></i>
-                                                Solicitudes de defensor
-                                                <span class="label label-primary pull-right">1</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-times-circle"></i>
-                                                Notificación de detenido
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-exclamation-triangle"></i>
-                                                Notificaciones
-                                                <span class="label label-default pull-right">6</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-flag"></i>
-                                                Solicitud de Audiencia
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-taxi"></i>
-                                                Peritos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-file-o"></i>
-                                                Reg. de medios de prueba
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-university"></i>
-                                                Apelaciones
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <b><a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Plantillas
-                                            </a></b>
-                                        </li>
-                                    </ul>                                    
-=======
                             <shiro:hasRole name="Ministerio">
                                 <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
                                     <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
@@ -401,7 +109,6 @@
                                                     -->
                                                 </a>
                                             </li>
-                                            </br></br></br></br></br></br></br></br></br>
                                             <li>
                                                 <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                     <i class="fa fa-file-word-o"></i>
@@ -475,13 +182,6 @@
                                                     -->
                                                 </a>
                                             </li>
-                                            </br>
-                                            </br>
-                                            </br>
-                                            </br>
-                                            </br>
-                                            </br>
-                                            </br>
                                             <li>
                                                 <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                     <i class="fa fa-file-word-o"></i>
@@ -554,6 +254,12 @@
                                                     <span class="label label-default pull-right">1,292</span>
                                                     -->
                                                 </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                                    <i class="fa fa-file-word-o"></i>
+                                                    Plantillas
+                                                </a>
                                             </li>
                                         </ul>                                    
                                     </div>
@@ -623,10 +329,15 @@
                                                     -->
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
+                                                    <i class="fa fa-file-word-o"></i>
+                                                    Plantillas
+                                                </a>
+                                            </li>
                                         </ul>                                    
                                     </div>
                                     <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
->>>>>>> origin/master
                                 </div>
                             </shiro:hasRole>
                             <shiro:hasRole name="Juez">
@@ -822,7 +533,7 @@
                                                                        <div class="modal-footer">                                                                           
                                                                            <textarea class="form-control" rows="3" id="comment" placeholder="Mensaje (Opcional)"></textarea>
                                                                            </br>
-                                                                            <a data-dismiss="modal" href="#" class="btn btn-primary" id="notificacionCompartir">                                            
+                                                                            <a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                                                                                 <span  style="padding-right: 10px;"></span> Aceptar
                                                                             </a>   
                                                                             <a data-dismiss="modal" class="btn btn-danger">                                            
@@ -835,19 +546,6 @@
                                                      <!--  -->
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
                                                             <div class="col-md-6 dd nestable" >
-                                                                
-                                                                <div id="contenedor">
-                                                                    <ul>
-                                                                      <li data-jstree='{"opened":true}'>Root node
-                                                                        <ul>
-                                                                          <li>Child node 1</li>
-                                                                          <li>Child node 2</li>
-                                                                        </ul>
-                                                                      </li>
-                                                                    </ul>
-                                                                </div>
-                                                                
-                                                                
                                                                 <ol class="dd-list dd-nodrag">                                         
                                                                     <li class="dd-item dd-item-list " data-id="13"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
                                                                         <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
@@ -949,9 +647,6 @@
                                                                         </div>
                                                                     </header>
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="profile-status">
-                                                                            <i class="fa fa-circle"></i> Disponible
-                                                                        </div>
                                                                         <div class="profile-label">
                                                                             <span class="label label-danger">Ministerio 1</span>
                                                                         </div>
@@ -1188,9 +883,6 @@
                                                                         </div>
                                                                     </header>
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="profile-status">
-                                                                            <i class="fa fa-circle"></i> Disponible
-                                                                        </div>
                                                                         <div class="profile-label">
                                                                             <span class="label label-danger">Ministerio 1</span>
                                                                         </div>
@@ -1432,9 +1124,6 @@
                                                                         </div>
                                                                     </header>
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="profile-status">
-                                                                            <i class="fa fa-circle"></i> Disponible
-                                                                        </div>
                                                                         <div class="profile-label">
                                                                             <span class="label label-danger">Ministerio 1</span>
                                                                         </div>
@@ -1481,7 +1170,7 @@
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
                                                         <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs">
+                                                            <ul class="nav nav-tabs nav-justified" style="background-color:#EE7600;">
                                                                 <li class="active"><a href="#tab-general" data-toggle="tab">Datos Generales</a></li>
                                                                 <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
                                                                 <li><a href="#tab-responsable" data-toggle="tab">Probable Responsable</a></li>                                                               
@@ -1640,9 +1329,6 @@
                                                                         </div>
                                                                     </header>
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="profile-status">
-                                                                            <i class="fa fa-circle"></i> Disponible
-                                                                        </div>
                                                                         <div class="profile-label">
                                                                             <span class="label label-danger">Ministerio 1</span>
                                                                         </div>
@@ -1702,12 +1388,12 @@
                                     </div>
                                     <div class="modal-body">
                                         <li>
-                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.doc')} title="Descargar">
+                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
                                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
                                             </a>
                                         </li>
                                         <li>
-                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.doc')} title="Descargar">
+                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                                                 <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
                                             </a>
                                         </li>

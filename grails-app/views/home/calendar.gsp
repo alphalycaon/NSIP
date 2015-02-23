@@ -76,10 +76,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     <a href="${request.contextPath}" class="btn btn-primary">                                            
         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
     </a>
-</div>    
+</div> 
+</div>
+</div>   
 </br>
-</div>
-</div>
 <div class="row">
 <div class="col-md-3 hidden-xs hidden-sm" >
 <div class="main-box" id="external-events">
