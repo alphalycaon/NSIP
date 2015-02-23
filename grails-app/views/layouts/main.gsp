@@ -40,24 +40,21 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'dropzone.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'nanoscroller.css')}"/>
-
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'theme_styles.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'wizard.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input-facebook.css')}"/>
 
         <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         
-        
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
-        
+                
         <script type="text/javascript">
             /* <![CDATA[ */
             var _gaq = _gaq || [];
@@ -367,7 +364,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
-    <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
     
     <script type="text/javascript">
         $(document).ready(function() {
