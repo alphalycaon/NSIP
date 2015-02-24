@@ -333,13 +333,13 @@
                             <header class="main-box-header clearfix">
                                 <h2>Captura los datos en el orden presentado</h2>
                             </header>
-                            <div class="main-box-body clearfix">                                
+                            <div class="main-box-body clearfix">   
                                 <div class="modal fade" id="myModalVentanaEmer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Registro de IPH</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Cancelar Registro de IPH</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div>
@@ -347,7 +347,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <a href="${request.contextPath}" class="btn btn-primary" >                                            
+                                                <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary" >                                            
                                                     <span  style="padding-right: 10px;"></span> Si
                                                 </a>   
                                                 <a data-dismiss="modal" class="btn btn-danger">                                            
@@ -355,7 +355,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div id="myWizard" class="wizard">
                                     <div class="wizard-inner">
@@ -573,9 +573,8 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>    
         
-        <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>
         <script src="${resource(dir: 'centaurus/js/', file: 'jquery.maskedinput.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-datepicker.js')}"></script>
         <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-timepicker.min.js')}"></script>

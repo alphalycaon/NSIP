@@ -21,8 +21,8 @@ environments {
                      username = "nsip"
                      password = "nsip"
                      driverClassName = "com.mysql.jdbc.Driver"
-                     //url = "jdbc:mysql://cloud.lucasianmexico.com:3307/nsip"      
-                     url = "jdbc:mysql://192.168.1.11/nsip"
+                     //url = "jdbc:mysql://cloud.lucasianmexico.com:3307/nsip2"      
+                     url = "jdbc:mysql://192.168.1.11/nsip2"
                      properties { 
                             validationQuery="select 1" 
                             testWhileIdle=true 

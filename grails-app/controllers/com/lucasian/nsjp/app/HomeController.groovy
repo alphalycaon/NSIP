@@ -17,9 +17,15 @@ import org.docx4j.wml.Document
 class HomeController {
 
     def index() { 
-        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list()]
+        [expedientes: Expediente.list()]
     }
     def detail(){
+        
+    }
+    def index_Iph() { 
+        [expedientesIph: ExpedienteIph.list()]
+    }
+    def detail_Iph(){
         
     }
     def calendar(){

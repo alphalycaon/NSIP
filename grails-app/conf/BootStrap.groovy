@@ -6,7 +6,6 @@ class BootStrap {
         def ministerioRole = Role.findByName("Ministerio")
         if(!ministerioRole){
             ministerioRole = new Role(name:"Ministerio")
-            ministerioRole.addToPermissions("ministerio:*")
             ministerioRole.addToPermissions("home:*")
             ministerioRole.addToPermissions("busqueda:*")
             ministerioRole.save()
@@ -44,6 +43,7 @@ class BootStrap {
         def cesRole = Role.findByName("CES")
         if(!cesRole){
             cesRole = new Role(name:"CES")
+            cesRole.addToPermissions("ministerio:*")
             cesRole.addToPermissions("home:*")
             cesRole.addToPermissions("busqueda:*")
             cesRole.addToPermissions("ces:*")
