@@ -338,7 +338,7 @@
                                             <a href="#" data-toggle="modal" data-target="#myModal">
                                                 <i class="fa fa-file-word-o"></i>
                                                 Mis plantillas
-                                            </a><
+                                            </a>
                                         </li>
                                     </ul>                                    
                                 </div>
