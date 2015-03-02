@@ -12,9 +12,10 @@ import com.mongodb.DB
 import com.mongodb.MongoClient
 import org.apache.jackrabbit.oak.plugins.document.DocumentNodeStore
 import org.apache.jackrabbit.oak.plugins.document.DocumentMK
+import org.apache.jackrabbit.commons.cnd.CndImporter
 
 @Transactional
-class RepositoryService {
+class JackrabbitRepositoryService {
 
     Repository repository = null
     String repositoryName = null
@@ -36,6 +37,25 @@ class RepositoryService {
             repository = new Jcr(new Oak()).createRepository();
 
         }
+        Session session = null
+        InputStream stream = null
+        try {
+
+            session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
+            stream = JackrabbitRepositoryService.class.getResourceAsStream("/types.cnd")
+            CndImporter.registerNodeTypes(
+                    new InputStreamReader(stream),session)
+            println("IMPORTING TYPES")
+            NodeTypeIterator iterator = session.getWorkspace().getNodeTypeManager().getMixinNodeTypes()
+            while(iterator.hasNext()){
+                println("MIXINS AVAILABLE::"+iterator.nextNodeType())
+            }
+
+        } finally {
+            stream.close()
+            if (session != null) session.logout()
+        }
+
     }
 
     def storeNode(RepositoryCommand documento){
