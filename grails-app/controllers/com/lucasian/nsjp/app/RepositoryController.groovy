@@ -1,7 +1,7 @@
 package com.lucasian.nsjp.app
 
 class RepositoryController {
-    def repositoryService
+    RepositoryService repositoryService
     def index() {
 
     }

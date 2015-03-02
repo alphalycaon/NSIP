@@ -15,7 +15,7 @@ import org.apache.jackrabbit.oak.plugins.document.DocumentMK
 import org.apache.jackrabbit.commons.cnd.CndImporter
 
 @Transactional
-class JackrabbitRepositoryService {
+class JackrabbitRepositoryService implements RepositoryService {
 
     Repository repository = null
     String repositoryName = null
@@ -58,7 +58,8 @@ class JackrabbitRepositoryService {
 
     }
 
-    def storeNode(RepositoryCommand documento){
+    
+    String storeNode(RepositoryCommand documento){
         Session session = null;
         try {
 
@@ -126,16 +127,19 @@ class JackrabbitRepositoryService {
             if (session != null) session.logout();
         }
     }
-    def listItemsInPath(String path){
+    
+    List<RepositoryCommand> listItemsInPath(String path){
 
         String queryText = "SELECT * FROM [nt:base] WHERE ISCHILDNODE([" + path + "]) ";
         query(queryText);
     }
-    def listFilesInPath(String path){
+    
+    List<RepositoryCommand> listFilesInPath(String path){
         String queryText = "SELECT * FROM [nt:file] WHERE PATH() = '" + path + "'";
         query(queryText);
     }
-    def query(String queryText){
+    
+    List<RepositoryCommand> query(String queryText){
         Session session = null;
         try {
             session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
@@ -218,7 +222,8 @@ class JackrabbitRepositoryService {
             if (session != null) session.logout();
         }
     }
-    def getVersionContent(String path, String version){
+    
+    Map getVersionContent(String path, String version){
         Session session = null;
         try{
 
