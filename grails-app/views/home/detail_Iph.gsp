@@ -41,7 +41,7 @@
                             </div>
                             <header id="email-header" class="clearfix">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Inbox
+                                    <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 <div id="email-header-tools" style=" left: 985px">
                                     <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary">                                            

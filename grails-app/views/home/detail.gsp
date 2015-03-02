@@ -44,7 +44,7 @@
                             </div>
                             <header id="email-header" class="clearfix">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Inbox
+                                    <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 <div id="email-header-tools" style=" left: 985px">
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
@@ -1415,7 +1415,7 @@
                                     </form>      
                                 </div>
                                    <div class="modal-footer">                                                                           
-                                       <textarea class="form-control" rows="3" id="comment" placeholder="Mensaje (Opcional)"></textarea>
+                                       <textarea class="form-control" rows="3" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
                                        </br>
                                         <a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                                             <span  style="padding-right: 10px;"></span> Aceptar
@@ -1603,12 +1603,12 @@
         </script>
         <script type="text/javascript">
             function compartir(){
-            valor = document.getElementById('comment').value;
+            valor = document.getElementById('commentCompartir').value;
             if(valor==''){
-            document.getElementById('comment').value += CompartirSelect.value;
+            document.getElementById('commentCompartir').value += CompartirSelect.value;
             }else{        
             if(valor.indexOf(CompartirSelect.value)<0){
-            document.getElementById('comment').value += '\n'+CompartirSelect.value;
+            document.getElementById('commentCompartir').value += '\n'+CompartirSelect.value;
             }
             }
             }
@@ -1631,43 +1631,47 @@
             });
         </script>
         
-   <script>
-       (function() {
-        var bttnNotificacionDefensor = document.getElementById( 'notificacionDefensor' );
-        bttnNotificacionDefensor.disabled = false;
-        bttnNotificacionDefensor.addEventListener( 'click', function() {
-                var notification = new NotificationFx({
-                        message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
+        <script>
+            (function() {
+                var bttnNotificacionDefensor = document.getElementById( 'notificacionDefensor' );
+                bttnNotificacionDefensor.disabled = false;
+                    bttnNotificacionDefensor.addEventListener( 'click', function() {
+                        var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
                         layout : 'bar',
                         effect : 'exploader',
                         type : 'success',
-                        onClose : function() {
-                                bttnNotificacionDefensor.disabled = false;
-                        }
-                });
-                notification.show();
-                this.disabled = true;
-                } );
+                            onClose : function() {
+                            bttnNotificacionDefensor.disabled = false;
+                            }
+                        });
+                        notification.show();
+                        //this.disabled = true;
+                        document.getElementById( 'myModalDefensor' ).close();
+                    } );
             })();
-           
+
             (function() {
                 var bttnNotificacionCompartir = document.getElementById( 'notificacionCompartir' );
                 bttnNotificacionCompartir.disabled = false;
-                bttnNotificacionCompartir.addEventListener( 'click', function() {
-                var notification = new NotificationFx({
-                        message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+                    bttnNotificacionCompartir.addEventListener( 'click', function() {
+                        var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
                         layout : 'bar',
                         effect : 'exploader',
                         type : 'success',
-                        onClose : function() {
+                            onClose : function() {
                                 bttnNotificacionCompartir.disabled = false;
-                        }
-                });
-                notification.show();
-                this.disabled = true;
-                } );
+                            }
+                        });
+                        notification.show();
+                        //this.disabled = true;
+                        document.getElementById('listCompartir').value = '';
+                        document.getElementById('commentCompartir').value = '';
+                        document.getElementById('myModalCompartir').close();
+                    } );
             })();
-   </script>
+        </script>
    
    <script> 
         function mostrarImagenes() { 

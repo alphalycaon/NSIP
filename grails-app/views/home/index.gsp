@@ -25,7 +25,7 @@
                             <header id="email-header" class="clearfix">
                                 <shiro:hasRole name="Ministerio">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Inbox
+                                    <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Juez">
@@ -35,12 +35,12 @@
                                 </shiro:hasRole>
                                 <shiro:hasRole name="CES">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Inbox
+                                    <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Defensor">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Inbox
+                                    <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="CES">

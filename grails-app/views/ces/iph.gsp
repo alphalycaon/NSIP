@@ -379,7 +379,7 @@
                                                 <br/>
                                                 <h4>1.- Datos Generales</h4> 
                                                 <div class="form-group">
-                                                    <label for="iph">Fecha y hora del Evento</label>
+                                                    <label for="exampleInputEmail1">Fecha y hora del Evento</label>
                                                     <div class="col-lg-12">
                                                         <div class="col-lg-6">
                                                             <div class="row">
