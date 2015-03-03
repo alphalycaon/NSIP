@@ -360,7 +360,7 @@
                                 <div id="myWizard" class="wizard">
                                     <div class="wizard-inner">
                                         <ul class="steps">
-                                            <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Datos Generales<span class="chevron"></span></li>
+                                            <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Iph<span class="chevron"></span></li>
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
                                             <li data-target="#step4"><span class="badge">4</span>Archivos<span class="chevron"></span></li>
@@ -368,16 +368,14 @@
                                         <div class="actions" style="z-index: 1">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                             <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                            <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#iph').submit();}">Siguiente</i></button>
+                                            <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denunciaIph').submit();}">Siguiente</i></button>
                                         </div>
                                     </div>
-
-                                    <g:form controller="ces" action="guardarIph" name="iph" id="iph" onsubmit="return validarCampos()">
-
-                                        <div class="step-content">
+                                    <div class="step-content">
+                                        <g:form controller="ces" action="guardarIph" name="denunciaIph" onsubmit="return validarCampos()">
                                             <div class="step-pane active" id="step1">
                                                 <br/>
-                                                <h4>1.- Datos Generales</h4> 
+                                                <h4>1.- Datos del iph</h4> 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Fecha y hora del Evento</label>
                                                     <div class="col-lg-12">

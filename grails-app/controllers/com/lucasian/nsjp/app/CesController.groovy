@@ -8,8 +8,10 @@ import org.apache.commons.io.FileUtils
 class CesController {
     def grailsApplication
     def iph() { }
-    def guardarIph(){          
-        ExpedienteIph expedienteIph = new ExpedienteIph();
+    def guardarIph(Iph iph){          
+        iph.save()
+        ExpedienteIph expedienteIph = new ExpedienteIph(iph: iph);
+        iph.expedienteIph = expedienteIph
         expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'
         expedienteIph.save()     
         expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'+expedienteIph.id

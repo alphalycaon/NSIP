@@ -5,7 +5,7 @@ class DatosIph {
     static constraints = {
     }
     static belongsTo = [iph: Iph]
-    Date fechaEvento
+    String fechaEvento
     String horaEvento
     String asunto
     String participacion
