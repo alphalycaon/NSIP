@@ -263,7 +263,7 @@
                                                     <label for="expediente">Número de denuncia</label>
                                                     <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
                                                     </br>
-                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA/FG/XX/PGU/2014/AA-</a>
+                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
                                                 </div>
 
                                                 <div class="form-group">

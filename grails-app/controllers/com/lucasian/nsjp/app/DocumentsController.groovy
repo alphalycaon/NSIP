@@ -55,13 +55,13 @@ class DocumentsController {
         def pendingFiles =  session["pendingFiles"]
         pendingFiles.each{
             it.binario = FileUtils.openInputStream(new File(srcDir+"/"+it.ruta+"/"+it.nombre))
-            jackrabbitDocumentService.saveFile(expediente, it.ruta, it)
+            documentService.saveFile(expediente, it.ruta, it)
         }
         session["pendingFiles"] = []
         render ""
     }
     def createFolder(String expediente, String path){        
-        jackrabbitDocumentService.createFolder(expediente, path)
+        documentService.createFolder(expediente, path)
         render ""
     }
 }
