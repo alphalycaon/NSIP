@@ -8,6 +8,7 @@ class BootStrap {
             ministerioRole = new Role(name:"Ministerio")
             ministerioRole.addToPermissions("home:*")
             ministerioRole.addToPermissions("busqueda:*")
+            ministerioRole.addToPermissions("documents:*")
             ministerioRole.save()
         }
         def adminTribunalRole = Role.findByName("Administrador Tribunal")
@@ -16,6 +17,8 @@ class BootStrap {
             adminTribunalRole.addToPermissions("tribAdmin:*")
             adminTribunalRole.addToPermissions("home:*")
             adminTribunalRole.addToPermissions("busqueda:*")
+            adminTribunalRole.addToPermissions("repository:*")
+            adminTribunalRole.addToPermissions("documents:*")
             adminTribunalRole.save()
         }
         def ministerio1 = User.findByUsername("ministerio1")
@@ -47,6 +50,7 @@ class BootStrap {
             cesRole.addToPermissions("home:*")
             cesRole.addToPermissions("busqueda:*")
             cesRole.addToPermissions("ces:*")
+            cesRole.addToPermissions("documents:*")
             cesRole.save()
         }
         def juezRole = Role.findByName("Juez")
@@ -54,6 +58,7 @@ class BootStrap {
             juezRole = new Role(name:"Juez")
             juezRole.addToPermissions("home:*")
             juezRole.addToPermissions("busqueda:*")
+            juezRole.addToPermissions("documents:*")
             juezRole.save()
         }
         def defensorRole = Role.findByName("Defensor")
@@ -61,6 +66,7 @@ class BootStrap {
             defensorRole = new Role(name:"Defensor")
             defensorRole.addToPermissions("home:*")
             defensorRole.addToPermissions("busqueda:*")
+            defensorRole.addToPermissions("documents:*")
             defensorRole.save()
         }
         def ces1 = User.findByUsername("ces1")

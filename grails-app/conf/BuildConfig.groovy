@@ -42,7 +42,7 @@ grails.project.dependency.resolution = {
         mavenCentral()
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
+        mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
         
         // Details from docx4j Getting Started Guide at http://dev.plutext.org/svn/docx4j/trunk/docx4j/docs/Docx4j_GettingStarted.html
@@ -55,6 +55,10 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         compile 'org.docx4j:docx4j:3.2.1'
+        compile 'org.apache.jackrabbit:oak-jcr:1.0.0'
+        compile 'javax.jcr:jcr:2.0'
+        compile 'org.mongodb:mongo-java-driver:2.12.0'
+        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
     }
 
     plugins {
