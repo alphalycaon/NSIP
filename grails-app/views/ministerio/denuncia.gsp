@@ -373,11 +373,9 @@
                     <div class="modal-body">
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="CustomerSelect">
-                                <option>IPH/FG/XX/PGU/2015/BB-9</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-10</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-11</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-12</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-8</option>
+                                <g:each in="${expedientesIph}" var="expediente" status="i">
+                                    <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
+                                </g:each>
                             </select>
                         </div>
                     </div>

@@ -142,7 +142,7 @@
                                 <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                                     <div id="email-detail-inner">
                                         <div id="email-detail-subject" class="clearfix">
-                                            <span class="subject">IPH/FG/XX/PGU/2015/BB-1</span>
+                                            <span class="subject property-value">${expedienteIph.numeroIph}</span>
                                         </div>
 
                                         <div id="email-body">      
@@ -162,77 +162,77 @@
                                                                     <br/>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Fecha del evento</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="28/01/2015">
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.fechaEvento" value="${expedienteIph.iph.datosIph.fechaEvento}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Hora del evento</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="05:30 P.M.">
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.horaEvento" value="${expedienteIph.iph.datosIph.horaEvento}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Asunto</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Acoso Sexual">
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.asunto" value="${expedienteIph.iph.datosIph.asunto}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Participación</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Apoyo">
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.participacion" value="${expedienteIph.iph.datosIph.participacion}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Operativo</label>
-                                                                        <g:checkBox disabled="" name="operativo" value="false" checked="false"/>
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.operativo" value="${expedienteIph.iph.datosIph.operativo}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Ubicación</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Cruz del sur #1234">
+                                                                        <input disabled="" type="text" class="form-control" name="datosIph.ubicacion" value="${expedienteIph.iph.datosIph.ubicacion}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="tab-victima">
                                                                     <br/>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre(s) </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Francisco Javier">
+                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.nombre" value="${expedienteIph.iph.victimaIph.nombre}">
                                                                     </div> 
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Apellido Paterno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.paterno" value="Vázquez">
+                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.apellidoPaterno" value="${expedienteIph.iph.victimaIph.apellidoPaterno}">
                                                                     </div> 
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Apellido Materno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.materno" value="Vargas">
+                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.apellidoMaterno" value="${expedienteIph.iph.victimaIph.apellidoMaterno}">
                                                                     </div>                                                
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="27">
+                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.edad" value="${expedienteIph.iph.victimaIph.edad}">
                                                                     </div>                                          
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Sexo </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Masculino">
+                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.sexo" value="${expedienteIph.iph.victimaIph.sexo}">
                                                                     </div>                               
                                                                 </div>                                                                
                                                                 <div class="tab-pane fade" id="tab-responsable">
                                                                     <br/>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre(s) </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Dante Azel">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.nombre" value="${expedienteIph.iph.imputadoIph.nombre}">
                                                                     </div> 
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Apellido Paterno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.paterno" value="Astudillo">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoPaterno" value="${expedienteIph.iph.imputadoIph.apellidoPaterno}">
                                                                     </div> 
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Apellido Materno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.materno" value="Cardenas">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoMaterno" value="${expedienteIph.iph.imputadoIph.apellidoMaterno}">
                                                                     </div>                                                
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="25">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.edad" value="${expedienteIph.iph.imputadoIph.edad}">
                                                                     </div>                                          
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Sexo </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Masculino">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.sexo" value="${expedienteIph.iph.imputadoIph.sexo}">
                                                                     </div>                                        
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Probables delitos o faltas administrativas </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Acoso Sexual">
+                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.delito" value="${expedienteIph.iph.imputadoIph.delito}">
                                                                     </div>   
                                                                 </div>                                                                
                                                             </div>

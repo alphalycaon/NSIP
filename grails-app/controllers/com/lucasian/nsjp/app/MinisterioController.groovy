@@ -5,9 +5,12 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage
 import org.springframework.web.multipart.MultipartFile
 import java.text.SimpleDateFormat
 import org.apache.commons.io.FileUtils
+import org.apache.shiro.SecurityUtils
 class MinisterioController {
     def grailsApplication
-    def denuncia() { }
+    def denuncia() { 
+        [expedientesIph: ExpedienteIph.list()]
+    }
     def guardarDenuncia(Delito delito){                
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
@@ -18,11 +21,18 @@ class MinisterioController {
         expediente.save()
         try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
-            File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+expediente.numeroExpediente)
+            File destDir = new File('/opt/apache-tomcat/apache-tomcat-7.0.42/webapps/comparte/Denuncias/'+expediente.numeroExpediente)
             FileUtils.copyDirectory(srcDir, destDir)
         }catch(Exception e){
             println(e)
-        }
+        }               
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        UsuariosExpedientes usuexp = new UsuariosExpedientes();
+        usuexp.usuarioId = userId
+        usuexp.expedienteId = expediente.id
+        usuexp.save()
+        
         [expediente: expediente]
     }
     def subirArchivo(FileUploadCommand command){

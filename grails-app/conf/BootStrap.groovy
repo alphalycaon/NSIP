@@ -23,7 +23,8 @@ class BootStrap {
         if(!ministerio1) {
             ministerio1 = new User(
                 username:'ministerio1',
-                passwordHash: new Sha256Hash("ministerio1").toHex()
+                passwordHash: new Sha256Hash("ministerio1").toHex(),
+                nombre: 'Juan Ernesto Perez Robledo'
             )
             println("guardando usuario"+ministerio1)
             ministerio1.save(failOnError: true)
@@ -34,7 +35,8 @@ class BootStrap {
         if(!adminTrib1){
             adminTrib1 = new User(
                 username:'adminTrib1',
-                passwordHash:  new Sha256Hash("adminTrib1").toHex() 
+                passwordHash:  new Sha256Hash("adminTrib1").toHex() ,
+                nombre: 'Ana Rosa Gomez Mendez'
             )
             adminTrib1.save(failOnError: true)
             adminTribunalRole.addToUsers(adminTrib1)
@@ -68,7 +70,8 @@ class BootStrap {
         if(!ces1) {
             ces1 = new User(
                 username:'ces1',
-                passwordHash: new Sha256Hash("ces1").toHex()
+                passwordHash: new Sha256Hash("ces1").toHex(),
+                nombre: 'Jose de Jesus Sanchez Flores'
             )
             println("guardando usuario"+ces1)
             ces1.save(failOnError: true)
@@ -80,7 +83,8 @@ class BootStrap {
         if(!juez1) {
             juez1 = new User(
                 username:'juez1',
-                passwordHash: new Sha256Hash("juez1").toHex()
+                passwordHash: new Sha256Hash("juez1").toHex(),
+                nombre: 'Miguel Angel Sanchez Camberos'
             )
             println("guardando usuario"+juez1)
             juez1.save(failOnError: true)
@@ -92,7 +96,8 @@ class BootStrap {
         if(!juez2) {
             juez2 = new User(
                 username:'juez2',
-                passwordHash: new Sha256Hash("juez2").toHex()
+                passwordHash: new Sha256Hash("juez2").toHex(),
+                nombre: 'Victor Manuel Perez Ramos'
             )
             println("guardando usuario"+juez2)
             juez2.save(failOnError: true)
@@ -104,7 +109,8 @@ class BootStrap {
         if(!defensor1) {
             defensor1 = new User(
                 username:'defensor1',
-                passwordHash: new Sha256Hash("defensor1").toHex()
+                passwordHash: new Sha256Hash("defensor1").toHex(),
+                nombre: 'William Uriel Rodriguez Muños'
             )
             println("guardando usuario"+defensor1)
             defensor1.save(failOnError: true)
