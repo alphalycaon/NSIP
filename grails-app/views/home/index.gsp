@@ -394,7 +394,7 @@
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail/${it.numeroExpediente}" >
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>
@@ -414,7 +414,7 @@
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail/${it.numeroExpediente}" >
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>
@@ -434,7 +434,7 @@
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Defensor">
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail/${it.numeroExpediente}" >
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>
@@ -454,7 +454,7 @@
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES"> 
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail/${it.numeroExpediente}" >
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>
