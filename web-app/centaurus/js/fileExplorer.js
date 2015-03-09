@@ -107,6 +107,7 @@ function openCreateFolderModal(){
 }
 function closeCreateFolderModal(numeroExpediente){
     $.post(contextPath + "/documents/createFolder", {expediente: numeroExpediente, path:$("#ruta").html()+"/"+$("#folderName").val()}, function(result){
+        $("#folderName").val('');
         $('#createFolderModal').modal('hide');
         loadExplorer(numeroExpediente, $("#ruta").html());
     });

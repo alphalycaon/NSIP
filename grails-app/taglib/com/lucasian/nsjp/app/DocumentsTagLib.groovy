@@ -5,10 +5,22 @@ class DocumentsTagLib {
     //static encodeAsForTags = [tagName: 'raw']
     def headers = ["Nombre", "Tipo", "Modificado"]
     static namespace = "doc"
+    /**
+     * Esta tag permite mostrar una tabla con los items encontrados en el repositorio para el numero de expediente
+
+     * @attr numeroExpediente El numero del expediente que se mostrara
+     *
+     */
     def explorer ={attrs, body ->
         def writter= out 
         out<<explorerTable(attrs)
     }
+    /**
+     * Este tag permite mostrar una tabla con los items encontrados en el repositorio para el numero de expediente,
+     * ademas permite la carga de archivos y creacion de carpetas en la estructura
+     *
+     * @attr numeroExpediente El numero del expediente que se mostrara
+     */
     def explorerAndUpload={attrs, body ->
         def writter= out
         out<<explorerTable(attrs)
