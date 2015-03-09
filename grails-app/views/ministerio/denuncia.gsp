@@ -263,7 +263,7 @@
                                                     <label for="expediente">Número de denuncia</label>
                                                     <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
                                                     </br>
-                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA/FG/XX/PGU/2014/AA-</a>
+                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
                                                 </div>
 
                                                 <div class="form-group">
@@ -275,77 +275,24 @@
                                             </div>
                                         </g:form>
 
-                                        <div class="step-pane" id="step5">
-                                            <br/>
-                                            <div class="panel-group accordion" id="accordion">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                                Media Filiacion
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="mediaFilicacion">
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="" />
+                                                <div class="step-pane" id="step5">
+                                                    <br/>
+                                                    <div class="panel-group accordion" id="accordion">                                                        
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                                        Plantillas
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseFour" class="panel-collapse collapse in" style="height: 1px;">
+                                                                <div class="panel-body">
+                                                                    <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                                                        <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                                                                    </a>
                                                                 </div>
-                                                            </g:uploadForm>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                Documentos Probatorios
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseTwo" class="panel-collapse collapse" style="height: 1px;">
-                                                        <div class="panel-body">
-                                                            <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="documentoProbatorios">
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="" />
-                                                                </div>
-                                                            </g:uploadForm>  
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                                Fotografias de los Hechos
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
-                                                        <div class="panel-body">
-                                                            <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="fotografiasHechos">
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="" />
-                                                                </div>
-                                                            </g:uploadForm> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                                                Plantillas
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseFour" class="panel-collapse collapse" style="height: 1px;">
-                                                        <div class="panel-body">
-                                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
-                                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                                                            </a>
-                                                            <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla Denuncia" action="exportWord" controller="ministerio" />-->                                                            
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -74,7 +74,8 @@
                                                     <div class="col-xs-12">
                                                         <button type="submit" class="btn btn-success col-xs-12"><g:message code="login.login" default="Entrar"/></button>
                                                     </div>
-                                                </div>                                                
+                                                </div>
+
                                             </g:form>
                                         </div>
                                     </div>

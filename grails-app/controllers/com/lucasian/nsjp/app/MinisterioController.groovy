@@ -11,6 +11,7 @@ class MinisterioController {
     def denuncia() { 
         [expedientesIph: ExpedienteIph.list()]
     }
+    def documentService
     def guardarDenuncia(Delito delito){                
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
@@ -33,7 +34,9 @@ class MinisterioController {
         usuexp.expedienteId = expediente.id
         usuexp.save()
         
-        [expediente: expediente]
+        //[expediente: expediente]
+        documentService.createStructure(expediente.numeroExpediente)
+        render(view: 'archivos', model:[expediente: expediente])
     }
     def subirArchivo(FileUploadCommand command){
         if(!command.file.empty){            
@@ -48,8 +51,21 @@ class MinisterioController {
                         println "FAILED"
                     }
                 }
-                def archivo = new File(storagePath+"/"+command.file.originalFilename)
-                println(archivo)
+                def archivo = new File(storagePath+"/"+command.file.originalFilename)                
+                def pendingFiles = session["pendingFiles"]
+                if(!pendingFiles){
+                    pendingFiles = []
+                }
+                RepositoryCommand document = new RepositoryCommand(
+                    ruta : params.id,
+                    nombre : command.file.originalFilename,
+                    mime: command.file.getContentType()
+                )
+                pendingFiles << document
+                println("params.id:;"+params.id)
+                println(pendingFiles)
+                session["pendingFiles"]= pendingFiles
+                
                 command.file.transferTo(archivo)
             }catch(Exception e){
                 println(e)

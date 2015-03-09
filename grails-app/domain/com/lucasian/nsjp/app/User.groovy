@@ -11,4 +11,7 @@ class User {
         username(nullable: false, blank: false, unique: true)
         nombre(nullable: true, blank: true)
     }
+    static mapping = {
+        table "app_user"
+    }
 }
