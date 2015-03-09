@@ -28,11 +28,11 @@ class JackrabbitRepositoryService implements RepositoryService {
         try {
             DB db = new MongoClient("127.0.0.1", 27017).getDB("nsip");
             DocumentNodeStore ns = new DocumentMK.Builder().
-                    setMongoDB(db).getNodeStore();
+                setMongoDB(db).getNodeStore();
             repository = new Jcr(new Oak(ns)).createRepository();
 
         } catch (Throwable e) {
-            e.printStackTrace();
+            println(e.message)
             println("CREATING IN MEMORY REPOSITORY")
             repository = new Jcr(new Oak()).createRepository();
 
@@ -44,12 +44,9 @@ class JackrabbitRepositoryService implements RepositoryService {
             session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
             stream = JackrabbitRepositoryService.class.getResourceAsStream("/types.cnd")
             CndImporter.registerNodeTypes(
-                    new InputStreamReader(stream),session)
-            println("IMPORTING TYPES")
+                new InputStreamReader(stream),session)
             NodeTypeIterator iterator = session.getWorkspace().getNodeTypeManager().getMixinNodeTypes()
-            while(iterator.hasNext()){
-                println("MIXINS AVAILABLE::"+iterator.nextNodeType())
-            }
+
 
         } finally {
             stream.close()
@@ -93,7 +90,7 @@ class JackrabbitRepositoryService implements RepositoryService {
             }else{
                 fileNode = documentRoot.addNode(documento.nombre,"nt:file");
                 /*if(documento.tipo){
-                    fileNode.addMixin(documento.tipo);
+                fileNode.addMixin(documento.tipo);
                 }*/
                 fileNode.addMixin("mix:versionable");
                 if(documento.propiedades){
@@ -103,10 +100,10 @@ class JackrabbitRepositoryService implements RepositoryService {
                 }
                 /*
                 if(!documento.userId){
-                    //Usuario usuario = (Usuario)SecurityUtils.getSubject().getPrincipal();
-                    //fileNode.setProperty("userId", usuario.id)
+                //Usuario usuario = (Usuario)SecurityUtils.getSubject().getPrincipal();
+                //fileNode.setProperty("userId", usuario.id)
                 }else{
-                    fileNode.setProperty("userId", documento.userId)
+                fileNode.setProperty("userId", documento.userId)
                 }*/
                 Node contentNode = fileNode.addNode("jcr:content", "nt:resource");
 
@@ -160,11 +157,11 @@ class JackrabbitRepositoryService implements RepositoryService {
                     i.skip(1); // important, otherwise the currentNode will fail to read the 'title' property
                     while (i.hasNext()) {
                         def RepositoryCommand documento = new RepositoryCommand(
-                                nombre:node.getName(),
-                                id: node.getIdentifier(),
-                                ruta: node.getPath(),
-                                tipo: tipos,
-                                mime:node.getNode("jcr:content").getProperty("jcr:mimeType").getString()
+                            nombre:node.getName(),
+                            id: node.getIdentifier(),
+                            ruta: node.getPath(),
+                            tipo: tipos,
+                            mime:node.getNode("jcr:content").getProperty("jcr:mimeType").getString()
 
                         );
                         Version v = i.nextVersion();
@@ -177,20 +174,20 @@ class JackrabbitRepositoryService implements RepositoryService {
                                 if(!p.getName().contains(":")){
                                     int type = p.getValue().getType();
                                     switch (type) {
-                                        case PropertyType.STRING:
-                                            propiedades[p.getName()] = p.getValue().getString();
-                                            break;
-                                        case PropertyType.LONG:
-                                            propiedades[p.getName()] = p.getValue().getLong();
-                                            break;
-                                        case PropertyType.DOUBLE:
-                                            propiedades[p.getName()] = p.getValue().getDouble();
-                                            break;
-                                        case PropertyType.BOOLEAN:
-                                            propiedades[p.getName()] = p.getValue().getBoolean();
-                                            break;
-                                        case PropertyType.DATE:
-                                            propiedades[p.getName()] = p.getValue().getDate();
+                                    case PropertyType.STRING:
+                                        propiedades[p.getName()] = p.getValue().getString();
+                                        break;
+                                    case PropertyType.LONG:
+                                        propiedades[p.getName()] = p.getValue().getLong();
+                                        break;
+                                    case PropertyType.DOUBLE:
+                                        propiedades[p.getName()] = p.getValue().getDouble();
+                                        break;
+                                    case PropertyType.BOOLEAN:
+                                        propiedades[p.getName()] = p.getValue().getBoolean();
+                                        break;
+                                    case PropertyType.DATE:
+                                        propiedades[p.getName()] = p.getValue().getDate();
                                     }
 
                                 }
@@ -198,15 +195,16 @@ class JackrabbitRepositoryService implements RepositoryService {
                             documento.mime = currentNode.getNode("jcr:content").getProperty("jcr:mimeType").getString();
                             documento.version = v.getName();
                             documento.propiedades = propiedades
-                            //printTree(currentNode);
+                            documento.lastModified = currentNode.getNode("jcr:content").getProperty("jcr:lastModified").getDate().getTime();
+                            printTree(currentNode);
                         }
                         items<<documento;
                     }
                 }else{
                     def RepositoryCommand documento = new RepositoryCommand(
-                            nombre:node.getName(),
-                            id: node.getIdentifier(),
-                            ruta: node.getPath()
+                        nombre:node.getName(),
+                        id: node.getIdentifier(),
+                        ruta: node.getPath()
                     );
                     documento.mime ="folder"
                     documento.version = "1"
@@ -259,14 +257,36 @@ class JackrabbitRepositoryService implements RepositoryService {
 
             }
             [
-                    stream: contentNode.getProperty("jcr:data").getBinary().getStream(),
-                    mime: contentNode.getProperty("jcr:mimeType").getString()
+                stream: contentNode.getProperty("jcr:data").getBinary().getStream(),
+                mime: contentNode.getProperty("jcr:mimeType").getString()
             ];
         }catch(Exception e){
             e.printStackTrace()
         } finally {
             if (session != null) session.logout();
         }
+    }
+    String createFolder(String path){
+        Session session = null;
+        try {
+
+            session = repository.login( new SimpleCredentials("admin", "admin".toCharArray()));
+            Node documentRoot = session.getRootNode();
+            String[] folders = path.split("/");
+            for(String folder: folders){
+                if(documentRoot.hasNode(folder)){
+                    documentRoot = documentRoot.getNode(folder);
+                }else{
+                    documentRoot = documentRoot.addNode(folder, "nt:folder");
+                }
+            }    
+            session.save();
+        }catch(Exception e){
+            e.printStackTrace()
+            throw new RuntimeException(e)
+        } finally {
+            if (session != null) session.logout();
+        }        
     }
     @PreDestroy
     void shutDown(){
@@ -311,9 +331,9 @@ class JackrabbitRepositoryService implements RepositoryService {
     def hasPermissions(Node nodo){
         /*def logged = empleadoService.getCurrentUser()
         if(!logged.administrador){
-            if(nodo.getProperty("userId").getLong() != logged.usuario.id){
-                throw new AuthorizationException()
-            }
+        if(nodo.getProperty("userId").getLong() != logged.usuario.id){
+        throw new AuthorizationException()
+        }
         }*/
     }
 }

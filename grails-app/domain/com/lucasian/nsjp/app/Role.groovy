@@ -9,4 +9,7 @@ class Role {
     static constraints = {
         name(nullable: false, blank: false, unique: true)
     }
+    static mapping = {
+        table "app_role"
+    }
 }

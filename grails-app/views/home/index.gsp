@@ -140,7 +140,16 @@
                                         </br>
                                         </br>
                                         </br>
-                                        <li>
+  <div id="container">
+                                                                                                  <ul>
+                                                                                                    <li>Root node
+                                                                                                      <ul>
+                                                                                                        <li>Child node 1</li>
+                                                                                                        <li>Child node 2</li>
+                                                                                                      </ul>
+                                                                                                    </li>
+                                                                                                  </ul>
+                                                                                                </div>                                        <li>
                                             <big><b><a href="#" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-file-word-o"></i>
                                                 Plantillas
@@ -443,7 +452,7 @@
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
                                         <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="home/detail" >
+                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail/${it.numeroExpediente}" >
                                                 <div class="name">
                                                     ${it.numeroExpediente}
                                                 </div>

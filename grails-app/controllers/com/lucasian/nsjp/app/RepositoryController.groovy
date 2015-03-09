@@ -37,7 +37,7 @@ class RepositoryController {
         if(ultimaPosicion>0){
             padre = ubicacion.substring(0,ultimaPosicion)
         }
-        model: [ items:items , padre: padre ]
+        model: [ items:items , padre: ubicacion ]
     }
     def saveFile(){
         def f = request.getFile("myFile")

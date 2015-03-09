@@ -17,8 +17,8 @@ grails.gorm.default.constraints = {
     '*'(nullable: true)
 }
 
-grails.images.temp = '/home/LCSN/nsip/tmp'
-grails.images.expedientes = '/home/LCSN/nsip/expedientes'
+grails.images.temp = System.getProperty("java.io.tmpdir")
+grails.images.expedientes = System.getProperty("java.io.tmpdir")+"/expediente"
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
 grails.mime.types = [ // the first one is the default format

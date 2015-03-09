@@ -10,4 +10,5 @@ interface RepositoryService{
     List<RepositoryCommand> listFilesInPath(String path)
     Map getVersionContent(String path, String version)
     List<RepositoryCommand> query(String queryText)
+    String createFolder(String path)
 }

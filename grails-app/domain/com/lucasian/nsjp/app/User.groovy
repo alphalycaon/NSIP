@@ -9,4 +9,7 @@ class User {
     static constraints = {
         username(nullable: false, blank: false, unique: true)
     }
+    static mapping = {
+        table "app_user"
+    }
 }
