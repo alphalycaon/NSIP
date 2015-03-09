@@ -34,18 +34,16 @@
         </script>        
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}/"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}"></script>
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'dropzone.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'nanoscroller.css')}"/>
-
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'theme_styles.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'wizard.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input-facebook.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/documents', file: 'fileExplorer.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'nsip.css')}"/>
 
         <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
@@ -53,14 +51,12 @@
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />
         
-        
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
-        
+                
         <script type="text/javascript">
             var contextPath = '${request.contextPath}';
             /* <![CDATA[ */
@@ -151,23 +147,24 @@
             h6 {
               margin: 0 0 10px 0;
               color: #fff;
-              background-color: #56bd9b;              
+              background-color: #B60808;              
               font-size: 14px;
               font-weight: bold;
             }
             
             #buscar {
                 font-family: Tahoma, Verdana, Arial;
-                font-size: 18px;
+                font-size: 14px;
                 background-color: #FFFFFF;
-                border:2px solid #FFFFFF;
+                border:6px solid #FFFFFF;
+                border-radius: none;
             }
             
             #buscar:focus {
                 font-family: Tahoma, Verdana, Arial;
-                font-size: 18px;
+                font-size: 14px;
                 background-color: #FFFFFF;
-                border:2px solid #FFFFFF;
+                border:6px solid #FFFFFF;
             }
         </style>
     </head>
@@ -193,7 +190,7 @@
                                         <input type="text" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
-                                        <a class="btn" id="make-small-nav" onclick="$('#buscar').submit();">
+                                        <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
                                             <i class="fa fa-search" style="margin-right: 5px;"></i> <strong>Buscar</strong>
                                         </a>
                                     </li>
@@ -370,10 +367,8 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
-    <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/jstree.min.js"></script>
-
+    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
         $('.autocomplete').typeahead({

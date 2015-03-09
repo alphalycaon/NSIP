@@ -44,12 +44,17 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+        
+        // Details from docx4j Getting Started Guide at http://dev.plutext.org/svn/docx4j/trunk/docx4j/docs/Docx4j_GettingStarted.html
+        mavenRepo "http://dev.plutext.org/svn/docx4j/trunk/docx4j/m2"
+        mavenRepo "https://webdavclient4j.svn.sourceforge.net/svnroot/webdavclient4j/trunk/m2"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
+        compile 'org.docx4j:docx4j:3.2.1'
         compile 'org.apache.jackrabbit:oak-jcr:1.0.0'
         compile 'javax.jcr:jcr:2.0'
         compile 'org.mongodb:mongo-java-driver:2.12.0'

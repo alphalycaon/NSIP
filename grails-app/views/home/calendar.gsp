@@ -76,9 +76,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     <a href="${request.contextPath}" class="btn btn-primary">                                            
         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
     </a>
-</div>    
+</div> 
 </div>
-</div>
+</div>   
+</br>
 <div class="row">
 <div class="col-md-3 hidden-xs hidden-sm" >
 <div class="main-box" id="external-events">
@@ -94,7 +95,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </label>
 </div>
 </br>
-<h2>Juez</h2>
+<h4>Juez</h4>
 <div>
   <select class="form-control" id="selectJuez">
     <option>Juez 1</option>
@@ -103,8 +104,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   </select>
 </div>
 </br>
-<h2>Número de Caso</h2>
-<div><input type="text" id="numCaso" class="form-control"></div>
+<h4>Número de Caso</h4>
+<div>
+    <input type="text" id="numCaso" class="form-control"></br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar Caso</button>
+</div>
 </div>
 </div>
 </div>
@@ -122,7 +126,58 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </div>
 </div>
 </div>
- 
+ <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Número de Caso</h4>
+             <input class="form-control" type="search" id="SearchBox" />
+           </div>
+           <div class="modal-body">
+              <div class="scrollable" id="CustomerSelectDiv">
+                  <select size="2" class="form-control" id="CustomerSelect">
+                     <option>COA/FG/XX/PGU/2014/AA-1</option>
+                     <option>COA/FG/XX/PGU/2014/AA-3</option>
+                     <option>COA/FG/XX/PGU/2014/AA-5</option>
+                     <option>COA/FG/XX/PGU/2014/AA-8</option>
+                     <option>COA/FG/XX/PGU/2014/AA-14</option>
+                 </select>
+             </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+             <button type="button" id="btmModal" class="btn btn-primary" onclick="document.getElementById('numCaso').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
+           </div>
+         </div>
+       </div>
+     </div>
+<!--Fin Modal-->
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+                if (isCaseSensitive)
+                    str = str.toLowerCase();
+                // cache the jQuery object of the <select> element
+                var $el = $(selectionEl);
+                if (!$el.data("options")) {
+                    // cache all the options inside the <select> element for easy recover
+                    $el.data("options", $el.find("option").clone());
+                }
+                var newOptions = $el.data("options").filter(function () {
+                        var text = $(this).text();
+                        if (isCaseSensitive)
+                            text = text.toLowerCase();
+                        return text.match(str);
+                    });
+                $el.empty().append(newOptions);
+            };
+
+            $("#SearchBox").on("keyup", function () {
+                var userInput = $("#SearchBox").val();
+                showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+            });
+        </script>       
             
             <script src="${request.contextPath}/centaurus/js/jquery.js"></script>
             <script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>
@@ -295,6 +350,20 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     });
     
     $(numCaso).change(function() {
+        $('#external-events div.external-event').each(function() {
+		
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
+            var eventObject = {
+                    title: 'Tipo de Audiencia: ' + $.trim($(this).text()) +  '\nNombre del Juez: ' + $.trim($(selectJuez).val()) + '\nNúmero de Caso: ' + $.trim($(numCaso).val())  // use the element's text as the event title
+            };
+
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+        });
+    });
+    
+    $(btmModal).click(function() {
         $('#external-events div.external-event').each(function() {
 		
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)

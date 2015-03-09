@@ -5,16 +5,13 @@ class DatosIph {
     static constraints = {
     }
     static belongsTo = [iph: Iph]
-    Date fechaEvento
+    String fechaEvento
     String horaEvento
     String asunto
     String participacion
     String operativo
     String ubicacion
     String toString(){
-        ""+asunto+" el "+fechaEvento+" a las "+horaEvento+", en "+ubicacion
-    }
-    static mapping = {
-        table "datos_iph"
+        ""+asunto+":"+fechaEvento+":"+horaEvento+":"+ubicacion
     }
 }
