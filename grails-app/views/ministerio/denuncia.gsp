@@ -175,7 +175,7 @@
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Presunto Responsable<span class="chevron"></span></li>
                                             <li data-target="#step4"><span class="badge">4</span>Datos de la Denuncia<span class="chevron"></span></li>
-                                            <li data-target="#step5"><span class="badge">5</span>Archivos<span class="chevron"></span></li>
+                                            <li data-target="#step5"><span class="badge">5</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>

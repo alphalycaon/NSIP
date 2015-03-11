@@ -20,13 +20,13 @@ class MinisterioController {
         //expediente.save()                
         //expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
         expediente.save()
-        try{
+        /*try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
             File destDir = new File('/opt/apache-tomcat/apache-tomcat-7.0.42/webapps/comparte/Denuncias/'+expediente.numeroExpediente)
             FileUtils.copyDirectory(srcDir, destDir)
         }catch(Exception e){
             println(e)
-        }               
+        }    */           
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         UsuariosExpedientes usuexp = new UsuariosExpedientes();

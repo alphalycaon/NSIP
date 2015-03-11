@@ -363,7 +363,7 @@
                                             <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Iph<span class="chevron"></span></li>
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step4"><span class="badge">4</span>Archivos<span class="chevron"></span></li>
+                                            <li data-target="#step4"><span class="badge">4</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
@@ -509,7 +509,7 @@
                                         <div class="step-pane" id="step4">
                                             <br/>
                                             <div class="panel-group accordion" id="accordion">
-                                                <div class="panel panel-default">
+                                                <!--<div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -544,7 +544,7 @@
                                                             </g:uploadForm>  
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">

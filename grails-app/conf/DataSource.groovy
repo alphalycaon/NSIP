@@ -15,7 +15,7 @@ hibernate {
 
 // environment specific settings
 environments {
-    production {
+    development {
         dataSource {
              dbCreate = "update"
                      username = "nsip"
@@ -30,13 +30,13 @@ environments {
                      } 
         }
     }
-    development {
+    test {
         dataSource {
-            dbCreate = "create-drop"
+            dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
-    test {
+    production {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
