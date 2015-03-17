@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils
 
 class DocumentsController {
     def documentService
+    def grailsApplication
     def items(){
         params.numeroExpediente
         render documentService.getFiles(params.numeroExpediente, params.path) as JSON

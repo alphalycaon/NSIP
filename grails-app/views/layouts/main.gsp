@@ -40,10 +40,13 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'dropzone.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'nanoscroller.css')}"/>
-        
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'theme_styles.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file: 'wizard.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'token-input-facebook.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/documents', file: 'fileExplorer.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'nsip.css')}"/>
 
         <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
@@ -55,8 +58,10 @@
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
-                
+        <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
+        
         <script type="text/javascript">
             var contextPath = '${request.contextPath}';
             /* <![CDATA[ */
@@ -343,7 +348,7 @@
                                 </div>
                             </section>
                         </div-->
-                    <div id="content-wrapper" style="margin-left: 0px;">                        
+                    <div id="content-wrapper" class="email-inbox-wrapper" style="margin-left: 0px;">                        
                         <g:layoutBody/>                                
                         <footer id="footer-bar" class="row">
                             <p id="footer-copyright" class="col-xs-12">
@@ -367,7 +372,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
     
     <script type="text/javascript">
         $(document).ready(function() {

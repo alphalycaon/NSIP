@@ -173,18 +173,18 @@
                                             </div>
                                         </li-->    
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientesIph}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail_Iph">
+                                        <g:each in="${expedientesIph}" var="expedienteIph" status="i">
+                                            <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000"><li class="unread" data-href="${request.contextPath}/home/detail_Iph">
                                                 <div class="name">
-                                                    ${it.numeroIph}
+                                                    ${expedienteIph.numeroIph}
                                                 </div>
                                                 <div class="meta-info">
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
                                                 </div>
-                                            </li>                                             
+                                            </li></g:link>                        
                                         </g:each>                                     
                                         </shiro:hasRole>
                                     </ul>

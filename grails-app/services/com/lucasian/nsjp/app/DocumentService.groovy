@@ -8,9 +8,14 @@ class DocumentService {
     private static final String expedienteRoot = "/expedientes/"
     
     private static final List<String> defaultStrucuture = [
-        "/pruebas/fotografias",
-        "/pruebas/media filiacion",
-        "/pruebas/documentos",
+        "/fotografias",
+        "/media filiacion",
+        "/documentos",
+        "/oficios/"
+    ]
+    private static final List<String> defaultStrucutureIph = [
+        "/evidencia",
+        "/documentoIph",
         "/oficios/"
     ]
     def getFiles(String numeroExpediente, String path){
@@ -22,10 +27,10 @@ class DocumentService {
             path = path.substring(0, path.length() - 1)
         }
         [items: items , path: path?:'/', padre:path.substring(0,path.lastIndexOf('/')+1)]
-    }    
+    } 
     def getFile(String numeroExpediente, String path, String version = "1.0"){
         repositoryService.getVersionContent(expedienteRoot+numeroExpediente+path, version)
-    }
+    }  
     def saveFile(String numeroExpediente, String path , RepositoryCommand documento){
         if(!path.startsWith("/")){
             path = "/"+path
@@ -50,6 +55,15 @@ class DocumentService {
         }
         folders.each(){
             String path = expedienteRoot+numeroExpediente+it
+            repositoryService.createFolder(path)
+        }
+    }
+    def createStructureIph(String numeroIph, List<String> folders = null){
+        if(!folders){
+            folders = defaultStrucutureIph
+        }
+        folders.each(){
+            String path = expedienteRoot+numeroIph+it
             repositoryService.createFolder(path)
         }
     }
