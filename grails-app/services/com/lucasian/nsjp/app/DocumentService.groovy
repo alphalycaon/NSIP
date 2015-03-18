@@ -67,4 +67,13 @@ class DocumentService {
             repositoryService.createFolder(path)
         }
     }
+    def searchImages(String numeroExpediente){
+        def query = "SELECT * FROM [nt:file] WHERE [jcr:path] like '"+expedienteRoot+numeroExpediente+"%' and ([jcr:path] like '%.jpg' or [jcr:path] like '%.png')"
+        println(query)
+        def images = repositoryService.query(query)
+        images.each{
+            it.ruta = it.ruta.replace(expedienteRoot,"").replace(numeroExpediente, "") 
+        }
+        images
+    }
 }

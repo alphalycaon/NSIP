@@ -11,7 +11,12 @@ class DocumentsController {
     }
     def file(){
         def file = documentService.getFile(params.numeroExpediente, params.path)
-        render file: file.stream, contentType: file.mime
+        if(file){
+            render file: file.stream, contentType: file.mime
+        }else{
+            render(status: 404, text: 'not found')
+        }
+        
     }
     def upload(FileUploadCommand command){
         if(!command.file.empty){         
