@@ -5,10 +5,13 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage
 import org.springframework.web.multipart.MultipartFile
 import java.text.SimpleDateFormat
 import org.apache.commons.io.FileUtils
+import org.apache.shiro.SecurityUtils
 class MinisterioController {
     def grailsApplication
+    def denuncia() { 
+        [expedientesIph: ExpedienteIph.list()]
+    }
     def documentService
-    def denuncia() { }
     def guardarDenuncia(Delito delito){                
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
@@ -17,6 +20,21 @@ class MinisterioController {
         //expediente.save()                
         //expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
         expediente.save()
+        /*try{
+            File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
+            File destDir = new File('/opt/apache-tomcat/apache-tomcat-7.0.42/webapps/comparte/Denuncias/'+expediente.numeroExpediente)
+            FileUtils.copyDirectory(srcDir, destDir)
+        }catch(Exception e){
+            println(e)
+        }    */           
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        UsuariosExpedientes usuexp = new UsuariosExpedientes();
+        usuexp.usuarioId = userId
+        usuexp.expedienteId = expediente.id
+        usuexp.save()
+        
+        //[expediente: expediente]
         documentService.createStructure(expediente.numeroExpediente)
         render(view: 'archivos', model:[expediente: expediente])
     }

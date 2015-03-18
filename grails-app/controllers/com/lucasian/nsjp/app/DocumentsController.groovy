@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils
 
 class DocumentsController {
     def documentService
+    def grailsApplication
     def items(){
         params.numeroExpediente
         render documentService.getFiles(params.numeroExpediente, params.path) as JSON
@@ -55,13 +56,13 @@ class DocumentsController {
         def pendingFiles =  session["pendingFiles"]
         pendingFiles.each{
             it.binario = FileUtils.openInputStream(new File(srcDir+"/"+it.ruta+"/"+it.nombre))
-            jackrabbitDocumentService.saveFile(expediente, it.ruta, it)
+            documentService.saveFile(expediente, it.ruta, it)
         }
         session["pendingFiles"] = []
         render ""
     }
     def createFolder(String expediente, String path){        
-        jackrabbitDocumentService.createFolder(expediente, path)
+        documentService.createFolder(expediente, path)
         render ""
     }
 }

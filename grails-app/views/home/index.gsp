@@ -393,83 +393,83 @@
                                             </div>
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
-                                        <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
                                                 <div class="name">
-                                                    ${it.numeroExpediente}
+                                                    ${expediente.numeroExpediente}
                                                 </div>
                                                 <div class="message">
-                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${it.delito.imputado.nombre}</span>
-                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
                                                 </div>
                                                 <div class="meta-info">
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
                                                 </div>
-                                            </li>                                             
+                                            </li></g:link>                                               
                                         </g:each>                                        
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
-                                        <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
                                                 <div class="name">
-                                                    ${it.numeroExpediente}
+                                                    ${expediente.numeroExpediente}
                                                 </div>
                                                 <div class="message">
-                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${it.delito.imputado.nombre}</span>
-                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
                                                 </div>
                                                 <div class="meta-info">
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
                                                 </div>
-                                            </li>                                             
+                                            </li></g:link>                                                
                                         </g:each>                                        
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Defensor">
-                                        <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
                                                 <div class="name">
-                                                    ${it.numeroExpediente}
+                                                    ${expediente.numeroExpediente}
                                                 </div>
                                                 <div class="message">
-                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${it.delito.imputado.nombre}</span>
-                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
                                                 </div>
                                                 <div class="meta-info">
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
                                                 </div>
-                                            </li>                                             
+                                            </li></g:link>                                                
                                         </g:each>                                        
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientes}">
-                                            <li class="unread clickable-row" data-href="${request.contextPath}/home/detail" >
+                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
                                                 <div class="name">
-                                                    ${it.numeroExpediente}
+                                                    ${expediente.numeroExpediente}
                                                 </div>
                                                 <div class="message">
-                                                    <span class="label label-danger">${it.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${it.delito.imputado.nombre}</span>
-                                                    <span class="body">${it.delito.clasificacionDelito.nombre}</span>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
                                                 </div>
                                                 <div class="meta-info">
                                                     <a href="#" class="attachment">
                                                         <i class="fa fa-paperclip"></i>
                                                     </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${it.dateCreated}"/></span>
+                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
                                                 </div>
-                                            </li>                                             
+                                            </li></g:link>                                                
                                         </g:each>                                     
                                         </shiro:hasRole>
                                     </ul>

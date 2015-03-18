@@ -8,22 +8,25 @@ import org.apache.commons.io.FileUtils
 class CesController {
     def grailsApplication
     def iph() { }
+    def documentService
     def guardarIph(Iph iph){          
         iph.save()
         ExpedienteIph expedienteIph = new ExpedienteIph(iph: iph);
         iph.expedienteIph = expedienteIph
-        expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'
+        expedienteIph.numeroIph = 'IPH-FG-XX-PGU-2015-BB-'
         expedienteIph.save()     
-        expedienteIph.numeroIph = 'IPH/FG/XX/PGU/2015/BB-'+expedienteIph.id
+        expedienteIph.numeroIph = 'IPH-FG-XX-PGU-2015-BB-'+expedienteIph.id
         expedienteIph.save()
-        try{
+        /*try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
             File destDir = new File(''+grailsApplication.config.grails.images.expedientes+"/"+expedienteIph.numeroIph)
             FileUtils.copyDirectory(srcDir, destDir)
         }catch(Exception e){
             println(e)
-        }
-        [expedienteIph: expedienteIph]
+        }*/
+        //[expedienteIph: expedienteIph]
+        documentService.createStructureIph(expedienteIph.numeroIph)
+        render(view: 'archivos', model:[expedienteIph: expedienteIph])
     }
     def subirArchivo(FileUploadCommand command){
         if(!command.file.empty){           
@@ -38,8 +41,20 @@ class CesController {
                         println "FAILED"
                     }
                 }
-                def archivo = new File(storagePath+"/"+command.file.originalFilename)
-                println(archivo)
+                def archivo = new File(storagePath+"/"+command.file.originalFilename)               
+                def pendingFiles = session["pendingFiles"]
+                if(!pendingFiles){
+                    pendingFiles = []
+                }
+                RepositoryCommand document = new RepositoryCommand(
+                    ruta : params.id,
+                    nombre : command.file.originalFilename,
+                    mime: command.file.getContentType()
+                )
+                pendingFiles << document
+                println("params.id:;"+params.id)
+                println(pendingFiles)
+                session["pendingFiles"]= pendingFiles
                 command.file.transferTo(archivo)
             }catch(Exception e){
                 println(e)

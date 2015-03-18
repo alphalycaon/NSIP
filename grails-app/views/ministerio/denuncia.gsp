@@ -175,7 +175,7 @@
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Presunto Responsable<span class="chevron"></span></li>
                                             <li data-target="#step4"><span class="badge">4</span>Datos de la Denuncia<span class="chevron"></span></li>
-                                            <li data-target="#step5"><span class="badge">5</span>Archivos<span class="chevron"></span></li>
+                                            <li data-target="#step5"><span class="badge">5</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
@@ -263,7 +263,7 @@
                                                     <label for="expediente">Número de denuncia</label>
                                                     <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
                                                     </br>
-                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA/FG/XX/PGU/2014/AA-</a>
+                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
                                                 </div>
 
                                                 <div class="form-group">
@@ -320,11 +320,9 @@
                     <div class="modal-body">
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="CustomerSelect">
-                                <option>IPH/FG/XX/PGU/2015/BB-9</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-10</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-11</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-12</option>
-                                <option>IPH/FG/XX/PGU/2015/BB-8</option>
+                                <g:each in="${expedientesIph}" var="expediente" status="i">
+                                    <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
+                                </g:each>
                             </select>
                         </div>
                     </div>

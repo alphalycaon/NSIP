@@ -217,7 +217,7 @@
                                         </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                        <h3><a href="../home/detail" title="">COA/FG/XX/PGU/2014/AA-3</a></h3>
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-3</a></h3>
                                         <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
                                 </div>
                                 <span class="clearfix borda"></span>
@@ -234,7 +234,7 @@
                                         </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                        <h3><a href="../home/detail" title="">COA/FG/XX/PGU/2014/AA-1</a></h3>
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-1</a></h3>
                                         <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
                                 </div>
                                 <span class="clearfix borda"></span>
@@ -251,7 +251,7 @@
                                         </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                        <h3><a href="../home/detail" title="">COA/FG/XX/PGU/2014/AA-2</a></h3>
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-2</a></h3>
                                         <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
                                 </div>
                                 <span class="clearfix borda"></span>
@@ -268,7 +268,7 @@
                                         </ul>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                        <h3><a href="../home/detail" title="">COA/FG/XX/PGU/2014/AA-4</a></h3>
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-4</a></h3>
                                         <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez<br/><br/><br/><br/><br/><br/><br/></p>
                                 </div>
                                 <span class="clearfix borda"></span>
