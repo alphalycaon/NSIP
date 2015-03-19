@@ -20,9 +20,14 @@ environments {
              dbCreate = "update"
                      username = "nsip"
                      password = "nsip"
-                     driverClassName = "com.mysql.jdbc.Driver"
-                     //url = "jdbc:mysql://cloud.lucasianmexico.com:3307/nsip3"      
+                     
+                     driverClassName = "com.mysql.jdbc.Driver"                                          
                      url = "jdbc:mysql://192.168.1.11/nsip2"
+                    
+                    
+                    // driverClassName = "org.postgresql.Driver"
+                    // url = "jdbc:postgresql://127.0.0.1:5432/nsip"
+                    
                      properties { 
                             validationQuery="select 1" 
                             testWhileIdle=true 

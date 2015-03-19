@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile
 
 class FileUploadCommand {
 	MultipartFile file
+        String tags
         static constraints = {
             
         }

@@ -1225,9 +1225,6 @@
         </div>
      </div>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 
         <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>

@@ -20,6 +20,16 @@ class JackrabbitRepositoryService implements RepositoryService {
     Repository repository = null
     String repositoryName = null
     boolean lazyInit = false
+    
+    def iconMap = [
+        "image/jpeg":"fa-file-image-o",
+        "image/png": "fa-file-image-o",
+        "application/pdf": "fa-file-pdf-o",
+        "application/msword": "fa-file-word-o",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "fa-file-word-o",
+        "application/vnd.ms-excel": "fa-file-excel-o",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":"fa-file-excel-o"
+    ]
 
     @PostConstruct
     void init() {
@@ -89,12 +99,12 @@ class JackrabbitRepositoryService implements RepositoryService {
                 return fileNode.getPath()
             }else{
                 fileNode = documentRoot.addNode(documento.nombre,"nt:file");
-                /*if(documento.tipo){
-                fileNode.addMixin(documento.tipo);
-                }*/
+                
+                fileNode.addMixin("nsip:itemExpediente");
                 fileNode.addMixin("mix:versionable");
                 if(documento.propiedades){
                     documento.propiedades.each{ k, v ->
+                        println("Adding property:"+k+"="+v);
                         fileNode.setProperty(k,v);
                     }
                 }
@@ -161,9 +171,12 @@ class JackrabbitRepositoryService implements RepositoryService {
                             id: node.getIdentifier(),
                             ruta: node.getPath(),
                             tipo: tipos,
-                            mime:node.getNode("jcr:content").getProperty("jcr:mimeType").getString()
-
+                            mime:node.getNode("jcr:content").getProperty("jcr:mimeType").getString(),
+                            icon: ""
                         );
+                        if(iconMap[documento.mime]){
+                            documento.icon = iconMap[documento.mime]
+                        }
                         Version v = i.nextVersion();
                         NodeIterator nodeIterator = v.getNodes();
                         while (nodeIterator.hasNext()) {
@@ -195,6 +208,7 @@ class JackrabbitRepositoryService implements RepositoryService {
                             documento.mime = currentNode.getNode("jcr:content").getProperty("jcr:mimeType").getString();
                             documento.version = v.getName();
                             documento.propiedades = propiedades
+                            println("Documento propiedades:"+propiedades)
                             documento.lastModified = currentNode.getNode("jcr:content").getProperty("jcr:lastModified").getDate().getTime();
                             printTree(currentNode);
                         }
@@ -204,10 +218,11 @@ class JackrabbitRepositoryService implements RepositoryService {
                     def RepositoryCommand documento = new RepositoryCommand(
                         nombre:node.getName(),
                         id: node.getIdentifier(),
-                        ruta: node.getPath()
+                        ruta: node.getPath(),
+                        mime: "folder",
+                        version: "1",
+                        icon: "fa-folder"
                     );
-                    documento.mime ="folder"
-                    documento.version = "1"
                     items<<documento;
                 }
 
