@@ -12,23 +12,28 @@ class MinisterioController {
         [expedientesIph: ExpedienteIph.list()]
     }
     def documentService
-    def guardarDenuncia(Delito delito){                
+    def guardarDenuncia(Delito delito){       
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
         delito.expediente = expediente        
         expediente.numeroExpediente = params.numeroExpediente //'COA/FG/XX/PGU/2014/AA-'
-        //expediente.save()                
-        //expediente.numeroExpediente = 'COA/FG/XX/PGU/2014/AA-'+expediente.id
+        expediente.createdBy = userName
         expediente.save()
+        //Bloque que sirve para en caso de que no se modifique el numero de Expediente le agrega el id del mismo para que se lleve un consecutivo
+        if((params.numeroExpediente.substring((params.numeroExpediente.length()-1), (params.numeroExpediente.length()))).equals("-")){
+            expediente.numeroExpediente = params.numeroExpediente+expediente.id
+            expediente.save()  
+        }
         /*try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
             File destDir = new File('/opt/apache-tomcat/apache-tomcat-7.0.42/webapps/comparte/Denuncias/'+expediente.numeroExpediente)
             FileUtils.copyDirectory(srcDir, destDir)
         }catch(Exception e){
             println(e)
-        }    */           
-        def userName  = SecurityUtils.subject?.principal
-        int userId = User.findByUsername(userName).getId()
+        }    */      
         UsuariosExpedientes usuexp = new UsuariosExpedientes();
         usuexp.usuarioId = userId
         usuexp.expedienteId = expediente.id

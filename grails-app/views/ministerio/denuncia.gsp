@@ -173,9 +173,10 @@
                                         <ul class="steps">
                                             <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                            <li data-target="#step3"><span class="badge">3</span>Presunto Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step4"><span class="badge">4</span>Datos de la Denuncia<span class="chevron"></span></li>
-                                            <li data-target="#step5"><span class="badge">5</span>Plantillas<span class="chevron"></span></li>
+                                            <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
+                                            <li data-target="#step4"><span class="badge">4</span>Presunto Responsable<span class="chevron"></span></li>
+                                            <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia<span class="chevron"></span></li>
+                                            <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
@@ -206,7 +207,7 @@
                                                 <h4>2.- Datos de la victima</h4>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre </label>
-                                                    <input type="text" class="form-control" id="nombreVictima" name="victima.nombre" placeholder="Nombre completo de la victima" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) de la Victima" onkeypress="txNombres()">
+                                                    <input type="text" class="form-control" id="nombreVictima" name="victima.nombre" placeholder="Nombre completo de la victima" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo de la Victima" onkeypress="txNombres()">
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Genero </label>
@@ -231,10 +232,37 @@
                                             </div>
                                             <div class="step-pane" id="step3">
                                                 <br/>
-                                                <h4>3.- Datos del presunto responsable</h4>
+                                                <h4>3.- Datos del denunciante</h4>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre </label>
-                                                    <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del presunto responsable" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) del Responsable" onkeypress="txNombres()">
+                                                    <input type="text" class="form-control" id="nombreDenunciante" name="denunciante.nombre" placeholder="Nombre completo del denunciante" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Denunciante" onkeypress="txNombres()">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Genero </label>
+                                                    <select class="form-control" name="denunciante.genero">
+                                                        <option>Femenino</option>
+                                                        <option>Masculino</option>
+                                                    </select>
+                                                </div>                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Edad</label>
+                                                    <input type="text" class="form-control"  id="edadDenunciante" name="denunciante.edad" placeholder="Edad del denunciante" required required data-toggle="tooltip" data-placement="top" title="Escribir Edad Denunciante" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Estado Civil</label>
+                                                    <input type="text" class="form-control" id="estCivilDenunciante" name="denunciante.estadoCivil" placeholder="Estado civil del denunciante" required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                                </div>                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Escolaridad</label>
+                                                    <input type="text" class="form-control" id="escDenunciante" name="denunciante.escolaridad" placeholder="Escolaridad del denunciante" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                                </div>                                                 
+                                            </div>
+                                            <div class="step-pane" id="step4">
+                                                <br/>
+                                                <h4>4.- Datos del presunto responsable</h4>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Nombre </label>
+                                                    <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del presunto responsable" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Genero </label>
@@ -256,9 +284,9 @@
                                                     <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del presunto responsable" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                                 </div>                                                 
                                             </div>
-                                            <div class="step-pane" id="step4">
+                                            <div class="step-pane" id="step5">
                                                 <br/>
-                                                <h4>4.- Datos de la Denuncia</h4>
+                                                <h4>5.- Datos de la Denuncia</h4>
                                                 <div class="form-group">
                                                     <label for="expediente">Número de denuncia</label>
                                                     <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
@@ -275,7 +303,7 @@
                                             </div>
                                         </g:form>
 
-                                                <div class="step-pane" id="step5">
+                                                <div class="step-pane" id="step6">
                                                     <br/>
                                                     <div class="panel-group accordion" id="accordion">                                                        
                                                         <div class="panel panel-default">

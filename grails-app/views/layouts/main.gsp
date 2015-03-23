@@ -201,7 +201,43 @@
                                     </li>
                                 </ul>
                             </g:form>  
+                        </div>   
+                        <shiro:hasRole name="Juez">
+                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                            <ul class="nav navbar-nav pull-left">
+                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                    <strong>Procuraduría general</strong>
+                                </p>
+                            </ul>                                    
                         </div>
+                        </shiro:hasRole>   
+                        <shiro:hasRole name="CES">
+                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                            <ul class="nav navbar-nav pull-left">
+                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                    <strong>Seguridad pública</strong>
+                                </p>
+                            </ul>                                    
+                        </div>
+                        </shiro:hasRole>   
+                        <shiro:hasRole name="Ministerio">
+                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                            <ul class="nav navbar-nav pull-left">
+                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                    <strong>Ministerio público</strong>
+                                </p>
+                            </ul>                                    
+                        </div>
+                        </shiro:hasRole>   
+                        <shiro:hasRole name="Defensor">
+                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                            <ul class="nav navbar-nav pull-left">
+                                <p style="margin-left: 200px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                    <strong>Defensoría</strong>
+                                </p>
+                            </ul>                                    
+                        </div>
+                        </shiro:hasRole> 
                         <div class="nav-no-collapse pull-right" id="header-nav">
                             <ul class="nav navbar-nav pull-right">                                
                                 <li class="dropdown hidden-xs">

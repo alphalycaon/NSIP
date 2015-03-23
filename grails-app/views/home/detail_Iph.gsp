@@ -29,6 +29,12 @@
         
         <!--<link href="${resource(dir: 'centaurus/assets/bootstrap/css/', file: 'bootstrap.min.css')}" rel="stylesheet">-->
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
+        
+        <style type="text/css">
+            .not-active {
+                cursor: no-drop;
+             }
+         </style> 
           
         <title>Detalles</title>
     </head>
@@ -77,20 +83,20 @@
                                         <li>
                                             <a href="${request.contextPath}">
                                                 <i class="fa fa-folder-o"></i>
-                                                Denuncias
+                                                Mis denuncias
                                                 <span class="label label-primary pull-right">12</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-link"></i>
-                                                Cadena de custodia
+                                                Mis cadenas de custodia
                                             </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/index_Iph">
                                                 <i class="fa fa-inbox"></i>
-                                                Informes policiales homologados
+                                                Mis informes policiales homologados
                                                     <span class="label label-primary pull-right">8</span>
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
@@ -98,34 +104,28 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa fa-times-circle"></i>
-                                                Detenidos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-inbox"></i>
-                                                Informes policiales
+                                                Mis informes policiales
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-arrow-circle-o-up"></i>
-                                                Solicitar defensor público
+                                                Puestas a disposición
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-play-circle-o"></i>
-                                                Notificar a Unidad de Atención a Víctimas del Delito
+                                                Notificar a unidad de atención a víctimas del delito
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                             <i class="fa fa-exclamation-triangle"></i>
                                                 Mis notificaciones
                                             </a>

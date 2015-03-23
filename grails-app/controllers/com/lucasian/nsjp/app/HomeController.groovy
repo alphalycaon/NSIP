@@ -23,7 +23,17 @@ class HomeController {
         
         def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
         
-        [expedientes: Expediente.list(), expedientesFiltrados: ExpFiltrado]
+        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+        
+        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
+    }
+    def Index_Corroboracion() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") and (createdBy <> '" + userName + "' or createdBy = null)")
+
+        [expedientesCompartidos: ExpCompartidos]
     }
     def detail(Long id){
         def userName  = SecurityUtils.subject?.principal
@@ -47,13 +57,17 @@ class HomeController {
         
     }
     def calendar(){
-        
+        def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
+
+        [SolicitudesAudiencias: SolAudiencias, jueces: jueces]
     }
     def mapa(){
         
     }
     
     def compartirExpediente() {
+        print(params.listCompartir)
         def expediente = params.expedienteId
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
@@ -127,5 +141,25 @@ class HomeController {
         }
         print("expediente " + Integer.parseInt(expediente))
         redirect(action: "detail", id: expediente)
+    }
+    
+    def solicitarAudiencia(){      
+        def expedienteId = params.expedienteId4
+        def userName  = SecurityUtils.subject?.principal
+        def expediente = Expediente.get(expedienteId)
+        
+        if(params.listAudiencia != null && params.listAudiencia != ""){
+            SolicitudAudiencia solaud = new SolicitudAudiencia();
+            solaud.estatus = 'N'
+            solaud.tipoAudiencia = params.listAudiencia
+            solaud.expediente = expediente
+            solaud.comentarios = params.commentAudiencia
+            solaud.createdBy = userName
+            solaud.save()
+            
+        }
+        print("expediente " + Integer.parseInt(expedienteId))
+        redirect(action: "detail", id: expedienteId)
+        
     }
 }

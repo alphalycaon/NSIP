@@ -5,7 +5,7 @@ class UserRoles {
     int userId
     int roleId
     static mapping = {
-        table "user_roles"
+        table "app_user_roles"
         id generator:'increment'
         version false
     }

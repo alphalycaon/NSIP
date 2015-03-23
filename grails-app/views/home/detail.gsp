@@ -27,8 +27,17 @@
             #myTab2 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
             #myTab3 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
             #myTab4 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
+            #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}            
         </style>
-
+        
+        <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
+        
+        <style type="text/css">
+            .not-active {
+                cursor: no-drop;
+             }
+         </style> 
+         
         <title>Detalles</title>
     </head>
     <body>
@@ -76,81 +85,69 @@
                                             <li>
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-inbox"></i>
-                                                    Denuncias/Querellas
+                                                    Mis denuncias/querellas
                                                     <span class="label label-primary pull-right">83</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="${request.contextPath}/home/Index_Corroboracion">
                                                     <i class="fa fa-star"></i>
-                                                    Carpetas de Corroboracion
+                                                    Mis carpetas de corroboración
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-pencil"></i>
-                                                    Carpetas de Investigacion
+                                                    Mis carpetas de investigación
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-envelope"></i>
-                                                    Puestas a Disposicion
+                                                    Puestas a disposicion
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-clock-o"></i>
                                                     Atención temprana
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                    Seguimiento de audiencias de conciliación
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-clock-o"></i>
-                                                    Solicitud de Audiencia
+                                                    Solicitud de audiencia
                                                     <!--
                                                     <span class="label label-default pull-right">1,292</span>
                                                     -->
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-arrow-circle-o-up"></i>
                                                     Solicitar defensor público
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor particular
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad Justicia Alternativa Restaurativa
+                                                    Notificar a unidad justicia alternativa restaurativa
                                                     <!--
                                                     <span class="label label-default pull-right">1,292</span>
                                                     -->
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a Unidad de Atención a Víctimas del Delito
+                                                    Notificar a unidad de atención a víctimas del delito
                                                     <!--
                                                     <span class="label label-default pull-right">1,292</span>
                                                     -->
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
                                                     Mis notificaciones 
                                                 </a>
@@ -173,20 +170,20 @@
                                             <li>
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-folder-o"></i>
-                                                    Denuncias
+                                                    Mis denuncias
                                                     <span class="label label-primary pull-right">12</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-link"></i>
-                                                    Cadena de custodia
+                                                    Mis cadenas de custodia
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="${request.contextPath}/home/index_Iph">
                                                     <i class="fa fa-inbox"></i>
-                                                    Informes policiales homologados
+                                                    Mis informes policiales homologados
                                                     <span class="label label-primary pull-right">8</span>
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
@@ -194,34 +191,28 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-times-circle"></i>
-                                                    Detenidos
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-inbox"></i>
-                                                    Informes policiales
+                                                    Mis informes policiales
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor público
+                                                    Puestas a disposición
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a Unidad de Atención a Víctimas del Delito
+                                                    Notificar a unidad de atención a víctimas del delito
                                                     <!--
                                                     <span class="label label-default pull-right">1,292</span>
                                                     -->
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
                                                     Mis notificaciones                      
                                                 </a>
@@ -244,30 +235,30 @@
                                             <li>
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-inbox"></i>
-                                                    Causas de 1era y 2da Instancia
+                                                    Causas de 1era y 2da instancia
                                                     <span class="label label-primary pull-right">20</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-pencil"></i>
                                                     Registro de causas
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-pencil"></i>
                                                     Registro de salas de audiencia
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-arrow-circle-o-up"></i>
                                                     Solicitar defensor público
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-arrow-circle-o-up"></i>
                                                     Solicitar policia procesal
                                                 </a>
@@ -279,7 +270,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-envelope-o"></i>
                                                     Resolución de audiencias
                                                     <!--
@@ -288,7 +279,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
                                                     Mis notificaciones
                                                 </a>
@@ -309,13 +300,13 @@
                                     <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
                                         <ul id="email-nav-items" class="clearfix">
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-flag"></i>
-                                                    Solicituar Audiencia
+                                                    Solicitar audiencia
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-taxi"></i>
                                                     Solicitar perito
                                                 </a>
@@ -327,10 +318,17 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" data-toggle="modal" data-target="#NotificacionAsignarDefensor">
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-inbox"></i>
+                                                    Solicitudes de defensor
+                                                    <span class="label label-default pull-right">1</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones p                                     
-                                                    <span class="label label-primary pull-right" id="notificardef"></span>
+                                                    Mis notificaciones
+                                                    <span class="label label-primary pull-right">1</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -533,185 +531,127 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
                                                         </br>
                                                         </br>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
+                                                        </br>
+                                                        </br>                                                        
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>
                                                         </br>
                                                         </br>
                                                         <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
-                                                        <div id="nestable-menu">
-                                                            <button type="button" class="btn btn-primary" data-action="expand-all">Expandir Todos</button>
-                                                            <button type="button" class="btn btn-danger" data-action="collapse-all">Contraer Todos</button>
-                                                        </div>
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
-                                                            <div class="col-md-6 dd nestable" >
-                                                                <ol class="dd-list dd-nodrag">                                         
-                                                                    <li class="dd-item dd-item-list " data-id="13"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle dd-nodrag"><a href="#">Media filiacion</a></div><!--<a id="media" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Somática_General.pdf</a></div><!--<a id="arch1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Ficha_Signalética.pdf</a></div><!--<a id="arch2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Retrato_Hablado.jpg</a></div><!--<a id="arch3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Documentos Probatorios</a></div><!--<a id="docp" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Declaración_Oral.mov</a></div><!--<a id="doc1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Declaración_Escrita.pdf</a></div><!--<a id="doc2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Testificación_Escrita.pdf</a></div><!--<a id="doc3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>                                                                    
-                                                                    <li class="dd-item dd-item-list" data-id="15"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Fotografias de los Hechos</a></div><!--<a id="fotog" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Herida.png</a></div><!--<a id="fot1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Arma.png</a></div><!--<a id="fot2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Presunto_Culpable.png</a></div><!--<a id="fot3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>  
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Audiencias</a></div><!--<a id="aud" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_01012015.mov</a></div><!--<a id="vid1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_20012015.mov</a></div><!--<a id="vid2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_08022015.mov</a></div><!--<a id="vid3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                </ol>
-                                                            </div>
-                                                         <!-- -->
-                                                            <div class="col-md-6 dd" >
-                                                                <div class="wrapper" id="divImagenes">            
-                                                                    <div class="connected-carousels">                                                                    
-                                                                        <div class="stage" style="width:500px; height:300px">
-                                                                            <div class="carousel carousel-stage">
-                                                                                <ul>                                                                                       
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                                <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
-                                                                                <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
-                                                                        </div>
-                                                                        <div class="navigation">
-                                                                            <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
-                                                                            <a href="#" class="next next-navigation">&rsaquo;</a>
-                                                                            <div class="carousel carousel-navigation">
-                                                                                <ul>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                </ul>                                                                                   
-                                                                            </div>  
-                                                                        </div>
-                                                                        <div>
-                                                                            <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
-                                                                        </div>  
-                                                                    </div>
-                                                                </div>
-                                                            <!-- --> 
-                                                                <div class="wrapper" id="divVideos" hidden="true">                                                         
-                                                                    <div id="sliderFrame" style="width:500px; height:300px">
-                                                                        <div id="slider" style="width:500px; height:300px">                                                                         
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src='//player.vimeo.com/video/73437654'">
-                                                                                <img src="${resource(dir: 'images/imagenes', file: 'image-slider-1.jpg')}"/>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src = '//player.vimeo.com/video/73437654'">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-2.jpg')}">Vimeo</b>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-3.jpg')}">Image Slider</b>
-                                                                            </a>   
-                                                                        </div>                                                                     
-                                                                    </div> 
-                                                                    </br>   
-                                                                    </br> 
-                                                                    </br> 
-                                                                    <div>
-                                                                        <input type="text" value="Video aprobatorio,Video de audencia,Video de Robo,Video defensoria" data-role="tagsinput"/>
-                                                                    </div>      
-                                                                </div>
-                                                                <!-- -->  
-                                                                <div id="sliderFrame2" hidden="true">
-                                                                    <div>
-                                                                        <ul>
-                                                                            <li> <a class="media" href="http://www.mexicoevalua.org/wp-content/uploads/2013/02/IVVI-H-20126.pdf"></a></li>
-                                                                        </ul>  
-                                                                    </div> 
-                                                                    </br>
-                                                                    <div>
-                                                                        <input type="text" value="Archivo de investigación,Documento de IPH,Archivo Aprobatorio,Documento de defensoria" data-role="tagsinput"/>
-                                                                    </div>                                                                    
-                                                                </div>                 
-                                                            </div>
-                                                                                                                     <!--Fin Modal-->                                                                         
-                                                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content" style="width:920px">
-                                                                        <div class="modal-header" style="width:920px">
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                            <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="width:900px; height:520px">
-                                                                            <div class="embed-responsive embed-responsive-16by9">
-                                                                                <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                            <div class="col-lg-12" >                                                                
+                                                                <div class="main-box clearfix">                                                    
+                                                                    <div class="main-box-body clearfix">
+                                                                        <div class="tabs-wrapper">
+                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
+                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
+                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>            
+                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                               
+                                                                            </ul>
+                                                                            <div class="tab-content">
+                                                                                <div class="tab-pane fade in active" id="tab-archivos">
+                                                                                    <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-imagenes">
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-videos">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="col-md-6 dd">
+                                                                                            <div>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 dd">
+                                                                                                </br>
+                                                                                            <div class="videoUiWrapper thumbnail">
+                                                                                              <video width="483" height="282" id="demo1">
+                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                Your browser does not support the video tag.
+                                                                                              </video>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer" style="width:920px">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                        </div>
                                                                     </div>
-                                                                </div> 
-                                                            </div>  
-                                            <!--Fin Modal-->  
-<!-- --> 
+                                                                </div>
+                                                            </div>   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -721,7 +661,7 @@
                                     <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);"></div>
                                     </div>
                                 </div>     
-                            </div>    
+                            </div>                       
                         </shiro:hasRole>
                         <shiro:hasRole name="Defensor">
                             <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
@@ -829,175 +769,115 @@
                                                         <h2>Archivos</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
-                                                        <div id="nestable-menu">
-                                                            <button type="button" class="btn btn-primary" data-action="expand-all">Expandir Todos</button>
-                                                            <button type="button" class="btn btn-danger" data-action="collapse-all">Contraer Todos</button>
-                                                        </div>
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
-                                                            <div class="col-md-6 dd nestable" >
-                                                                <ol class="dd-list dd-nodrag">                                         
-                                                                    <li class="dd-item dd-item-list " data-id="13"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle dd-nodrag"><a href="#">Media filiacion</a></div><!--<a id="media" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Somática_General.pdf</a></div><!--</div><!--<a id="arch1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Ficha_Signalética.pdf</a></div><!--<a id="arch2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Retrato_Hablado.jpg</a></div><!--<a id="arch3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Documentos Probatorios</a></div><!--<a id="docp" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Declaración_Oral.mov</a></div><!--<a id="doc1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Declaración_Escrita.pdf</a></div><!--<a id="doc2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Testificación_Escrita.pdf</a></div><!--<a id="doc3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>                                                                    
-                                                                    <li class="dd-item dd-item-list" data-id="15"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Fotografias de los Hechos</a></div><!--<a id="fotog" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Herida.png</a></div><!--<a id="fot1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Arma.png</a></div><!--<a id="fot2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Presunto_Culpable.png</a></div><!--<a id="fot3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>  
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Audiencias</a></div><!--<a id="aud" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_01012015.mov</a></div><!--<a id="vid1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_20012015.mov</a></div><!--<a id="vid2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_08022015.mov</a></div><!--<a id="vid3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                </ol>
-                                                            </div>
-                                                            <!-- -->
-                                                            <div class="col-md-6 dd" >
-                                                                <div class="wrapper" id="divImagenes">            
-                                                                    <div class="connected-carousels">                                                                    
-                                                                        <div class="stage" style="width:500px; height:300px">
-                                                                            <div class="carousel carousel-stage">
-                                                                                <ul>                                                                                       
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                                <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
-                                                                                <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
-                                                                        </div>
-                                                                        <div class="navigation">
-                                                                            <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
-                                                                            <a href="#" class="next next-navigation">&rsaquo;</a>
-                                                                            <div class="carousel carousel-navigation">
-                                                                                <ul>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                </ul>                                                                                   
-                                                                            </div>  
-                                                                        </div>
-                                                                        <div>
-                                                                            <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
-                                                                        </div>  
-                                                                    </div>
-                                                                </div>
-                                                            <!-- --> 
-                                                                <div class="wrapper" id="divVideos" hidden="true">                                                         
-                                                                    <div id="sliderFrame" style="width:500px; height:300px">
-                                                                        <div id="slider" style="width:500px; height:300px">                                                                         
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src='//player.vimeo.com/video/73437654'">
-                                                                                <img src="${resource(dir: 'images/imagenes', file: 'image-slider-1.jpg')}"/>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src = '//player.vimeo.com/video/73437654'">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-2.jpg')}">Vimeo</b>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-3.jpg')}">Image Slider</b>
-                                                                            </a>   
-                                                                        </div>                                                                     
-                                                                    </div> 
-                                                                    </br>   
-                                                                    </br> 
-                                                                    </br> 
-                                                                    <div>
-                                                                        <input type="text" value="Video aprobatorio,Video de audencia,Video de Robo,Video defensoria" data-role="tagsinput"/>
-                                                                    </div>      
-                                                                </div>
-                                                                <!-- -->  
-                                                                <div id="sliderFrame2" hidden="true">
-                                                                    <div>
-                                                                        <ul>
-                                                                            <li> <a class="media" href="http://www.mexicoevalua.org/wp-content/uploads/2013/02/IVVI-H-20126.pdf"></a></li>
-                                                                        </ul>  
-                                                                    </div> 
-                                                                    </br>
-                                                                    <div>
-                                                                        <input type="text" value="Archivo de investigación,Documento de IPH,Archivo Aprobatorio,Documento de defensoria" data-role="tagsinput"/>
-                                                                    </div>                                                                    
-                                                                </div>                 
-                                                            </div>                                                      
-                                                            <!--Fin Modal-->  
-                                                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content" style="width:920px">
-                                                                        <div class="modal-header" style="width:920px">
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                            <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="width:900px; height:520px">
-                                                                            <div class="embed-responsive embed-responsive-16by9">
-                                                                                <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                            <div class="col-lg-12" >                                                                
+                                                                <div class="main-box clearfix">                                                    
+                                                                    <div class="main-box-body clearfix">
+                                                                        <div class="tabs-wrapper">
+                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
+                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
+                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>                 
+                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                          
+                                                                            </ul>
+                                                                            <div class="tab-content">
+                                                                                <div class="tab-pane fade in active" id="tab-archivos">
+                                                                                    <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-imagenes">
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-videos">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="col-md-6 dd">
+                                                                                            <div>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 dd">
+                                                                                                </br>
+                                                                                            <div class="videoUiWrapper thumbnail">
+                                                                                              <video width="483" height="282" id="demo1">
+                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                Your browser does not support the video tag.
+                                                                                              </video>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer" style="width:920px">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                        </div>
                                                                     </div>
-                                                                </div> 
-                                                            </div>  
-                                              <!--Fin Modal-->  
+                                                                </div>
+                                                            </div>   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1097,13 +977,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                                                                <doc:explorerAndUpload numeroExpediente="${params.id}"/>                                                                                                                     
+                                        </div>                                                                                                                     
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
                                                         </br>
                                                         </br>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
@@ -1112,177 +991,115 @@
                                                         <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
-                                                        <div id="nestable-menu">
-                                                            <button type="button" class="btn btn-primary" data-action="expand-all">Expandir Todos</button>
-                                                            <button type="button" class="btn btn-danger" data-action="collapse-all">Contraer Todos</button>
-                                                        </div>
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
-                                                            <div class="col-md-6 dd nestable" >
-                                                                <ol class="dd-list dd-nodrag">                                         
-                                                                    <li class="dd-item dd-item-list " data-id="13"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle dd-nodrag"><a href="#">Media filiacion</a></div><!--<a id="media" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Somática_General.pdf</a></div><!--<a id="arch1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Ficha_Signalética.pdf</a></div><!--<a id="arch2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Retrato_Hablado.jpg</a></div><!--<a id="arch3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Documentos Probatorios</a></div><!--<a id="docp" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Declaración_Oral.mov</a></div><!--<a id="doc1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Declaración_Escrita.pdf</a></div><!--<a id="doc2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-pdf-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarArchivos()">Testificación_Escrita.pdf</a></div><!--<a id="doc3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>                                                                    
-                                                                    <li class="dd-item dd-item-list" data-id="15"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Fotografias de los Hechos</a></div><!--<a id="fotog" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Herida.png</a></div><!--<a id="fot1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Arma.png</a></div><!--<a id="fot2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-image-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarImagenes()">Img_Presunto_Culpable.png</a></div><!--<a id="fot3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>  
-                                                                    <li class="dd-item dd-item-list" data-id="14"><button data-action="collapse" type="button" style="display: block;">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                                                                        <div class="dd-handle-list"><i class="fa fa-folder-o"></i></div>
-                                                                        <div class="dd-handle"><a href="#">Audiencias</a></div><!--<a id="aud" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right" onclick="mostrarVideos()">             compartir                            </a></div>-->
-                                                                        <ol class="dd-list" style="">
-                                                                            <li class="dd-item dd-item-list" data-id="16">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_01012015.mov</a></div><!--<a id="vid1" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="17">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_20012015.mov</a></div><!--<a id="vid2" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                            <li class="dd-item dd-item-list" data-id="18">
-                                                                                <div class="dd-handle-list"><i class="fa fa-file-video-o"></i></div>
-                                                                                <div class="dd-handle "><a href="#" onclick="mostrarVideos()">Audiencia_08022015.mov</a></div><!--<a id="vid3" href="#" data-toggle="modal" data-target="#myModalCompartir" style="vertical-align:middle; float: right">             compartir                            </a></div>-->
-                                                                            </li>
-                                                                        </ol>
-                                                                    </li>
-                                                                </ol>
-                                                            </div>
-                                                                                                                    <!-- -->
-                                                            <div class="col-md-6 dd" >
-                                                                <div class="wrapper" id="divImagenes">            
-                                                                    <div class="connected-carousels">                                                                    
-                                                                        <div class="stage" style="width:500px; height:300px">
-                                                                            <div class="carousel carousel-stage">
-                                                                                <ul>                                                                                       
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                    <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                                <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
-                                                                                <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
-                                                                        </div>
-                                                                        <div class="navigation">
-                                                                            <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
-                                                                            <a href="#" class="next next-navigation">&rsaquo;</a>
-                                                                            <div class="carousel carousel-navigation">
-                                                                                <ul>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                    <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                </ul>                                                                                   
-                                                                            </div>  
-                                                                        </div>
-                                                                        <div>
-                                                                            <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
-                                                                        </div>  
-                                                                    </div>
-                                                                </div>
-                                                            <!-- --> 
-                                                                <div class="wrapper" id="divVideos" hidden="true">                                                         
-                                                                    <div id="sliderFrame" style="width:500px; height:300px">
-                                                                        <div id="slider" style="width:500px; height:300px">                                                                         
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src='//player.vimeo.com/video/73437654'">
-                                                                                <img src="${resource(dir: 'images/imagenes', file: 'image-slider-1.jpg')}"/>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#" onclick="document.getElementById('frameVideos').src = '//player.vimeo.com/video/73437654'">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-2.jpg')}">Vimeo</b>
-                                                                            </a>
-                                                                            <a class="video" data-toggle="modal" data-target="#myModal" href="#">
-                                                                                <b data-src="${resource(dir: 'images/imagenes', file: 'image-slider-3.jpg')}">Image Slider</b>
-                                                                            </a>   
-                                                                        </div>                                                                     
-                                                                    </div> 
-                                                                    </br>   
-                                                                    </br> 
-                                                                    </br> 
-                                                                    <div>
-                                                                        <input type="text" value="Video aprobatorio,Video de audencia,Video de Robo,Video defensoria" data-role="tagsinput"/>
-                                                                    </div>      
-                                                                </div>
-                                                                <!-- -->  
-                                                                <div id="sliderFrame2" hidden="true">
-                                                                    <div>
-                                                                        <ul>
-                                                                            <li> <a class="media" href="http://www.mexicoevalua.org/wp-content/uploads/2013/02/IVVI-H-20126.pdf"></a></li>
-                                                                        </ul>  
-                                                                    </div> 
-                                                                    </br>
-                                                                    <div>
-                                                                        <input type="text" value="Archivo de investigación,Documento de IPH,Archivo Aprobatorio,Documento de defensoria" data-role="tagsinput"/>
-                                                                    </div>                                                                    
-                                                                </div>                 
-                                                            </div>                                                      
-                                                            <!-- -->  
-                                                                                                                                      <!--Fin Modal-->                                                                         
-                                                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content" style="width:920px">
-                                                                        <div class="modal-header" style="width:920px">
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                            <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="width:900px; height:520px">
-                                                                            <div class="embed-responsive embed-responsive-16by9">
-                                                                                <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                            <div class="col-lg-12" >                                                                
+                                                                <div class="main-box clearfix">                                                    
+                                                                    <div class="main-box-body clearfix">
+                                                                        <div class="tabs-wrapper">
+                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
+                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
+                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>          
+                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                                 
+                                                                            </ul>
+                                                                            <div class="tab-content">
+                                                                                <div class="tab-pane fade in active" id="tab-archivos">
+                                                                                    <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-imagenes">
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="tab-videos">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="col-md-6 dd">
+                                                                                            <div>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                                                </br>
+                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 dd">
+                                                                                                </br>
+                                                                                            <div class="videoUiWrapper thumbnail">
+                                                                                              <video width="483" height="282" id="demo1">
+                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                Your browser does not support the video tag.
+                                                                                              </video>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer" style="width:920px">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                        </div>
                                                                     </div>
-                                                                </div> 
-                                                            </div>  
-                                                      <!--Fin Modal-->  	
-                                                        </div>
+                                                                </div>
+                                                            </div>   
                                                     </div>
                                                 </div>
                                             </div>                                                                                                                        
@@ -1338,27 +1155,6 @@
                             </div>
                         </div>
                   <!--Fin Modal--> 
-                   <!--Modal-->
-                        <div class="modal fade" id="NotificacionAsignarDefensor"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Asignación de Caso</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <li>
-                                            ¿Se a asignado un caso?
-                                        </li>                                       
-                                    </div>
-                                    <div class="modal-footer">
-                                         <button type="button" class="btn btn-success" data-dismiss="modal" onclick="notificarCheck()">Aceptar</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                  <!--Fin Modal-->  
                         <!--    -->
                         <div class="modal fade" id="myModalDefensor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <g:form name="formAsignar">  
@@ -1366,7 +1162,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Asignar Defensor</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Solicitar Defensor</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form">
@@ -1387,7 +1183,7 @@
                                             <!--<a data-dismiss="modal" href="#"  class="btn btn-primary" id="notificacionDefensor">                                            
                                                  <span  style="padding-right: 10px;"></span> Aceptar
                                              </a>  --> 
-                                            <g:actionSubmit id="btnModalAsignar" class="btn btn-primary" value="Aceptar" action="asignarDefensor" controller="home" onclick="enviarNotificacion()"/>
+                                            <g:actionSubmit id="btnModalAsignar" class="btn btn-primary" value="Aceptar" action="asignarDefensor" controller="home"/>
                                             <a data-dismiss="modal" class="btn btn-danger">                                             
                                                 <span style="padding-right: 10px;"></span> Cancelar
                                             </a>
@@ -1470,13 +1266,50 @@
                                 </div>
                             </g:form>
                         </div>
-                     <!--  -->                          
+                     <!--  --> 
+                     <!-- -->                                                        
+                        <div class="modal fade" id="myModalAudiencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <g:form name="formCompartir">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Solicitar Audiencia</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form role="form">
+                                                <input type="hidden" name="expedienteId4" value="${expediente.id}">
+                                                <div class="form-group form-group-select2">
+                                                    <label>Tipo de Audiencia:</label>
+                                                    <select style="width:570px" class="form-control" name="listAudiencia" id="listAudiencia">
+                                                        <option value="Audiencia privada">Audiencia privada</option>
+                                                        <option value="Vinculación al proceso">Vinculación al proceso</option>
+                                                    </select>
+                                                </div>
+                                            </form>      
+                                        </div>
+                                        <div class="modal-footer">                                                                           
+                                            <textarea class="form-control" rows="3" name="commentAudiencia" id="commentAudiencia" placeholder="Mensaje (Opcional)"></textarea>
+                                            </br>
+                                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                                 <span  style="padding-right: 10px;"></span> Aceptar
+                                             </a> -->  
+                                            <g:actionSubmit id="btnModalAudiencia" class="btn btn-primary" value="Aceptar" action="solicitarAudiencia" controller="home"/>
+                                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                                <span style="padding-right: 10px;"></span> Cancelar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </g:form>
+                        </div>
+                     <!--  -->                         
                     </div>
                 </div>
             </div>
         </div>
      </div>
-     
+
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
@@ -1499,137 +1332,147 @@
         <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
         <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
-        <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>     
-      
-    <script type="text/javascript">
-        $('a.media').media({width:500, height:400});
-    </script> 
+        <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
 
-    <script type="text/javascript">
+         
 
-        $(document).ready(function() {
+        <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
+        
+        <script type="text/javascript">
+            $('#demo1').videoUI({
+              'autoHide':false
+            });
+        </script>
+
+        <script type="text/javascript">
+            $('a.media').media({width:500, height:400});
+        </script> 
+
+        <script type="text/javascript">
+
+            $(document).ready(function() {
 		$('#email-list li > .star > a').on('click', function() {
-        $(this).toggleClass('starred');
-        });
+            $(this).toggleClass('starred');
+            });
 
-        $(".has-tooltip").each(function (index, el) {
-        $(el).tooltip({
-        placement: $(this).data("placement") || 'bottom'
-        });
-        });
+            $(".has-tooltip").each(function (index, el) {
+            $(el).tooltip({
+            placement: $(this).data("placement") || 'bottom'
+            });
+            });
 
-        setHeightEmailContent();
+            setHeightEmailContent();
 
-        initEmailScroller();
-        });
+            initEmailScroller();
+            });
 
-        $(window).smartresize(function(){
-        setHeightEmailContent();
+            $(window).smartresize(function(){
+            setHeightEmailContent();
 
-        initEmailScroller();
-        });
+            initEmailScroller();
+            });
 
-        function setHeightEmailContent() {
+            function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
-        var windowHeight = $(window).height();
-        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-        $('#email-detail').css('height', windowHeight - staticContentH);
-        }
-        else {
-        $('#email-detail').css('height', '');
-        }
-        }
+            $('#email-detail').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-detail').css('height', '');
+            }
+            }
 
-        function initEmailScroller() {
+            function initEmailScroller() {
 		if ($( document ).width() >= 992) {
-        $('#email-navigation').nanoScroller({
-        alwaysVisible: false,
-        iOSNativeScrolling: false,
-        preventPageScrolling: true,
-        contentClass: 'email-nav-nano-content'
-        });
+            $('#email-navigation').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-nav-nano-content'
+            });
 
-        $('#email-detail').nanoScroller({
-        alwaysVisible: false,
-        iOSNativeScrolling: false,
-        preventPageScrolling: true,
-        contentClass: 'email-detail-nano-content'
-        });
-        }
-        }
-    </script> 
-    <script>
-        $(document).ready(function() {
+            $('#email-detail').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-detail-nano-content'
+            });
+            }
+            }
+        </script> 
+        <script>
+            $(document).ready(function() {
 
-        // activate Nestable for list 1
-        $('.nestable').nestable({
-        group: 1
-        });
+            // activate Nestable for list 1
+            $('.nestable').nestable({
+            group: 1
+            });
 
 
-        // output initial serialised data
-        $('#nestable-menu').on('click', function(e){
-        var target = $(e.target),
-        action = target.data('action');
-        if (action === 'expand-all') {
-        $('.dd').nestable('expandAll');
-        }
-        if (action === 'collapse-all') {
-        $('.dd').nestable('collapseAll');
-        }
-        });
-        });
-    </script>
-    <script> 
-        function aceptarCaso() { 
-        document.getElementById('div_archivos').style.display='block';
-        document.getElementById('div_aceptar_rechazar').style.display='none';
-        } 
-    </script>
-    <script type="text/javascript">
-        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-        if (isCaseSensitive)
-        str = str.toLowerCase();
+            // output initial serialised data
+            $('#nestable-menu').on('click', function(e){
+            var target = $(e.target),
+            action = target.data('action');
+            if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+            }
+            if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+            }
+            });
+            });
+        </script>
+        <script> 
+            function aceptarCaso() { 
+            document.getElementById('div_archivos').style.display='block';
+            document.getElementById('div_aceptar_rechazar').style.display='none';
+            } 
+        </script>
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+            if (isCaseSensitive)
+            str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-        var $el = $(selectionEl);
-        if (!$el.data("options")) {
+            var $el = $(selectionEl);
+            if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-        $el.data("options", $el.find("option").clone());
-        }
-        var newOptions = $el.data("options").filter(function () {
-        var text = $(this).text();
-        if (isCaseSensitive)
-        text = text.toLowerCase();
-        return text.match(str);
-        });
-        $el.empty().append(newOptions);
-        };
+            $el.data("options", $el.find("option").clone());
+            }
+            var newOptions = $el.data("options").filter(function () {
+            var text = $(this).text();
+            if (isCaseSensitive)
+            text = text.toLowerCase();
+            return text.match(str);
+            });
+            $el.empty().append(newOptions);
+            };
 
-        $("#SearchBox").on("keyup", function () {
-        var userInput = $("#SearchBox").val();
-        showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
-        });
-    </script>  
+            $("#SearchBox").on("keyup", function () {
+            var userInput = $("#SearchBox").val();
+            showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+            });
+        </script>  
 
-    <script type="text/javascript">
-        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-        if (isCaseSensitive)
-        str = str.toLowerCase();
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+            if (isCaseSensitive)
+            str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-        var $el = $(selectionEl);
-        if (!$el.data("options")) {
+            var $el = $(selectionEl);
+            if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-        $el.data("options", $el.find("option").clone());
-        }
-        var newOptions = $el.data("options").filter(function () {
-        var text = $(this).text();
-        if (isCaseSensitive)
-        text = text.toLowerCase();
-        return text.match(str);
-        });
-        $el.empty().append(newOptions);
+            $el.data("options", $el.find("option").clone());
+            }
+            var newOptions = $el.data("options").filter(function () {
+            var text = $(this).text();
+            if (isCaseSensitive)
+            text = text.toLowerCase();
+            return text.match(str);
+            });
+            $el.empty().append(newOptions);
         };
         
         $("#SearchCompartir").on("keyup", function () {
@@ -1665,56 +1508,20 @@
         allowClear: true
         });		
         });
-    </script>
-    
+    </script> 
+
     <script type="text/javascript">
-        function notificarCheck() {
-        var palabraJsonR ='{"userto": "defensor1", "tipoN":"0","msg":"regreso"}';
-            miWebsocket.send(palabraJsonR);
-        } 
-
-        function enviarNotificacion() {
-        var palabraJson ='{"userto": "defensor1", "tipoN":"0","msg":"prueba"}';
-        miWebsocket.send(palabraJson);
-        console.log('enviado');
-        } 
-    </script>
-   
-    <script type="text/javascript">  
-        
-        function crearWebsocket(){            
-            var uriWS="ws://localhost:8080/nsip/notificacionEndpoint";
-            miWebsocket= new WebSocket(uriWS);  
-        
-          miWebsocket.onopen = function()
-          {  // Web Socket is connected, send data using send()
-               console.log("se abre la conexion...");
-          };
-
-            miWebsocket.onmessage=function(evento) { 
-                notifica = evento.data;
-                var usernombre = $('#usershiro').val();
-                $('#notificardef').text(notifica);
-            };
-        
-            miWebsocket.onclose = function()
-            { 
-               // websocket is closed.
-               console.log("Cerrar Conexion...");
-            };
-            
-             miWebsocket.onerror = function()
-            { 
-               // websocket is closed.
-               console.log("Error en la conexion..."); 
-            };
-            
-    }        window.addEventListener("load", crearWebsocket, false);
-     </script>     
+        $(function($) {		
+        $('#listCompartirDef').select2({
+        placeholder: 'Nombre de la persona',
+        allowClear: true
+        });		
+        });
+    </script>   
 
     <script>   
         (function() {
-        var bttnNotificacionDefensor = document.getElementById( 'notificacionDefensor' );  
+        var bttnNotificacionDefensor = document.getElementById( 'btnModalAsignar' );  
         bttnNotificacionDefensor.disabled = false;
         bttnNotificacionDefensor.addEventListener( 'click', function() {
         var notification = new NotificationFx({       
@@ -1736,7 +1543,7 @@
         })();
 
         (function() {
-        var bttnNotificacionCompartir = document.getElementById( 'notificacionCompartir' );
+        var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
         bttnNotificacionCompartir.disabled = false;
         bttnNotificacionCompartir.addEventListener( 'click', function() {
         var notification = new NotificationFx({
@@ -1750,9 +1557,45 @@
         });
         notification.show();
         //this.disabled = true;
-        document.getElementById('listCompartir').value = '';
-        document.getElementById('commentCompartir').value = '';
         document.getElementById('myModalCompartir').close();
+        } );
+        })();
+
+        (function() {
+        var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartirDef' );
+        bttnNotificacionCompartir.disabled = false;
+        bttnNotificacionCompartir.addEventListener( 'click', function() {
+        var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+        layout : 'bar',
+        effect : 'exploader',
+        type : 'success',
+        onClose : function() {
+        bttnNotificacionCompartir.disabled = false;
+        }
+        });
+        notification.show();
+        //this.disabled = true;
+        document.getElementById('myModalCompartir').close();
+        } );
+        })();
+
+        (function() {
+        var bttnNotificacionCompartir = document.getElementById( 'btnModalAudiencia' );
+        bttnNotificacionCompartir.disabled = false;
+        bttnNotificacionCompartir.addEventListener( 'click', function() {
+        var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se ha solicitado la audiencia correctamente.</p>',
+        layout : 'bar',
+        effect : 'exploader',
+        type : 'success',
+        onClose : function() {
+        btnModalAudiencia.disabled = false;
+        }
+        });
+        notification.show();
+        //this.disabled = true;
+        document.getElementById('myModalAsignar').close();
         } );
         })();
     </script>

@@ -8,6 +8,13 @@
 
 <html>
     <head>        
+        
+        <style type="text/css">
+            .not-active {
+                cursor: no-drop;
+             }
+         </style> 
+        
         <meta name="layout" content="main"/>
         <title>Bandeja de Entrada</title>
     </head>
@@ -43,11 +50,19 @@
                                     <i class="fa fa-inbox"></i> Menú
                                 </div>
                                 </shiro:hasRole>
+                                <shiro:hasRole name="Ministerio">
+                                <div id="email-header-tools">
+                                                                                                                 
+                                        <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
+                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
+                                        </g:link>                                    
+                                </div>
+                                </shiro:hasRole>
                                 <shiro:hasRole name="CES">
                                 <div id="email-header-tools">
                                                                                                                  
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
-                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA
+                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
                                         </g:link>                                    
                                 </div>
                                 </shiro:hasRole>
@@ -76,81 +91,69 @@
                                         <li class="active">
                                             <a href="#">
                                                 <i class="fa fa-inbox"></i>
-                                                Denuncias/Querellas
+                                                Mis denuncias/querellas
                                                 <span class="label label-primary pull-right">83</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="${request.contextPath}/home/Index_Corroboracion">
                                                 <i class="fa fa-star"></i>
-                                                Carpetas de Corroboracion
+                                                Mis carpetas de corroboración
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-pencil"></i>
-                                                Carpetas de Investigacion
+                                                Mis carpetas de investigación
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-envelope"></i>
-                                                Puestas a Disposicion
+                                                Puestas a disposición
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-clock-o"></i>
                                                 Atención temprana
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa fa-star"></i>
-                                                Seguimiento de audiencias de conciliación
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-clock-o"></i>
-                                                Solicitud de Audiencia
+                                                Solicitud de audiencia
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-arrow-circle-o-up"></i>
                                                 Solicitar defensor público
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa fa-arrow-circle-o-up"></i>
-                                                Solicitar defensor particular
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-play-circle-o"></i>
-                                                Notificar a unidad Justicia Alternativa Restaurativa
+                                                Notificar a unidad justicia alternativa restaurativa
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-play-circle-o"></i>
-                                                Notificar a Unidad de Atención a Víctimas del Delito
+                                                Notificar a unidad de atención a víctimas del delito
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                             <i class="fa fa-exclamation-triangle"></i>
                                                 Mis notificaciones
                                             </a>
@@ -173,20 +176,20 @@
                                         <li class="active">
                                             <a href="#">
                                                 <i class="fa fa-folder-o"></i>
-                                                Denuncias
+                                                Mis denuncias
                                                 <span class="label label-primary pull-right">12</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-link"></i>
-                                                Cadena de custodia
+                                                Mis cadenas de custodia
                                             </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/index_Iph">
                                                 <i class="fa fa-inbox"></i>
-                                                Informes policiales homologados
+                                                Mis informes policiales homologados
                                                     <span class="label label-primary pull-right">8</span>
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
@@ -194,34 +197,28 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa fa-times-circle"></i>
-                                                Detenidos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-inbox"></i>
-                                                Informes policiales
+                                                Mis informes policiales
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-arrow-circle-o-up"></i>
-                                                Solicitar defensor público
+                                                Puestas a disposición
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-play-circle-o"></i>
-                                                Notificar a Unidad de Atención a Víctimas del Delito
+                                                Notificar a unidad de atención a víctimas del delito
                                                 <!--
                                                 <span class="label label-default pull-right">1,292</span>
                                                 -->
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                             <i class="fa fa-exclamation-triangle"></i>
                                                 Mis notificaciones
                                             </a>
@@ -244,30 +241,30 @@
                                         <li class="active">
                                             <a href="#">
                                                 <i class="fa fa-inbox"></i>
-                                                Causas de 1era y 2da Instancia
+                                                Causas de 1era y 2da instancia
                                                 <span class="label label-primary pull-right">20</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-pencil"></i>
                                                 Registro de causas
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-pencil"></i>
                                                 Registro de salas de audiencia
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-arrow-circle-o-up"></i>
                                                 Solicitar defensor público
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-arrow-circle-o-up"></i>
                                                 Solicitar policia procesal
                                             </a>
@@ -279,7 +276,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-envelope-o"></i>
                                                 Resolución de audiencias
                                                 <!--
@@ -288,7 +285,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                             <i class="fa fa-exclamation-triangle"></i>
                                                 Mis notificaciones
                                             </a>
@@ -309,13 +306,13 @@
                                 <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
                                     <ul id="email-nav-items" class="clearfix">
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-flag"></i>
-                                                Solicituar Audiencia
+                                                Solicitar audiencia
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-taxi"></i>
                                                 Solicitar perito
                                             </a>
@@ -328,7 +325,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" class="not-active">
+                                                <i class="fa fa-inbox"></i>
+                                                Solicitudes de defensor
+                                                <span class="label label-default pull-right">1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="not-active">
                                                 <i class="fa fa-exclamation-triangle"></i>
                                                 Mis notificaciones
                                                 <span class="label label-default pull-right">6</span>
@@ -393,7 +397,7 @@
                                             </div>
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
-                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                        <g:each in="${expedientesCreados}" var="expediente" status="i">
                                             <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
                                                 <div class="name">
                                                     ${expediente.numeroExpediente}

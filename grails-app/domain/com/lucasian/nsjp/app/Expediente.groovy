@@ -7,5 +7,7 @@ class Expediente {
     Date dateCreated 
     Date lastUpdated 
     static hasOne = [delito: Delito]
+    static hasMany = [solicitudAudiencia: SolicitudAudiencia]
     String numeroExpediente
+    String createdBy
 }
