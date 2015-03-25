@@ -117,8 +117,9 @@ function closeUploadModal(numeroExpediente) {
 function openCreateFolderModal() {
     $("#createFolderModal").modal('show');
 }
-function closeCreateFolderModal(numeroExpediente) {
-    $.post(contextPath + "/documents/createFolder", {expediente: numeroExpediente, path: $("#ruta").html() + "/" + $("#folderName").val()}, function (result) {
+function closeCreateFolderModal(numeroExpediente){
+    $.post(contextPath + "/documents/createFolder", {expediente: numeroExpediente, path:$("#ruta").html()+"/"+$("#folderName").val()}, function(result){
+        $("#folderName").val('');
         $('#createFolderModal').modal('hide');
         $("#folderName").val('');
         loadExplorer(numeroExpediente, $("#ruta").html());
