@@ -21,23 +21,21 @@
         <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">-->
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
 
         <style type="text/css">
-            #myTab li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab2 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab3 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab4 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
+            #myTab{border-bottom-color: transparent; background-color: white;}
             #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}            
         </style>
-        
+
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
-        
+
         <style type="text/css">
             .not-active {
-                cursor: no-drop;
-             }
-         </style> 
-         
+            cursor: no-drop;
+            }
+        </style> 
+
         <title>Detalles</title>
     </head>
     <body>
@@ -148,13 +146,13 @@
                                             </li>
                                             <li>
                                                 <a href="#" class="not-active">
-                                                <i class="fa fa-exclamation-triangle"></i>
+                                                    <i class="fa fa-exclamation-triangle"></i>
                                                     Mis notificaciones
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#" data-toggle="modal" data-target="#myModal">
-                                                <i class="fa fa-file-word-o"></i>
+                                                    <i class="fa fa-file-word-o"></i>
                                                     Mis plantillas
                                                 </a>
                                             </li>
@@ -184,10 +182,10 @@
                                                 <a href="${request.contextPath}/home/index_Iph">
                                                     <i class="fa fa-inbox"></i>
                                                     Mis informes policiales homologados
-                                                        <span class="label label-primary pull-right">8</span>
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
+                                                    <span class="label label-primary pull-right">8</span>
+                                                <!--
+                                                <span class="label label-default pull-right">1,292</span>
+                                                -->
                                                 </a>
                                             </li>
                                             <li>
@@ -213,13 +211,13 @@
                                             </li>
                                             <li>
                                                 <a href="#" class="not-active">
-                                                <i class="fa fa-exclamation-triangle"></i>
+                                                    <i class="fa fa-exclamation-triangle"></i>
                                                     Mis notificaciones
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                <i class="fa fa-file-word-o"></i>
+                                                    <i class="fa fa-file-word-o"></i>
                                                     Mis plantillas
                                                 </a>
                                             </li>
@@ -350,15 +348,44 @@
                                                 <div class="col-lg-12">
                                                     <div class="main-box clearfix">                                                    
                                                         <div class="main-box-body clearfix">
-                                                            <div class="tabs-wrapper">
-                                                                <ul class="nav nav-tabs nav-justified" id="myTab">
-                                                                    <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                    <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                    <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                                </ul>
+                                                            <div class="tabs-wrapper" style="background-color: white;">
+                                                                <div class="board-inner">
+                                                                    <ul class="nav nav-tabs" id="myTab">
+                                                                        <div class="liner"></div>
+                                                                        <li class="active">
+                                                                            <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                                <span class="round-tabs one">
+                                                                                    <i class="glyphicon glyphicon-fire"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                                <span class="round-tabs two">
+                                                                                    <i class="glyphicon glyphicon-user"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                                <span class="round-tabs three">
+                                                                                    <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                                <span class="round-tabs four">
+                                                                                    <i class="glyphicon glyphicon-hand-right"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>    
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane fade in active" id="tab-delito">
                                                                         <br/>
+                                                                        <h3>Datos del delito</h3>
                                                                         <div class="form-group">
                                                                             <label for="delito">Nombre</label>
                                                                             <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
@@ -374,6 +401,7 @@
                                                                     </div>
                                                                     <div class="tab-pane fade" id="tab-victima">
                                                                         <br/>
+                                                                        <h3>Datos de la víctima</h3>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail1">Nombre </label>
                                                                             <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
@@ -394,9 +422,34 @@
                                                                             <label for="exampleInputEmail1">Escolaridad</label>
                                                                             <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
                                                                         </div>
+                                                                    </div>    
+                                                                    <div class="tab-pane fade" id="tab-denunciante">
+                                                                        <br/>
+                                                                        <h3>Datos del denunciante</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                        </div>
                                                                     </div>                                                                
                                                                     <div class="tab-pane fade" id="tab-responsable">
                                                                         <br/>
+                                                                        <h3>Datos del imputado</h3>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail1">Nombre </label>
                                                                             <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
@@ -446,75 +499,130 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab2">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade in active" id="tab-delito">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="delito">Nombre</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-screenshot"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>    
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade in active" id="tab-delito">
+                                                                        <br/>
+                                                                        <h3>Datos del delito</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="delito">Nombre</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modalidad </label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modus</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modalidad </label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modus</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                    </div>
+                                                                    <div class="tab-pane fade" id="tab-victima">
+                                                                        <br/>
+                                                                        <h3>Datos de la víctima</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>    
+                                                                    <div class="tab-pane fade" id="tab-denunciante">
+                                                                        <br/>
+                                                                        <h3>Datos del denunciante</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>                                                                
+                                                                    <div class="tab-pane fade" id="tab-responsable">
+                                                                        <br/>
+                                                                        <h3>Datos del imputado</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                        </div>
+                                                                    </div>                                                                
                                                                 </div>
-                                                                <div class="tab-pane fade" id="tab-victima">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                    </div>
-                                                                </div>                                                                
-                                                                <div class="tab-pane fade" id="tab-responsable">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                    </div>
-                                                                </div>                                                                
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -538,12 +646,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>            
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                               
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="COA-FG-XX-PGU-2014-PP-1"/>
@@ -581,25 +710,25 @@
                                                                                         </div>
                                                                                     </div>
                                                                                  <!--Fin Modal-->                                                                         
-                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                                    <div class="modal-dialog modal-lg">
-                                                                                        <div class="modal-content" style="width:920px">
-                                                                                            <div class="modal-header" style="width:920px">
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                                            </div>
-                                                                                            <div class="modal-body" style="width:900px; height:520px">
-                                                                                                <div class="embed-responsive embed-responsive-16by9">
-                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                        <div class="modal-dialog modal-lg">
+                                                                                            <div class="modal-content" style="width:920px">
+                                                                                                <div class="modal-header" style="width:920px">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                    <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                                </div>
+                                                                                                <div class="modal-body" style="width:900px; height:520px">
+                                                                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                                                                        <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="modal-footer" style="width:920px">
+                                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="modal-footer" style="width:920px">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                          <!--Fin Modal-->
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                              <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -628,12 +757,12 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-6 dd">
-                                                                                                </br>
+                                                                                            </br>
                                                                                             <div class="videoUiWrapper thumbnail">
-                                                                                              <video width="483" height="282" id="demo1">
-                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
-                                                                                                Your browser does not support the video tag.
-                                                                                              </video>
+                                                                                                <video width="483" height="282" id="demo1">
+                                                                                                    <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                    Your browser does not support the video tag.
+                                                                                                </video>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -669,75 +798,130 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab3">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade in active" id="tab-delito">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="delito">Nombre</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-screenshot"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>    
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade in active" id="tab-delito">
+                                                                        <br/>
+                                                                        <h3>Datos del delito</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="delito">Nombre</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modalidad </label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modus</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modalidad </label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modus</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                    </div>
+                                                                    <div class="tab-pane fade" id="tab-victima">
+                                                                        <br/>
+                                                                        <h3>Datos de la víctima</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>    
+                                                                    <div class="tab-pane fade" id="tab-denunciante">
+                                                                        <br/>
+                                                                        <h3>Datos del denunciante</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>                                                                
+                                                                    <div class="tab-pane fade" id="tab-responsable">
+                                                                        <br/>
+                                                                        <h3>Datos del imputado</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                        </div>
+                                                                    </div>                                                                
                                                                 </div>
-                                                                <div class="tab-pane fade" id="tab-victima">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                    </div>
-                                                                </div>                                                                
-                                                                <div class="tab-pane fade" id="tab-responsable">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                    </div>
-                                                                </div>                                                                
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -764,12 +948,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>                 
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                          
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="COA-FG-XX-PGU-2014-PP-1"/>
@@ -807,25 +1012,25 @@
                                                                                         </div>
                                                                                     </div>
                                                                                  <!--Fin Modal-->                                                                         
-                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                                    <div class="modal-dialog modal-lg">
-                                                                                        <div class="modal-content" style="width:920px">
-                                                                                            <div class="modal-header" style="width:920px">
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                                            </div>
-                                                                                            <div class="modal-body" style="width:900px; height:520px">
-                                                                                                <div class="embed-responsive embed-responsive-16by9">
-                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                        <div class="modal-dialog modal-lg">
+                                                                                            <div class="modal-content" style="width:920px">
+                                                                                                <div class="modal-header" style="width:920px">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                    <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                                </div>
+                                                                                                <div class="modal-body" style="width:900px; height:520px">
+                                                                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                                                                        <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="modal-footer" style="width:920px">
+                                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="modal-footer" style="width:920px">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                          <!--Fin Modal-->
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                              <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -854,12 +1059,12 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-6 dd">
-                                                                                                </br>
+                                                                                            </br>
                                                                                             <div class="videoUiWrapper thumbnail">
-                                                                                              <video width="483" height="282" id="demo1">
-                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
-                                                                                                Your browser does not support the video tag.
-                                                                                              </video>
+                                                                                                <video width="483" height="282" id="demo1">
+                                                                                                    <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                    Your browser does not support the video tag.
+                                                                                                </video>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -895,75 +1100,130 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab4">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade in active" id="tab-delito">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="delito">Nombre</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                            <div class="tabs-wrapper" style="background-color: white;">
+                                                                <div class="board-inner">
+                                                                    <ul class="nav nav-tabs" id="myTab">
+                                                                        <div class="liner"></div>
+                                                                        <li class="active">
+                                                                            <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                                <span class="round-tabs one">
+                                                                                    <i class="glyphicon glyphicon-fire"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                                <span class="round-tabs two">
+                                                                                    <i class="glyphicon glyphicon-user"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                                <span class="round-tabs three">
+                                                                                    <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                                <span class="round-tabs four">
+                                                                                    <i class="glyphicon glyphicon-hand-right"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>    
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade in active" id="tab-delito">
+                                                                        <br/>
+                                                                        <h3>Datos del delito</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="delito">Nombre</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modalidad </label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Modus</label>
+                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modalidad </label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Modus</label>
-                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                    </div>
+                                                                    <div class="tab-pane fade" id="tab-victima">
+                                                                        <br/>
+                                                                        <h3>Datos de la víctima</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>    
+                                                                    <div class="tab-pane fade" id="tab-denunciante">
+                                                                        <br/>
+                                                                        <h3>Datos del denunciante</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                        </div>
+                                                                    </div>                                                                
+                                                                    <div class="tab-pane fade" id="tab-responsable">
+                                                                        <br/>
+                                                                        <h3>Datos del imputado</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                        </div>
+                                                                    </div>                                                                
                                                                 </div>
-                                                                <div class="tab-pane fade" id="tab-victima">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                    </div>
-                                                                </div>                                                                
-                                                                <div class="tab-pane fade" id="tab-responsable">
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Genero </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Estado Civil</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Escolaridad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                    </div>
-                                                                </div>                                                                
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -986,12 +1246,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>          
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                                 
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="COA-FG-XX-PGU-2014-PP-1"/>
@@ -1029,25 +1310,25 @@
                                                                                         </div>
                                                                                     </div>
                                                                                  <!--Fin Modal-->                                                                         
-                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                                    <div class="modal-dialog modal-lg">
-                                                                                        <div class="modal-content" style="width:920px">
-                                                                                            <div class="modal-header" style="width:920px">
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                                            </div>
-                                                                                            <div class="modal-body" style="width:900px; height:520px">
-                                                                                                <div class="embed-responsive embed-responsive-16by9">
-                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                        <div class="modal-dialog modal-lg">
+                                                                                            <div class="modal-content" style="width:920px">
+                                                                                                <div class="modal-header" style="width:920px">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                    <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                                </div>
+                                                                                                <div class="modal-body" style="width:900px; height:520px">
+                                                                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                                                                        <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="modal-footer" style="width:920px">
+                                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="modal-footer" style="width:920px">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                          <!--Fin Modal-->
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                              <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -1076,12 +1357,12 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-6 dd">
-                                                                                                </br>
+                                                                                            </br>
                                                                                             <div class="videoUiWrapper thumbnail">
-                                                                                              <video width="483" height="282" id="demo1">
-                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
-                                                                                                Your browser does not support the video tag.
-                                                                                              </video>
+                                                                                                <video width="483" height="282" id="demo1">
+                                                                                                    <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                    Your browser does not support the video tag.
+                                                                                                </video>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1091,15 +1372,15 @@
                                                                     </div>
                                                                 </div>
                                                             </div>   
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </div>                                                                                                                        
                                             </div>                                                                                                                        
-                                        </div>                                                                                                                        
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);"></div>
-                                </div>
-                            </div>     
+                                    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);"></div>
+                                    </div>
+                                </div>     
                         </shiro:hasRole>
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -1262,173 +1543,173 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
 
 <!--<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>-->
-        <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
-        <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
-        <!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
+    <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
+    <!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
 
-        <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
+    <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
-        <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
 
-         
 
-        <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
-        
-        <script type="text/javascript">
-            $('#demo1').videoUI({
-              'autoHide':false
-            });
-        </script>
 
-        <script type="text/javascript">
-            $('a.media').media({width:500, height:400});
-        </script> 
+    <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
+        $('#demo1').videoUI({
+        'autoHide':false
+        });
+    </script>
 
-            $(document).ready(function() {
+    <script type="text/javascript">
+        $('a.media').media({width:500, height:400});
+    </script> 
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
 		$('#email-list li > .star > a').on('click', function() {
-            $(this).toggleClass('starred');
-            });
+        $(this).toggleClass('starred');
+        });
 
-            $(".has-tooltip").each(function (index, el) {
-            $(el).tooltip({
-            placement: $(this).data("placement") || 'bottom'
-            });
-            });
+        $(".has-tooltip").each(function (index, el) {
+        $(el).tooltip({
+        placement: $(this).data("placement") || 'bottom'
+        });
+        });
 
-            setHeightEmailContent();
+        setHeightEmailContent();
 
-            initEmailScroller();
-            });
+        initEmailScroller();
+        });
 
-            $(window).smartresize(function(){
-            setHeightEmailContent();
+        $(window).smartresize(function(){
+        setHeightEmailContent();
 
-            initEmailScroller();
-            });
+        initEmailScroller();
+        });
 
-            function setHeightEmailContent() {
+        function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
-            var windowHeight = $(window).height();
-            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+        var windowHeight = $(window).height();
+        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-            $('#email-detail').css('height', windowHeight - staticContentH);
-            }
-            else {
-            $('#email-detail').css('height', '');
-            }
-            }
+        $('#email-detail').css('height', windowHeight - staticContentH);
+        }
+        else {
+        $('#email-detail').css('height', '');
+        }
+        }
 
-            function initEmailScroller() {
+        function initEmailScroller() {
 		if ($( document ).width() >= 992) {
-            $('#email-navigation').nanoScroller({
-            alwaysVisible: false,
-            iOSNativeScrolling: false,
-            preventPageScrolling: true,
-            contentClass: 'email-nav-nano-content'
-            });
+        $('#email-navigation').nanoScroller({
+        alwaysVisible: false,
+        iOSNativeScrolling: false,
+        preventPageScrolling: true,
+        contentClass: 'email-nav-nano-content'
+        });
 
-            $('#email-detail').nanoScroller({
-            alwaysVisible: false,
-            iOSNativeScrolling: false,
-            preventPageScrolling: true,
-            contentClass: 'email-detail-nano-content'
-            });
-            }
-            }
-        </script> 
-        <script>
-            $(document).ready(function() {
+        $('#email-detail').nanoScroller({
+        alwaysVisible: false,
+        iOSNativeScrolling: false,
+        preventPageScrolling: true,
+        contentClass: 'email-detail-nano-content'
+        });
+        }
+        }
+    </script> 
+    <script>
+        $(document).ready(function() {
 
-            // activate Nestable for list 1
-            $('.nestable').nestable({
-            group: 1
-            });
+        // activate Nestable for list 1
+        $('.nestable').nestable({
+        group: 1
+        });
 
 
-            // output initial serialised data
-            $('#nestable-menu').on('click', function(e){
-            var target = $(e.target),
-            action = target.data('action');
-            if (action === 'expand-all') {
-            $('.dd').nestable('expandAll');
-            }
-            if (action === 'collapse-all') {
-            $('.dd').nestable('collapseAll');
-            }
-            });
-            });
-        </script>
-        <script> 
-            function aceptarCaso() { 
-            document.getElementById('div_archivos').style.display='block';
-            document.getElementById('div_aceptar_rechazar').style.display='none';
-            } 
-        </script>
-        <script type="text/javascript">
-            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-            if (isCaseSensitive)
-            str = str.toLowerCase();
+        // output initial serialised data
+        $('#nestable-menu').on('click', function(e){
+        var target = $(e.target),
+        action = target.data('action');
+        if (action === 'expand-all') {
+        $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+        $('.dd').nestable('collapseAll');
+        }
+        });
+        });
+    </script>
+    <script> 
+        function aceptarCaso() { 
+        document.getElementById('div_archivos').style.display='block';
+        document.getElementById('div_aceptar_rechazar').style.display='none';
+        } 
+    </script>
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-            var $el = $(selectionEl);
-            if (!$el.data("options")) {
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-            $el.data("options", $el.find("option").clone());
-            }
-            var newOptions = $el.data("options").filter(function () {
-            var text = $(this).text();
-            if (isCaseSensitive)
-            text = text.toLowerCase();
-            return text.match(str);
-            });
-            $el.empty().append(newOptions);
-            };
-
-            $("#SearchBox").on("keyup", function () {
-            var userInput = $("#SearchBox").val();
-            showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
-            });
-        </script>  
-
-        <script type="text/javascript">
-            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-            if (isCaseSensitive)
-            str = str.toLowerCase();
-    // cache the jQuery object of the <select> element
-            var $el = $(selectionEl);
-            if (!$el.data("options")) {
-        // cache all the options inside the <select> element for easy recover
-            $el.data("options", $el.find("option").clone());
-            }
-            var newOptions = $el.data("options").filter(function () {
-            var text = $(this).text();
-            if (isCaseSensitive)
-            text = text.toLowerCase();
-            return text.match(str);
-            });
-            $el.empty().append(newOptions);
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
         };
-        
+
+        $("#SearchBox").on("keyup", function () {
+        var userInput = $("#SearchBox").val();
+        showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+        });
+    </script>  
+
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
+    // cache the jQuery object of the <select> element
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
+        // cache all the options inside the <select> element for easy recover
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
+        };
+
         $("#SearchCompartir").on("keyup", function () {
         var userInput = $("#SearchCompartir").val();
         showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
@@ -1491,7 +1772,7 @@
         }
         });
         notification.show();
-                        //this.disabled = true;
+        //this.disabled = true;
         document.getElementById( 'myModalDefensor' ).close();
         } );
         })();
@@ -1554,6 +1835,11 @@
         document.getElementById('divImagenes').style.display='none';
         }
     </script>
+    <script>
+        $(function(){
+        $('a[title]').tooltip();
+        });
+    </script>
 
-  </body>
+</body>
 </html>

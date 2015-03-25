@@ -21,13 +21,11 @@
         <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">-->
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
 
         <style type="text/css">
-            #myTab li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab2 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab3 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTab4 li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}            
+            #myTab{border-bottom-color: transparent; background-color: white;}
+            #myTabArchivos{border-bottom-color: transparent; background-color: white;}            
         </style>
         
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
@@ -357,15 +355,44 @@
                                                 <div class="col-lg-12">
                                                     <div class="main-box clearfix">                                                    
                                                         <div class="main-box-body clearfix">
-                                                            <div class="tabs-wrapper">
-                                                                <ul class="nav nav-tabs nav-justified" id="myTab">
-                                                                    <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                    <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                    <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                                </ul>
+                                                            <div class="tabs-wrapper" style="background-color: white;">
+                                                                <div class="board-inner">
+                                                                    <ul class="nav nav-tabs" id="myTab">
+                                                                        <div class="liner"></div>
+                                                                        <li class="active">
+                                                                            <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                                <span class="round-tabs one">
+                                                                                    <i class="glyphicon glyphicon-fire"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                                <span class="round-tabs two">
+                                                                                    <i class="glyphicon glyphicon-user"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                                <span class="round-tabs three">
+                                                                                    <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                                <span class="round-tabs four">
+                                                                                    <i class="glyphicon glyphicon-hand-right"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane fade in active" id="tab-delito">
                                                                         <br/>
+                                                                        <h3>Datos del delito</h3>
                                                                         <div class="form-group">
                                                                             <label for="delito">Nombre</label>
                                                                             <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
@@ -381,6 +408,7 @@
                                                                     </div>
                                                                     <div class="tab-pane fade" id="tab-victima">
                                                                         <br/>
+                                                                        <h3>Datos de la víctima</h3>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail1">Nombre </label>
                                                                             <input disabled="" type="text" class="form-control" name="victima.nombre" value="${expediente.delito.victima.nombre}">
@@ -401,9 +429,34 @@
                                                                             <label for="exampleInputEmail1">Escolaridad</label>
                                                                             <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="${expediente.delito.victima.escolaridad}">
                                                                         </div>
-                                                                    </div>                                                                
+                                                                    </div> 
+                                                                    <div class="tab-pane fade" id="tab-denunciante">
+                                                                        <br/>
+                                                                        <h3>Datos del denunciante</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="${expediente.delito.denunciante.nombre}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Genero </label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="${expediente.delito.denunciante.genero}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="${expediente.delito.denunciante.edad}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="${expediente.delito.denunciante.estadoCivil}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="${expediente.delito.denunciante.escolaridad}">
+                                                                        </div>
+                                                                    </div>                                                                    
                                                                     <div class="tab-pane fade" id="tab-responsable">
                                                                         <br/>
+                                                                        <h3>Datos del imputado</h3>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail1">Nombre </label>
                                                                             <input disabled="" type="text" class="form-control" name="imputado.nombre" value="${expediente.delito.imputado.nombre}">
@@ -452,15 +505,44 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab2">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-fire"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                             <div class="tab-content">
                                                                 <div class="tab-pane fade in active" id="tab-delito">
                                                                     <br/>
+                                                                    <h3>Datos del delito</h3>
                                                                     <div class="form-group">
                                                                         <label for="delito">Nombre</label>
                                                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
@@ -476,6 +558,7 @@
                                                                 </div>
                                                                 <div class="tab-pane fade" id="tab-victima">
                                                                     <br/>
+                                                                    <h3>Datos de la víctima</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.nombre" value="${expediente.delito.victima.nombre}">
@@ -496,9 +579,34 @@
                                                                         <label for="exampleInputEmail1">Escolaridad</label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="${expediente.delito.victima.escolaridad}">
                                                                     </div>
-                                                                </div>                                                                
+                                                                </div>  
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="${expediente.delito.denunciante.nombre}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="${expediente.delito.denunciante.genero}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="${expediente.delito.denunciante.edad}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="${expediente.delito.denunciante.estadoCivil}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="${expediente.delito.denunciante.escolaridad}">
+                                                                    </div>
+                                                                </div>                                                                          
                                                                 <div class="tab-pane fade" id="tab-responsable">
                                                                     <br/>
+                                                                    <h3>Datos del imputado</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="imputado.nombre" value="${expediente.delito.imputado.nombre}">
@@ -547,12 +655,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>            
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                               
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
@@ -678,15 +807,44 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab3">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-fire"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                             <div class="tab-content">
                                                                 <div class="tab-pane fade in active" id="tab-delito">
                                                                     <br/>
+                                                                    <h3>Datos del delito</h3>
                                                                     <div class="form-group">
                                                                         <label for="delito">Nombre</label>
                                                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
@@ -702,6 +860,7 @@
                                                                 </div>
                                                                 <div class="tab-pane fade" id="tab-victima">
                                                                     <br/>
+                                                                    <h3>Datos de la víctima</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.nombre" value="${expediente.delito.victima.nombre}">
@@ -722,9 +881,34 @@
                                                                         <label for="exampleInputEmail1">Escolaridad</label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="${expediente.delito.victima.escolaridad}">
                                                                     </div>
-                                                                </div>                                                                
+                                                                </div>   
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="${expediente.delito.denunciante.nombre}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="${expediente.delito.denunciante.genero}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="${expediente.delito.denunciante.edad}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="${expediente.delito.denunciante.estadoCivil}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="${expediente.delito.denunciante.escolaridad}">
+                                                                    </div>
+                                                                </div>                                                                         
                                                                 <div class="tab-pane fade" id="tab-responsable">
                                                                     <br/>
+                                                                    <h3>Datos del imputado</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="imputado.nombre" value="${expediente.delito.imputado.nombre}">
@@ -773,12 +957,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>                 
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                          
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
@@ -904,15 +1109,44 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified"  id="myTab4">
-                                                                <li class="active"><a href="#tab-delito" data-toggle="tab">Delito</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Presunto Responsable</a></li>                                                               
-                                                            </ul>
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-fire"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                             <div class="tab-content">
                                                                 <div class="tab-pane fade in active" id="tab-delito">
                                                                     <br/>
+                                                                    <h3>Datos del delito</h3>
                                                                     <div class="form-group">
                                                                         <label for="delito">Nombre</label>
                                                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
@@ -928,6 +1162,7 @@
                                                                 </div>
                                                                 <div class="tab-pane fade" id="tab-victima">
                                                                     <br/>
+                                                                    <h3>Datos de la víctima</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.nombre" value="${expediente.delito.victima.nombre}">
@@ -948,9 +1183,34 @@
                                                                         <label for="exampleInputEmail1">Escolaridad</label>
                                                                         <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="${expediente.delito.victima.escolaridad}">
                                                                     </div>
-                                                                </div>                                                                
+                                                                </div>   
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="${expediente.delito.denunciante.nombre}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="${expediente.delito.denunciante.genero}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="${expediente.delito.denunciante.edad}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="${expediente.delito.denunciante.estadoCivil}">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="${expediente.delito.denunciante.escolaridad}">
+                                                                    </div>
+                                                                </div>                                                                         
                                                                 <div class="tab-pane fade" id="tab-responsable">
                                                                     <br/>
+                                                                    <h3>Datos del imputado</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre </label>
                                                                         <input disabled="" type="text" class="form-control" name="imputado.nombre" value="${expediente.delito.imputado.nombre}">
@@ -995,12 +1255,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>          
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                                 
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
@@ -1618,6 +1899,11 @@
         document.getElementById('divVideos').style.display='none';
         document.getElementById('divImagenes').style.display='none';
         }
+    </script>
+    <script>
+        $(function(){
+        $('a[title]').tooltip();
+        });
     </script>
 
   </body>

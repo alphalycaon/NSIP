@@ -21,11 +21,12 @@
         <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">-->
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
-        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
+
         <style type="text/css">
-            #myTab li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-            #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}
-        </style>  
+            #myTab{border-bottom-color: transparent; background-color: white;}
+            #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}            
+        </style>
         
         <!--<link href="${resource(dir: 'centaurus/assets/bootstrap/css/', file: 'bootstrap.min.css')}" rel="stylesheet">-->
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
@@ -155,15 +156,37 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper">
-                                                            <ul class="nav nav-tabs nav-justified" id="myTab">
-                                                                <li class="active"><a href="#tab-general" data-toggle="tab">Datos Generales</a></li>
-                                                                <li><a href="#tab-victima" data-toggle="tab">Victima</a></li>                                                               
-                                                                <li><a href="#tab-responsable" data-toggle="tab">Probable Responsable</a></li>                                                               
-                                                            </ul>
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs2" id="myTab">
+                                                                    <div class="liner2"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-general" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-fire"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                             <div class="tab-content">
                                                                 <div class="tab-pane fade in active" id="tab-general">
                                                                     <br/>
+                                                                    <h3>Datos del IPH</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Fecha del evento</label>
                                                                         <input disabled="" type="text" class="form-control" name="datosIph.fechaEvento" value="${expedienteIph.iph.datosIph.fechaEvento}">
@@ -191,6 +214,7 @@
                                                                 </div>
                                                                 <div class="tab-pane fade" id="tab-victima">
                                                                     <br/>
+                                                                    <h3>Datos de la víctima</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre(s) </label>
                                                                         <input disabled="" type="text" class="form-control" name="victimaIph.nombre" value="${expedienteIph.iph.victimaIph.nombre}">
@@ -214,6 +238,7 @@
                                                                 </div>                                                                
                                                                 <div class="tab-pane fade" id="tab-responsable">
                                                                     <br/>
+                                                                    <h3>Datos del responsable</h3>
                                                                     <div class="form-group">
                                                                         <label for="exampleInputEmail1">Nombre(s) </label>
                                                                         <input disabled="" type="text" class="form-control" name="imputadoIph.nombre" value="${expedienteIph.iph.imputadoIph.nombre}">
@@ -256,12 +281,33 @@
                                                             <div class="col-lg-12" >                                                                
                                                                 <div class="main-box clearfix">                                                    
                                                                     <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper">
-                                                                            <ul class="nav nav-tabs nav-justified"  id="myTabArchivos">
-                                                                                <li class="active"><a href="#tab-archivos" data-toggle="tab">Archivos</a></li>
-                                                                                <li><a href="#tab-imagenes" data-toggle="tab">Imágenes</a></li>            
-                                                                                <li><a href="#tab-videos" data-toggle="tab">Videos</a></li>                                                         
-                                                                            </ul>
+                                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                                            <div class="board-inner">
+                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                    <div class="liner2"></div>
+                                                                                    <li class="active">
+                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                            <span class="round-tabs five">
+                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                            <span class="round-tabs six">
+                                                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                            <span class="round-tabs seven">
+                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                            </span> 
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade in active" id="tab-archivos">
                                                                                     <doc:explorerAndUpload numeroExpediente="${expedienteIph.numeroIph}"/>

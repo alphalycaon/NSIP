@@ -53,7 +53,7 @@
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />
-        
+
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
@@ -61,7 +61,7 @@
         <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
         <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
-        
+
         <script type="text/javascript">
             var contextPath = '${request.contextPath}';
             /* <![CDATA[ */
@@ -112,64 +112,66 @@
             })(window);
             /* ]]> */
         </script>
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
-                // Multiple DataSet
+            // Multiple DataSet
 
-                $('input.countries-cities').typeahead([
-                    {
-                        name: 'Imputados',
-                        local: ["Carlos Navarrete del Bosque", "Dante Astudillo"],
+            $('input.countries-cities').typeahead([
+            {
+            name: 'Imputados',
+            local: ["Carlos Navarrete del Bosque", "Dante Astudillo"],
                         header: '<h6>Imputados</h6>'
 
-                    },
-                    {
-                        name: 'Delitos',
-                        local: ["Violación", "Acoso sexual", "Asalto", "extorción", "Delincuencia organizada","Robo", "Robo a mano armada", "Robo con violencia", "Narcomenudeo", "Secuestro"],
+            },
+            {
+            name: 'Delitos',
+            local: ["Violación", "Acoso sexual", "Asalto", "extorción", "Delincuencia organizada","Robo", "Robo a mano armada", "Robo con violencia", "Narcomenudeo", "Secuestro"],
                         header: '<h6>Delitos</h6>'
 
-                    },
-                                    {
-                        name: 'Victimas',
-                        local: ["Yoselin  Sanchez", "Francisco Vazquez "],
+            },
+            {
+            name: 'Victimas',
+            local: ["Yoselin  Sanchez", "Francisco Vazquez"],
                         header: '<h6>Victimas</h6>'
 
-                    },
-                                    {
-                        name: 'Audiencias',
-                        local: ["Audiencia oral", "Audencia escrita", "Audencia Presencial", ],
+            },
+            {
+            name: 'Audiencias',
+            local: ["Audiencia oral", "Audencia escrita", "Audencia Presencial"],
                         header: '<h6>Audiencias</h6>'
 
-                    }
+            }
 
 
-                ]);            
+            ]);            
             });
         </script>
-        
+
         <style>
             h6 {
-              margin: 0 0 10px 0;
-              color: #fff;
-              background-color: #B60808;              
-              font-size: 14px;
-              font-weight: bold;
+            margin: 0 0 10px 0;
+            color: #fff;
+            background-color: #B60808;              
+            font-size: 14px;
+            font-weight: bold;
             }
-            
+
             #buscar {
-                font-family: Tahoma, Verdana, Arial;
-                font-size: 14px;
-                background-color: #FFFFFF;
-                border:6px solid #FFFFFF;
-                border-radius: none;
+            font-family: Tahoma, Verdana, Arial;
+            font-size: 14px;
+            background-color: #FFFFFF;
+            border:6px solid #FFFFFF;
+            border-radius: none;
+            z-index: -1;
             }
-            
+
             #buscar:focus {
-                font-family: Tahoma, Verdana, Arial;
-                font-size: 14px;
-                background-color: #FFFFFF;
-                border:6px solid #FFFFFF;
+            font-family: Tahoma, Verdana, Arial;
+            font-size: 14px;
+            background-color: #FFFFFF;
+            border:6px solid #FFFFFF;
+            z-index: -1;
             }
         </style>
     </head>
@@ -191,55 +193,54 @@
                             <g:form name="buscarForm" controller="Busqueda" action="index" class="form-inline" role="form">                                                                                
                                 <ul class="nav navbar-nav pull-left">
                                     <li style="margin-top: 7px;"> 
-
-                                        <input type="text" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
+                                        <input type="text" style="z-index: 1;" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
                                         <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
-                                            <i class="fa fa-search" style="margin-right: 5px;"></i> <strong>Buscar</strong>
+                                            <i class="fa fa-search" style="margin-right: 5px;z-index: -1;"></i> <strong>Buscar</strong>
                                         </a>
                                     </li>
                                 </ul>
                             </g:form>  
                         </div>   
                         <shiro:hasRole name="Juez">
-                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                            <ul class="nav navbar-nav pull-left">
-                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                    <strong>Procuraduría general</strong>
-                                </p>
-                            </ul>                                    
-                        </div>
+                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                        <strong>Procuraduría general</strong>
+                                    </p>
+                                </ul>                                    
+                            </div>
                         </shiro:hasRole>   
                         <shiro:hasRole name="CES">
-                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                            <ul class="nav navbar-nav pull-left">
-                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                    <strong>Seguridad pública</strong>
-                                </p>
-                            </ul>                                    
-                        </div>
+                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                        <strong>Seguridad pública</strong>
+                                    </p>
+                                </ul>                                    
+                            </div>
                         </shiro:hasRole>   
                         <shiro:hasRole name="Ministerio">
-                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                            <ul class="nav navbar-nav pull-left">
-                                <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                    <strong>Ministerio público</strong>
-                                </p>
-                            </ul>                                    
-                        </div>
+                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                        <strong>Ministerio público</strong>
+                                    </p>
+                                </ul>                                    
+                            </div>
                         </shiro:hasRole>   
                         <shiro:hasRole name="Defensor">
-                        <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                            <ul class="nav navbar-nav pull-left">
-                                <p style="margin-left: 200px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                    <strong>Defensoría</strong>
-                                </p>
-                            </ul>                                    
-                        </div>
+                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <p style="margin-left: 200px; font-size: 18px; margin-top: 12px; color: #ffffff">
+                                        <strong>Defensoría</strong>
+                                    </p>
+                                </ul>                                    
+                            </div>
                         </shiro:hasRole> 
                         <div class="nav-no-collapse pull-right" id="header-nav">
-                            <ul class="nav navbar-nav pull-right">                                
+                            <ul class="nav navbar-nav pull-right"> 
                                 <li class="dropdown hidden-xs">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-warning"></i>
@@ -409,7 +410,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
     <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
-    
+
     <script type="text/javascript">
         $(document).ready(function() {
         $('.autocomplete').typeahead({
