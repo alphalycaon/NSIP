@@ -5,13 +5,57 @@ import org.apache.commons.io.FileUtils
 class DocumentsController {
     def documentService
     def grailsApplication
-    def items(){
-        params.numeroExpediente
-        render documentService.getFiles(params.numeroExpediente, params.path) as JSON
+    
+        
+    def iconMap = [
+        "image/jpeg":"fa-file-image-o",
+        "image/png": "fa-file-image-o",
+        "application/pdf": "fa-file-pdf-o",
+        "application/msword": "fa-file-word-o",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "fa-file-word-o",
+        "application/vnd.ms-excel": "fa-file-excel-o",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":"fa-file-excel-o",
+        "folder": "fa-folder-o"
+    ]
+    def defaultIcon = "fa-file-o"
+    def items(){      
+        def results = documentService.getFiles(params.numeroExpediente, params.path)
+        results.items.each{
+            if(iconMap[it.mime]){
+                it.icon = iconMap[it.mime]
+            }else{
+                it.icon = defaultIcon
+            }            
+        }
+        render results as JSON
+    }
+    
+    def search(){
+        def filters = [:]
+        if(params.tipo){
+            filters["tipo"] = params.tipo
+        }
+        if(params.tag){
+            filters["tag"] = params.tag
+        }
+        def results = documentService.search(params.numeroExpediente, filters)
+        results.items.each{
+            if(iconMap[it.mime]){
+                it.icon = iconMap[it.mime]
+            }else{
+                it.icon = defaultIcon
+            }            
+        }
+        render results as JSON
     }
     def file(){
         def file = documentService.getFile(params.numeroExpediente, params.path)
-        render file: file.stream, contentType: file.mime
+        if(file){
+            render file: file.stream, contentType: file.mime
+        }else{
+            render(status: 404, text: 'not found')
+        }
+        
     }
     def upload(FileUploadCommand command){
         if(!command.file.empty){         
@@ -40,13 +84,15 @@ class DocumentsController {
             RepositoryCommand document = new RepositoryCommand(
                 ruta : id,
                 nombre : command.file.originalFilename,
-                mime: command.file.getContentType()
+                mime: command.file.getContentType()                
             )
+            if(command.tags){
+                document.propiedades = ["nsip:tags":command.tags]
+            }
             pendingFiles << document
             println("params.id:;"+id)
             println(pendingFiles)
-            session["pendingFiles"]= pendingFiles
-                
+            session["pendingFiles"]= pendingFiles                
             command.file.transferTo(archivo)            
         }
         render ""
