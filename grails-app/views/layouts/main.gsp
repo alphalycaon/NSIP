@@ -54,7 +54,7 @@
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />
 
-        <!--script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script-->
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>-->
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
@@ -193,7 +193,7 @@
                             <g:form name="buscarForm" controller="Busqueda" action="index" class="form-inline" role="form">                                                                                
                                 <ul class="nav navbar-nav pull-left">
                                     <li style="margin-top: 7px;"> 
-                                        <input type="text" style="z-index: 1;" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
+                                        <input type="text" style="z-index: 1;width: 197px;" class="typeahead countries-cities" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
                                         <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
@@ -308,7 +308,7 @@
                                 <li class="dropdown profile-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="${resource(dir: 'centaurus/img/samples', file: 'user.png')}" alt=""/>
-                                        <span class="hidden-xs"><shiro:principal/></span> <b class="caret"></b>
+                                        <span class="hidden-xs"><user:loggedInUser property="username"/></span> <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#"><i class="fa fa-user"></i>Perfil</a></li>
@@ -399,7 +399,7 @@
 
     <r:layoutResources />
     <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}/"></script>  
-    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>   
 
 
     <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>

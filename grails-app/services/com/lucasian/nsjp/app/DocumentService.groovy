@@ -8,15 +8,16 @@ class DocumentService {
     private static final String expedienteRoot = "/expedientes/"
     
     private static final List<String> defaultStrucuture = [
-        "/fotografias",
-        "/media filiacion",
-        "/documentos",
-        "/oficios/"
+        "/Material fotografico",
+        "/Material documental",
+        "/Documento de Denuncia",
+        "/Otros"
     ]
     private static final List<String> defaultStrucutureIph = [
-        "/evidencia",
-        "/documentoIph",
-        "/oficios/"
+        "/Material fotografico",
+        "/Material documental",
+        "/Documento IPH",
+        "/Otros"
     ]
     
     def typeQueries = [

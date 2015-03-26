@@ -116,7 +116,7 @@
 
         </style>
         
-        <title>Generar denuncia</title>
+        <title>Generar Denuncia/Querella</title>
 		
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
@@ -133,9 +133,9 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li><a href="${request.contextPath}">Home</a></li>
-                            <li class="active"><span>Denuncia</span></li>
+                            <li class="active"><span>Denuncia/Querella</span></li>
                         </ol>
-                        <h1>Generar Denuncia</h1>
+                        <h1>Generar Denuncia/Querella</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -150,7 +150,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Cancelar Registro de Denuncia</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Cancelar Registro de Denuncia/Querella</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div>
@@ -175,7 +175,7 @@
                                             <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                             <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
                                             <li data-target="#step4"><span class="badge">4</span>Presunto Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia<span class="chevron"></span></li>
+                                            <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia/Querella<span class="chevron"></span></li>
                                             <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
@@ -286,16 +286,16 @@
                                             </div>
                                             <div class="step-pane" id="step5">
                                                 <br/>
-                                                <h4>5.- Datos de la Denuncia</h4>
+                                                <h4>5.- Datos de la Denuncia/Querella</h4>
                                                 <div class="form-group">
-                                                    <label for="expediente">Número de denuncia</label>
+                                                    <label for="expediente">Número de Denuncia/Querella</label>
                                                     <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
                                                     </br>
-                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
+                                                    <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de Denuncia/Querella" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">IPH de la denuncia</label>
+                                                    <label for="exampleInputEmail1">IPH de la Denuncia/Querella</label>
                                                     <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required>
                                                     </br>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>

@@ -639,7 +639,7 @@
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
                                                         </br>
                                                         </br>
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Carpeta de investigación</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -941,7 +941,7 @@
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Expediente</button>
                                                         </br>
                                                         </br>
-                                                        <h2>Archivos</h2>
+                                                        <h3>Archivos</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -1233,13 +1233,10 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>
-                                                        </br>
-                                                        </br>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
                                                         </br>
                                                         </br>
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Carpeta de investigación</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            

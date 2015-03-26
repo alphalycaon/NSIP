@@ -642,13 +642,13 @@
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
                                                         </br>
                                                         </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>
                                                         </br>
                                                         </br>                                                        
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>
                                                         </br>
                                                         </br>
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Carpeta de investigación</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -687,57 +687,7 @@
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <div class="wrapper" id="divImagenes">            
-                                                                                        <div class="connected-carousels">                                                                    
-                                                                                            <div class="stage" style="width:500px; height:300px">
-                                                                                                <div class="carousel carousel-stage">
-                                                                                                    <ul>                                                                                       
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
-                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
-                                                                                            </div>
-                                                                                            <div class="navigation">
-                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
-                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
-                                                                                                <div class="carousel carousel-navigation">
-                                                                                                    <ul>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                    </ul>                                                                                   
-                                                                                                </div>  
-                                                                                            </div>
-                                                                                            <div>
-                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
-                                                                                            </div>  
-                                                                                        </div>
-                                                                                    </div>
-                                                                                 <!--Fin Modal-->                                                                         
-                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                                    <div class="modal-dialog modal-lg">
-                                                                                        <div class="modal-content" style="width:920px">
-                                                                                            <div class="modal-header" style="width:920px">
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                                            </div>
-                                                                                            <div class="modal-body" style="width:900px; height:520px">
-                                                                                                <div class="embed-responsive embed-responsive-16by9">
-                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="modal-footer" style="width:920px">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                          <!--Fin Modal-->
+                                                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -947,10 +897,10 @@
                                                     <header class="main-box-header clearfix">
                                                         </br>
                                                         </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Expediente</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Documento</button>
                                                         </br>
                                                         </br>
-                                                        <h2>Archivos</h2>
+                                                        <h3>Archivos</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -989,57 +939,7 @@
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <div class="wrapper" id="divImagenes">            
-                                                                                        <div class="connected-carousels">                                                                    
-                                                                                            <div class="stage" style="width:500px; height:300px">
-                                                                                                <div class="carousel carousel-stage">
-                                                                                                    <ul>                                                                                       
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
-                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
-                                                                                            </div>
-                                                                                            <div class="navigation">
-                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
-                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
-                                                                                                <div class="carousel carousel-navigation">
-                                                                                                    <ul>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
-                                                                                                    </ul>                                                                                   
-                                                                                                </div>  
-                                                                                            </div>
-                                                                                            <div>
-                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
-                                                                                            </div>  
-                                                                                        </div>
-                                                                                    </div>
-                                                                                 <!--Fin Modal-->                                                                         
-                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                                                                                    <div class="modal-dialog modal-lg">
-                                                                                        <div class="modal-content" style="width:920px">
-                                                                                            <div class="modal-header" style="width:920px">
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                                                                            </div>
-                                                                                            <div class="modal-body" style="width:900px; height:520px">
-                                                                                                <div class="embed-responsive embed-responsive-16by9">
-                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="modal-footer" style="width:920px">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                          <!--Fin Modal-->
+                                                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -1242,13 +1142,10 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>
                                                         </br>
                                                         </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
-                                                        </br>
-                                                        </br>
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Carpeta de investigación</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -1430,7 +1327,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Compartir Expediente</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form">
@@ -1467,7 +1364,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Compartir Expediente</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form">
@@ -1541,7 +1438,7 @@
         </div>
      </div>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>-->
 
         <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
