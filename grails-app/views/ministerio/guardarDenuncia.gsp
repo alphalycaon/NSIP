@@ -15,6 +15,7 @@
     <body>
         <div class="row">
             <div class="col-lg-12">
+                <div id="email-detail" class="email-detail-nano" style="height: 627px;">
                 <div class="row">
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
@@ -34,6 +35,7 @@
 
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </body>

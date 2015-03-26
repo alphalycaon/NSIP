@@ -11,12 +11,12 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-attached.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-other.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-theme.css')}"/>
-        
-        <!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.4/themes/default/style.min.css">-->
-        
+
+<!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.4/themes/default/style.min.css">-->
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jcarousel.connected-carousels.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/>
-        
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
         <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">-->
 
@@ -27,16 +27,16 @@
             #myTab{border-bottom-color: transparent; background-color: white;}
             #myTabArchivos li.active a {border-bottom-color: transparent; background-color: #E33C3C; color: white;}            
         </style>
-        
-        <!--<link href="${resource(dir: 'centaurus/assets/bootstrap/css/', file: 'bootstrap.min.css')}" rel="stylesheet">-->
+
+<!--<link href="${resource(dir: 'centaurus/assets/bootstrap/css/', file: 'bootstrap.min.css')}" rel="stylesheet">-->
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
-        
+
         <style type="text/css">
             .not-active {
-                cursor: no-drop;
-             }
-         </style> 
-          
+            cursor: no-drop;
+            }
+        </style> 
+
         <title>Detalles</title>
     </head>
     <body>
@@ -76,278 +76,263 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                        <shiro:hasRole name="CES">   
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="${request.contextPath}">
-                                                <i class="fa fa-folder-o"></i>
-                                                Mis denuncias
-                                                <span class="label label-primary pull-right">12</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-link"></i>
-                                                Mis cadenas de custodia
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="${request.contextPath}/home/index_Iph">
-                                                <i class="fa fa-inbox"></i>
-                                                Mis informes policiales homologados
-                                                    <span class="label label-primary pull-right">8</span>
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-inbox"></i>
-                                                Mis informes policiales
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-arrow-circle-o-up"></i>
-                                                Puestas a disposición
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-play-circle-o"></i>
-                                                Notificar a unidad de atención a víctimas del delito
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                            <i class="fa fa-exclamation-triangle"></i>
-                                                Mis notificaciones
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Mis plantillas
-                                            </a>
-                                        </li>
-                                    </ul>                                    
-                                </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                            </div>
-                        </shiro:hasRole>
-                        <shiro:hasRole name="CES">
-                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
-                                <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
-                                    <div id="email-detail-inner">
-                                        <div id="email-detail-subject" class="clearfix">
-                                            <span class="subject property-value">${expedienteIph.numeroIph}</span>
-                                        </div>
-
-                                        <div id="email-body">      
-                                        </div>  
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="main-box clearfix">                                                    
-                                                    <div class="main-box-body clearfix">
-                                                        <div class="tabs-wrapper" style="background-color: white;">
-                                                            <div class="board-inner">
-                                                                <ul class="nav nav-tabs2" id="myTab">
-                                                                    <div class="liner2"></div>
-                                                                    <li class="active">
-                                                                        <a href="#tab-general" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
-                                                                            <span class="round-tabs one">
-                                                                                <i class="glyphicon glyphicon-fire"></i>
-                                                                            </span> 
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
-                                                                            <span class="round-tabs two">
-                                                                                <i class="glyphicon glyphicon-user"></i>
-                                                                            </span> 
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
-                                                                            <span class="round-tabs four">
-                                                                                <i class="glyphicon glyphicon-hand-right"></i>
-                                                                            </span> 
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade in active" id="tab-general">
-                                                                    <br/>
-                                                                    <h3>Datos del IPH</h3>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Fecha del evento</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.fechaEvento" value="${expedienteIph.iph.datosIph.fechaEvento}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Hora del evento</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.horaEvento" value="${expedienteIph.iph.datosIph.horaEvento}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Asunto</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.asunto" value="${expedienteIph.iph.datosIph.asunto}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Participación</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.participacion" value="${expedienteIph.iph.datosIph.participacion}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Operativo</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.operativo" value="${expedienteIph.iph.datosIph.operativo}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Ubicación</label>
-                                                                        <input disabled="" type="text" class="form-control" name="datosIph.ubicacion" value="${expedienteIph.iph.datosIph.ubicacion}">
-                                                                    </div>
+                        <div class="col-lg-12">                       
+                            <shiro:hasRole name="CES">
+                                <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                                    <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
+                                        <div id="email-detail-inner">
+                                            <div id="email-detail-subject" class="clearfix">
+                                                <span class="subject property-value">${expedienteIph.numeroIph}</span>
+                                            </div>
+                                            <div id="email-body">      
+                                            </div>  
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="main-box clearfix">                                                    
+                                                        <div class="main-box-body clearfix">
+                                                            <div class="tabs-wrapper" style="background-color: white;">
+                                                                <div class="board-inner">
+                                                                    <ul class="nav nav-tabs2" id="myTab">
+                                                                        <div class="liner2"></div>
+                                                                        <li class="active">
+                                                                            <a href="#tab-general" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                                <span class="round-tabs one">
+                                                                                    <i class="glyphicon glyphicon-fire"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                                <span class="round-tabs two">
+                                                                                    <i class="glyphicon glyphicon-user"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                                <span class="round-tabs four">
+                                                                                    <i class="glyphicon glyphicon-hand-right"></i>
+                                                                                </span> 
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
-                                                                <div class="tab-pane fade" id="tab-victima">
-                                                                    <br/>
-                                                                    <h3>Datos de la víctima</h3>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre(s) </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.nombre" value="${expedienteIph.iph.victimaIph.nombre}">
-                                                                    </div> 
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Apellido Paterno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.apellidoPaterno" value="${expedienteIph.iph.victimaIph.apellidoPaterno}">
-                                                                    </div> 
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Apellido Materno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.apellidoMaterno" value="${expedienteIph.iph.victimaIph.apellidoMaterno}">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.edad" value="${expedienteIph.iph.victimaIph.edad}">
-                                                                    </div>                                          
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Sexo </label>
-                                                                        <input disabled="" type="text" class="form-control" name="victimaIph.sexo" value="${expedienteIph.iph.victimaIph.sexo}">
-                                                                    </div>                               
-                                                                </div>                                                                
-                                                                <div class="tab-pane fade" id="tab-responsable">
-                                                                    <br/>
-                                                                    <h3>Datos del responsable</h3>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Nombre(s) </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.nombre" value="${expedienteIph.iph.imputadoIph.nombre}">
-                                                                    </div> 
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Apellido Paterno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoPaterno" value="${expedienteIph.iph.imputadoIph.apellidoPaterno}">
-                                                                    </div> 
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Apellido Materno </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoMaterno" value="${expedienteIph.iph.imputadoIph.apellidoMaterno}">
-                                                                    </div>                                                
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Edad</label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.edad" value="${expedienteIph.iph.imputadoIph.edad}">
-                                                                    </div>                                          
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Sexo </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.sexo" value="${expedienteIph.iph.imputadoIph.sexo}">
-                                                                    </div>                                        
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Probables delitos o faltas administrativas </label>
-                                                                        <input disabled="" type="text" class="form-control" name="imputadoIph.delito" value="${expedienteIph.iph.imputadoIph.delito}">
-                                                                    </div>   
-                                                                </div>                                                                
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade in active" id="tab-general">
+                                                                        <br/>
+                                                                        <h3>Datos del IPH</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Fecha del evento</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.fechaEvento" value="${expedienteIph.iph.datosIph.fechaEvento}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Hora del evento</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.horaEvento" value="${expedienteIph.iph.datosIph.horaEvento}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Asunto</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.asunto" value="${expedienteIph.iph.datosIph.asunto}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Participación</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.participacion" value="${expedienteIph.iph.datosIph.participacion}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Operativo</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.operativo" value="${expedienteIph.iph.datosIph.operativo}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Ubicación</label>
+                                                                            <input disabled="" type="text" class="form-control" name="datosIph.ubicacion" value="${expedienteIph.iph.datosIph.ubicacion}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="tab-victima">
+                                                                        <br/>
+                                                                        <h3>Datos de la víctima</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre(s) </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victimaIph.nombre" value="${expedienteIph.iph.victimaIph.nombre}">
+                                                                        </div> 
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Apellido Paterno </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victimaIph.apellidoPaterno" value="${expedienteIph.iph.victimaIph.apellidoPaterno}">
+                                                                        </div> 
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Apellido Materno </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victimaIph.apellidoMaterno" value="${expedienteIph.iph.victimaIph.apellidoMaterno}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="victimaIph.edad" value="${expedienteIph.iph.victimaIph.edad}">
+                                                                        </div>                                          
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Sexo </label>
+                                                                            <input disabled="" type="text" class="form-control" name="victimaIph.sexo" value="${expedienteIph.iph.victimaIph.sexo}">
+                                                                        </div>                               
+                                                                    </div>                                                                
+                                                                    <div class="tab-pane fade" id="tab-responsable">
+                                                                        <br/>
+                                                                        <h3>Datos del responsable</h3>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Nombre(s) </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.nombre" value="${expedienteIph.iph.imputadoIph.nombre}">
+                                                                        </div> 
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Apellido Paterno </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoPaterno" value="${expedienteIph.iph.imputadoIph.apellidoPaterno}">
+                                                                        </div> 
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Apellido Materno </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.apellidoMaterno" value="${expedienteIph.iph.imputadoIph.apellidoMaterno}">
+                                                                        </div>                                                
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Edad</label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.edad" value="${expedienteIph.iph.imputadoIph.edad}">
+                                                                        </div>                                          
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Sexo </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.sexo" value="${expedienteIph.iph.imputadoIph.sexo}">
+                                                                        </div>                                        
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1">Probables delitos o faltas administrativas </label>
+                                                                            <input disabled="" type="text" class="form-control" name="imputadoIph.delito" value="${expedienteIph.iph.imputadoIph.delito}">
+                                                                        </div>   
+                                                                    </div>                                                                
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="main-box clearfix">
-                                                    <header class="main-box-header clearfix">
-                                                        <h3>Carpeta de investigación</h3>
-                                                    </header>
-                                                    <div class="main-box-body clearfix">
-                                                        <div class="row cf nestable-lists" id="user-profile">                                                            
-                                                            <div class="col-lg-12" >                                                                
-                                                                <div class="main-box clearfix">                                                    
-                                                                    <div class="main-box-body clearfix">
-                                                                        <div class="tabs-wrapper" style="background-color: white;">
-                                                                            <div class="board-inner">
-                                                                                <ul class="nav nav-tabs2" id="myTabArchivos">
-                                                                                    <div class="liner2"></div>
-                                                                                    <li class="active">
-                                                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
-                                                                                            <span class="round-tabs five">
-                                                                                                <i class="glyphicon glyphicon-folder-open"></i>
-                                                                                            </span> 
-                                                                                        </a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
-                                                                                            <span class="round-tabs six">
-                                                                                                <i class="glyphicon glyphicon-picture"></i>
-                                                                                            </span> 
-                                                                                        </a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
-                                                                                            <span class="round-tabs seven">
-                                                                                                <i class="glyphicon glyphicon-facetime-video"></i>
-                                                                                            </span> 
-                                                                                        </a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="tab-content">
-                                                                                <div class="tab-pane fade in active" id="tab-archivos">
-                                                                                    <doc:explorerAndUpload numeroExpediente="${expedienteIph.numeroIph}"/>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="main-box clearfix">
+                                                        <header class="main-box-header clearfix">
+                                                            <h2>Carpeta de investigación</h2>
+                                                        </header>
+                                                        <div class="main-box-body clearfix">
+                                                            <div class="row cf nestable-lists" id="user-profile">                                                            
+                                                                <div class="col-lg-12" >                                                                
+                                                                    <div class="main-box clearfix">                                                    
+                                                                        <div class="main-box-body clearfix">
+                                                                            <div class="tabs-wrapper" style="background-color: white;">
+                                                                                <div class="board-inner">
+                                                                                    <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                                                        <div class="liner2"></div>
+                                                                                        <li class="active">
+                                                                                            <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                                                                <span class="round-tabs five">
+                                                                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                                                                </span> 
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                                                                <span class="round-tabs six">
+                                                                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                                                                </span> 
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                                                <span class="round-tabs seven">
+                                                                                                    <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                                                </span> 
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    </ul>
                                                                                 </div>
-                                                                                <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <doc:gallery  numeroExpediente="${expedienteIph.numeroIph}"/>
-                                                                                </div>
-                                                                                <div class="tab-pane fade" id="tab-videos">
-                                                                                    <div class="col-lg-12">
-                                                                                        <div class="col-md-6 dd">
-                                                                                            <div>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
-                                                                                                </br>
-                                                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                                <div class="tab-content">
+                                                                                    <div class="tab-pane fade in active" id="tab-archivos">
+                                                                                        <doc:explorerAndUpload numeroExpediente="${expedienteIph.numeroIph}"/>
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade" id="tab-imagenes">
+                                                                                        <div class="wrapper" id="divImagenes">            
+                                                                                            <div class="connected-carousels">                                                                    
+                                                                                                <div class="stage" style="width:500px; height:300px">
+                                                                                                    <div class="carousel carousel-stage">
+                                                                                                        <ul>                                                                                       
+                                                                                                            <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                            <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                            <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                            <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                        <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                        <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                                </div>
+                                                                                                <div class="navigation">
+                                                                                                    <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                    <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                    <div class="carousel carousel-navigation">
+                                                                                                        <ul>
+                                                                                                            <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                            <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                            <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                            <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        </ul>                                                                                   
+                                                                                                    </div>  
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                                </div>  
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6 dd">
+                                                                                            <!--Fin Modal-->                                                                         
+                                                                                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                            <div class="modal-dialog modal-lg">
+                                                                                                <div class="modal-content" style="width:920px">
+                                                                                                    <div class="modal-header" style="width:920px">
+                                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                        <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                                    </div>
+                                                                                                    <div class="modal-body" style="width:900px; height:520px">
+                                                                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                                                                            <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="modal-footer" style="width:920px">
+                                                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div> 
+                                                                                        </div>  
+                                                                                  <!--Fin Modal-->
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade" id="tab-videos">
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="col-md-6 dd">
+                                                                                                <div>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                                                    </br>
+                                                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6 dd">
                                                                                                 </br>
-                                                                                            <div class="videoUiWrapper thumbnail">
-                                                                                              <video width="483" height="282" id="demo1">
-                                                                                                <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
-                                                                                                Your browser does not support the video tag.
-                                                                                              </video>
+                                                                                                <div class="videoUiWrapper thumbnail">
+                                                                                                    <video width="483" height="282" id="demo1">
+                                                                                                        <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                                                        Your browser does not support the video tag.
+                                                                                                    </video>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -355,138 +340,137 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>   
+                                                                </div>   
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                </div>                                                                                                                        
+                                            </div>                                                                                                                        
+                                        </div>
+                                    </div>
+                                    <div class="nano-pane" style="display: none;">
+                                        <div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);">
+                                        </div>
+                                    </div>
+                                </div>     
+                            </shiro:hasRole>
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Grabacion de la Audiencia</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe id="frameVideos" class="embed-responsive-item" src="//player.vimeo.com/video/73437656" allowfullscreen=""></iframe>
                                             </div>
-                                        </div>                                                                                                                        
-                                     </div>                                                                                                                        
-                                  </div>
-                                </div>
-                                <div class="nano-pane" style="display: none;">
-                                    <div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);">
-                                    </div>
-                                </div>
-                            </div>     
-                        </shiro:hasRole>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Grabacion de la Audiencia</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe id="frameVideos" class="embed-responsive-item" src="//player.vimeo.com/video/73437656" allowfullscreen=""></iframe>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <!--Modal-->
-                        <div class="modal fade" id="myModalPlantillas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <li>
-                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
-                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
-                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                                            </a>
-                                        </li>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <!--Modal-->
+                            <div class="modal fade" id="myModalPlantillas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <li>
+                                                <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                                    <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                                    <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                                                </a>
+                                            </li>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                  <!--Fin Modal-->                                                                         
-                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content" style="width:920px">
-                                    <div class="modal-header" style="width:920px">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
-                                    </div>
-                                    <div class="modal-body" style="width:900px; height:520px">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                      <!--Fin Modal-->                                                                         
+                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="width:920px">
+                                        <div class="modal-header" style="width:920px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                        </div>
+                                        <div class="modal-body" style="width:900px; height:520px">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="width:920px">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer" style="width:920px">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>  
-                  <!--Fin Modal-->  
+                                </div> 
+                            </div>  
+                      <!--Fin Modal-->  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
-        
+
         <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
-        
-        <!--<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>-->
+
+<!--<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>-->
         <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
         <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
-        
+
         <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
         <!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
-        
+
         <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
         <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
-        
+
         <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
-            
+
         <script>
-            
+
             $('#contenedor').jstree({  
-                "plugins" : ["checkbox"] 
-              });
-            
+            "plugins" : ["checkbox"] 
+            });
+
         </script>   
-        
-        <!--<script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery-1.8.1.min.js')}"></script>-->
+
+<!--<script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery-1.8.1.min.js')}"></script>-->
         <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
-        
+
         <script type="text/javascript">
             $('#demo1').videoUI({
-              'autoHide':false
+            'autoHide':false
             });
         </script>
-        
+
         <script type="text/javascript">
             $('a.media').media({width:500, height:400});
         </script>
-        
+
         <script type="text/javascript">
-            
+
             $(document).ready(function() {
 		$('#email-list li > .star > a').on('click', function() {
             $(this).toggleClass('starred');
@@ -637,7 +621,7 @@
             });		
             });
         </script>
-        
+
         <script type="text/javascript">
             $(function($) {		
             $('#listCompartir').select2({
@@ -646,65 +630,65 @@
             });		
             });
         </script>
-        
-   <script>
-       (function() {
-        var bttnNotificacionDefensor = document.getElementById( 'notificacionDefensor' );
-        bttnNotificacionDefensor.disabled = false;
-        bttnNotificacionDefensor.addEventListener( 'click', function() {
-                var notification = new NotificationFx({
-                        message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
-                        layout : 'bar',
-                        effect : 'exploader',
-                        type : 'success',
-                        onClose : function() {
-                                bttnNotificacionDefensor.disabled = false;
-                        }
-                });
-                notification.show();
-                this.disabled = true;
-                } );
-            })();
-           
-            (function() {
-                var bttnNotificacionCompartir = document.getElementById( 'notificacionCompartir' );
-                bttnNotificacionCompartir.disabled = false;
-                bttnNotificacionCompartir.addEventListener( 'click', function() {
-                var notification = new NotificationFx({
-                        message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
-                        layout : 'bar',
-                        effect : 'exploader',
-                        type : 'success',
-                        onClose : function() {
-                                bttnNotificacionCompartir.disabled = false;
-                        }
-                });
-                notification.show();
-                this.disabled = true;
-                } );
-            })();
-   </script> 
 
-   <script> 
-        function mostrarImagenes() { 
+        <script>
+            (function() {
+            var bttnNotificacionDefensor = document.getElementById( 'notificacionDefensor' );
+            bttnNotificacionDefensor.disabled = false;
+            bttnNotificacionDefensor.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
+                        message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            bttnNotificacionDefensor.disabled = false;
+            }
+            });
+            notification.show();
+            this.disabled = true;
+            } );
+            })();
+
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'notificacionCompartir' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
+                        message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            bttnNotificacionCompartir.disabled = false;
+            }
+            });
+            notification.show();
+            this.disabled = true;
+            } );
+            })();
+        </script> 
+
+        <script> 
+            function mostrarImagenes() { 
             document.getElementById('divImagenes').style.display='block'; 
             document.getElementById('divVideos').style.display='none';
             document.getElementById('sliderFrame2').style.display='none';
-        }
-        
-        function mostrarVideos() { 
+            }
+
+            function mostrarVideos() { 
             document.getElementById('divVideos').style.display='block'; 
             document.getElementById('divImagenes').style.display='none';
             document.getElementById('sliderFrame2').style.display='none';
-        }
-        
-        function mostrarArchivos() { 
+            }
+
+            function mostrarArchivos() { 
             document.getElementById('sliderFrame2').style.display='block'; 
             document.getElementById('divVideos').style.display='none';
             document.getElementById('divImagenes').style.display='none';
-        }
-    </script>
+            }
+        </script>
 
 
-</body>
+    </body>
 </html>

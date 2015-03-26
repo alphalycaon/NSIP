@@ -53,286 +53,16 @@
                                 <div id="email-header-title" class="visible-md visible-lg">
                                     <i class="fa fa-inbox"></i> Menú
                                 </div>
-                                <div id="email-header-tools" style=" left: 985px">
+                                <div id="email-header-tools" class="pull-right">
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>
-                                </div>
-                                <!--<div id="email-header-pagination" class="pull-right">
-                                    <div class="btn-group pagination pull-right">
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
-                                            <i class="fa fa-chevron-left"></i>
-                                        </button>
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="num-items pull-right hidden-xs">
-                                        1-2 de 2
-                                    </div>
-                                </div>-->
+                                </div>                             
                             </header>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <shiro:hasRole name="Ministerio">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}/home/index">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis denuncias/querellas
-                                                    <span class="label label-primary pull-right">83</span>
-                                                </a>
-                                            </li>
-                                            <li class="active">
-                                                <a href="${request.contextPath}/home/Index_Corroboracion">
-                                                    <i class="fa fa-star"></i>
-                                                    Mis carpetas de corroboración
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Mis carpetas de investigación
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-envelope"></i>
-                                                    Puestas a disposición
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    Atención temprana
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    Solicitud de audiencia
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor público
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad justicia alternativa restaurativa
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad de atención a víctimas del delito
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModal">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>                
-                            </shiro:hasRole>
-                            <shiro:hasRole name="CES">   
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-folder-o"></i>
-                                                    Mis denuncias
-                                                    <span class="label label-primary pull-right">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-link"></i>
-                                                    Mis cadenas de custodia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}/home/index_Iph">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis informes policiales homologados
-                                                    <span class="label label-primary pull-right">8</span>
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis informes policiales
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Puestas a disposición
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad de atención a víctimas del delito
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>
-                            <shiro:hasRole name="Juez">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Causas de 1era y 2da Instancia
-                                                    <span class="label label-primary pull-right">20</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Registro de causas
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Registro de salas de audiencia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor público
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar policia procesal
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}/home/calendar">
-                                                    <i class="fa fa-calendar"></i>
-                                                    Agendar audiencias
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-envelope-o"></i>
-                                                    Resolución de audiencias
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>    
-                            <shiro:hasRole name="Defensor">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-flag"></i>
-                                                    Solicituar Audiencia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-taxi"></i>
-                                                    Solicitar perito
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis asuntos
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                    <span class="label label-primary pull-right">1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>
+                        <div class="col-lg-12"> 
                             <shiro:hasRole name="Juez">
                                 <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
                                     <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
@@ -480,7 +210,7 @@
                                         </div>                                                                                                                        
                                     </div>
                                 </div>
-                                <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);"></div>
+                                <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 100px; transform: translate(0px, 0px);"></div>
                                 </div>
                         </div>                            
                         </shiro:hasRole>
@@ -491,6 +221,8 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">COA/FG/XX/PGU/2014/AA-1</span>
                                             <span class="label label-success">Capturado</span>
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>                                            
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
                                         </div>
 
                                         <div id="email-body">      
@@ -533,96 +265,96 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>    
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade in active" id="tab-delito">
-                                                                        <br/>
-                                                                        <h3>Datos del delito</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="delito">Nombre</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modalidad </label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modus</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                        </div>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade in active" id="tab-delito">
+                                                                    <br/>
+                                                                    <h3>Datos del delito</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="delito">Nombre</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
                                                                     </div>
-                                                                    <div class="tab-pane fade" id="tab-victima">
-                                                                        <br/>
-                                                                        <h3>Datos de la víctima</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>    
-                                                                    <div class="tab-pane fade" id="tab-denunciante">
-                                                                        <br/>
-                                                                        <h3>Datos del denunciante</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>                                                                
-                                                                    <div class="tab-pane fade" id="tab-responsable">
-                                                                        <br/>
-                                                                        <h3>Datos del imputado</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                        </div>
-                                                                    </div>                                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modalidad </label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modus</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                    </div>
                                                                 </div>
+                                                                <div class="tab-pane fade" id="tab-victima">
+                                                                    <br/>
+                                                                    <h3>Datos de la víctima</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>    
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>                                                                
+                                                                <div class="tab-pane fade" id="tab-responsable">
+                                                                    <br/>
+                                                                    <h3>Datos del imputado</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                    </div>
+                                                                </div>                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -633,13 +365,7 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>
-                                                        </br>
-                                                        </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Carpeta de investigación</h3>
+                                                        <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -778,7 +504,7 @@
                                             </div>                                                                                                                        
                                         </div>
                                     </div>
-                                    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 611px; transform: translate(0px, 0px);"></div>
+                                    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 100px; transform: translate(0px, 0px);"></div>
                                     </div>
                                 </div>     
                             </div>                       
@@ -790,6 +516,7 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">COA/FG/XX/PGU/2014/AA-1</span>
                                             <span class="label label-success">Capturado</span>
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Expediente</button>
                                         </div>
 
                                         <div id="email-body">      
@@ -832,96 +559,96 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>    
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade in active" id="tab-delito">
-                                                                        <br/>
-                                                                        <h3>Datos del delito</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="delito">Nombre</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modalidad </label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modus</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                        </div>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade in active" id="tab-delito">
+                                                                    <br/>
+                                                                    <h3>Datos del delito</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="delito">Nombre</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
                                                                     </div>
-                                                                    <div class="tab-pane fade" id="tab-victima">
-                                                                        <br/>
-                                                                        <h3>Datos de la víctima</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>    
-                                                                    <div class="tab-pane fade" id="tab-denunciante">
-                                                                        <br/>
-                                                                        <h3>Datos del denunciante</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>                                                                
-                                                                    <div class="tab-pane fade" id="tab-responsable">
-                                                                        <br/>
-                                                                        <h3>Datos del imputado</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                        </div>
-                                                                    </div>                                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modalidad </label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modus</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                    </div>
                                                                 </div>
+                                                                <div class="tab-pane fade" id="tab-victima">
+                                                                    <br/>
+                                                                    <h3>Datos de la víctima</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>    
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>                                                                
+                                                                <div class="tab-pane fade" id="tab-responsable">
+                                                                    <br/>
+                                                                    <h3>Datos del imputado</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                    </div>
+                                                                </div>                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -936,12 +663,7 @@
                                                 </div>-->
                                                 <div class="main-box clearfix" id="div_archivos">
                                                     <header class="main-box-header clearfix">
-                                                        </br>
-                                                        </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Expediente</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Archivos</h3>
+                                                        <h2>Archivos</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -1092,7 +814,8 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">COA/FG/XX/PGU/2014/AA-1</span>
                                             <span class="label label-success">Capturado</span>
-                                        </div>
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>                                            
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>                                        </div>
 
                                         <div id="email-body">      
                                         </div>  
@@ -1100,130 +823,130 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">                                                    
                                                     <div class="main-box-body clearfix">
-                                                            <div class="tabs-wrapper" style="background-color: white;">
-                                                                <div class="board-inner">
-                                                                    <ul class="nav nav-tabs" id="myTab">
-                                                                        <div class="liner"></div>
-                                                                        <li class="active">
-                                                                            <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
-                                                                                <span class="round-tabs one">
-                                                                                    <i class="glyphicon glyphicon-fire"></i>
-                                                                                </span> 
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
-                                                                                <span class="round-tabs two">
-                                                                                    <i class="glyphicon glyphicon-user"></i>
-                                                                                </span> 
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
-                                                                                <span class="round-tabs three">
-                                                                                    <i class="glyphicon glyphicon-bullhorn"></i>
-                                                                                </span> 
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
-                                                                                <span class="round-tabs four">
-                                                                                    <i class="glyphicon glyphicon-hand-right"></i>
-                                                                                </span> 
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>    
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade in active" id="tab-delito">
-                                                                        <br/>
-                                                                        <h3>Datos del delito</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="delito">Nombre</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modalidad </label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Modus</label>
-                                                                            <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
-                                                                        </div>
+                                                        <div class="tabs-wrapper" style="background-color: white;">
+                                                            <div class="board-inner">
+                                                                <ul class="nav nav-tabs" id="myTab">
+                                                                    <div class="liner"></div>
+                                                                    <li class="active">
+                                                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                                                            <span class="round-tabs one">
+                                                                                <i class="glyphicon glyphicon-fire"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                                                            <span class="round-tabs two">
+                                                                                <i class="glyphicon glyphicon-user"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                                                            <span class="round-tabs three">
+                                                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                                                            <span class="round-tabs four">
+                                                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                                                            </span> 
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>    
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade in active" id="tab-delito">
+                                                                    <br/>
+                                                                    <h3>Datos del delito</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="delito">Nombre</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="Robo a Mano Armada">
                                                                     </div>
-                                                                    <div class="tab-pane fade" id="tab-victima">
-                                                                        <br/>
-                                                                        <h3>Datos de la víctima</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>    
-                                                                    <div class="tab-pane fade" id="tab-denunciante">
-                                                                        <br/>
-                                                                        <h3>Datos del denunciante</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
-                                                                        </div>
-                                                                    </div>                                                                
-                                                                    <div class="tab-pane fade" id="tab-responsable">
-                                                                        <br/>
-                                                                        <h3>Datos del imputado</h3>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Genero </label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Edad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
-                                                                        </div>                                                
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                                            <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
-                                                                        </div>
-                                                                    </div>                                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modalidad </label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="Agravada">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Modus</label>
+                                                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="Culposo">
+                                                                    </div>
                                                                 </div>
+                                                                <div class="tab-pane fade" id="tab-victima">
+                                                                    <br/>
+                                                                    <h3>Datos de la víctima</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>    
+                                                                <div class="tab-pane fade" id="tab-denunciante">
+                                                                    <br/>
+                                                                    <h3>Datos del denunciante</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="Juan Torres Pineda">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="Hombre">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="34">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="Licenciatura">
+                                                                    </div>
+                                                                </div>                                                                
+                                                                <div class="tab-pane fade" id="tab-responsable">
+                                                                    <br/>
+                                                                    <h3>Datos del imputado</h3>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Nombre </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="Luis Alameda Cespedes">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Genero </label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="Hombre" >
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Edad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="40">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="Soltero">
+                                                                    </div>                                                
+                                                                    <div class="form-group">
+                                                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="Sin Estudios">
+                                                                    </div>
+                                                                </div>                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1233,10 +956,7 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Carpeta de investigación</h3>
+                                                        <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            

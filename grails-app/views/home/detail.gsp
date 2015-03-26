@@ -53,7 +53,7 @@
                                 <div id="email-header-title" class="visible-md visible-lg">
                                     <i class="fa fa-inbox"></i> Menú
                                 </div>
-                                <div id="email-header-tools" style=" left: 985px">
+                                <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>
@@ -75,271 +75,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <shiro:hasRole name="Ministerio">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis denuncias/querellas
-                                                    <span class="label label-primary pull-right">83</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}/home/Index_Corroboracion">
-                                                    <i class="fa fa-star"></i>
-                                                    Mis carpetas de corroboración
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Mis carpetas de investigación
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-envelope"></i>
-                                                    Puestas a disposicion
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    Atención temprana
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    Solicitud de audiencia
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor público
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad justicia alternativa restaurativa
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad de atención a víctimas del delito
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>                
-                            </shiro:hasRole>
-                            <shiro:hasRole name="CES">   
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-folder-o"></i>
-                                                    Mis denuncias
-                                                    <span class="label label-primary pull-right">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-link"></i>
-                                                    Mis cadenas de custodia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}/home/index_Iph">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis informes policiales homologados
-                                                    <span class="label label-primary pull-right">8</span>
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis informes policiales
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Puestas a disposición
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    Notificar a unidad de atención a víctimas del delito
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones                      
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>
-                            <shiro:hasRole name="Juez">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Causas de 1era y 2da instancia
-                                                    <span class="label label-primary pull-right">20</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Registro de causas
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Registro de salas de audiencia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar defensor público
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-arrow-circle-o-up"></i>
-                                                    Solicitar policia procesal
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}/home/calendar">
-                                                    <i class="fa fa-calendar"></i>
-                                                    Agendar audiencias
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-envelope-o"></i>
-                                                    Resolución de audiencias
-                                                    <!--
-                                                    <span class="label label-default pull-right">1,292</span>
-                                                    -->
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>    
-                            <shiro:hasRole name="Defensor">
-                                <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                    <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                        <ul id="email-nav-items" class="clearfix">
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-flag"></i>
-                                                    Solicitar audiencia
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-taxi"></i>
-                                                    Solicitar perito
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="${request.contextPath}">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Mis asuntos
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-inbox"></i>
-                                                    Solicitudes de defensor
-                                                    <span class="label label-default pull-right">1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                    Mis notificaciones
-                                                    <span class="label label-primary pull-right">1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
-                                                    <i class="fa fa-file-word-o"></i>
-                                                    Mis plantillas
-                                                </a>
-                                            </li>
-                                        </ul>                                    
-                                    </div>
-                                    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                                </div>
-                            </shiro:hasRole>
+                        <div class="col-lg-12">                                                     
                             <shiro:hasRole name="Juez">
                                 <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
                                     <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
@@ -497,8 +233,10 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">${expediente.numeroExpediente}</span>
                                             <span class="label label-success">Capturado</span>
+                                             <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>&nbsp; 
+                                             <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir documento</button>&nbsp; 
+                                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>
                                         </div>
-
                                         <div id="email-body">      
                                         </div>  
                                         <div class="row">
@@ -638,17 +376,8 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
-                                                    <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
-                                                        </br>
-                                                        </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>
-                                                        </br>
-                                                        </br>                                                        
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Carpeta de investigación</h3>
+                                                    <header class="main-box-header clearfix">                                                        
+                                                        <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -687,7 +416,57 @@
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -749,6 +528,7 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">${expediente.numeroExpediente}</span>
                                             <span class="label label-success">Capturado</span>
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalCompartirDef">Compartir documento</button>
                                         </div>
 
                                         <div id="email-body">      
@@ -894,13 +674,8 @@
                                                     </br></br></br></br></br></br></br>
                                                 </div>-->
                                                 <div class="main-box clearfix" id="div_archivos">
-                                                    <header class="main-box-header clearfix">
-                                                        </br>
-                                                        </br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartirDef">Compartir Documento</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Archivos</h3>
+                                                    <header class="main-box-header clearfix">                                                        
+                                                        <h2>Archivos</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -939,7 +714,57 @@
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -1001,6 +826,8 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">${expediente.numeroExpediente}</span>
                                             <span class="label label-success">Capturado</span>
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" style=" margin-left: 3px" data-target="#myModalCompartir">Compartir documento</button> 
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>
                                         </div>
 
                                         <div id="email-body">      
@@ -1141,11 +968,8 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
-                                                    <header class="main-box-header clearfix">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>
-                                                        </br>
-                                                        </br>
-                                                        <h3>Carpeta de investigación</h3>
+                                                    <header class="main-box-header clearfix">                                                       
+                                                        <h2>Carpeta de investigación</h2>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -1184,7 +1008,57 @@
                                                                                     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-imagenes">
-                                                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
+                                                                                    <div class="wrapper" id="divImagenes">            
+                                                                                        <div class="connected-carousels">                                                                    
+                                                                                            <div class="stage" style="width:500px; height:300px">
+                                                                                                <div class="carousel carousel-stage">
+                                                                                                    <ul>                                                                                       
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img1.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img1.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img2.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img2.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img3.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img3.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                        <li><a href="#" data-toggle="modal" data-target="#myModal2" onclick="document.getElementById('frameImagenes').src = '${resource(dir: 'images/img', file: 'img4.jpg')}'"><img src="${resource(dir: 'images/img', file: 'img4.jpg')}" width="500" height="300" alt=""></a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                                    <!--<a href="#" class="prev prev-stage" style="left: 270px"><span>&lsaquo;</span></a>
+                                                                                                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> -->                                                                          
+                                                                                            </div>
+                                                                                            <div class="navigation">
+                                                                                                <a href="#" class="prev prev-navigation" style="left: -35px">&lsaquo;</a>
+                                                                                                <a href="#" class="next next-navigation">&rsaquo;</a>
+                                                                                                <div class="carousel carousel-navigation">
+                                                                                                    <ul>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img1_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img2_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img3_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                        <li><img src="${resource(dir: 'images/img', file: 'img4_thumb.jpg')}" width="50" height="50" alt=""></li>
+                                                                                                    </ul>                                                                                   
+                                                                                                </div>  
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>
+                                                                                            </div>  
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 <!--Fin Modal-->                                                                         
+                                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
+                                                                                    <div class="modal-dialog modal-lg">
+                                                                                        <div class="modal-content" style="width:920px">
+                                                                                            <div class="modal-header" style="width:920px">
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                <h4 class="modal-title" id="myModalLabel">Fotografía</h4>
+                                                                                            </div>
+                                                                                            <div class="modal-body" style="width:900px; height:520px">
+                                                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                                                    <iframe style="width:900px; height:520px" id="frameImagenes" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer" style="width:920px">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                </div>  
+                                                                          <!--Fin Modal-->
                                                                                 </div>
                                                                                 <div class="tab-pane fade" id="tab-videos">
                                                                                     <div class="col-lg-12">
@@ -1327,7 +1201,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Compartir documento</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form">
@@ -1364,7 +1238,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Compartir documento</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form">
@@ -1438,7 +1312,10 @@
         </div>
      </div>
 
-        <!--<script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>-->
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 
         <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>

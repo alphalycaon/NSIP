@@ -60,72 +60,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                        <shiro:hasRole name="CES">   
-                            <div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm has-scrollbar">
-                                <div class="email-nav-nano-content" tabindex="0" style="right: -16px;">                                    
-                                    <ul id="email-nav-items" class="clearfix">
-                                        <li>
-                                            <a href="${request.contextPath}/home/index">
-                                                <i class="fa fa-folder-o"></i>
-                                                Mis denuncias
-                                                <span class="label label-primary pull-right">12</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-link"></i>
-                                                Mis cadenas de custodia
-                                            </a>
-                                        </li>
-                                        <li class="active">
-                                            <a href="#">
-                                                <i class="fa fa-inbox"></i>
-                                                Mis informes policiales homologados
-                                                    <span class="label label-primary pull-right">8</span>
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-inbox"></i>
-                                                Mis informes policiales
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-arrow-circle-o-up"></i>
-                                                Puestas a disposición
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                                <i class="fa fa-play-circle-o"></i>
-                                                Notificar a unidad de atención a víctimas del delito
-                                                <!--
-                                                <span class="label label-default pull-right">1,292</span>
-                                                -->
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="not-active">
-                                            <i class="fa fa-exclamation-triangle"></i>
-                                                Mis notificaciones
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModal">
-                                            <i class="fa fa-file-word-o"></i>
-                                                Mis plantillas
-                                            </a>
-                                        </li>
-                                    </ul>                                    
-                                </div>
-                                <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 400px; transform: translate(0px, 0px);"></div></div>
-                            </div>
-                        </shiro:hasRole>
+                        <div class="col-lg-12">                      
                             <div id="email-content" class="email-content-nano has-scrollbar" style="height: 100%; ">
                                 <div class="email-content-nano-content" tabindex="0" style="right: -16px;">
                                     <ul id="email-list">

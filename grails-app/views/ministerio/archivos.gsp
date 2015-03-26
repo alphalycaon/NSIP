@@ -18,10 +18,11 @@
     <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
     <div class="row">
         <div class="col-lg-12" style="padding: 0px 25px 25px;">
+            <div id="email-detail" class="email-detail-nano" style="height: 627px;">
             <g:link controller="home" action="index" class="btn btn-primary btn-lg">
                 TERMINAR
             </g:link>
-
+            </div>
         </div>
     </div>
 </body>

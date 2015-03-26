@@ -56,6 +56,7 @@
     <body>
         <div class="row" style="opacity: 1;">
             <div class="col-lg-12">
+                <div id="email-detail" class="email-detail-nano" style="height: 627px;">
                 <div class="row">
                     <div class="col-lg-12">
                         </br>
@@ -106,6 +107,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
          <!--Modal-->

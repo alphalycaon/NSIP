@@ -17,7 +17,6 @@
             <g:javascript library="application"/>		
         <r:layoutResources />
 
-
         <script type="text/javascript">
             //<![CDATA[
             try {
@@ -54,7 +53,7 @@
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />
 
-        <!--<script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>-->
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
@@ -175,7 +174,7 @@
             }
         </style>
     </head>
-    <body class="pace-done theme-red  fixed-header pace-done fixed-footer">
+    <body class="pace-done  fixed-header pace-done fixed-footer" onload="pintar()"  id ="cuerpo">
         <div id="theme-wrapper">
             <header class="navbar" id="header-navbar">
                 <div class="container">
@@ -193,13 +192,18 @@
                             <g:form name="buscarForm" controller="Busqueda" action="index" class="form-inline" role="form">                                                                                
                                 <ul class="nav navbar-nav pull-left">
                                     <li style="margin-top: 7px;"> 
-                                        <input type="text" style="z-index: 1;width: 197px;" class="typeahead countries-cities" id="buscar" name="buscar" placeholder="Buscar ...">
+                                        <input type="text" style="z-index: 1;" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
                                         <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
                                             <i class="fa fa-search" style="margin-right: 5px;z-index: -1;"></i> <strong>Buscar</strong>
                                         </a>
                                     </li>
+                                    <!--li>
+                                        <a class="btn" id="make-small-nav">
+                                            <i class="fa fa-bars"></i>
+                                        </a>
+                                    </li-->
                                 </ul>
                             </g:form>  
                         </div>   
@@ -308,7 +312,8 @@
                                 <li class="dropdown profile-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="${resource(dir: 'centaurus/img/samples', file: 'user.png')}" alt=""/>
-                                        <span class="hidden-xs"><user:loggedInUser property="username"/></span> <b class="caret"></b>
+                                        <span class="hidden-xs"><shiro:principal/></span> <b class="caret"></b>
+                                        <input type="text" id="sesion" value="<shiro:principal/>" hidden="">
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#"><i class="fa fa-user"></i>Perfil</a></li>
@@ -322,69 +327,280 @@
                         </div>
                     </div>
                 </header>
-                <div id="page-wrapper" class="container nav-small">
+                <div id="page-wrapper" class="container">
                     <div class="row">
-                        <!--div id="nav-col">
+                        <div id="nav-col">
                             <section id="col-left" class="col-left-nano">
                                 <div id="col-left-inner" class="col-left-nano-content">
                                     <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
                                         <img alt="" src="${resource(dir: 'centaurus/img/samples/', file: '')}<shiro:principal/>.jpg"/>
+                                    <div class="user-box" style="padding-left: 0px;">
+                                        <span class="name" style="font-size: 13px;">
+                                            <user:loggedInUser property="nombre"/><br/>
+                                        </span>                                       
+                                    </div>
+                                    <shiro:hasRole name="Ministerio">
                                         <div class="user-box" style="padding-left: 0px;">
-                                            <span class="name">
-                                                Bienvenido<br/>
-                                            </span>
-                                            <span class="status">
-                                                <i class="fa fa-circle"></i> Online
-                                            </span>
+                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
                                         </div>
-                                    </div>
-                                    <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
-                                        <ul class="nav nav-pills nav-stacked">
-                                            <li>
-                                                <a href="index-2.html">
-                                                    <i class="fa fa-dashboard"></i>
-                                                    <span>Dashboard</span>
-                                                    <span class="label label-info label-circle pull-right">28</span>
-                                                </a>
-                                            </li>                                       
-                                            <li>
-                                                <a href="#" class="dropdown-toggle">
-                                                    <i class="fa fa-desktop"></i>
-                                                    <span>UI Kit</span>
-                                                    <i class="fa fa-chevron-circle-right drop-icon"></i>
-                                                </a>
-                                                <ul class="submenu">
-    
-                                                    <li>
-                                                        <a href="#" class="dropdown-toggle">
-                                                            3 Level Menu
-                                                            <i class="fa fa-chevron-circle-right drop-icon"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li>
-                                                                <a href="#">
-                                                                    3rd Level
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    3rd Level
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    3rd Level
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>                                                                                
-                                        </ul>
-                                    </div>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="CES">
+                                        <div class="user-box" style="padding-left: 0px;">
+                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
+                                        </div>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="Juez">
+                                        <div class="user-box" style="padding-left: 0px;">
+                                            <i class="fa fa-inbox" style="font-size: 24px;"> Lista de Casos<br/></i> 
+                                        </div>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="Defensor">
+                                        <div class="user-box" style="padding-left: 0px;">
+                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
+                                        </div>
+                                    </shiro:hasRole>
                                 </div>
-                            </section>
-                        </div-->
+                                <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <shiro:hasRole name="Ministerio">
+                                            <li class="active">
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-inbox" style="font-size: 14px;">
+                                                        <span>Denuncias/Querellas</span>
+                                                    </i>                                                   
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/Index_Corroboracion">
+                                                    <i class="fa fa-star" style="font-size: 14px;">
+                                                        <span>Mis Carpetas de Corroboracion</span>
+                                                    </i>
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-pencil" style="font-size: 14px;">
+                                                        <span>Mis Carpetas de Investigacion</span>
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-envelope" style="font-size: 14px;">
+                                                        Puestas a Disposicion
+                                                    </i>
+
+                                                </a>
+                                            </li>                                                                                      
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-clock-o" style="font-size: 14px;">
+                                                        Solicitud de Audiencia
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-arrow-circle-o-up" style="font-size: 14px;">
+                                                        Solicitar defensor público
+                                                    </i>                                                
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-play-circle-o" style="font-size: 14px;">
+                                                        Notificar a unidad Justicia Alternativa Restaurativa
+                                                    </i>                                                
+                                                    <!--
+                                                    <span class="label label-default pull-right">1,292</span>
+                                                    -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-play-circle-o" style="font-size: 14px;">
+                                                        Notificar a Unidad de Atención a Víctimas del Delito
+                                                    </i>                                                
+                                                    <!--
+                                                    <span class="label label-default pull-right">1,292</span>
+                                                    -->
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-exclamation-triangle" style="font-size: 14px;">
+                                                        Mis notificaciones
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-file-word-o" style="font-size: 14px;">
+                                                        Mis plantillas
+                                                    </i>
+                                                </a>
+                                            </li>                                            
+                                        </shiro:hasRole>
+                                        <shiro:hasRole name="CES">
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-folder-o" style="font-size: 14px;">
+                                                        Mis Denuncias
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-link" style="font-size: 14px;">
+                                                        Mis Cadena de custodia
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Iph">
+                                                    <i class="fa fa-inbox" style="font-size: 14px;">
+                                                        Mis Informes policiales homologados
+                                                    </i>
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-inbox" style="font-size: 14px;">
+                                                        Mis  Informes policiales
+                                                    </i>
+                                                </a>
+                                            </li>                                           
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-play-circle-o" style="font-size: 14px;">
+                                                        Notificar a Unidad de Atención a Víctimas del Delito
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle" style="font-size: 14px;">
+                                                        Mis notificaciones
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i  class="fa fa-file-word-o" style="font-size: 14px;">
+                                                        Mis plantillas
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole> 
+                                        <shiro:hasRole name="Juez">
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i  class="fa fa-inbox" style="font-size: 14px;">
+                                                        Causas de 1era y 2da Instancia
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-pencil" style="font-size: 14px;">
+                                                        Registro de causas
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-pencil" style="font-size: 14px;">
+                                                        Registro de salas de audiencia
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-arrow-circle-o-up" style="font-size: 14px;">
+                                                        Solicitar defensor público
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-arrow-circle-o-up" style="font-size: 14px;">
+                                                        Solicitar policia procesal
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/calendar">
+                                                    <i  class="fa fa-calendar" style="font-size: 14px;">
+                                                        Agendar audiencias
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-envelope-o" style="font-size: 14px;">
+                                                        Resolución de audiencias
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle" style="font-size: 14px;">
+                                                        Mis notificaciones
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i  class="fa fa-file-word-o" style="font-size: 14px;">
+                                                        Mis plantillas
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole>                                         
+                                        <shiro:hasRole name="Defensor">
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-flag" style="font-size: 14px;">
+                                                        Solicituar Audiencia
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-taxi" style="font-size: 14px;">
+                                                        Solicitar perito
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-inbox" style="font-size: 14px;">
+                                                        Mis asuntos
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle" style="font-size: 14px;">
+                                                        Mis notificaciones
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-file-word-o" style="font-size: 14px;">
+                                                        Mis plantillas
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole>                                  
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </section>
+                    </div>
                     <div id="content-wrapper" class="email-inbox-wrapper" style="margin-left: 0px;">                        
                         <g:layoutBody/>                                
                         <footer id="footer-bar" class="row">
@@ -396,10 +612,53 @@
                 </div>
             </div>
         </div>
+        <div id="config-tool" class="closed">
+            <a id="config-tool-cog">
+                <i class="fa fa-cog"></i>
+            </a>
+            <div id="config-tool-options">
+                <h4>Opcional</h4>
+                <h4>cambiar Color</h4>
+                <ul id="skin-colors" class="clearfix">
+                    <li>
+                        <a class="skin-changer" data-skin="" data-toggle="tooltip" title="Default" style="background-color: #34495e;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-white" data-toggle="tooltip" title="White/Green" style="background-color: #2ecc71;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer blue-gradient" data-skin="theme-blue-gradient" data-toggle="tooltip" title="Gradient">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-turquoise" data-toggle="tooltip" title="Green Sea" style="background-color: #1abc9c;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-amethyst" data-toggle="tooltip" title="Amethyst" style="background-color: #9b59b6;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-blue" data-toggle="tooltip" title="Blue" style="background-color: #2980b9;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-red" data-toggle="tooltip" title="Red" style="background-color: #e74c3c;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-whbl" data-toggle="tooltip" title="White/Blue" style="background-color: #3498db;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     <r:layoutResources />
     <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}/"></script>  
-    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>   
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
 
 
     <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
@@ -419,5 +678,6 @@
         });
         });
     </script>
+
 </body>
 </html>
