@@ -59,6 +59,8 @@ grails.project.dependency.resolution = {
         compile 'javax.jcr:jcr:2.0'
         compile 'org.mongodb:mongo-java-driver:2.12.0'
         runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
+        compile 'net.coobird:thumbnailator:0.4.8'
+
     }
 
     plugins {

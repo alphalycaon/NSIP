@@ -20,6 +20,8 @@ class RepositoryCommand {
        InputStream binario
        Long userId
        Date lastModified
+       String tags
+       String icon
        String toString(){
               "nombre["+nombre+"] ruta["+ruta+"] tipo["+tipo+"] id["+id+"] propiedades["+propiedades+"] mime["+mime+"]"
        }

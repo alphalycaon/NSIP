@@ -18,6 +18,13 @@ class DocumentService {
         "/documentoIph",
         "/oficios/"
     ]
+    
+    def typeQueries = [
+        'pdf': "and [jcr:path] like '%.pdf'",
+        'excel': "and ([jcr:path] like '%.xls' or [jcr:path] like '%.xlsx')",
+        'doc': "and ([jcr:path] like '%.doc' or [jcr:path] like '%.docx')",
+        'img': "and ([jcr:path] like '%.jpg' or [jcr:path] like '%.png')"
+    ]
     def getFiles(String numeroExpediente, String path){
         def items = repositoryService.listItemsInPath(expedienteRoot+numeroExpediente+path)
         items.each{
@@ -66,5 +73,30 @@ class DocumentService {
             String path = expedienteRoot+numeroIph+it
             repositoryService.createFolder(path)
         }
+    }
+    def searchImages(String numeroExpediente){
+        def query = "SELECT * FROM [nt:file] WHERE [jcr:path] like '"+expedienteRoot+numeroExpediente+"%' and ([jcr:path] like '%.jpg' or [jcr:path] like '%.png')"
+        println(query)
+        def images = repositoryService.query(query)
+        images.each{
+            it.ruta = it.ruta.replace(expedienteRoot,"").replace(numeroExpediente, "") 
+        }
+        images
+    }
+    
+    def search(String numeroExpediente, Map parametros){
+        def query = "SELECT * FROM [nt:file] WHERE [jcr:path] like '"+expedienteRoot+numeroExpediente+"%'"
+        if(parametros["tipo"]){
+            query +=  typeQueries[parametros["tipo"]]
+        } 
+        if(parametros["tag"]){
+            query += " and [nsip:tags] like '%"+parametros["tag"]+"%'"
+        }
+        println(query)
+        def files = repositoryService.query(query)
+        files.each{
+            it.ruta = it.ruta.replace(expedienteRoot,"").replace(numeroExpediente, "") 
+        }
+        [items: files]
     }
 }

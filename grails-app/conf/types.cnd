@@ -9,5 +9,6 @@
 
 [nsip:itemExpediente]
 mixin
--createdUser (string)
--permitedUser (string)
+-nsip:createdUser (string)
+-nsip:permitedUser (string)
+-nsip:tags (string)
