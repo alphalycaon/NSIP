@@ -37,8 +37,8 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <header id="login-header">
-                                            <div id="login-logo">
-                                                <img src="${resource(dir: 'centaurus/img', file: 'logo.png')}" alt=""/>
+                                            <div style="background-color: #bbbbbb;" >
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${resource(dir: 'centaurus/img', file: 'logo3.png')}" height="120" alt=""/>
                                             </div>
                                         </header>
                                         <div id="login-box-inner">
@@ -77,6 +77,15 @@
                                                 </div>
 
                                             </g:form>
+                                        </div>                                        
+                                        <div class="panel-footer center-block">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by
+                                            <div class="row">
+                                                <div class="center-block" style="background:#bbbbbb;">				
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="30%" width="30%" src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                                    <img height="20%" width="20%" src="${resource(dir: 'centaurus/img', file: 'logo_tres_i_x_ti.png')}" alt="">
+                                                </div>
+                                            </div>						
                                         </div>
                                     </div>
                                 </div>

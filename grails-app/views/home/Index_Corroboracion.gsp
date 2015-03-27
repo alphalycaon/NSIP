@@ -31,11 +31,6 @@
                             </div>
                             <header id="email-header" class="clearfix">
                                 <shiro:hasRole name="Ministerio">
-                                <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Menú
-                                </div>
-                                </shiro:hasRole>
-                                <shiro:hasRole name="Ministerio">
                                 <div id="email-header-tools">
                                                                                                                  
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">

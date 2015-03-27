@@ -56,58 +56,60 @@
     <body>
         <div class="row" style="opacity: 1;">
             <div class="col-lg-12">
-                <div id="email-detail" class="email-detail-nano" style="height: 627px;">
-                <div class="row">
-                    <div class="col-lg-12">
+                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 900px;">
+                    <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                </br>
+                                <h1>Agenda de Audencias</h1>
+                                <div class="col-lg-12" style="left: 1107px">  
+                                    <a href="${request.contextPath}" class="btn btn-primary">                                            
+                                        <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
+                                    </a>
+                                </div> 
+                            </div>
+                        </div>   
                         </br>
-                        <h1>Agenda de Audencias</h1>
-                        <div class="col-lg-12" style="left: 1107px">  
-                            <a href="${request.contextPath}" class="btn btn-primary">                                            
-                                <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
-                            </a>
-                        </div> 
-                    </div>
-                </div>   
-                </br>
-                <div class="row">
-                    <div class="col-md-3 hidden-xs hidden-sm" >
-                        <div class="main-box" id="external-events">
-                            <header class="main-box-header clearfix">
-                                <h4>Número de causa</h4>
-                                <div>
-                                    <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
-                                    <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
+                        <div class="row">
+                            <div class="col-md-3 hidden-xs hidden-sm" >
+                                <div class="main-box" id="external-events">
+                                    <header class="main-box-header clearfix">
+                                        <h4>Número de causa</h4>
+                                        <div>
+                                            <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
+                                            <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
+                                        </div>
+                                        </br>
+                                        <h4>Juez</h4>
+                                        <div>
+                                            <select class="form-control" name="selectJuez" id="selectJuez">
+                                                <g:each in="${jueces}" var="juez" status="i">
+                                                    <option value="${juez.nombre}">${juez.nombre}</option>
+                                                </g:each>
+                                            </select>
+                                        </div>
+                                        </br>
+                                        <h4>Audiencias</h4>
+                                        <div class="main-box-body clearfix">
+                                            <div class="form-group">
+                                                <div class="external-event label-primary" data-eventclass="label-primary">Agendar Audiencia</div>
+                                            </div>
+                                            </br>
+                                        </div>
+                                    </header>
                                 </div>
-                                </br>
-                                <h4>Juez</h4>
-                                <div>
-                                    <select class="form-control" name="selectJuez" id="selectJuez">
-                                        <g:each in="${jueces}" var="juez" status="i">
-                                            <option value="${juez.nombre}">${juez.nombre}</option>
-                                        </g:each>
-                                    </select>
-                                </div>
-                                </br>
-                                <h4>Audiencias</h4>
-                                <div class="main-box-body clearfix">
-                                    <div class="form-group">
-                                        <div class="external-event label-primary" data-eventclass="label-primary">Agendar Audiencia</div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="main-box">
+                                    <div class="main-box-body clearfix">
+                                        <div id="calendar"></div>
                                     </div>
-                                    </br>
                                 </div>
-                            </header>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="main-box">
-                            <div class="main-box-body clearfix">
-                                <div id="calendar"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
          <!--Modal-->
@@ -177,6 +179,62 @@
         <script src="${request.contextPath}/centaurus/js/fullcalendar.min.js"></script>
         <script src="${request.contextPath}/centaurus/js/scripts.js"></script>
         <script src="${request.contextPath}/centaurus/js/pace.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+		$('#email-list li > .star > a').on('click', function() {
+            $(this).toggleClass('starred');
+            });
+
+            $(".has-tooltip").each(function (index, el) {
+            $(el).tooltip({
+            placement: $(this).data("placement") || 'bottom'
+            });
+            });
+
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            $(window).smartresize(function(){
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            function setHeightEmailContent() {
+		if ($( document ).width() >= 992) {
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+
+            $('#email-detail').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-detail').css('height', '');
+            }
+            }
+
+            function initEmailScroller() {
+		if ($( document ).width() >= 992) {
+            $('#email-navigation').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-nav-nano-content'
+            });
+
+            $('#email-detail').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-detail-nano-content'
+            });
+            }
+            }
+        </script> 
 
         <script>    
 
