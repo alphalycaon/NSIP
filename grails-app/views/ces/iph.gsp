@@ -306,277 +306,338 @@
 
         </style>
         
-        <title>Generar Iph</title>
+        <title>Generar IPH</title>
     </head>
     <body>
     <style>
     #mapCanvas {
-      width: 1280px;
-      height: 640px;
+      width: 1065px;
+      height: 540px;
       float: center;
     }
     </style>
-        <div class="row">
-            <div class="col-lg-12">
+        <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+            <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li><a href="${request.contextPath}">Home</a></li>
-                            <li class="active"><span>Iph</span></li>
-                        </ol>
-                        <h1>Generar Iph</h1>
-                    </div>
-                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="main-box clearfix" style="min-height: 820px;">
-                            <header class="main-box-header clearfix">
-                                <h2>Captura los datos en el orden presentado</h2>
-                            </header>
-                            <div class="main-box-body clearfix">   
-                                <div class="modal fade" id="myModalVentanaEmer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Cancelar Registro de IPH</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div>
-                                                    ¿Está seguro que desea cancelar el registro?
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol class="breadcrumb">
+                                    <li><a href="${request.contextPath}">Home</a></li>
+                                    <li class="active"><span>IPH</span></li>
+                                </ol>
+                                <h1>Generar IPH</h1>
+                            </div>
+                         </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="main-box clearfix" style="min-height: 820px;">
+                                    <header class="main-box-header clearfix">
+                                        <h2>Captura los datos en el orden presentado</h2>
+                                    </header>
+                                    <div class="main-box-body clearfix">   
+                                        <div class="modal fade" id="myModalVentanaEmer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Cancelar Registro de IPH</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div>
+                                                            ¿Está seguro que desea cancelar el registro?
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary" >                                            
+                                                            <span  style="padding-right: 10px;"></span> Si
+                                                        </a>   
+                                                        <a data-dismiss="modal" class="btn btn-danger">                                            
+                                                            <span style="padding-right: 10px;"></span> No
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary" >                                            
-                                                    <span  style="padding-right: 10px;"></span> Si
-                                                </a>   
-                                                <a data-dismiss="modal" class="btn btn-danger">                                            
-                                                    <span style="padding-right: 10px;"></span> No
-                                                </a>
-                                            </div>
                                         </div>
+                                        <div id="myWizard" class="wizard">
+                                            <div class="wizard-inner">
+                                                <ul class="steps">
+                                                    <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>IPH<span class="chevron"></span></li>
+                                                    <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
+                                                    <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
+                                                    <li data-target="#step4"><span class="badge">4</span>Plantillas<span class="chevron"></span></li>
+                                                </ul>
+                                                <div class="actions" style="z-index: 1">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
+                                                    <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
+                                                    <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denunciaIph').submit();}">Siguiente</i></button>
+                                                </div>
+                                            </div>
+                                            <div class="step-content">
+                                                <g:form controller="ces" action="guardarIph" name="denunciaIph" onsubmit="return validarCampos()">
+                                                    <div class="step-pane active" id="step1">
+                                                        <br/>
+                                                        <h4>1.- Datos del IPH</h4> 
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Fecha y hora del Evento</label>
+                                                            <div class="col-lg-12">
+                                                                <div class="col-lg-6">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-12">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                <input type="text" class="form-control" name="datosIph.fechaEvento" placeholder="Fecha del evento" id="datepickerDate">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-12">
+                                                                            <div class="input-group input-append bootstrap-timepicker">
+                                                                                <input type="text" class="form-control" name="datosIph.horaEvento" id="timepicker">
+                                                                                <span class="add-on input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Asunto</label>
+                                                            <input type="text" class="form-control" id="asunto" name="datosIph.asunto" placeholder="Asunto" required data-toggle="tooltip" data-placement="top" title="Escribir asunto">
+                                                        </div>     
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Participación</label>
+                                                            <select class="form-control" name="datosIph.participacion">
+                                                              <option>Ejecucion</option>
+                                                              <option>Apoyo</option>
+                                                              <option>Conocimiento</option>
+                                                            </select>
+                                                        </div>     
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Operativo</label>
+                                                            <select class="form-control" name="datosIph.operativo">
+                                                              <option>Si</option>
+                                                              <option>No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Ubicación</label>
+                                                            <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
+                                                        </div>
+                                                        <div>
+                                                             <table>
+                                                              <tr>
+                                                              <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                 <input type="button" class="btn btn-success" value="Buscar" onclick="codeAddress()" required/>
+                                                              </p>
+                                                              </td>
+                                                              <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                 <input type="text" name="latitud" id="latitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                              </p>
+                                                              </td>
+                                                              <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                 <input type="text" name="longitud" id="longitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                              </p>
+                                                              </td>	
+                                                              </tr>
+                                                           </table> 
+                                                         </center>       
+                                                      </div> 
+                                                        <div id="mapCanvas"></div>
+                                                    </div>
+                                                    <div class="step-pane" id="step2">
+                                                        <br/>
+                                                        <h4>2.- Datos de la victima</h4>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Apellido Paterno</label>
+                                                            <input type="text" class="form-control" id="apePatVict" name="victimaIph.apellidoPaterno" placeholder="Apellido paterno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno de la Victima">
+                                                        </div>                       
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Apellido Materno</label>
+                                                            <input type="text" class="form-control" id="apeMatVict" name="victimaIph.apellidoMaterno" placeholder="Apellido materno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno de Victima">
+                                                        </div>                       
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Nombre(s)</label>
+                                                            <input type="text" class="form-control" id="nomVict" name="victimaIph.nombre" placeholder="Nombres de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) de la Victima">
+                                                        </div>                  
+                                                        <div class="form-group">      
+                                                            <label for="exampleInputEmail1">Edad</label>
+                                                            <input type="text" class="form-control" id="edadVict" name="victimaIph.edad" placeholder="Edad de la victima" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad de la Victima">
+                                                        </div>                                                
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Sexo</label>
+                                                            <select class="form-control" name="victimaIph.sexo">
+                                                              <option>Femenino</option>
+                                                              <option>Masculino</option>
+                                                            </select>
+                                                        </div>                                                              
+
+                                                    </div>
+                                                    <div class="step-pane" id="step3">
+                                                        <br/>
+                                                        <h4>3.- Datos del probable responsable</h4>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Apellido Paterno</label>
+                                                            <input type="text" class="form-control" id="apePatResp" name="imputadoIph.apellidoPaterno" placeholder="Apellido paterno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno Responsable">
+                                                        </div>                       
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Apellido Materno</label>
+                                                            <input type="text" class="form-control" id="apeMatResp" name="imputadoIph.apellidoMaterno" placeholder="Apellido materno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno Responsable">
+                                                        </div>                       
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Nombre(s)</label>
+                                                            <input type="text" class="form-control" id="nomResp" name="imputadoIph.nombre" placeholder="Nombres del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) Responsable">
+                                                        </div>                                                
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Edad</label>
+                                                            <input type="text" class="form-control" id="edadResp" name="imputadoIph.edad" placeholder="Edad del probable responsable" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable">
+                                                        </div>                                                
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Sexo </label>
+                                                            <select class="form-control" name="imputadoIph.sexo">
+                                                              <option>Femenino</option>
+                                                              <option>Masculino</option>
+                                                            </select>
+                                                        </div>                                                
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Probables delitos o faltas administrativas</label>
+                                                            <input type="text" class="form-control" id="delitoResp" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Probable Delito/Falta">
+                                                        </div>                                                   
+                                                    </div>
+                                                </g:form>
+
+                                                <div class="step-pane" id="step4">
+                                                    <br/>
+                                                    <div class="panel-group accordion" id="accordion">
+                                                        <!--<div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                                        Evidencia
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                                <div class="panel-body">
+                                                                    <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="evidencia">
+                                                                        <div class="fallback">
+                                                                            <input type="file" name="file" multiple="" />
+                                                                        </div>
+                                                                    </g:uploadForm>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                                        Documento IPH
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseTwo" class="panel-collapse collapse" style="height: 1px;">
+                                                                <div class="panel-body">
+                                                                    <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="documentoIph">
+                                                                        <div class="fallback">
+                                                                            <input type="file" name="file" multiple="" />
+                                                                        </div>
+                                                                    </g:uploadForm>  
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                                        Plantillas
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
+                                                                <div class="panel-body">
+                                                                    <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                                                        <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                                                                    </a>
+                                                                    <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>                                
                                     </div>
                                 </div>
-                                <div id="myWizard" class="wizard">
-                                    <div class="wizard-inner">
-                                        <ul class="steps">
-                                            <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Iph<span class="chevron"></span></li>
-                                            <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                            <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
-                                            <li data-target="#step4"><span class="badge">4</span>Plantillas<span class="chevron"></span></li>
-                                        </ul>
-                                        <div class="actions" style="z-index: 1">
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
-                                            <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                            <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denunciaIph').submit();}">Siguiente</i></button>
-                                        </div>
-                                    </div>
-                                    <div class="step-content">
-                                        <g:form controller="ces" action="guardarIph" name="denunciaIph" onsubmit="return validarCampos()">
-                                            <div class="step-pane active" id="step1">
-                                                <br/>
-                                                <h4>1.- Datos del iph</h4> 
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Fecha y hora del Evento</label>
-                                                    <div class="col-lg-12">
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="form-group col-md-12">
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                        <input type="text" class="form-control" name="datosIph.fechaEvento" placeholder="Fecha del evento" id="datepickerDate">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="form-group col-md-12">
-                                                                    <div class="input-group input-append bootstrap-timepicker">
-                                                                        <input type="text" class="form-control" name="datosIph.horaEvento" id="timepicker">
-                                                                        <span class="add-on input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Asunto</label>
-                                                    <input type="text" class="form-control" id="asunto" name="datosIph.asunto" placeholder="Asunto" required data-toggle="tooltip" data-placement="top" title="Escribir asunto">
-                                                </div>     
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Participación</label>
-                                                    <select class="form-control" name="datosIph.participacion">
-                                                      <option>Ejecucion</option>
-                                                      <option>Apoyo</option>
-                                                      <option>Conocimiento</option>
-                                                    </select>
-                                                </div>     
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Operativo</label>
-                                                    <select class="form-control" name="datosIph.operativo">
-                                                      <option>Si</option>
-                                                      <option>No</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Ubicación</label>
-                                                    <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
-                                                </div>
-                                                <div>
-                                                     <table>
-                                                      <tr>
-                                                      <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="button" class="btn btn-success" value="Buscar" onclick="codeAddress()" required/>
-                                                      </p>
-                                                      </td>
-                                                      <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="text" name="latitud" id="latitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
-                                                      </p>
-                                                      </td>
-                                                      <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                         <input type="text" name="longitud" id="longitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
-                                                      </p>
-                                                      </td>	
-                                                      </tr>
-                                                   </table> 
-                                                 </center>       
-                                              </div> 
-                                                <div id="mapCanvas"></div>
-                                            </div>
-                                            <div class="step-pane" id="step2">
-                                                <br/>
-                                                <h4>2.- Datos de la victima</h4>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" id="apePatVict" name="victimaIph.apellidoPaterno" placeholder="Apellido paterno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno de la Victima">
-                                                </div>                       
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Apellido Materno</label>
-                                                    <input type="text" class="form-control" id="apeMatVict" name="victimaIph.apellidoMaterno" placeholder="Apellido materno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno de Victima">
-                                                </div>                       
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Nombre(s)</label>
-                                                    <input type="text" class="form-control" id="nomVict" name="victimaIph.nombre" placeholder="Nombres de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) de la Victima">
-                                                </div>                  
-                                                <div class="form-group">      
-                                                    <label for="exampleInputEmail1">Edad</label>
-                                                    <input type="text" class="form-control" id="edadVict" name="victimaIph.edad" placeholder="Edad de la victima" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad de la Victima">
-                                                </div>                                                
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Sexo</label>
-                                                    <select class="form-control" name="victimaIph.sexo">
-                                                      <option>Femenino</option>
-                                                      <option>Masculino</option>
-                                                    </select>
-                                                </div>                                                              
-
-                                            </div>
-                                            <div class="step-pane" id="step3">
-                                                <br/>
-                                                <h4>3.- Datos del probable responsable</h4>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" id="apePatResp" name="imputadoIph.apellidoPaterno" placeholder="Apellido paterno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno Responsable">
-                                                </div>                       
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Apellido Materno</label>
-                                                    <input type="text" class="form-control" id="apeMatResp" name="imputadoIph.apellidoMaterno" placeholder="Apellido materno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno Responsable">
-                                                </div>                       
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Nombre(s)</label>
-                                                    <input type="text" class="form-control" id="nomResp" name="imputadoIph.nombre" placeholder="Nombres del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) Responsable">
-                                                </div>                                                
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Edad</label>
-                                                    <input type="text" class="form-control" id="edadResp" name="imputadoIph.edad" placeholder="Edad del probable responsable" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable">
-                                                </div>                                                
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Sexo </label>
-                                                    <select class="form-control" name="imputadoIph.sexo">
-                                                      <option>Femenino</option>
-                                                      <option>Masculino</option>
-                                                    </select>
-                                                </div>                                                
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Probables delitos o faltas administrativas</label>
-                                                    <input type="text" class="form-control" id="delitoResp" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Probable Delito/Falta">
-                                                </div>                                                   
-                                            </div>
-                                        </g:form>
-
-                                        <div class="step-pane" id="step4">
-                                            <br/>
-                                            <div class="panel-group accordion" id="accordion">
-                                                <!--<div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                                Evidencia
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="evidencia">
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="" />
-                                                                </div>
-                                                            </g:uploadForm>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                Documento IPH
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseTwo" class="panel-collapse collapse" style="height: 1px;">
-                                                        <div class="panel-body">
-                                                            <g:uploadForm action="subirArchivo" name="fileUpload" class="dropzone" name="subirArchivo" id ="documentoIph">
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="" />
-                                                                </div>
-                                                            </g:uploadForm>  
-                                                        </div>
-                                                    </div>
-                                                </div>-->
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                                Plantillas
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
-                                                        <div class="panel-body">
-                                                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
-                                                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
-                                                            </a>
-                                                            <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />-->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                </div>                                
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>    
             </div>
-        </div>    
+        </div>  
         
         <script src="${resource(dir: 'centaurus/js/', file: 'jquery.maskedinput.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-datepicker.js')}"></script>
         <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-timepicker.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
 
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+		$('#email-list li > .star > a').on('click', function() {
+            $(this).toggleClass('starred');
+            });
+
+            $(".has-tooltip").each(function (index, el) {
+            $(el).tooltip({
+            placement: $(this).data("placement") || 'bottom'
+            });
+            });
+
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            $(window).smartresize(function(){
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            function setHeightEmailContent() {
+		if ($( document ).width() >= 992) {
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+
+            $('#email-detail').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-detail').css('height', '');
+            }
+            }
+
+            function initEmailScroller() {
+		if ($( document ).width() >= 992) {
+            $('#email-navigation').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-nav-nano-content'
+            });
+
+            $('#email-detail').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-detail-nano-content'
+            });
+            }
+            }
+        </script> 
+        
         <script>
             $(function($) {	
                     //masked inputs

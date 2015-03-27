@@ -43,82 +43,84 @@
     <body>      
         <div class="row">
             <div class="col-lg-12"> 
-                <div id="email-detail" class="email-detail-nano" style="height: 627px;">
-                    <div class="container">
-                        <hgroup class="mb20">
-                            <h1>Resultados</h1>
-                            <h2 class="lead"><strong class="text-danger">4</strong> resultados fueron encontrados para la búsqueda</h2>								
-                        </hgroup>
-                        <section class="col-xs-12 col-sm-6 col-md-12">
-                            <article class="search-result row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <img src="${resource(dir: 'centaurus/img/samples', file: 'imputado.jpg')}" width='250' height='140'/>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-2">
-                                    <ul class="meta-search">
-                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>05/01/2015</span></li>
-                                        <li><i class="glyphicon glyphicon-time"></i> <span>4:29 pm</span></li>
-                                        <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Imputados</strong></span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                    <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-3</a></h3>
-                                    <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
-                                </div>
-                                <span class="clearfix borda"></span>
-                            </article>	
-                            <article class="search-result row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <img src="${resource(dir: 'centaurus/img/samples', file: 'delito.jpg')}" width='250' height='140'/>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-2">
-                                    <ul class="meta-search">
-                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>10/02/2015</span></li>
-                                        <li><i class="glyphicon glyphicon-time"></i> <span>6:08 pm</span></li>
-                                        <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Delitos</strong></span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                    <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-1</a></h3>
-                                    <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
-                                </div>
-                                <span class="clearfix borda"></span>
-                            </article>
-                            <article class="search-result row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <img src="${resource(dir: 'centaurus/img/samples', file: 'victima.jpg')}" width='250' height='140'/>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-2">
-                                    <ul class="meta-search">
-                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>11/02/2015</span></li>
-                                        <li><i class="glyphicon glyphicon-time"></i> <span>6:15 am</span></li>
-                                        <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Victimas</strong></span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                    <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-2</a></h3>
-                                    <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
-                                </div>
-                                <span class="clearfix borda"></span>
-                            </article>
-                            <article class="search-result row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <img src="${resource(dir: 'centaurus/img/samples', file: 'audiencia.jpg')}" width='250' height='140'/>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-2">
-                                    <ul class="meta-search">
-                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>15/02/2015</span></li>
-                                        <li><i class="glyphicon glyphicon-time"></i> <span>11:48 am</span></li>
-                                        <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Audiencias</strong></span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                    <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-4</a></h3>
-                                    <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez<br/><br/><br/><br/><br/><br/><br/></p>
-                                </div>
-                                <span class="clearfix borda"></span>
-                            </article>
-                        </section>
+                <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                    <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
+                        <div class="container">
+                            <hgroup class="mb20">
+                                <h1>Resultados</h1>
+                                <h2 class="lead"><strong class="text-danger">4</strong> resultados fueron encontrados para la búsqueda</h2>								
+                            </hgroup>
+                            <section class="col-xs-12 col-sm-6 col-md-12">
+                                <article class="search-result row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <img src="${resource(dir: 'centaurus/img/samples', file: 'imputado.jpg')}" width='250' height='140'/>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
+                                        <ul class="meta-search">
+                                            <li><i class="glyphicon glyphicon-calendar"></i> <span>05/01/2015</span></li>
+                                            <li><i class="glyphicon glyphicon-time"></i> <span>4:29 pm</span></li>
+                                            <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Imputados</strong></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-3</a></h3>
+                                        <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
+                                    </div>
+                                    <span class="clearfix borda"></span>
+                                </article>	
+                                <article class="search-result row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <img src="${resource(dir: 'centaurus/img/samples', file: 'delito.jpg')}" width='250' height='140'/>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
+                                        <ul class="meta-search">
+                                            <li><i class="glyphicon glyphicon-calendar"></i> <span>10/02/2015</span></li>
+                                            <li><i class="glyphicon glyphicon-time"></i> <span>6:08 pm</span></li>
+                                            <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Delitos</strong></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-1</a></h3>
+                                        <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
+                                    </div>
+                                    <span class="clearfix borda"></span>
+                                </article>
+                                <article class="search-result row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <img src="${resource(dir: 'centaurus/img/samples', file: 'victima.jpg')}" width='250' height='140'/>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
+                                        <ul class="meta-search">
+                                            <li><i class="glyphicon glyphicon-calendar"></i> <span>11/02/2015</span></li>
+                                            <li><i class="glyphicon glyphicon-time"></i> <span>6:15 am</span></li>
+                                            <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Victimas</strong></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-2</a></h3>
+                                        <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez</p>
+                                    </div>
+                                    <span class="clearfix borda"></span>
+                                </article>
+                                <article class="search-result row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <img src="${resource(dir: 'centaurus/img/samples', file: 'audiencia.jpg')}" width='250' height='140'/>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
+                                        <ul class="meta-search">
+                                            <li><i class="glyphicon glyphicon-calendar"></i> <span>15/02/2015</span></li>
+                                            <li><i class="glyphicon glyphicon-time"></i> <span>11:48 am</span></li>
+                                            <li><i class="glyphicon glyphicon-tags"></i> <span><strong class="text-danger">Audiencias</strong></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <h3><a href="../home/detail_busqueda" title="">COA/FG/XX/PGU/2014/AA-4</a></h3>
+                                        <p>Estatus: Iniciado </br>Imputado: Carlos Navarrete del Bosque <br/>Victima: Yocelin Sanchez<br/><br/><br/><br/><br/><br/><br/></p>
+                                    </div>
+                                    <span class="clearfix borda"></span>
+                                </article>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>

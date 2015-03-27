@@ -56,7 +56,7 @@
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        
         <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
         <script src="${resource(dir: 'js', file: 'hogan.js')}"></script>
@@ -174,7 +174,7 @@
             }
         </style>
     </head>
-    <body class="pace-done  fixed-header pace-done fixed-footer" onload="pintar()"  id ="cuerpo">
+    <body class="pace-done fixed-header pace-done fixed-footer">
         <div id="theme-wrapper">
             <header class="navbar" id="header-navbar">
                 <div class="container">
@@ -192,7 +192,7 @@
                             <g:form name="buscarForm" controller="Busqueda" action="index" class="form-inline" role="form">                                                                                
                                 <ul class="nav navbar-nav pull-left">
                                     <li style="margin-top: 7px;"> 
-                                        <input type="text" style="z-index: 1;" class="countries-cities typeahead" id="buscar" name="buscar" placeholder="Buscar ...">
+                                        <input type="text" style="z-index: 1;width: 197px;" class="typeahead countries-cities" id="buscar" name="buscar" placeholder="Buscar ...">
                                     </li>
                                     <li>
                                         <a class="btn" id="make-small-nav" onclick="$('#buscarForm').submit();">
@@ -207,42 +207,6 @@
                                 </ul>
                             </g:form>  
                         </div>   
-                        <shiro:hasRole name="Juez">
-                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                                <ul class="nav navbar-nav pull-left">
-                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                        <strong>Procuraduría general</strong>
-                                    </p>
-                                </ul>                                    
-                            </div>
-                        </shiro:hasRole>   
-                        <shiro:hasRole name="CES">
-                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                                <ul class="nav navbar-nav pull-left">
-                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                        <strong>Seguridad pública</strong>
-                                    </p>
-                                </ul>                                    
-                            </div>
-                        </shiro:hasRole>   
-                        <shiro:hasRole name="Ministerio">
-                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                                <ul class="nav navbar-nav pull-left">
-                                    <p style="margin-left: 180px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                        <strong>Ministerio público</strong>
-                                    </p>
-                                </ul>                                    
-                            </div>
-                        </shiro:hasRole>   
-                        <shiro:hasRole name="Defensor">
-                            <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                                <ul class="nav navbar-nav pull-left">
-                                    <p style="margin-left: 200px; font-size: 18px; margin-top: 12px; color: #ffffff">
-                                        <strong>Defensoría</strong>
-                                    </p>
-                                </ul>                                    
-                            </div>
-                        </shiro:hasRole> 
                         <div class="nav-no-collapse pull-right" id="header-nav">
                             <ul class="nav navbar-nav pull-right"> 
                                 <li class="dropdown hidden-xs">
@@ -309,6 +273,11 @@
                                         <i class="fa fa-cog"></i>
                                     </a>
                                 </li>
+                                <li class="hidden-xs">
+                                    <a class="btn">
+                                        <i class="fa fa-question-circle"></i>
+                                    </a>
+                                </li>
                                 <li class="dropdown profile-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="${resource(dir: 'centaurus/img/samples', file: 'user.png')}" alt=""/>
@@ -334,12 +303,16 @@
                                 <div id="col-left-inner" class="col-left-nano-content">
                                     <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
                                         <img alt="" src="${resource(dir: 'centaurus/img/samples/', file: '')}<shiro:principal/>.jpg"/>
+                                    <shiro:hasRole name="Ministerio"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Procuraduría General de Justicia </span></div></shiro:hasRole>
+                                    <shiro:hasRole name="CES"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Comisión Estatal de Seguridad </span></div></shiro:hasRole>
+                                    <shiro:hasRole name="Juez"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Tribunal Superior de Justicia </span></div></shiro:hasRole>
+                                    <shiro:hasRole name="Defensor"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;">Instituto Estatal de Defensoría Pública</span></div></shiro:hasRole>
                                     <div class="user-box" style="padding-left: 0px;">
-                                        <span class="name" style="font-size: 13px;">
+                                        <span class="name" style="font-size: 11px;">
                                             <user:loggedInUser property="nombre"/><br/>
                                         </span>                                       
                                     </div>
-                                    <shiro:hasRole name="Ministerio">
+                                    <!--<shiro:hasRole name="Ministerio">
                                         <div class="user-box" style="padding-left: 0px;">
                                             <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
                                         </div>
@@ -358,7 +331,7 @@
                                         <div class="user-box" style="padding-left: 0px;">
                                             <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
                                         </div>
-                                    </shiro:hasRole>
+                                    </shiro:hasRole>-->
                                 </div>
                                 <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                     <ul class="nav nav-pills nav-stacked">
@@ -440,7 +413,18 @@
                                                         Mis plantillas
                                                     </i>
                                                 </a>
-                                            </li>                                            
+                                            </li> 
+                                            <li>
+                                                <i></i>
+                                                <p>&nbsp;</p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_luc.png')}" width="100">  
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_mop_gp.png')}" width="80">
+                                                    </p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_tres_i_x_ti.png')}" width="80">
+                                                </p>  
+                                            </li>
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES">
                                             <li>
@@ -491,6 +475,17 @@
                                                         Mis plantillas
                                                     </i>
                                                 </a>
+                                            </li>
+                                            <li>
+                                                <i></i>
+                                                <p>&nbsp;</p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_luc.png')}" width="100">  
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_mop_gp.png')}" width="80">
+                                                    </p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_tres_i_x_ti.png')}" width="80">
+                                                </p>  
                                             </li>
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
@@ -557,6 +552,17 @@
                                                     </i>
                                                 </a>
                                             </li>
+                                            <li>
+                                                <i></i>
+                                                <p>&nbsp;</p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_luc.png')}" width="100">  
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_mop_gp.png')}" width="80">
+                                                    </p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_tres_i_x_ti.png')}" width="80">
+                                                </p> 
+                                            </li>
                                         </shiro:hasRole>                                         
                                         <shiro:hasRole name="Defensor">
                                             <li>
@@ -593,6 +599,17 @@
                                                         Mis plantillas
                                                     </i>
                                                 </a>
+                                            </li>
+                                            <li>
+                                                <i></i>
+                                                <p>&nbsp;</p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_luc.png')}" width="100">  
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_mop_gp.png')}" width="80">
+                                                    </p>
+                                                <p align="center">
+                                                    <img src="${resource(dir: 'centaurus/img/', file: 'logo_tres_i_x_ti.png')}" width="80">
+                                                </p> 
                                             </li>
                                         </shiro:hasRole>                                  
                                     </ul>
@@ -657,7 +674,7 @@
         </div>
 
     <r:layoutResources />
-    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}/"></script>  
+    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>  
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
 
 
@@ -669,6 +686,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
     <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

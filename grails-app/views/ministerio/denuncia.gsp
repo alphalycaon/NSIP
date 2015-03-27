@@ -116,7 +116,7 @@
 
         </style>
 
-        <title>Generar denuncia</title>
+        <title>Generar Denuncia/Querella</title>
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
@@ -134,9 +134,9 @@
                         <div class="col-lg-12">
                             <ol class="breadcrumb">
                                 <li><a href="${request.contextPath}">Home</a></li>
-                                <li class="active"><span>Denuncia</span></li>
+                                <li class="active"><span>Denuncia/Querella</span></li>
                             </ol>
-                            <h1>Generar Denuncia</h1>
+                            <h1>Generar Denuncia/Querella</h1>
                         </div>
                     </div>
                     <div class="row">
@@ -151,7 +151,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Cancelar Registro de Denuncia</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Cancelar Registro de Denuncia/Querella</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div>
@@ -176,7 +176,7 @@
                                                 <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                                 <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
                                                 <li data-target="#step4"><span class="badge">4</span>Presunto Responsable<span class="chevron"></span></li>
-                                                <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia<span class="chevron"></span></li>
+                                                <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia/Querella<span class="chevron"></span></li>
                                                 <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
                                             </ul>
                                             <div class="actions" style="z-index: 1">
@@ -287,16 +287,16 @@
                                                 </div>
                                                 <div class="step-pane" id="step5">
                                                     <br/>
-                                                    <h4>5.- Datos de la Denuncia</h4>
+                                                    <h4>5.- Datos de la Denuncia/Querella</h4>
                                                     <div class="form-group">
-                                                        <label for="expediente">Número de denuncia</label>
+                                                        <label for="expediente">Número de Denuncia/Querella</label>
                                                         <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
                                                         </br>
-                                                        <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de denuncia" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
+                                                        <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de Denuncia/Querella" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">IPH de la denuncia</label>
+                                                        <label for="exampleInputEmail1">IPH de la Denuncia/Querella</label>
                                                         <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required>
                                                         </br>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
@@ -401,11 +401,68 @@
 <script src="${resource(dir: 'centaurus/js/', file: 'demo.js')}"></script>  
 
 <script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-editable.min.js')}"></script>
-<script src="${resource(dir: 'centaurus/js/', file: 'select2.min.js')}"></script>
+<!--<script src="${resource(dir: 'centaurus/js/', file: 'select2.min.js')}"></script>-->
 <script src="${resource(dir: 'centaurus/js/', file: 'moment.min.js')}"></script>
 
 <script src="${resource(dir: 'centaurus/js/', file: 'scripts.js')}"></script>
 <script src="${resource(dir: 'centaurus/js/', file: 'pace.min.js')}"></script>
+    
+<script type="text/javascript">
+
+            $(document).ready(function() {
+		$('#email-list li > .star > a').on('click', function() {
+            $(this).toggleClass('starred');
+            });
+
+            $(".has-tooltip").each(function (index, el) {
+            $(el).tooltip({
+            placement: $(this).data("placement") || 'bottom'
+            });
+            });
+
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            $(window).smartresize(function(){
+            setHeightEmailContent();
+
+            initEmailScroller();
+            });
+
+            function setHeightEmailContent() {
+		if ($( document ).width() >= 992) {
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+
+            $('#email-detail').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-detail').css('height', '');
+            }
+            }
+
+            function initEmailScroller() {
+		if ($( document ).width() >= 992) {
+            $('#email-navigation').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-nav-nano-content'
+            });
+
+            $('#email-detail').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-detail-nano-content'
+            });
+            }
+            }
+        </script>    
+
 <script>
     $(document).ready(function(){
     //toggle `popup` / `inline` mode

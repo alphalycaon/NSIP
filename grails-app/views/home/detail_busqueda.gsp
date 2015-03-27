@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-lg-12"> 
                             <shiro:hasRole name="Juez">
-                                <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 650px;">
                                     <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                                         <div id="email-detail-inner">
                                             <div id="email-detail-subject" class="clearfix">
@@ -215,7 +215,7 @@
                         </div>                            
                         </shiro:hasRole>
                         <shiro:hasRole name="Ministerio">
-                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 650px;">
                                 <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                                     <div id="email-detail-inner">
                                         <div id="email-detail-subject" class="clearfix">
@@ -365,7 +365,7 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Documentos Relacionados</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -510,7 +510,7 @@
                             </div>                       
                         </shiro:hasRole>
                         <shiro:hasRole name="Defensor">
-                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 650px;">
                                 <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                                     <div id="email-detail-inner">
                                         <div id="email-detail-subject" class="clearfix">
@@ -663,7 +663,7 @@
                                                 </div>-->
                                                 <div class="main-box clearfix" id="div_archivos">
                                                     <header class="main-box-header clearfix">
-                                                        <h2>Archivos</h2>
+                                                        <h3>Archivos</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            
@@ -808,13 +808,12 @@
                             </div>                            
                         </shiro:hasRole>
                         <shiro:hasRole name="CES">
-                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="height: 627px;">
+                            <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 650px;">
                                 <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                                     <div id="email-detail-inner">
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">COA/FG/XX/PGU/2014/AA-1</span>
-                                            <span class="label label-success">Capturado</span>
-                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Asignar Defensor</button>                                            
+                                            <span class="label label-success">Capturado</span>                                           
                                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalCompartir">Compartir Expediente</button>                                        </div>
 
                                         <div id="email-body">      
@@ -956,7 +955,7 @@
                                             <div class="col-lg-12">
                                                 <div class="main-box clearfix">
                                                     <header class="main-box-header clearfix">
-                                                        <h2>Carpeta de investigación</h2>
+                                                        <h3>Documentos Relacionados</h3>
                                                     </header>
                                                     <div class="main-box-body clearfix">
                                                         <div class="row cf nestable-lists" id="user-profile">                                                            

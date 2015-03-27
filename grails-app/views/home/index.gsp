@@ -63,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">                           
-                            <div id="email-content" class="email-content-nano has-scrollbar" style="height: 100%; ">
+                            <div id="email-content" class="email-content-nano has-scrollbar" style="min-height: 650px;">
                                 <div class="email-content-nano-content" tabindex="0" style="right: -16px;">
                                     <ul id="email-list">
                                         <!--li class="unread clickable-row" data-href="email-detail.html">
@@ -232,6 +232,9 @@
                 </div>
               </div>
         <!--Fin Modal-->
+
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+                                
         <script type="text/javascript">
 
 function setHeightEmailContent() {
