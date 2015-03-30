@@ -41,8 +41,9 @@
                                         <g:link controller="ces" action="iph" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR IPH
                                         </g:link> 
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
                                 </div>
-                                </shiro:hasRole>
+                                </shiro:hasRole>                                
                                 <div id="email-header-pagination" class="pull-right">
                                     <div class="btn-group pagination pull-right">
                                         <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
@@ -55,7 +56,7 @@
                                     <div class="num-items pull-right hidden-xs">
                                         1-2 de 2
                                     </div>
-                                </div>
+                                </div>                                
                             </header>
                         </div>
                     </div>

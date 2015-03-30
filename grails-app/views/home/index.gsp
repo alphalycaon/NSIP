@@ -8,13 +8,13 @@
 
 <html>
     <head>        
-        
+
         <style type="text/css">
             .not-active {
-                cursor: no-drop;
-             }
-         </style> 
-        
+            cursor: no-drop;
+            }
+        </style> 
+
         <meta name="layout" content="main"/>
         <title>Bandeja de Entrada</title>
     </head>
@@ -31,33 +31,38 @@
                             </div>
                             <header id="email-header" class="clearfix">     
                                 <shiro:hasRole name="Ministerio">
-                                <div id="email-header-tools">
-                                                                                                                 
+                                    <div id="email-header-tools">
+
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
-                                        </g:link>                                    
-                                </div>
+                                        </g:link>     
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa"> JAR </button>&nbsp; 
+                                    </div>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="CES">
-                                <div id="email-header-tools">                                                                                                                 
+                                    <div id="email-header-tools">                                                                                                                 
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
-                                        </g:link>                                    
-                                </div>
+                                        </g:link>  
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
+                                    </div>
                                 </shiro:hasRole>
-                                <div id="email-header-pagination" class="pull-right">
-                                    <div class="btn-group pagination pull-right">
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
-                                            <i class="fa fa-chevron-left"></i>
-                                        </button>
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </button>
+                                    <div> 
+                                    <div id="email-header-pagination" class="pull-right">
+                                        <div class="btn-group pagination pull-right">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </button>
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="num-items pull-right hidden-xs">
+                                            1-2 de 2
+                                        </div>
                                     </div>
-                                    <div class="num-items pull-right hidden-xs">
-                                        1-2 de 2
-                                    </div>
-                                </div>
+                                </div> 
                             </header>
                         </div>
                     </div>
@@ -111,84 +116,84 @@
                                             </div>
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
-                                        <g:each in="${expedientesCreados}" var="expediente" status="i">
-                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                <div class="name">
-                                                    ${expediente.numeroExpediente}
-                                                </div>
-                                                <div class="message">
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                                               
-                                        </g:each>                                        
+                                            <g:each in="${expedientesCreados}" var="expediente" status="i">
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="name">
+                                                            ${expediente.numeroExpediente}
+                                                        </div>
+                                                        <div class="message">
+                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                        </div>
+                                                        <div class="meta-info">
+                                                            <a href="#" class="attachment">
+                                                                <i class="fa fa-paperclip"></i>
+                                                            </a>
+                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
+                                                        </div>
+                                                    </li></g:link>                                               
+                                            </g:each>                                        
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
-                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                <div class="name">
-                                                    ${expediente.numeroExpediente}
-                                                </div>
-                                                <div class="message">
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                                                
-                                        </g:each>                                        
+                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="name">
+                                                            ${expediente.numeroExpediente}
+                                                        </div>
+                                                        <div class="message">
+                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                        </div>
+                                                        <div class="meta-info">
+                                                            <a href="#" class="attachment">
+                                                                <i class="fa fa-paperclip"></i>
+                                                            </a>
+                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
+                                                        </div>
+                                                    </li></g:link>                                                
+                                            </g:each>                                        
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Defensor">
-                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                <div class="name">
-                                                    ${expediente.numeroExpediente}
-                                                </div>
-                                                <div class="message">
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                                                
-                                        </g:each>                                        
+                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="name">
+                                                            ${expediente.numeroExpediente}
+                                                        </div>
+                                                        <div class="message">
+                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                        </div>
+                                                        <div class="meta-info">
+                                                            <a href="#" class="attachment">
+                                                                <i class="fa fa-paperclip"></i>
+                                                            </a>
+                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
+                                                        </div>
+                                                    </li></g:link>                                                
+                                            </g:each>                                        
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                <div class="name">
-                                                    ${expediente.numeroExpediente}
-                                                </div>
-                                                <div class="message">
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                                                
-                                        </g:each>                                     
+                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="name">
+                                                            ${expediente.numeroExpediente}
+                                                        </div>
+                                                        <div class="message">
+                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                        </div>
+                                                        <div class="meta-info">
+                                                            <a href="#" class="attachment">
+                                                                <i class="fa fa-paperclip"></i>
+                                                            </a>
+                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
+                                                        </div>
+                                                    </li></g:link>                                                
+                                            </g:each>                                     
                                         </shiro:hasRole>
                                     </ul>
                                 </div>
@@ -199,12 +204,12 @@
             </div>
         </div>
         <!--Modal-->
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
                     </div>
                     <div class="modal-body">
                         <li>
@@ -226,82 +231,82 @@
                         </li>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <!--Fin Modal-->
+            </div>
+        </div>
+  <!--Fin Modal-->
 
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-                                
+
         <script type="text/javascript">
 
-function setHeightEmailContent() {
+            function setHeightEmailContent() {
     if ($(document).width() >= 992) {
-        var windowHeight = $(window).height();
-        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-        $('#email-content').css('height', windowHeight - staticContentH);
-    }
-    else {
-        $('#email-content').css('height', '');
-    }
-}
+            $('#email-content').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-content').css('height', '');
+            }
+            }
 
-function initEmailScroller() {
+            function initEmailScroller() {
     if ($(document).width() >= 992) {
-        $('#email-navigation').nanoScroller({
+            $('#email-navigation').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-nav-nano-content'
-        });
+            });
 
-        $('#email-content').nanoScroller({
+            $('#email-content').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-content-nano-content'
-        });
-    }
-}
-$(document).ready(function() {
+            });
+            }
+            }
+            $(document).ready(function() {
     $('#email-list li > .star > a').on('click', function() {
-        $(this).toggleClass('starred');
-    });
+            $(this).toggleClass('starred');
+            });
 
-    $(".has-tooltip").each(function(index, el) {
-        $(el).tooltip({
+            $(".has-tooltip").each(function(index, el) {
+            $(el).tooltip({
             placement: $(this).data("placement") || 'bottom'
-        });
-    });
+            });
+            });
 
-    setHeightEmailContent();
+            setHeightEmailContent();
 
-    initEmailScroller();
-    
+            initEmailScroller();
 
-    
+
+
 
     $(".clickable-row > div:not(.chbox,.star)").click(function(e) {
-        if ((e.target instanceof HTMLAnchorElement) == true) {
+            if ((e.target instanceof HTMLAnchorElement) == true) {
             return;
-        }
-        var href = $(this).parent().data('href');
+            }
+            var href = $(this).parent().data('href');
 
-        if (href != '' && typeof href != 'undefined') {
+            if (href != '' && typeof href != 'undefined') {
             window.document.location = href;
-        }
-    });
-});
+            }
+            });
+            });
 
-$(window).smartresize(function() {
-    setHeightEmailContent();
+            $(window).smartresize(function() {
+            setHeightEmailContent();
 
-    initEmailScroller();
-});
+            initEmailScroller();
+            });
 
 
         </script>
