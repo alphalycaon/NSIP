@@ -181,7 +181,7 @@
             <header class="navbar" id="header-navbar">
                 <div class="container">
                     <a href="${request.contextPath}" id="logo" class="navbar-brand">
-                        <img src="${resource(dir: 'centaurus/img', file: 'logo.png')}" alt="" class="normal-logo logo-white"/>
+                        <img src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="" class="normal-logo logo-white"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-black.png')}" alt="" class="normal-logo logo-black"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-small.png')}" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
                     </a>
@@ -309,35 +309,22 @@
                                 <div id="col-left-inner" class="col-left-nano-content">
                                     <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
                                         <img alt="" src="${resource(dir: 'centaurus/img/samples/', file: '')}<shiro:principal/>.jpg"/>
-                                    <shiro:hasRole name="Ministerio"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Procuraduría General de Justicia </span></div></shiro:hasRole>
-                                    <shiro:hasRole name="CES"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Comisión Estatal de Seguridad </span></div></shiro:hasRole>
-                                    <shiro:hasRole name="Juez"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;"> Tribunal Superior de Justicia </span></div></shiro:hasRole>
-                                    <shiro:hasRole name="Defensor"><div class="user-box" style="padding-left: 0px;"><span class="name" style="font-size: 13px;">Instituto Estatal de Defensoría Pública</span></div></shiro:hasRole>
-                                    <div class="user-box" id="usuarioActual" style="padding-left: 0px;">
-                                        <span class="name" style="font-size: 11px;">
-                                            <user:loggedInUser property="nombre"/><br/>
-                                        </span>                                       
+                                    
+                                    <div class="user-box">
+                                        <span class="name">Hola<br><user:loggedInUser property="nombre"/><br></span>
+                                        <span class="status">
+                                        <i class="fa fa-circle"></i> Online
+                                        </span>
                                     </div>
-                                    <!--<shiro:hasRole name="Ministerio">
-                                        <div class="user-box" style="padding-left: 0px;">
-                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
-                                        </div>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="CES">
-                                        <div class="user-box" style="padding-left: 0px;">
-                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
-                                        </div>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="Juez">
-                                        <div class="user-box" style="padding-left: 0px;">
-                                            <i class="fa fa-inbox" style="font-size: 24px;"> Lista de Casos<br/></i> 
-                                        </div>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="Defensor">
-                                        <div class="user-box" style="padding-left: 0px;">
-                                            <i class="fa fa-inbox" style="font-size: 24px;"> Menú<br/></i> 
-                                        </div>
-                                    </shiro:hasRole>-->
+                                    <div class="user-box">
+                                      <span class="name"><br>
+                                        <shiro:hasRole name="Ministerio">Procuraduría General de Justicia </shiro:hasRole>
+                                        <shiro:hasRole name="CES"> Comisión Estatal de Seguridad </shiro:hasRole>
+                                        <shiro:hasRole name="Juez"> Tribunal Superior de Justicia </shiro:hasRole>
+                                        <shiro:hasRole name="Defensor">Instituto Estatal de Defensoría Pública</shiro:hasRole>
+                                      </span>
+                                    </div>
+                                    </div>
                                 </div>
                                 <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                     <ul class="nav nav-pills nav-stacked">
@@ -539,15 +526,7 @@
                                             </li>
                                         </shiro:hasRole>                                  
                                     </ul>
-                                    <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
-                                        <p align="center">
-                                            <img src="${resource(dir: 'centaurus/img/', file: 'logo_luc.png')}" width="100">  
-                                            <img src="${resource(dir: 'centaurus/img/', file: 'logo_mop_gp.png')}" width="80">
-                                        </p>
-                                        <p align="center">
-                                            <img src="${resource(dir: 'centaurus/img/', file: 'logo_tres_i_x_ti.png')}" width="80">
-                                        </p>
-                                    </div>
+                                    
                                 </div>
                                 
                             </div>

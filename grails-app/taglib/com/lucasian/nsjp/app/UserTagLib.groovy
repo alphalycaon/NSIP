@@ -14,7 +14,8 @@ class UserTagLib {
         if (!user) return
 
         def prop = user[attrs.property]
-
+        prop = prop.substring(0,prop.indexOf(" ")) 
+        
         if (prop) out << prop.encodeAsHTML()
     }
 
@@ -23,7 +24,7 @@ class UserTagLib {
         def subject = SecurityUtils.subject
 
         if (!subject.getPrincipal()) return // No-one logged-in
-
+        
         return User.findByUsername(subject.getPrincipal().toString())
     }
 

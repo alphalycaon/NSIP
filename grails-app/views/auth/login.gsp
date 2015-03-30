@@ -37,7 +37,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <header id="login-header">
-                                            <div style="background-color: #bbbbbb;" >
+                                            <div style="background-color: #34495e;" >
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${resource(dir: 'centaurus/img', file: 'logo3.png')}" height="120" alt=""/>
                                             </div>
                                         </header>
@@ -48,11 +48,12 @@
                                             <g:form action="signIn">
                                                 <input type="hidden" name="targetUri" value="${targetUri}" />
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <span class="input-group-addon"><i class="fa fa-user" style="color:#34495e;"></i></span>
+
                                                     <input type="text" name="username" value="${username}" class="form-control" placeholder="Usuario"/>
                                                 </div>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                    <span class="input-group-addon"><i class="fa fa-key"style="color:#34495e;"></i></span>
                                                     <input type="password" class="form-control" name="password" value="" placeholder="Contraseña"/>
                                                 </div>
                                                 <div id="remember-me-wrapper">
@@ -77,16 +78,19 @@
                                                 </div>
 
                                             </g:form>
-                                        </div>                                        
+                                        </div>  
                                         <div class="panel-footer center-block">
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by
                                             <div class="row">
-                                                <div class="center-block" style="background:#bbbbbb;">				
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="30%" width="30%" src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                                <div class="center-block" style="">				
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <img height="30%" width="30%" src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 
                                                     <img height="20%" width="20%" src="${resource(dir: 'centaurus/img', file: 'logo_tres_i_x_ti.png')}" alt="">
                                                 </div>
                                             </div>						
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>                            
