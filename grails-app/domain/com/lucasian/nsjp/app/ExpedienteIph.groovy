@@ -8,4 +8,5 @@ class ExpedienteIph {
     Date lastUpdated 
     static hasOne = [iph: Iph]
     String numeroIph
+    String createdBy
 }

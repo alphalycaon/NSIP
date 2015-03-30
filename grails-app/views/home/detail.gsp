@@ -1173,7 +1173,7 @@
                                                     <input type="hidden" name="expedienteId2" value="${expediente.id}">
                                                     <select style="width:570px" name="listDefensor" id="listDefensor" multiple>
                                                         <g:each in="${defensores}" var="defensor" status="i">
-                                                            <option value="${defensor.username}">${defensor.nombre}</option>
+                                                            <option value="${defensor.username}">${defensor.institucion} - ${defensor.puesto} - ${defensor.nombre}</option>
                                                         </g:each>
                                                     </select>
                                                 </div>
@@ -1210,7 +1210,7 @@
                                                     <input type="hidden" name="expedienteId" value="${expediente.id}">
                                                     <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
                                                         <g:each in="${usuarios}" var="usuario" status="i">
-                                                            <option value="${usuario.username}">${usuario.nombre}</option>
+                                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
                                                         </g:each>
                                                     </select>
                                                 </div>
@@ -1247,7 +1247,7 @@
                                                     <input type="hidden" name="expedienteId3" value="${expediente.id}">
                                                     <select style="width:570px" name="listCompartirDef" id="listCompartirDef" multiple >
                                                         <g:each in="${usuariosDef}" var="usuario" status="i">
-                                                            <option value="${usuario.username}">${usuario.nombre}</option>
+                                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
                                                         </g:each>
                                                     </select>
                                                 </div>

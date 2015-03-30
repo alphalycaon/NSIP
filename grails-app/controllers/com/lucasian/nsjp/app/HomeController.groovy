@@ -40,18 +40,32 @@ class HomeController {
         def userId = User.findByUsername(userName).getId()
         
         def expediente = Expediente.get(id)
-        def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ")")
-        def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ")")
-        def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ")")
+        def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
+        def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
+        def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         
         [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef]        
     }
     def index_Iph() { 
-        [expedientesIph: ExpedienteIph.list()]
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpIphFiltrado = Expediente.executeQuery("from ExpedienteIph where id in(select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + ")")
+        
+        def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "'")
+        
+        [expedientesIph: ExpedienteIph.list(), expedientesIphFiltrados: ExpIphFiltrado, expedientesIphCreados: ExpIphCreados]
     }
     def detail_Iph(Long id){
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        
         def expedienteIph = ExpedienteIph.get(id)
-        [expedienteIph: expedienteIph]
+        def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientesIph where expedienteIphId = " + id + ")")
+        def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId in (select id from Role where name in ('Ministerio', 'CES'))) and id not in (select usuarioId from UsuariosExpedientesIph where expedienteIphId = " + id + ")")
+        def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientesIph where expedienteIphId = " + id + ")")
+        
+        [expedienteIph: expedienteIph, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef]
     }
     def detail_busqueda(){
         
@@ -61,6 +75,9 @@ class HomeController {
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
 
         [SolicitudesAudiencias: SolAudiencias, jueces: jueces]
+    }
+    def agenda(){
+        
     }
     def mapa(){
         
@@ -161,5 +178,82 @@ class HomeController {
         print("expediente " + Integer.parseInt(expedienteId))
         redirect(action: "detail", id: expedienteId)
         
+    }
+    
+    def compartirExpedienteIph() {
+        print(params.listCompartir)
+        def expediente = params.expedienteId
+        if(params.listCompartir != null && params.listCompartir != ""){
+            if(params.listCompartir instanceof String){
+                int userId = User.findByUsername(params.listCompartir).getId()
+                UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                usuexp.usuarioId = userId
+                usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.save()
+                print("usuario " + userId)
+            }else{
+                for(int i=0;i<params.listCompartir.size();i++){
+                    int userId = User.findByUsername(params.listCompartir[i]).getId()
+                    UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                    usuexp.usuarioId = userId
+                    usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.save()
+                    print("usuario " + userId)
+                }
+            }    
+        }
+        print("expediente " + Integer.parseInt(expediente))
+        redirect(action: "detail_Iph", id: expediente)
+    }
+    
+    def compartirExpedienteIphDef() {
+        def expediente = params.expedienteId3
+        if(params.listCompartirDef != null && params.listCompartirDef != ""){
+            if(params.listCompartirDef instanceof String){
+                int userId = User.findByUsername(params.listCompartirDef).getId()
+                UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                usuexp.usuarioId = userId
+                usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.save()
+                print("usuario " + userId)
+            }else{
+                for(int i=0;i<params.listCompartirDef.size();i++){
+                    int userId = User.findByUsername(params.listCompartirDef[i]).getId()
+                    UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                    usuexp.usuarioId = userId
+                    usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.save()
+                    print("usuario " + userId)
+                }
+            }    
+        }
+        print("expediente " + Integer.parseInt(expediente))
+        redirect(action: "detail_Iph", id: expediente)
+    }
+    
+    def asignarIphDefensor() {
+        def expediente = params.expedienteId2
+        print(params.listDefensor)
+        if(params.listDefensor != null && params.listDefensor != ""){
+            if(params.listDefensor instanceof String){
+                int userId = User.findByUsername(params.listDefensor).getId()
+                UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                usuexp.usuarioId = userId
+                usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.save()
+                print("usuario " + userId)
+            }else{
+                for(int i=0;i<params.listDefensor.size();i++){
+                    int userId = User.findByUsername(params.listDefensor[i]).getId()
+                    UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+                    usuexp.usuarioId = userId
+                    usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.save()
+                    print("usuario " + userId)
+                }
+            }    
+        }
+        print("expediente " + Integer.parseInt(expediente))
+        redirect(action: "detail_Iph", id: expediente)
     }
 }

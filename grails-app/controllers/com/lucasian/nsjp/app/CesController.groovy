@@ -5,17 +5,22 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage
 import org.springframework.web.multipart.MultipartFile
 import java.text.SimpleDateFormat
 import org.apache.commons.io.FileUtils
+import org.apache.shiro.SecurityUtils
 class CesController {
     def grailsApplication
     def iph() { }
     def documentService
-    def guardarIph(Iph iph){          
+    def guardarIph(Iph iph){      
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
         iph.save()
         ExpedienteIph expedienteIph = new ExpedienteIph(iph: iph);
         iph.expedienteIph = expedienteIph
         expedienteIph.numeroIph = 'IPH-FG-XX-PGU-2015-BB-'
         expedienteIph.save()     
         expedienteIph.numeroIph = 'IPH-FG-XX-PGU-2015-BB-'+expedienteIph.id
+        expedienteIph.createdBy = userName
         expedienteIph.save()
         /*try{
             File srcDir = new File(''+grailsApplication.config.grails.images.temp+'/'+session.id)
@@ -24,6 +29,10 @@ class CesController {
         }catch(Exception e){
             println(e)
         }*/
+        UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
+        usuexp.usuarioId = userId
+        usuexp.expedienteIphId = expedienteIph.id
+        usuexp.save()
         //[expedienteIph: expedienteIph]
         documentService.createStructureIph(expedienteIph.numeroIph)
         render(view: 'archivos', model:[expedienteIph: expedienteIph])

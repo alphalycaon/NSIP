@@ -366,18 +366,9 @@
                                                 </a>
                                             </li>                                            
                                             <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <span style="font-size: 10px;">Notificar a Unidad Justicia Alternativa Restaurativa</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <span style="font-size: 10px;">Notificar a Unidad de Atención a Víctimas del Delito</span>
-                                                    <!--
-                                                    <span style="font-size: 10px;" class="label label-default pull-right">1,292</span>
-                                                    -->
+                                                <a href="${request.contextPath}/home/agenda">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span style="font-size: 10px;">Mi Calendario</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -417,13 +408,7 @@
                                                     <i  class="fa fa-inbox"></i>
                                                     <span style="font-size: 10px;">Mis  Informes Policiales</span>
                                                 </a>
-                                            </li>                                           
-                                            <li>
-                                                <a href="#" class="not-active">
-                                                    <i  class="fa fa-play-circle-o"></i>
-                                                    <span style="font-size: 10px;">Notificar a Unidad de Atención a Víctimas del Delito</span>
-                                                </a>
-                                            </li>
+                                            </li> 
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-exclamation-triangle"></i>
@@ -510,6 +495,12 @@
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-inbox"></i>
                                                     <span style="font-size: 10px;">Mis Asuntos</span>
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="${request.contextPath}/home/agenda">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span style="font-size: 10px;">Mi Calendario</span>
                                                 </a>
                                             </li>
                                             <li>

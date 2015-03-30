@@ -110,7 +110,7 @@
                                             </div>
                                         </li-->    
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientesIph}" var="expedienteIph" status="i">
+                                        <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
                                             <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000"><li class="unread" data-href="${request.contextPath}/home/detail_Iph">
                                                 <div class="name">
                                                     ${expedienteIph.numeroIph}

@@ -54,24 +54,11 @@
                                 <div id="email-header-title" class="visible-md visible-lg">
                                     <i class="fa fa-inbox"></i> Menú
                                 </div>
-                                <div id="email-header-tools" style=" left: 985px">
+                                <div id="email-header-tools" class="pull-right" style=" margin-right: 40px">
                                     <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>
                                 </div>
-                                <!--<div id="email-header-pagination" class="pull-right">
-                                    <div class="btn-group pagination pull-right">
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
-                                            <i class="fa fa-chevron-left"></i>
-                                        </button>
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="num-items pull-right hidden-xs">
-                                        1-2 de 2
-                                    </div>
-                                </div>-->
                             </header>
                         </div>
                     </div>
@@ -83,6 +70,7 @@
                                         <div id="email-detail-inner">
                                             <div id="email-detail-subject" class="clearfix">
                                                 <span class="subject property-value">${expedienteIph.numeroIph}</span>
+                                                <button type="button" class="btn btn-primary pull-right" style=" margin-right: 40px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>&nbsp; 
                                             </div>
                                             <div id="email-body">      
                                             </div>  
@@ -367,7 +355,44 @@
                                     </div>
                                 </div> 
                             </div>  
-                      <!--Fin Modal-->  
+                            <!--Fin Modal-->                                       
+                            <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <g:form name="formCompartir">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form role="form">
+                                                    <div class="form-group form-group-select2">
+                                                        <label>Compartir a:</label>
+                                                        <input type="hidden" name="expedienteId" value="${expedienteIph.id}">
+                                                        <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
+                                                            <g:each in="${usuarios}" var="usuario" status="i">
+                                                                <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
+                                                            </g:each>
+                                                        </select>
+                                                    </div>
+                                                </form>      
+                                            </div>
+                                            <div class="modal-footer">                                                                           
+                                                <textarea class="form-control" rows="3" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                                                </br>
+                                                 <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                                     <span  style="padding-right: 10px;"></span> Aceptar
+                                                 </a> -->  
+                                                <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirExpedienteIph" controller="home"/>
+                                                <a data-dismiss="modal" class="btn btn-danger">                                            
+                                                    <span style="padding-right: 10px;"></span> Cancelar
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </g:form>
+                            </div>
+                          <!--  -->
                         </div>
                     </div>
                 </div>
@@ -615,6 +640,25 @@
             });
             notification.show();
             this.disabled = true;
+            } );
+            })();
+
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
+                                        message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            bttnNotificacionCompartir.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById('myModalCompartir').close();
             } );
             })();
         </script> 
