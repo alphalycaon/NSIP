@@ -19,6 +19,7 @@
         <title>Bandeja de Entrada</title>
     </head>
     <body>
+      <g:form>
         <div class="row" style="opacity: 1;">
             <div class="col-lg-12">
                 <div id="email-box" class="clearfix">
@@ -38,6 +39,7 @@
                                         </g:link>                         
                                         <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
                                         <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa"> JAR </button>&nbsp;           
+                                        <g:actionSubmit id="btnEditar" class="btn btn-primary" value="CREAR CARPETA DE INVESTIGACIÓN" action="moverDenuncia" controller="home"/>
                                 </div>
                                 </shiro:hasRole>
                                 <div id="email-header-pagination" class="pull-right">
@@ -108,6 +110,12 @@
                                         <shiro:hasRole name="Ministerio">
                                         <g:each in="${expedientesCompartidos}" var="expediente" status="i">
                                             <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                <div class="chbox">
+                                                    <div class="checkbox-nice">
+                                                        <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                        <label for="checkbox${expediente.id}"></label>
+                                                    </div>
+                                                </div>
                                                 <div class="name">
                                                     ${expediente.numeroExpediente}
                                                 </div>
@@ -133,6 +141,7 @@
                 </div>
             </div>
         </div>
+      </g:form>
         <!--Modal-->
              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

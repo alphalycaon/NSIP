@@ -37,6 +37,7 @@ class MinisterioController {
         UsuariosExpedientes usuexp = new UsuariosExpedientes();
         usuexp.usuarioId = userId
         usuexp.expedienteId = expediente.id
+        usuexp.tipoExpediente = 'I'
         usuexp.save()
         
         //[expediente: expediente]

@@ -12,17 +12,21 @@
         <meta name="layout" content="main"/>
     </head>
     <body>
-        <br/>
-        <h1 style="padding: 0px 25px 25px; opacity: 1;">Agregar archivos al expediente</h1>
-        
-    <doc:explorerAndUpload numeroExpediente="${expedienteIph.numeroIph}"/>
-    <div class="row">
-        <div class="col-lg-12" style="padding: 0px 25px 25px;">
-            <g:link controller="home" action="index_Iph" class="btn btn-primary btn-lg">
-                TERMINAR
-            </g:link>
+        <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 750px;">
+            <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
+                <br/>
+                <h1 style="padding: 0px 25px 25px; opacity: 1;">Agregar archivos al expediente</h1>
 
+                <doc:explorerAndUpload numeroExpediente="${expedienteIph.numeroIph}"/>
+                <div class="row">
+                    <div class="col-lg-12" style="padding: 0px 25px 25px;">
+                        <g:link controller="home" action="index_Iph" class="btn btn-primary btn-lg">
+                            TERMINAR
+                        </g:link>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

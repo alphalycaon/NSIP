@@ -337,14 +337,16 @@
                                             </li>
                                             <li>
                                                 <a href="${request.contextPath}/home/Index_Corroboracion">
-                                                    <i class="fa fa-star"></i>
-                                                    <span style="font-size: 10px;">Mis Carpetas de Corroboración</span>
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Mis Corroboraciones</span>
+                                                    <span class="label label-default pull-right">1</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#" class="not-active">
-                                                    <i class="fa fa-pencil"></i>
-                                                    <span style="font-size: 10px;">Mis Carpetas de Investigación</span>                                                    
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Mis Investigaciones</span> 
+                                                    <span class="label label-default pull-right">2</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -370,7 +372,13 @@
                                                     <i class="fa fa-calendar"></i>
                                                     <span style="font-size: 10px;">Mi Calendario</span>
                                                 </a>
-                                            </li>
+                                            </li>                                         
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>                                         
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
@@ -384,13 +392,13 @@
                                                 </a>
                                             </li> 
                                         </shiro:hasRole>
-                                        <shiro:hasRole name="CES">
+                                        <shiro:hasRole name="CES">  
                                             <li>
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-folder-o"></i>
                                                     <span style="font-size: 10px;">Mis Denuncias</span>
                                                 </a>
-                                            </li>
+                                            </li> 
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-link"></i>
@@ -398,17 +406,29 @@
                                                 </a>
                                             </li>
                                             <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-link"></i>
+                                                    <span style="font-size: 10px;">Mis Detenciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
                                                 <a href="${request.contextPath}/home/index_Iph">
                                                     <i class="fa fa-inbox"></i>
-                                                    <span style="font-size: 10px;">Mis Informes Policiales Homologados</span>
+                                                    <span style="font-size: 10px;">Mis IPH</span>
                                                 </a>
                                             </li>                                            
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-inbox"></i>
-                                                    <span style="font-size: 10px;">Mis  Informes Policiales</span>
+                                                    <span style="font-size: 10px;">Mis Partes Policiales</span>
                                                 </a>
-                                            </li> 
+                                            </li>                                      
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>  
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-exclamation-triangle"></i>
@@ -464,7 +484,13 @@
                                                     <i  class="fa fa-envelope-o"></i>
                                                     <span style="font-size: 10px;">Resolución de Audiencias</span>
                                                 </a>
-                                            </li>
+                                            </li>                                        
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>  
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-exclamation-triangle"></i>
@@ -502,7 +528,13 @@
                                                     <i class="fa fa-calendar"></i>
                                                     <span style="font-size: 10px;">Mi Calendario</span>
                                                 </a>
-                                            </li>
+                                            </li>                                        
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>  
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-exclamation-triangle"></i>

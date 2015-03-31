@@ -1180,7 +1180,7 @@
                                             </form>        
                                         </div> 
                                         <div class="modal-footer">
-                                            <textarea class="form-control" rows="3" id="comment" placeholder="Mensaje (Opcional)"></textarea>
+                                            <textarea class="form-control" rows="3" name="comment" id="comment" placeholder="Mensaje (Opcional)"></textarea>
                                             </br>
                                             <!--<a data-dismiss="modal" href="#"  class="btn btn-primary" id="notificacionDefensor">                                            
                                                  <span  style="padding-right: 10px;"></span> Aceptar
@@ -1217,7 +1217,7 @@
                                             </form>      
                                         </div>
                                         <div class="modal-footer">                                                                           
-                                            <textarea class="form-control" rows="3" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                                            <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
                                             </br>
                                              <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                                                  <span  style="padding-right: 10px;"></span> Aceptar
@@ -1254,7 +1254,7 @@
                                             </form>      
                                         </div>
                                         <div class="modal-footer">                                                                           
-                                            <textarea class="form-control" rows="3" id="commentCompartirDef" placeholder="Mensaje (Opcional)"></textarea>
+                                            <textarea class="form-control" rows="3" name="commentCompartirDef" id="commentCompartirDef" placeholder="Mensaje (Opcional)"></textarea>
                                             </br>
                                              <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                                                  <span  style="padding-right: 10px;"></span> Aceptar

@@ -16,14 +16,14 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart
 import org.docx4j.wml.Document
 import org.apache.shiro.SecurityUtils
 class HomeController {
-
+    
     def index() { 
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
         def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
         
-        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+        def ExpCreados = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
         
         [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
     }
@@ -31,7 +31,7 @@ class HomeController {
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") and (createdBy <> '" + userName + "' or createdBy = null)")
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
 
         [expedientesCompartidos: ExpCompartidos]
     }
@@ -86,12 +86,15 @@ class HomeController {
     def compartirExpediente() {
         print(params.listCompartir)
         def expediente = params.expedienteId
+        def mensajeExp = params.commentCompartir
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
                 int userId = User.findByUsername(params.listCompartir).getId()
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'C'
+                usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -100,6 +103,8 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'C'
+                    usuexp.mensaje = mensajeExp
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -111,12 +116,15 @@ class HomeController {
     
     def compartirExpedienteDef() {
         def expediente = params.expedienteId3
+        def mensajeExp = params.commentCompartirDef
         if(params.listCompartirDef != null && params.listCompartirDef != ""){
             if(params.listCompartirDef instanceof String){
                 int userId = User.findByUsername(params.listCompartirDef).getId()
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'C'
+                usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -125,6 +133,8 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'C'
+                    usuexp.mensaje = mensajeExp
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -136,6 +146,7 @@ class HomeController {
     
     def asignarDefensor() {
         def expediente = params.expedienteId2
+        def mensajeExp = params.comment
         print(params.listDefensor)
         if(params.listDefensor != null && params.listDefensor != ""){
             if(params.listDefensor instanceof String){
@@ -143,6 +154,8 @@ class HomeController {
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'D'
+                usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -151,6 +164,7 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'D'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -255,5 +269,31 @@ class HomeController {
         }
         print("expediente " + Integer.parseInt(expediente))
         redirect(action: "detail_Iph", id: expediente)
+    }
+    
+    def moverDenuncia() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
+        for(int i=0;i<parametros.size();i++){
+            //int userId = User.findByUsername(params[i]).getId()
+            def valores = parametros[i].split(":")
+            if(valores[0].contains('checkbox')){
+                def idExpediente = valores[0].replace('checkbox', '')
+                print(idExpediente)
+                /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+                int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
+                print(usuexpId2)
+                UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
+                if(usuexp) {
+                    print(usuexp)
+                    usuexp.tipoExpediente = "I"
+                    usuexp.save()   
+                }*/
+                UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='I' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+            }
+        }
+        
+        redirect(action: "Index_Corroboracion")
     }
 }

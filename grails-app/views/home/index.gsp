@@ -45,7 +45,7 @@
                                         <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
                                         </g:link>  
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp;  
                                     </div>
                                 </shiro:hasRole>
                                     <div> 
@@ -117,7 +117,8 @@
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
                                             <g:each in="${expedientesCreados}" var="expediente" status="i">
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
+                                                    <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
