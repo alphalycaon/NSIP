@@ -33,7 +33,7 @@
                         <div class="col-lg-12">
                             <div id="email-header-mobile" class="visible-xs visible-sm clearfix">
                                 <div id="email-header-title-mobile" class="pull-left">
-                                    <i class="fa fa-inbox"></i> Expedientes
+                                    
                                 </div>                                
                             </div>
                             <header id="email-header" class="clearfix">  
@@ -65,19 +65,17 @@
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
                                                 <i class="fa fa-send"></i>
                                             </button>
-                                        </shiro:hasRole>
-                                        <shiro:hasRole name="Ministerio">
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
                                                 <i class="fa fa-life-bouy"></i>
                                             </button>
+                                            <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                            </g:link>
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                         </shiro:hasRole>
-                                        <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
-                                            <i class="glyphicon glyphicon-folder-open"></i>
-                                        </g:link>
                                         <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                     </div>
                                     <shiro:hasRole name="Ministerio">
                                         <div class="btn-group">
