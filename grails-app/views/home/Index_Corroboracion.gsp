@@ -137,15 +137,19 @@
                                                     <span class="date">Sep 14</span>
                                                 </div>
                                             </li-->      
-                                            <shiro:hasRole name="Ministerio">
+                                            <shiro:hasRole name="Ministerio">                                                
                                                 <g:each in="${expedientesCompartidos}" var="expediente" status="i">
-                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                             <div class="chbox">
                                                                 <div class="checkbox-nice">
                                                                     <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
                                                                     <label for="checkbox${expediente.id}"></label>
                                                                 </div>
                                                             </div>
+                                                            <div class="star">
+                                                                <a></a>
+                                                            </div>
+                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                             <div class="name">
                                                                 ${expediente.numeroExpediente}
                                                             </div>

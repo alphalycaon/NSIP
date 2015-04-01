@@ -59,7 +59,8 @@
                                         <shiro:hasRole name="CES">
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
                                                 <i class="fa fa-send"></i>
-                                            </button>
+                                            </button>                                            
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                         </shiro:hasRole>
                                         <shiro:hasRole name="Ministerio">
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
@@ -163,7 +164,6 @@
                                         </li-->      
                                         <shiro:hasRole name="Ministerio">
                                             <g:each in="${expedientesCreados}" var="expediente" status="i">
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                     <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                         <div class="chbox">
                                                             <div class="checkbox-nice">
@@ -171,6 +171,10 @@
                                                                 <label for="checkbox${expediente.id}"></label>
                                                             </div>
                                                         </div>
+                                                        <div class="star">
+                                                            <a></a>
+                                                        </div>
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
@@ -190,7 +194,17 @@
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
                                             <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                    <li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="chbox">
+                                                            <div class="checkbox-nice">
+                                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                                <label for="checkbox${expediente.id}"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="star">
+                                                            <a></a>
+                                                        </div>
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
@@ -210,7 +224,17 @@
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Defensor">
                                             <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                    <li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="chbox">
+                                                            <div class="checkbox-nice">
+                                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                                <label for="checkbox${expediente.id}"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="star">
+                                                            <a></a>
+                                                        </div>
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
@@ -230,13 +254,17 @@
                                         </shiro:hasRole>
                                         <shiro:hasRole name="CES"> 
                                             <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                    <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                         <div class="chbox">
                                                             <div class="checkbox-nice">
                                                                 <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
                                                                 <label for="checkbox${expediente.id}"></label>
                                                             </div>
                                                         </div>
+                                                        <div class="star">
+                                                            <a></a>
+                                                        </div>
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>

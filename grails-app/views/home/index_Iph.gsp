@@ -73,6 +73,8 @@
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
+                                            
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                         </div>
 
                                         <shiro:hasRole name="CES">
@@ -155,25 +157,29 @@
                                             </div>
                                         </li-->    
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
-                                            <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000"><li class="unread" data-href="${request.contextPath}/home/detail_Iph">
-                                                <div class="chbox">
-                                                    <div class="checkbox-nice">
-                                                        <input type="checkbox" name="checkbox${expedienteIph.id}" id="checkbox${expedienteIph.id}">
-                                                        <label for="checkbox${expedienteIph.id}"></label>
+                                            <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
+                                                <li class="unread" data-href="${request.contextPath}/home/detail_Iph">
+                                                    <div class="chbox">
+                                                        <div class="checkbox-nice">
+                                                            <input type="checkbox" name="checkbox${expedienteIph.id}" id="checkbox${expedienteIph.id}">
+                                                            <label for="checkbox${expedienteIph.id}"></label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="name">
-                                                    ${expedienteIph.numeroIph}
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                        
-                                        </g:each>                                     
+                                                    <div class="star">
+                                                        <a></a>
+                                                    </div>
+                                                <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000">
+                                                    <div class="name">
+                                                        ${expedienteIph.numeroIph}
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <a href="#" class="attachment">
+                                                            <i class="fa fa-paperclip"></i>
+                                                        </a>
+                                                        <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
+                                                    </div>
+                                                </li></g:link>                        
+                                            </g:each>                                     
                                         </shiro:hasRole>
                                     </ul>
                                 </div>
