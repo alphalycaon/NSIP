@@ -398,11 +398,11 @@
 
 
 <script src="${resource(dir: 'centaurus/js/', file: 'jquery.js')}"></script>
-<script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>
+<!--<script src="${resource(dir: 'centaurus/js/', file: 'bootstrap.js')}"></script>-->
 <script src="${resource(dir: 'centaurus/js/', file: 'jquery.nanoscroller.min.js')}"></script>
 <script src="${resource(dir: 'centaurus/js/', file: 'demo.js')}"></script>  
 
-<script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-editable.min.js')}"></script>
+<!--<script src="${resource(dir: 'centaurus/js/', file: 'bootstrap-editable.min.js')}"></script>-->
 <script src="${resource(dir: 'centaurus/js/', file: 'select2.min.js')}"></script>
 <script src="${resource(dir: 'centaurus/js/', file: 'moment.min.js')}"></script>
 

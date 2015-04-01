@@ -62,11 +62,11 @@
                             <div class="col-lg-12">
                                 </br>
                                 <h1>Agenda de Audencias</h1>
-                                <div class="col-lg-12" style="left: 1107px">  
+                                <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>
-                                </div> 
+                                </div>
                             </div>
                         </div>   
                         </br>
@@ -143,7 +143,7 @@
         </script>       
 
         <script src="${request.contextPath}/centaurus/js/jquery.js"></script>
-        <script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>
+        <!--<script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>-->
         <script src="${request.contextPath}/centaurus/js/jquery.nanoscroller.min.js"></script>
         <script src="${request.contextPath}/centaurus/js/demo.js"></script>
         <script src="${request.contextPath}/centaurus/js/jquery-ui.custom.min.js"></script>

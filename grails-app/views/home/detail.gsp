@@ -46,12 +46,12 @@
                         <div class="col-lg-12">
                             <div id="email-header-mobile" class="visible-xs visible-sm clearfix">
                                 <div id="email-header-title-mobile" class="pull-left">
-                                    <i class="fa fa-inbox"></i> Expedientes
+                                    
                                 </div>                                
                             </div>
                             <header id="email-header" class="clearfix">
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Menú
+                                    
                                 </div>
                                 <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
@@ -1313,7 +1313,7 @@
      </div>
 
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>-->
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 

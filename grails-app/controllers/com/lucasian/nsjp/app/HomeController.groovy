@@ -25,7 +25,9 @@ class HomeController {
         
         def ExpCreados = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
         
-        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
+        def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
+        
+        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
     }
     def Index_Corroboracion() { 
         def userName  = SecurityUtils.subject?.principal
@@ -54,7 +56,9 @@ class HomeController {
         
         def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "'")
         
-        [expedientesIph: ExpedienteIph.list(), expedientesIphFiltrados: ExpIphFiltrado, expedientesIphCreados: ExpIphCreados]
+        def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
+        
+        [expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesIphFiltrados: ExpIphFiltrado, expedientesIphCreados: ExpIphCreados]
     }
     def detail_Iph(Long id){
         def userName  = SecurityUtils.subject?.principal
@@ -295,5 +299,13 @@ class HomeController {
         }
         
         redirect(action: "Index_Corroboracion")
+    }
+    
+    def compartirVariosExp() {
+        redirect(action: "index")
+    }
+    
+    def compartirVariosExpIph() {
+        redirect(action: "index_Iph")
     }
 }

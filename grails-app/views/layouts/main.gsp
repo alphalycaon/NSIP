@@ -57,7 +57,7 @@
 
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.min.js')}"></script>-->
         
         <script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.typeahead.js')}"></script>
@@ -611,6 +611,8 @@
         </div>
 
     <r:layoutResources />
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>  
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
  

@@ -14,6 +14,13 @@
             cursor: no-drop;
             }
         </style> 
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-default.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-growl.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-bar.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-attached.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-other.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-theme.css')}"/>
 
         <meta name="layout" content="main"/>
         <title>Bandeja de Entrada</title>
@@ -37,7 +44,8 @@
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
                                         </g:link>     
                                         <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa"> JAR </button>&nbsp; 
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa"> JAR </button>&nbsp;
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                     </div>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="CES">
@@ -46,6 +54,7 @@
                                             <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
                                         </g:link>  
                                         <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp;  
+                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
                                     </div>
                                 </shiro:hasRole>
                                     <div> 
@@ -119,6 +128,12 @@
                                             <g:each in="${expedientesCreados}" var="expediente" status="i">
                                                 <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
                                                     <li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="chbox">
+                                                            <div class="checkbox-nice">
+                                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                                <label for="checkbox${expediente.id}"></label>
+                                                            </div>
+                                                        </div>
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
@@ -179,6 +194,12 @@
                                         <shiro:hasRole name="CES"> 
                                             <g:each in="${expedientesFiltrados}" var="expediente" status="i">
                                                 <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;"><li class="unread" data-href="${request.contextPath}/home/detail" >
+                                                        <div class="chbox">
+                                                            <div class="checkbox-nice">
+                                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                                <label for="checkbox${expediente.id}"></label>
+                                                            </div>
+                                                        </div>
                                                         <div class="name">
                                                             ${expediente.numeroExpediente}
                                                         </div>
@@ -238,8 +259,55 @@
             </div>
         </div>
   <!--Fin Modal-->
+        <!-- -->                                                        
+        <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formCompartir">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group form-group-select2">
+                                    <label>Compartir a:</label>
+                                    <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
+                                        <g:each in="${usuarios}" var="usuario" status="i">
+                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>      
+                        </div>
+                        <div class="modal-footer">                                                                           
+                            <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a> -->  
+                            <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirVariosExp" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </g:form>
+        </div>
+     <!--  -->
 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>-->
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
 
         <script type="text/javascript">
 
@@ -274,7 +342,7 @@
             }
             }
             $(document).ready(function() {
-    $('#email-list li > .star > a').on('click', function() {
+            $('#email-list li > .star > a').on('click', function() {
             $(this).toggleClass('starred');
             });
 
@@ -288,10 +356,7 @@
 
             initEmailScroller();
 
-
-
-
-    $(".clickable-row > div:not(.chbox,.star)").click(function(e) {
+            $(".clickable-row > div:not(.chbox,.star)").click(function(e) {
             if ((e.target instanceof HTMLAnchorElement) == true) {
             return;
             }
@@ -308,8 +373,36 @@
 
             initEmailScroller();
             });
+        </script>        
 
-
+        <script>   
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
+                                        message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            bttnNotificacionCompartir.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById('myModalCompartir').close();
+            } );
+            })();
         </script>
+
+        <script type="text/javascript">
+            $(function($) {		
+            $('#listCompartir').select2({
+            placeholder: 'Nombre de la persona',
+            allowClear: true
+            });		
+            });
+        </script> 
     </body>
 </html>
