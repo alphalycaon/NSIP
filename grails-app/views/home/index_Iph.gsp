@@ -9,7 +9,7 @@
 <html>
     <head>        
         <meta name="layout" content="main"/>
-        
+
         <style type="text/css">
             .not-active {
                 cursor: no-drop;
@@ -38,34 +38,70 @@
                                 </div>                                
                             </div>
                             <header id="email-header" class="clearfix">                                
-                                <shiro:hasRole name="CES">
+                               
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    
-                                </div>
-                                </shiro:hasRole>
-                                <shiro:hasRole name="CES">
-                                <div id="email-header-tools">
-                                                                                                                 
-                                        <g:link controller="ces" action="iph" class="btn btn-primary">
-                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR IPH
-                                        </g:link> 
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
-                                </div>
-                                </shiro:hasRole>                                
-                                <div id="email-header-pagination" class="pull-right">
-                                    <div class="btn-group pagination pull-right">
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
-                                            <i class="fa fa-chevron-left"></i>
-                                        </button>
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </button>
+                                        <i class="fa fa-inbox"></i> Lista de IPH
                                     </div>
-                                    <div class="num-items pull-right hidden-xs">
-                                        1-2 de 2
+                               
+                                
+                                    <div id="email-header-tools" >
+
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle has-tooltip" type="button" title="" data-original-title="Select">
+                                                <i class="fa fa-square-o"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Todos</a></li>
+                                                <li><a href="#">Ninguno</a></li>
+                                                <li><a href="#">Leido</a></li>
+                                                <li><a href="#">Sin leer</a></li>
+                                                <li><a href="#">Favorito</a></li>
+                                                <li><a href="#">Normal</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Actualizar">
+                                                <i class="fa fa-refresh"></i>
+                                            </button>
+                                            <shiro:hasRole name="CES">
+                                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
+                                                    <i class="fa fa-send"></i>
+                                                </button>
+                                            </shiro:hasRole>
+
+                                            
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </div>
+
+                                        <shiro:hasRole name="CES">
+                                            <div class="btn-group">
+                                                <g:link controller="ces" action="iph" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar IPH">
+                                                    <i class="fa fa-users"></i>
+                                                </g:link>
+                                            </div>
+                                        </shiro:hasRole>
                                     </div>
-                                </div>                                
+
+
+
+
+
+
+                                    <div id="email-header-pagination" class="pull-right" style="margin-right: 40px">
+                                        <div class="btn-group pagination pull-right">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </button>
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="num-items pull-right hidden-xs">
+                                            1-2 de 2
+                                        </div>
+                                    </div>                                
                             </header>
                         </div>
                     </div>
@@ -148,12 +184,12 @@
             </div>
         </div>
         <!--Modal-->
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
                     </div>
                     <div class="modal-body">
                         <li>
@@ -175,12 +211,12 @@
                         </li>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <!--Fin Modal-->
+            </div>
+        </div>
+  <!--Fin Modal-->
         <!-- -->                                                        
         <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <g:form name="formCompartir">
