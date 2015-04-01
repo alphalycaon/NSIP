@@ -181,7 +181,7 @@
             <header class="navbar" id="header-navbar">
                 <div class="container">
                     <a href="${request.contextPath}" id="logo" class="navbar-brand">
-                        <img src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="" class="normal-logo logo-white"/>
+                        <img src="${resource(dir: 'centaurus/img', file: 'moppg_web.png')}" alt="" class="normal-logo logo-white"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-black.png')}" alt="" class="normal-logo logo-black"/>
                         <img src="${resource(dir: 'centaurus/img', file: 'logo-small.png')}" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
                     </a>
@@ -372,13 +372,13 @@
                                                     <i class="fa fa-calendar"></i>
                                                     <span style="font-size: 10px;">Mi Calendario</span>
                                                 </a>
-                                            </li>                                         
+                                            </li>
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i class="fa fa-check-circle"></i>
                                                     <span style="font-size: 10px;">Turnados por atender</span>
                                                 </a>
-                                            </li>                                         
+                                            </li>
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i class="fa fa-exclamation-triangle"></i>
@@ -392,13 +392,13 @@
                                                 </a>
                                             </li> 
                                         </shiro:hasRole>
-                                        <shiro:hasRole name="CES">  
+                                        <shiro:hasRole name="CES">
                                             <li>
                                                 <a href="${request.contextPath}">
                                                     <i class="fa fa-folder-o"></i>
                                                     <span style="font-size: 10px;">Mis Denuncias</span>
                                                 </a>
-                                            </li> 
+                                            </li>
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-link"></i>
@@ -422,13 +422,13 @@
                                                     <i  class="fa fa-inbox"></i>
                                                     <span style="font-size: 10px;">Mis Partes Policiales</span>
                                                 </a>
-                                            </li>                                      
+                                            </li>                                           
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i class="fa fa-check-circle"></i>
                                                     <span style="font-size: 10px;">Turnados por atender</span>
                                                 </a>
-                                            </li>  
+                                            </li>
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i  class="fa fa-exclamation-triangle"></i>
@@ -484,7 +484,7 @@
                                                     <i  class="fa fa-envelope-o"></i>
                                                     <span style="font-size: 10px;">Resolución de Audiencias</span>
                                                 </a>
-                                            </li>                                        
+                                            </li>
                                             <li>
                                                 <a href="#" class="not-active">
                                                     <i class="fa fa-check-circle"></i>
@@ -522,7 +522,7 @@
                                                     <i class="fa fa-inbox"></i>
                                                     <span style="font-size: 10px;">Mis Asuntos</span>
                                                 </a>
-                                            </li>                                            
+                                            </li>
                                             <li>
                                                 <a href="${request.contextPath}/home/agenda">
                                                     <i class="fa fa-calendar"></i>
@@ -555,12 +555,20 @@
                             </div>
                         </section>
                     </div>
-                    <div id="content-wrapper" class="email-inbox-wrapper" style="margin-left: 0px;">                        
+                    <div id="content-wrapper" class="email-inbox-wrapper" style="margin-left: 0px;" width="100%">                        
                         <g:layoutBody/>                                
-                        <footer id="footer-bar" class="row">
+                        <footer id="footer-bar" class="row"  align="center">
                             <p id="footer-copyright" class="col-xs-12">
-                                Lucasian Labs Mexico
-                            </p>
+                                
+                            Powered by:
+                                            <div class="row" width="100%" >
+                                                <div class="center-block" style="" width="100%" align="center">				
+                                                    <img height="8%" width="8%" src="${resource(dir: 'centaurus/img', file: 'logo_luc.png')}" alt="">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;&nbsp; 
+                                                    <img height="5%" width="5%" src="${resource(dir: 'centaurus/img', file: 'logo_tres_i_x_ti.png')}" alt="">
+                                                </div>
+                                            </div>
+                            </p> 
                         </footer>
                     </div>
                 </div>
