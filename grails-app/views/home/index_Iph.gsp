@@ -9,13 +9,13 @@
 <html>
     <head>        
         <meta name="layout" content="main"/>
-        
+
         <style type="text/css">
             .not-active {
-                cursor: no-drop;
-             }
-         </style> 
-        
+            cursor: no-drop;
+            }
+        </style> 
+
         <title>Bandeja de Entrada</title>
     </head>
     <body>
@@ -30,33 +30,70 @@
                                 </div>                                
                             </div>
                             <header id="email-header" class="clearfix">                                
-                                <shiro:hasRole name="CES">
+                               
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                    <i class="fa fa-inbox"></i> Lista de IPH
-                                </div>
-                                </shiro:hasRole>
-                                <shiro:hasRole name="CES">
-                                <div id="email-header-tools">
-                                                                                                                 
-                                        <g:link controller="ces" action="iph" class="btn btn-primary">
-                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR IPH
-                                        </g:link> 
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
-                                </div>
-                                </shiro:hasRole>                                
-                                <div id="email-header-pagination" class="pull-right">
-                                    <div class="btn-group pagination pull-right">
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
-                                            <i class="fa fa-chevron-left"></i>
-                                        </button>
-                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </button>
+                                        <i class="fa fa-inbox"></i> Lista de IPH
                                     </div>
-                                    <div class="num-items pull-right hidden-xs">
-                                        1-2 de 2
+                               
+                                
+                                    <div id="email-header-tools" >
+
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle has-tooltip" type="button" title="" data-original-title="Select">
+                                                <i class="fa fa-square-o"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Todos</a></li>
+                                                <li><a href="#">Ninguno</a></li>
+                                                <li><a href="#">Leido</a></li>
+                                                <li><a href="#">Sin leer</a></li>
+                                                <li><a href="#">Favorito</a></li>
+                                                <li><a href="#">Normal</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Actualizar">
+                                                <i class="fa fa-refresh"></i>
+                                            </button>
+                                            <shiro:hasRole name="CES">
+                                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
+                                                    <i class="fa fa-send"></i>
+                                                </button>
+                                            </shiro:hasRole>
+
+                                            
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </div>
+
+                                        <shiro:hasRole name="CES">
+                                            <div class="btn-group">
+                                                <g:link controller="ces" action="iph" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar IPH">
+                                                    <i class="fa fa-users"></i>
+                                                </g:link>
+                                            </div>
+                                        </shiro:hasRole>
                                     </div>
-                                </div>                                
+
+
+
+
+
+
+                                    <div id="email-header-pagination" class="pull-right" style="margin-right: 40px">
+                                        <div class="btn-group pagination pull-right">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </button>
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Next">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="num-items pull-right hidden-xs">
+                                            1-2 de 2
+                                        </div>
+                                    </div>                                
                             </header>
                         </div>
                     </div>
@@ -110,19 +147,19 @@
                                             </div>
                                         </li-->    
                                         <shiro:hasRole name="CES"> 
-                                        <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
-                                            <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000"><li class="unread" data-href="${request.contextPath}/home/detail_Iph">
-                                                <div class="name">
-                                                    ${expedienteIph.numeroIph}
-                                                </div>
-                                                <div class="meta-info">
-                                                    <a href="#" class="attachment">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </a>
-                                                    <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
-                                                </div>
-                                            </li></g:link>                        
-                                        </g:each>                                     
+                                            <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
+                                                <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000"><li class="unread" data-href="${request.contextPath}/home/detail_Iph">
+                                                        <div class="name">
+                                                            ${expedienteIph.numeroIph}
+                                                        </div>
+                                                        <div class="meta-info">
+                                                            <a href="#" class="attachment">
+                                                                <i class="fa fa-paperclip"></i>
+                                                            </a>
+                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
+                                                        </div>
+                                                    </li></g:link>                        
+                                            </g:each>                                     
                                         </shiro:hasRole>
                                     </ul>
                                 </div>
@@ -133,12 +170,12 @@
             </div>
         </div>
         <!--Modal-->
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
                     </div>
                     <div class="modal-body">
                         <li>
@@ -160,79 +197,79 @@
                         </li>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <!--Fin Modal-->
+            </div>
+        </div>
+  <!--Fin Modal-->
         <script type="text/javascript">
 
-function setHeightEmailContent() {
+            function setHeightEmailContent() {
     if ($(document).width() >= 992) {
-        var windowHeight = $(window).height();
-        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-        $('#email-content').css('height', windowHeight - staticContentH);
-    }
-    else {
-        $('#email-content').css('height', '');
-    }
-}
+            $('#email-content').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-content').css('height', '');
+            }
+            }
 
-function initEmailScroller() {
+            function initEmailScroller() {
     if ($(document).width() >= 992) {
-        $('#email-navigation').nanoScroller({
+            $('#email-navigation').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-nav-nano-content'
-        });
+            });
 
-        $('#email-content').nanoScroller({
+            $('#email-content').nanoScroller({
             alwaysVisible: false,
             iOSNativeScrolling: false,
             preventPageScrolling: true,
             contentClass: 'email-content-nano-content'
-        });
-    }
-}
-$(document).ready(function() {
+            });
+            }
+            }
+            $(document).ready(function() {
     $('#email-list li > .star > a').on('click', function() {
-        $(this).toggleClass('starred');
-    });
+            $(this).toggleClass('starred');
+            });
 
-    $(".has-tooltip").each(function(index, el) {
-        $(el).tooltip({
+            $(".has-tooltip").each(function(index, el) {
+            $(el).tooltip({
             placement: $(this).data("placement") || 'bottom'
-        });
-    });
+            });
+            });
 
-    setHeightEmailContent();
+            setHeightEmailContent();
 
-    initEmailScroller();
-    
+            initEmailScroller();
 
-    
+
+
 
     $(".clickable-row > div:not(.chbox,.star)").click(function(e) {
-        if ((e.target instanceof HTMLAnchorElement) == true) {
+            if ((e.target instanceof HTMLAnchorElement) == true) {
             return;
-        }
-        var href = $(this).parent().data('href');
+            }
+            var href = $(this).parent().data('href');
 
-        if (href != '' && typeof href != 'undefined') {
+            if (href != '' && typeof href != 'undefined') {
             window.document.location = href;
-        }
-    });
-});
+            }
+            });
+            });
 
-$(window).smartresize(function() {
-    setHeightEmailContent();
+            $(window).smartresize(function() {
+            setHeightEmailContent();
 
-    initEmailScroller();
-});
+            initEmailScroller();
+            });
 
 
         </script>

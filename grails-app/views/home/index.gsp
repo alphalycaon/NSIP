@@ -29,27 +29,67 @@
                                     <i class="fa fa-inbox"></i> Expedientes
                                 </div>                                
                             </div>
-                            <header id="email-header" class="clearfix">     
-                                <shiro:hasRole name="Ministerio">
-                                    <div id="email-header-tools">
+                            <header id="email-header" class="clearfix">  
 
-                                        <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
-                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
-                                        </g:link>     
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp; 
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa"> JAR </button>&nbsp; 
+                                <div id="email-header-tools">
+                                    <div class="btn-group">
+                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle has-tooltip" type="button" title="" data-original-title="Select">
+                                            <i class="fa fa-square-o"></i> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Todos</a></li>
+                                            <li><a href="#">Ninguno</a></li>
+                                            <li><a href="#">Leido</a></li>
+                                            <li><a href="#">Sin leer</a></li>
+                                            <li><a href="#">Favorito</a></li>
+                                            <li><a href="#">Normal</a></li>
+                                        </ul>
                                     </div>
-                                </shiro:hasRole>
-                                <shiro:hasRole name="CES">
-                                    <div id="email-header-tools">                                                                                                                 
-                                        <g:link controller="ministerio" action="denuncia" class="btn btn-primary">
-                                            <span class="fa fa-play" style="padding-right: 10px;"></span> GENERAR DENUNCIA/QUERELLA
-                                        </g:link>  
-                                        <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito"> UAVD </button>&nbsp;  
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Actualizar">
+                                            <i class="fa fa-refresh"></i>
+                                        </button>
+                                        <shiro:hasRole name="CES">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </shiro:hasRole>
+                                        <shiro:hasRole name="Ministerio">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </shiro:hasRole>
+                                        <shiro:hasRole name="Ministerio">
+                                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
+                                                <i class="fa fa-life-bouy"></i>
+                                            </button>
+                                        </shiro:hasRole>
+                                        <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                        </g:link>
+                                        <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
                                     </div>
-                                </shiro:hasRole>
-                                    <div> 
-                                    <div id="email-header-pagination" class="pull-right">
+                                    <shiro:hasRole name="Ministerio">
+                                        <div class="btn-group">
+                                            <g:link controller="ministerio" action="denuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                                <i class=" glyphicon glyphicon-user"></i>
+                                            </g:link>
+                                        </div>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="CES">
+                                        <div class="btn-group">
+                                            <g:link controller="ministerio" action="denuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                                <i class=" glyphicon glyphicon-user"></i>
+                                            </g:link>
+                                        </div>
+                                    </shiro:hasRole>
+                                </div>
+
+
+                                <div> 
+                                    <div id="email-header-pagination" class="pull-right"  style="margin-right: 40px">
                                         <div class="btn-group pagination pull-right">
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Previous">
                                                 <i class="fa fa-chevron-left"></i>
