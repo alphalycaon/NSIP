@@ -56,10 +56,11 @@
                                                 </button>
                                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
                                                     <i class="fa fa-life-bouy"></i>
-                                                </button> 
-						<g:actionSubmit id="btnEditar" controller="home" action="moverDenuncias" value="Crear documento relacionado" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                                </button>
+
+                                                <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                                     <i class="glyphicon glyphicon-folder-open"></i>
-                                                </g:actionSubmit>
+                                                </g:link>
                                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
@@ -137,7 +138,7 @@
                                                 </div>
                                             </li-->      
                                             <shiro:hasRole name="Ministerio">                                                
-                                                <g:each in="${expedientesCompartidos}" var="expediente" status="i">
+                                                <g:each in="${expedientesTemporales}" var="expediente" status="i">
                                                         <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                             <div class="chbox">
                                                                 <div class="checkbox-nice">

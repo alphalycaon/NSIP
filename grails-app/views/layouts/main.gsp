@@ -343,9 +343,23 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="not-active">
+                                                <a href="${request.contextPath}/home/index_Investigacion">
                                                     <i class="fa fa-folder"></i>
                                                     <span style="font-size: 10px;">Mis Investigaciones</span> 
+                                                    <span class="label label-default pull-right">2</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Temporales">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Archivos Temporales</span> 
+                                                    <span class="label label-default pull-right">2</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Definitivos">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Archivos Definitivos</span> 
                                                     <span class="label label-default pull-right">2</span>
                                                 </a>
                                             </li>

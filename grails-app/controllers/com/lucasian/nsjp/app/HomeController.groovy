@@ -23,7 +23,7 @@ class HomeController {
         
         def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
         
-        def ExpCreados = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
+        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
         
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
@@ -37,6 +37,30 @@ class HomeController {
 
         [expedientesCompartidos: ExpCompartidos]
     }
+    def index_Investigacion() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
+
+        [expedientesInvestigaciones: ExpInvestigaciones]
+    }
+    def index_Temporales() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'T')")
+
+        [expedientesTemporales: ExpTemporales]
+    }
+    def index_Definitivos() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'D')")
+
+        [expedientesDefinitivos: ExpDefinitivos]
+    }
     def detail(Long id){
         def userName  = SecurityUtils.subject?.principal
         def userId = User.findByUsername(userName).getId()
@@ -45,8 +69,12 @@ class HomeController {
         def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
-        
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef]        
+        def countInv = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I'")
+        def countCorr = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C'")
+        int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
+        int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
+        print(countC)
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal
@@ -275,10 +303,11 @@ class HomeController {
         redirect(action: "detail_Iph", id: expediente)
     }
     
-    def moverDenuncia() {
+    def moverDenuncias() {
         def userName  = SecurityUtils.subject?.principal
         def userId = User.findByUsername(userName).getId()
         def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
+        print(params)
         for(int i=0;i<parametros.size();i++){
             //int userId = User.findByUsername(params[i]).getId()
             def valores = parametros[i].split(":")
@@ -299,6 +328,90 @@ class HomeController {
         }
         
         redirect(action: "Index_Corroboracion")
+    }
+    
+    def moverDenuncia() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def idExpediente = params.idExpediente
+        print(idExpediente)
+        UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='I' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+            
+        redirect(action: "detail", id: idExpediente)
+    }
+    
+    def archivosTemporales() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
+        print(params)
+        for(int i=0;i<parametros.size();i++){
+            //int userId = User.findByUsername(params[i]).getId()
+            def valores = parametros[i].split(":")
+            if(valores[0].contains('checkbox')){
+                def idExpediente = valores[0].replace('checkbox', '')
+                print(idExpediente)
+                /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+                int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
+                print(usuexpId2)
+                UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
+                if(usuexp) {
+                    print(usuexp)
+                    usuexp.tipoExpediente = "I"
+                    usuexp.save()   
+                }*/
+                UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+            }
+        }
+        
+        redirect(action: "index_Investigacion")
+    }
+    
+    def archivoTemporal() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def idExpediente = params.idExpediente
+        print(idExpediente)
+        UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+            
+        redirect(action: "detail", id: idExpediente)
+    }
+    
+    def archivosDefinitivos() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
+        print(params)
+        for(int i=0;i<parametros.size();i++){
+            //int userId = User.findByUsername(params[i]).getId()
+            def valores = parametros[i].split(":")
+            if(valores[0].contains('checkbox')){
+                def idExpediente = valores[0].replace('checkbox', '')
+                print(idExpediente)
+                /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+                int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
+                print(usuexpId2)
+                UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
+                if(usuexp) {
+                    print(usuexp)
+                    usuexp.tipoExpediente = "I"
+                    usuexp.save()   
+                }*/
+                UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='D' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+            }
+        }
+        
+        redirect(action: "index_Investigacion")
+    }
+    
+    def archivoDefinitivo() {
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        def idExpediente = params.idExpediente
+        print(idExpediente)
+        UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='D' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+            
+        redirect(action: "detail", id: idExpediente)
     }
     
     def compartirVariosExp() {

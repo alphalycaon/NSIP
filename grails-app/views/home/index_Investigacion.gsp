@@ -56,8 +56,11 @@
                                                 </button>
                                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
                                                     <i class="fa fa-life-bouy"></i>
-                                                </button> 
-						<g:actionSubmit id="btnEditar" controller="home" action="moverDenuncias" value="Crear documento relacionado" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                                </button>                                                
+						<g:actionSubmit id="archivosTemporales" controller="home" action="archivosTemporales" value="Archivo Temporal" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo temporal">
+                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                </g:actionSubmit>
+                                                <g:actionSubmit id="archivosDefinitivos" controller="home" action="archivosDefinitivos" value="Archivo Definitivo" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo definitivo">
                                                     <i class="glyphicon glyphicon-folder-open"></i>
                                                 </g:actionSubmit>
                                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
@@ -137,7 +140,7 @@
                                                 </div>
                                             </li-->      
                                             <shiro:hasRole name="Ministerio">                                                
-                                                <g:each in="${expedientesCompartidos}" var="expediente" status="i">
+                                                <g:each in="${expedientesInvestigaciones}" var="expediente" status="i">
                                                         <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                             <div class="chbox">
                                                                 <div class="checkbox-nice">

@@ -233,9 +233,19 @@
                                         <div id="email-detail-subject" class="clearfix">
                                             <span class="subject">${expediente.numeroExpediente}</span>
                                             <span class="label label-success">Capturado</span>
+                                            <g:form name="formMover">  
+                                             <input type="hidden" name="idExpediente" value="${expediente.id}">
                                              <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>&nbsp; 
                                              <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>&nbsp; 
-                                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>
+                                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>&nbsp;
+                                             <g:if test="${countC > 0}">
+                                                <g:actionSubmit id="btnEditar" controller="home" action="moverDenuncia" value="Documento Relacionado" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado"/>
+                                             </g:if>
+                                             <g:if test="${countI > 0}">
+                                                <g:actionSubmit id="archivoTemporal" controller="home" action="archivoTemporal" value="Archivo Temporal" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo temporal"/>
+                                                <g:actionSubmit id="archivoDefinitivo" controller="home" action="archivoDefinitivo" value="Archivo Definitivo" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo definitivo"/>
+                                             </g:if>
+                                            </g:form>
                                         </div>
                                         <div id="email-body">      
                                         </div>  
