@@ -229,8 +229,12 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Escolaridad</label>
                                                             <input type="text" class="form-control" id="escVictima" name="victima.escolaridad" placeholder="Escolaridad de la victima" required required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
-                                                        </div>                                                
-
+                                                        </div>                                              
+                                                        <div class="form-group">
+                                                            <center><a href="#" class="not-active">
+                                                                <i class="fa fa-plus-circle fa-5x"></i>
+                                                            </a></center>
+                                                        </div>  
                                                     </div>
                                                     <div class="step-pane" id="step3">
                                                         <br/>
@@ -257,6 +261,11 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Escolaridad</label>
                                                             <input type="text" class="form-control" id="escDenunciante" name="denunciante.escolaridad" placeholder="Escolaridad del denunciante" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                                        </div>                                          
+                                                        <div class="form-group">
+                                                            <center><a href="#" class="not-active">
+                                                                <i class="fa fa-plus-circle fa-5x"></i>
+                                                            </a></center>
                                                         </div>                                                 
                                                     </div>
                                                     <div class="step-pane" id="step4">
@@ -284,6 +293,11 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Escolaridad</label>
                                                             <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del presunto responsable" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                                        </div>                                          
+                                                        <div class="form-group">
+                                                            <center><a href="#" class="not-active">
+                                                                <i class="fa fa-plus-circle fa-5x"></i>
+                                                            </a></center>
                                                         </div>                                                 
                                                     </div>
                                                     <div class="step-pane" id="step5">

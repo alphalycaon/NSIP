@@ -26,6 +26,15 @@ background: #FFFFFF;
 	background: #FFFFFF;
 
 }
+.board .nav-tabs3 {
+    position: relative;
+    /* border-bottom: 0; */
+    /* width: 80%; */
+    margin: 40px auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
+	background: #FFFFFF;
+}
 
 .board > div.board-inner{
     background: #FFFFFF url(http://subtlepatterns.com/patterns/geometry2.png);
@@ -61,6 +70,18 @@ p.narrow{
     z-index: 1;
 }
 
+.liner3{
+    height: 2px;
+    background: #ddd;
+    position: absolute;
+    width: 50%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 57px;
+    z-index: 1;
+}
+
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #555555;
     cursor: default;
@@ -70,6 +91,14 @@ p.narrow{
 }
 
 .nav-tabs2 > li.active > a, .nav-tabs2 > li.active > a:hover, .nav-tabs2 > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs3 > li.active > a, .nav-tabs3 > li.active > a:hover, .nav-tabs3 > li.active > a:focus {
     color: #555555;
     cursor: default;
     background-color: #ffffff;
@@ -171,12 +200,20 @@ li.active span.round-tabs.seven{
     background: #fff;
 }
 
+.nav-tabs3 > li.active > a span.round-tabs3{
+    background: #fff;
+}
+
 .nav-tabs > li {
     width: 25%;
 }
 
 .nav-tabs2 > li {
     width: 33%;
+}
+
+.nav-tabs3 > li {
+    width: 50%;
 }
 /*li.active:before {
     content: " ";
@@ -227,12 +264,23 @@ li.active:after {
    border-radius: 100%;
    padding: 0;
 }
+.nav-tabs3 > li a{
+   width: 70px;
+   height: 70px;
+   margin: 20px auto;
+   border-radius: 100%;
+   padding: 0;
+}
 
 .nav-tabs > li a:hover{
     background: #FFFFFF;
 }
 
 .nav-tabs2 > li a:hover{
+    background: #FFFFFF;
+}
+
+.nav-tabs3 > li a:hover{
     background: #FFFFFF;
 }
 
@@ -283,6 +331,10 @@ width: 50px;
 height: 50px;
 line-height:50px;
 }.nav-tabs2 > li a {
+width: 50px;
+height: 50px;
+line-height:50px;
+}.nav-tabs3 > li a {
 width: 50px;
 height: 50px;
 line-height:50px;

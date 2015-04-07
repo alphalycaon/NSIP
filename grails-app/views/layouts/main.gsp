@@ -175,6 +175,11 @@
             z-index: -1;
             }
         </style>
+        <style type="text/css">
+            .not-active {
+            cursor: no-drop;
+            }
+        </style> 
     </head>
     <body class="pace-done fixed-header pace-done fixed-footer">
         <div id="theme-wrapper">
@@ -432,7 +437,7 @@
                                                 </a>
                                             </li>                                            
                                             <li>
-                                                <a href="#" class="not-active">
+                                                <a href="${request.contextPath}/home/index_Ip">
                                                     <i  class="fa fa-inbox"></i>
                                                     <span style="font-size: 10px;">Mis Partes Policiales</span>
                                                 </a>
@@ -630,7 +635,41 @@
                     </li>
                 </ul>
             </div>
+        </div>        
+        <!--Modal-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIp.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IP
+                            </a>
+                        </li>
+                        </br>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                            </a>
+                        </li>
+                        </br>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                            </a>
+                        </li>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--Fin Modal-->
 
     <r:layoutResources />
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
