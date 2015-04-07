@@ -29,6 +29,11 @@ class HomeController {
         
         [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
     }
+    
+     def notifica() { 
+     
+     }
+    
     def Index_Corroboracion() { 
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
