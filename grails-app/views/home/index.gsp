@@ -56,7 +56,9 @@
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
                                                 <i class="fa fa-send"></i>
                                             </button>                                            
-                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir" title="Compartir Expediente">
+                                                 <i class="fa fa-share-alt"></i>
+                                            </button>
                                         </shiro:hasRole>
                                         <shiro:hasRole name="Ministerio">
                                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
@@ -68,7 +70,9 @@
                                             <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                                 <i class="glyphicon glyphicon-folder-open"></i>
                                             </g:link>
-                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documentos</button>&nbsp;
+                                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Compartir Expediente"> 
+                                                <i class="fa fa-share-alt"></i>
+                                            </button> 
                                         </shiro:hasRole>
                                         <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
                                             <i class="fa fa-trash-o"></i>
