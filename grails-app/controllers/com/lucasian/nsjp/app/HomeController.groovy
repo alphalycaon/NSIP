@@ -17,10 +17,12 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart
 import org.docx4j.wml.Document
 import org.apache.shiro.SecurityUtils
 import websocket.tc7.chat.TipoNotificacion
+import grails.converters.JSON
 
 class HomeController {
     
     def index() { 
+     //   consultaNotificaciones();
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
@@ -31,18 +33,7 @@ class HomeController {
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
         
-        def notificaMap = new HashMap();
-        notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
-        notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpFiltrado.size()));
-        notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.IP, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
-        notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(0));
-        System.out.println("notificaMap:>>"+notificaMap)
-        session.setAttribute("NSIP_NOTIFICACIONES", notificaMap)
+        
         //session.get
         
         [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
@@ -444,4 +435,44 @@ class HomeController {
     def compartirVariosExpIph() {
         redirect(action: "index_Iph")
     }
+    
+    def consultaNotificaciones(){
+        //si trae el atributo de force obliga a consultar nuevamente la base de datos, si no se trae lo que tenga en session
+        def force = request.getParameter("force")
+        def notificaMap = session.getAttribute("NSIP_NOTIFICACIONES")
+        if(notificaMap==null || force!=null){
+            notificaMap = new HashMap()
+            def userName  = SecurityUtils.subject?.principal
+            int userId = User.findByUsername(userName).getId()
+
+            //def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+            def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
+            
+            def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "'")
+        
+            def ExpIphFiltrado = Expediente.executeQuery("from ExpedienteIph where id in(select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + ")")
+            def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'T')")
+            def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'D')")
+            def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        
+            def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
+        
+           // def notificaMap = new HashMap();
+            notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
+            notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpCompartidos.size() ));
+            notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(ExpInvestigaciones.size()));
+            notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(ExpTemporales.size()));
+            notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(ExpDefinitivos.size()));
+            notificaMap.put(TipoNotificacion.IP, new AtomicInteger(0));
+            notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(ExpIphCreados.size()));
+            notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
+            notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(SolAudiencias.size()));
+            System.out.println("consultaNotificaciones:>>"+notificaMap)
+            session.setAttribute("NSIP_NOTIFICACIONES", notificaMap)
+        }
+        
+        render  notificaMap as JSON
+    }
+    
 }

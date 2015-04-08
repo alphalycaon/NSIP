@@ -74,18 +74,31 @@ public class ChatWebSocketServlet extends WebSocketServlet {
          }*/
 
         HashMap mapNotificaciones = (HashMap) session.getAttribute("NSIP_NOTIFICACIONES");
+        if(mapNotificaciones==null)
+            mapNotificaciones =  createEmptyMapNotificaciones();
         System.out.println("mapNotificaciones:" + mapNotificaciones);
         mapNotifica.put(ppal, mapNotificaciones);
+        
         System.out.println("mapNotificaSocketServlets:" + mapNotifica);
-        /*
-         if(mapNotificaciones==null)
-         return new ChatMessageInbound(ppal);
-         else
-         */
+       
+        
         return new ChatMessageInbound(ppal, connectionIds.incrementAndGet());
 
     }
-
+    private HashMap createEmptyMapNotificaciones(){
+         HashMap notificaMap = new HashMap();
+         notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.IP, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(0));
+         return notificaMap;
+         
+    }
     private final class ChatMessageInbound extends MessageInbound {
 
         private final String nickname;
@@ -96,16 +109,6 @@ public class ChatWebSocketServlet extends WebSocketServlet {
          System.out.println("creando nuevo contenedor para "+name);
          this.nickname = name;
          //this.connected = conected;
-         this.notificaMap = new HashMap();
-         notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.IP, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
-         notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(0));
          }*/
         private ChatMessageInbound(String name, int connected) {
             
@@ -122,35 +125,19 @@ public class ChatWebSocketServlet extends WebSocketServlet {
         protected void onOpen(WsOutbound outbound) {
             //connections.add(this);
             //mapConnections.remove(nickname);
-            mapConnections.put(nickname+connectionIds, this);
+            mapConnections.put(nickname+"_"+connected, this);
             String message = String.format("{ \"notificacion\":\"%s\", \"nickname\": \"%s\" }",
                     "JOIN", nickname);
-            System.out.println("opened" + message);
+            //System.out.println("Message join opened:" + message);
             broadcast("*", message);
-            System.out.println("sesioens_:" + mapConnections);
-            /*
-             Set<TipoNotificacion> set = notificaMap.keySet();
-             TipoNotificacion str;
-             Iterator<TipoNotificacion> itr = set.iterator();
-             while (itr.hasNext()) {
-             str = itr.next();
-             AtomicInteger contador = (AtomicInteger) notificaMap.get(str);
-
-             String filteredMessage = String.format("{\"%s\": \"%s\", \"%s\": \"%d\", \"%s\": \"%d\"}",
-             "notificacion", str,
-             "numNotificaciones", contador.get(),
-             "usersConnected", connections.size()
-             );
-             //System.out.println(str + ": " + balance.get(str));
-             System.out.println(":"+filteredMessage);
-             broadcast(nickname, filteredMessage);
-             }
-             */
+            System.out.println("Sessions registrated:" + mapConnections);
+            
+            
         }
 
         @Override
         protected void onClose(int status) {
-            mapConnections.remove(nickname+connected);
+            mapConnections.remove(nickname+"_"+connected);
             String message = String.format("{ \"notificacion\":\"%s\", \"nickname\": \"%s\" }",
                     "CLOSED", nickname);
             broadcast("*", message);
@@ -165,13 +152,13 @@ public class ChatWebSocketServlet extends WebSocketServlet {
         @Override
         protected void onTextMessage(CharBuffer message) throws IOException {
             // Never trust the client
-            System.out.println("message:" + message);
+            System.out.println("onTextMessage:" + message);
             try {
-                NotificaBean notifica = new NotificaBean();
+               // NotificaBean notifica = new NotificaBean();
                 Map<String, String> dataParsed = (Map<String, String>) JSON.parse(message.toString());
-                System.out.println("dataParsed:" + dataParsed);
-
-                TipoNotificacion tipoNotificacion = notifica.getNotificacion(dataParsed.get("notificacion").toString());
+                System.out.println("Data JSON parsed:" + dataParsed);
+ 
+                TipoNotificacion tipoNotificacion = NotificaBean.getNotificacion(dataParsed.get("notificacion").toString());
                 System.out.println("TipoNotificacion:" + tipoNotificacion);
                 String msgTo = dataParsed.get("msgTo").toString();
                 if ("*".equals(msgTo)) {
@@ -198,14 +185,14 @@ public class ChatWebSocketServlet extends WebSocketServlet {
             System.out.println("msgToNotifica:" + mapNotifica.get(sMsgTo));
             AtomicInteger contador = (AtomicInteger) mapNotifica.get(sMsgTo).get(tipoNotificacion);
 
-            String filteredMessage = String.format("{\"%s\": \"%s\", \"%s\": \"%d\", \"%s\": \"%d\"}",
+            String responseMessageBroadcast = String.format("{\"%s\": \"%s\", \"%s\": \"%d\", \"%s\": \"%d\"}",
                     "notificacion", tipoNotificacion.toString(),
                     "numNotificaciones", contador.incrementAndGet(),
                     "usersConnected", mapConnections.size()
             );
-            System.out.println("filteredMessage:" + filteredMessage);
+            System.out.println("responseMessageBroadcast:" + responseMessageBroadcast);
 
-            broadcast(sMsgTo, filteredMessage);
+            broadcast(sMsgTo, responseMessageBroadcast);
         }
 
         private void broadcast(String destinatario, String message) {

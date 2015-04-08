@@ -14,7 +14,7 @@ public class NotificaBean {
     String msgTo;
     TipoNotificacion notificacion;
 
-    public TipoNotificacion getNotificacion(String sNotificacion) {
+    public static TipoNotificacion getNotificacion(String sNotificacion) {
         return getEnumFromString(TipoNotificacion.class, sNotificacion);
     }
   /*  

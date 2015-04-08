@@ -137,7 +137,7 @@
             });
         </script>
 
-<!--g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}"-->
+<g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}">
         <script type="text/javascript">
             var varDenuncia='${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.DENUNCIA)}';
             var Chat = {};
@@ -228,7 +228,7 @@
             Chat.initialize();
 
         </script>
-<!--/g:if-->
+</g:if>
         <style>
             h6 {
             margin: 0 0 10px 0;
@@ -413,7 +413,9 @@
                                             <a href="${request.contextPath}">
                                                 <i class="fa fa-inbox"></i>
                                                 <span style="font-size: 10px;">Denuncias/Querellas</span>
-                                                <span class="label label-default label-circle pull-right" id="ntf_Denuncia">${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.DENUNCIA)}</span>
+                                                
+                                                <span class="label label-default label-circle pull-right" id="ntf_Denuncia"></span>
+
 
                                             </a>
                                         </li>
@@ -421,30 +423,43 @@
                                             <a href="${request.contextPath}/home/Index_Corroboracion">
                                                 <i class="fa fa-folder"></i>
                                                 <span style="font-size: 10px;">Mis Corroboraciones</span>
-                                                <span class="label label-default label-circle pull-right" id="ntf_Corroboracion">${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.CORROBORACION)}</span>
-
-
+                                                
+                                                
+                                                
+                                                
+                                                <span class="label label-default label-circle pull-right" id="ntf_Corroboracion"></span>
+                                               
                                             </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/index_Investigacion">
                                                 <i class="fa fa-folder"></i>
                                                 <span style="font-size: 10px;">Mis Investigaciones</span> 
-                                                <span class="label label-default label-circle pull-right" id="ntf_Investigacion">${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.DOC_RELACIONADO)}</span>
+                                                
+                                                <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
+                                            
                                             </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/index_Temporales">
                                                 <i class="fa fa-folder"></i>
                                                 <span style="font-size: 10px;">Archivos Temporales</span> 
-                                                <span class="label label-default label-circle pull-right" id="ntf_Temporales">${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.TEMPORAL)}</span>
-                                            </a>
+                                                    <g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}">
+                                            
+                                                <span class="label label-default label-circle pull-right" id="ntf_Temporales"></span>
+                                            </g:if>
+
+                                                    </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/index_Definitivos">
                                                 <i class="fa fa-folder"></i>
                                                 <span style="font-size: 10px;">Archivos Definitivos</span> 
-                                                <span class="label label-default label-circle pull-right" id="ntf_Definitivos">${session.getAttribute("NSIP_NOTIFICACIONES").get(websocket.tc7.chat.TipoNotificacion.DEFINITIVO)}</span>
+                                                    <g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}">
+                                            
+                                                <span class="label label-default label-circle pull-right" id="ntf_Definitivos"></span>
+                                           </g:if>
+
                                             </a>
                                         </li>
                                         <li>
@@ -736,15 +751,41 @@
 <!--script src="${resource(dir: 'js', file: 'jquery-tokeninput.js')}"></script-->
 <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
 
+<script>
+
+</script>
 
 <script type="text/javascript">
     $(document).ready(function() {
-    $('.autocomplete').typeahead({
-        prefetch: '${request.contextPath}/busqueda/suggest',
-    limit: 10
-    });
+        $('.autocomplete').typeahead({
+            prefetch: '${request.contextPath}/busqueda/suggest',
+        limit: 10
+        });
+        (function() {
+            var notificacionesAPI = "${request.contextPath}/home/consultaNotificaciones";
+            $.getJSON( notificacionesAPI, {
+              format: "json"
+            })
+              .done(function( data ) {
+                  //DENUNCIA, CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO, IP, IPH, AUDIENCIA, SOLICITUD_AUDIENCIA
+                    if(data.AUDIENCIA!=0)
+                        $('#ntf_Audiencia').text(data.AUDIENCIA);
+                    if(data.DENUNCIA!=0)
+                        $('#ntf_Denuncia').text(data.DENUNCIA);
+                    if(data.CORROBORACION!=0)
+                        $('#ntf_Corroboracion').text(data.CORROBORACION);
+                    if(data.DOC_RELACIONADO!=0)
+                        $('#ntf_Investigacion').text(data.DOC_RELACIONADO);
+                    if(data.TEMPORAL!=0)    
+                        $('#ntf_Temporales').text(data.TEMPORAL);
+                    if(data.DEFINITIVO!=0)
+                        $('#ntf_Definitivos').text(data.DEFINITIVO);
+              });
+          })();
     });
 </script>
+           
+
 
 </body>
 </html>
