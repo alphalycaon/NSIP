@@ -318,7 +318,7 @@
                                     <div class="user-box">
                                         <span class="name">Hola<br><user:loggedInUser property="nombre"/><br></span>
                                         <span class="status">
-                                        <i class="fa fa-circle"></i> Online
+                                        <i class="fa fa-circle"></i> En linea
                                         </span>
                                     </div>
                                     <div class="user-box">
