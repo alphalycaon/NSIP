@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat
 import org.apache.commons.io.FileUtils
 
 import java.util.HashMap
+import java.util.concurrent.atomic.AtomicInteger
 
 import org.docx4j.XmlUtils
 import org.docx4j.jaxb.Context
@@ -15,6 +16,8 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart
 import org.docx4j.wml.Document
 import org.apache.shiro.SecurityUtils
+import websocket.tc7.chat.TipoNotificacion
+
 class HomeController {
     
     def index() { 
@@ -27,12 +30,27 @@ class HomeController {
         
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
+        
+        def notificaMap = new HashMap();
+        notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
+        notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpFiltrado.size()));
+        notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.IP, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
+        notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(0));
+        System.out.println("notificaMap:>>"+notificaMap)
+        session.setAttribute("NSIP_NOTIFICACIONES", notificaMap)
+        //session.get
+        
         [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
     }
     
-     def notifica() { 
+    def notifica() { 
      
-     }
+    }
     
     def Index_Corroboracion() { 
         def userName  = SecurityUtils.subject?.principal
@@ -324,9 +342,9 @@ class HomeController {
                 print(usuexpId2)
                 UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
                 if(usuexp) {
-                    print(usuexp)
-                    usuexp.tipoExpediente = "I"
-                    usuexp.save()   
+                print(usuexp)
+                usuexp.tipoExpediente = "I"
+                usuexp.save()   
                 }*/
                 UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='I' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
             }
@@ -361,9 +379,9 @@ class HomeController {
                 print(usuexpId2)
                 UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
                 if(usuexp) {
-                    print(usuexp)
-                    usuexp.tipoExpediente = "I"
-                    usuexp.save()   
+                print(usuexp)
+                usuexp.tipoExpediente = "I"
+                usuexp.save()   
                 }*/
                 UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
             }
@@ -398,9 +416,9 @@ class HomeController {
                 print(usuexpId2)
                 UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
                 if(usuexp) {
-                    print(usuexp)
-                    usuexp.tipoExpediente = "I"
-                    usuexp.save()   
+                print(usuexp)
+                usuexp.tipoExpediente = "I"
+                usuexp.save()   
                 }*/
                 UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='D' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
             }
