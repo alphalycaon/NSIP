@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 </br>
-                                <h1>Agenda de Audencias</h1>
+                                <h1>Agenda de Audiencias</h1>
                                 <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
@@ -74,10 +74,14 @@
                             <div class="col-md-3 hidden-xs hidden-sm" >
                                 <div class="main-box" id="external-events">
                                     <header class="main-box-header clearfix">
+                                      <g:form name="formGuardar" controller="home" action="guardarAudiencia">
                                         <h4>Número de causa</h4>
                                         <div>
                                             <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
                                             <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
+                                            <input type="hidden" id="solicitudId" name="solicitudId" class="form-control">
+                                            <input type="hidden" id="inicio" name="inicio" class="form-control">
+                                            <input type="hidden" id="fin" name="fin" class="form-control">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
                                         </div>
                                         </br>
@@ -97,6 +101,7 @@
                                             </div>
                                             </br>
                                         </div>
+                                      </g:form>
                                     </header>
                                 </div>
                             </div>
@@ -125,7 +130,7 @@
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="selectSolicitud">
                                 <g:each in="${SolicitudesAudiencias}" var="solicitud" status="i">
-                                    <option value="${solicitud.expediente.numeroExpediente},${solicitud.tipoAudiencia}">${solicitud.expediente.numeroExpediente},  Victima: ${solicitud.expediente.delito.victima.nombre},  Imputado: ${solicitud.expediente.delito.imputado.nombre},  Delito: ${solicitud.expediente.delito.clasificacionDelito.nombre}</option>
+                                    <option value="${solicitud.expediente.numeroExpediente},${solicitud.tipoAudiencia},${solicitud.id}">${solicitud.expediente.numeroExpediente},  Victima: ${solicitud.expediente.delito.victima.nombre},  Imputado: ${solicitud.expediente.delito.imputado.nombre},  Delito: ${solicitud.expediente.delito.clasificacionDelito.nombre}</option>
                                 </g:each>
                             </select>
                         </div>
@@ -144,6 +149,7 @@
             var res = str.split(",");
             document.getElementById('numCaso').value = res[0];
             document.getElementById('tipoAudiencia').value = res[1];
+            document.getElementById('solicitudId').value = res[2];
             }
         </script>
         <script type="text/javascript">
@@ -304,14 +310,19 @@
 
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
-
+            
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
 
             // assign it the date that was reported
             copiedEventObject.start = date;
             copiedEventObject.allDay = allDay;
-
+            
+            //Se graba la informacion en la bd
+            document.getElementById('inicio').value = date.toLocaleString();
+            document.getElementById('fin').value = (date.addHours(2)).toLocaleString();
+            $('#formGuardar').submit();
+            
             // copy label class from the event object
             var labelClass = $(this).data('eventclass');
 
@@ -335,50 +346,16 @@
 				next: '<i class="fa fa-chevron-right"></i>'
             },
             events: [
+            <g:each in="${agendasAudiencias}" var="audiencia" status="i">
+             {   
+                title: 'Audiencia: ${audiencia.solicitudAudiencia.tipoAudiencia}\nJuez: ${audiencia.juez}\nCausa: ${audiencia.solicitudAudiencia.expediente.numeroExpediente}',
+                start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
+                end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
+                allDay: false,
+                className: 'label-primary'
+            },                                          
+            </g:each>
             {
-            title: 'Audiencia privada',
-            start: new Date(y, m, 1),
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-5),
-            end: new Date(y, m, d-2),
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-3, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+4, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+1, 19, 0),
-            end: new Date(y, m, d+1, 22, 30),
-            allDay: false,
-            className: 'label-primary'
             }
             ]
             });
@@ -428,6 +405,11 @@
             });
             });
         </script>        
-
+        <script>
+            Date.prototype.addHours= function(h){
+                this.setHours(this.getHours()+h);
+                return this;
+            }
+        </script>
     </body>
 </html>

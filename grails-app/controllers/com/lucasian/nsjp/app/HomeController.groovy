@@ -128,11 +128,12 @@ class HomeController {
     def calendar(){
         def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
-
-        [SolicitudesAudiencias: SolAudiencias, jueces: jueces]
-    }
-    def agenda(){
         
+        [SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
+    }
+    def agenda(){        
+        
+        [agendasAudiencias: AgendaAudiencias.list()]
     }
     def mapa(){
         
@@ -497,5 +498,33 @@ class HomeController {
     }    
     def compartirVariosExpIp() {
         redirect(action: "index_Ip")
+    }
+    
+    def guardarAudiencia(){
+        
+        def idSolicitud = params.solicitudId
+        def inicio = params.inicio
+        def fin = params.fin
+        def juez = params.selectJuez
+        
+        if(idSolicitud != null && idSolicitud!= ""){
+            SolicitudAudiencia solicitudAudiencia = SolicitudAudiencia.get(idSolicitud)
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+            Date fechaInicio = sdf.parse(inicio)
+            Date fechaFin = sdf.parse(fin)
+            print('' + fechaInicio + ' a ' + fechaFin + '')
+
+            AgendaAudiencias aud = new AgendaAudiencias();
+            aud.inicio = fechaInicio
+            aud.fin = fechaFin
+            aud.juez = juez
+            aud.solicitudAudiencia = solicitudAudiencia
+            aud.save()
+
+            SolicitudAudiencia.executeUpdate("update SolicitudAudiencia set estatus='A' where id = " + idSolicitud)
+        }
+            
+        redirect(action: "calendar")
     }
 }
