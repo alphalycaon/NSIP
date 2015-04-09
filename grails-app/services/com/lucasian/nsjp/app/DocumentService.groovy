@@ -19,6 +19,12 @@ class DocumentService {
         "/Documento IPH",
         "/Otros"
     ]
+    private static final List<String> defaultStrucutureIp = [
+        "/Material fotografico",
+        "/Material documental",
+        "/Documento IPH",
+        "/Otros"
+    ]
     
     def typeQueries = [
         'pdf': "and [jcr:path] like '%.pdf'",
@@ -72,6 +78,15 @@ class DocumentService {
         }
         folders.each(){
             String path = expedienteRoot+numeroIph+it
+            repositoryService.createFolder(path)
+        }
+    }
+    def createStructureIp(String numeroIp, List<String> folders = null){
+        if(!folders){
+            folders = defaultStrucutureIp
+        }
+        folders.each(){
+            String path = expedienteRoot+numeroIp+it
             repositoryService.createFolder(path)
         }
     }

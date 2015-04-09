@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 </br>
-                                <h1>Agenda de Audencias</h1>
+                                <h1>Agenda de Audiencias</h1>
                                 <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
@@ -306,50 +306,16 @@
 				next: '<i class="fa fa-chevron-right"></i>'
             },
             events: [
+            <g:each in="${agendasAudiencias}" var="audiencia" status="i">
+             {   
+                title: 'Audiencia: ${audiencia.solicitudAudiencia.tipoAudiencia}\nJuez: ${audiencia.juez}\nCausa: ${audiencia.solicitudAudiencia.expediente.numeroExpediente}',
+                start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
+                end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
+                allDay: false,
+                className: 'label-primary'
+            },                                          
+            </g:each>
             {
-            title: 'Audiencia privada',
-            start: new Date(y, m, 1),
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-5),
-            end: new Date(y, m, d-2),
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-3, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+4, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+1, 19, 0),
-            end: new Date(y, m, d+1, 22, 30),
-            allDay: false,
-            className: 'label-primary'
             }
             ]
             });

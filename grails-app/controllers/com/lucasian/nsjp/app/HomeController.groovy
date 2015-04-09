@@ -116,17 +116,41 @@ class HomeController {
         
         [expedienteIph: expedienteIph, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef]
     }
+    def index_Ip() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpIpFiltrado = Expediente.executeQuery("from ExpedienteIp where id in(select expedienteIpId from UsuariosExpedientesIp where usuarioId = " + userId + ")")
+        
+        def ExpIpCreados = Expediente.executeQuery("from ExpedienteIp where createdBy = '" + userName + "'")
+        
+        def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
+        
+        [expedientesIp: ExpedienteIp.list(), usuarios: usuarios, expedientesIpFiltrados: ExpIpFiltrado, expedientesIpCreados: ExpIpCreados]
+    }
+    def detail_Ip(Long id){
+        def userName  = SecurityUtils.subject?.principal
+        def userId = User.findByUsername(userName).getId()
+        
+        def expedienteIp = ExpedienteIp.get(id)
+        def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientesIp where expedienteIpId = " + id + ")")
+        def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId in (select id from Role where name in ('Ministerio', 'CES'))) and id not in (select usuarioId from UsuariosExpedientesIp where expedienteIpId = " + id + ")")
+        def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientesIp where expedienteIpId = " + id + ")")
+        
+        [expedienteIp: expedienteIp, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef]
+    }
     def detail_busqueda(){
         
     }
     def calendar(){
         def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
-
-        [SolicitudesAudiencias: SolAudiencias, jueces: jueces]
-    }
-    def agenda(){
         
+        [SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
+    }
+    def agenda(){        
+        
+        [agendasAudiencias: AgendaAudiencias.list()]
     }
     def mapa(){
         
@@ -298,6 +322,57 @@ class HomeController {
         redirect(action: "detail_Iph", id: expediente)
     }
     
+    def compartirExpedienteIp() {
+        print(params.listCompartir)
+        def expediente = params.expedienteId
+        if(params.listCompartir != null && params.listCompartir != ""){
+            if(params.listCompartir instanceof String){
+                int userId = User.findByUsername(params.listCompartir).getId()
+                UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                usuexp.usuarioId = userId
+                usuexp.expedienteIpId = Integer.parseInt(expediente)
+                usuexp.save()
+                print("usuario " + userId)
+            }else{
+                for(int i=0;i<params.listCompartir.size();i++){
+                    int userId = User.findByUsername(params.listCompartir[i]).getId()
+                    UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                    usuexp.usuarioId = userId
+                    usuexp.expedienteIpId = Integer.parseInt(expediente)
+                    usuexp.save()
+                    print("usuario " + userId)
+                }
+            }    
+        }
+        print("expediente " + Integer.parseInt(expediente))
+        redirect(action: "detail_Ip", id: expediente)
+    }
+    
+    def compartirExpedienteIpDef() {
+        def expediente = params.expedienteId3
+        if(params.listCompartirDef != null && params.listCompartirDef != ""){
+            if(params.listCompartirDef instanceof String){
+                int userId = User.findByUsername(params.listCompartirDef).getId()
+                UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                usuexp.usuarioId = userId
+                usuexp.expedienteIpId = Integer.parseInt(expediente)
+                usuexp.save()
+                print("usuario " + userId)
+            }else{
+                for(int i=0;i<params.listCompartirDef.size();i++){
+                    int userId = User.findByUsername(params.listCompartirDef[i]).getId()
+                    UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                    usuexp.usuarioId = userId
+                    usuexp.expedienteIpId = Integer.parseInt(expediente)
+                    usuexp.save()
+                    print("usuario " + userId)
+                }
+            }    
+        }
+        print("expediente " + Integer.parseInt(expediente))
+        redirect(action: "detail_Ip", id: expediente)
+    }
+    
     def asignarIphDefensor() {
         def expediente = params.expedienteId2
         print(params.listDefensor)
@@ -441,6 +516,37 @@ class HomeController {
     
     def compartirVariosExpIph() {
         redirect(action: "index_Iph")
+    }    
+    def compartirVariosExpIp() {
+        redirect(action: "index_Ip")
+    }
+    
+    def guardarAudiencia(){
+        
+        def idSolicitud = params.solicitudId
+        def inicio = params.inicio
+        def fin = params.fin
+        def juez = params.selectJuez
+        
+        if(idSolicitud != null && idSolicitud!= ""){
+            SolicitudAudiencia solicitudAudiencia = SolicitudAudiencia.get(idSolicitud)
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+            Date fechaInicio = sdf.parse(inicio)
+            Date fechaFin = sdf.parse(fin)
+            print('' + fechaInicio + ' a ' + fechaFin + '')
+
+            AgendaAudiencias aud = new AgendaAudiencias();
+            aud.inicio = fechaInicio
+            aud.fin = fechaFin
+            aud.juez = juez
+            aud.solicitudAudiencia = solicitudAudiencia
+            aud.save()
+
+            SolicitudAudiencia.executeUpdate("update SolicitudAudiencia set estatus='A' where id = " + idSolicitud)
+        }
+            
+        redirect(action: "calendar")
     }
     
     def consultaNotificaciones(){

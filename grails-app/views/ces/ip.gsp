@@ -245,12 +245,6 @@
                 VapeMatVict = document.getElementById("apeMatVict").value;
                 VnomVict = document.getElementById("nomVict").value;
                 VedadVict = document.getElementById("edadVict").value;
-
-                VapePatResp = document.getElementById("apePatResp").value;
-                VapeMatResp = document.getElementById("apeMatResp").value;
-                VnomResp = document.getElementById("nomResp").value;
-                VedadResp = document.getElementById("edadResp").value;
-                VdelitoResp = document.getElementById("delitoResp").value;
                                                   
                 if(Vasunto.length == 0 || /^\s+$/.test(Vasunto)){
                 return false;   
@@ -267,21 +261,6 @@
                 else if(VedadVict.length == 0 || /^\s+$/.test(VedadVict)){
                         return false;   
                 }
-                else if(VapePatResp.length == 0 || /^\s+$/.test(VapePatResp)){
-                        return false;   
-                }
-                else if(VapeMatResp.length == 0 || /^\s+$/.test(VapeMatResp)){
-                        return false;   
-                }
-                else if(VnomResp.length == 0 || /^\s+$/.test(VnomResp)){
-                        return false;   
-                }
-                else if(VedadResp.length == 0 || /^\s+$/.test(VedadResp)){
-                        return false;   
-                }
-                else if(VdelitoResp.length == 0 || /^\s+$/.test(VdelitoResp)){
-                        return false;   
-                }	
                 else {
                         return true;
                 }
@@ -306,7 +285,7 @@
 
         </style>
         
-        <title>Generar IPH</title>
+        <title>Generar IP</title>
     </head>
     <body>
     <style>
@@ -324,9 +303,9 @@
                             <div class="col-lg-12">
                                 <ol class="breadcrumb">
                                     <li><a href="${request.contextPath}">Home</a></li>
-                                    <li class="active"><span>IPH</span></li>
+                                    <li class="active"><span>IP</span></li>
                                 </ol>
-                                <h1>Generar IPH</h1>
+                                <h1>Generar IP</h1>
                             </div>
                          </div>
                         <div class="row">
@@ -341,7 +320,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Cancelar Registro de IPH</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">Cancelar Registro de IP</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div>
@@ -349,7 +328,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary" >                                            
+                                                        <a href="${request.contextPath}/home/index_Ip" class="btn btn-primary" >                                            
                                                             <span  style="padding-right: 10px;"></span> Si
                                                         </a>   
                                                         <a data-dismiss="modal" class="btn btn-danger">                                            
@@ -362,22 +341,21 @@
                                         <div id="myWizard" class="wizard">
                                             <div class="wizard-inner">
                                                 <ul class="steps">
-                                                    <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>IPH<span class="chevron"></span></li>
+                                                    <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>IP<span class="chevron"></span></li>
                                                     <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                                    <li data-target="#step3"><span class="badge">3</span>Probable Responsable<span class="chevron"></span></li>
-                                                    <li data-target="#step4"><span class="badge">4</span>Plantillas<span class="chevron"></span></li>
+                                                    <li data-target="#step3"><span class="badge">3</span>Plantillas<span class="chevron"></span></li>
                                                 </ul>
                                                 <div class="actions" style="z-index: 1">
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                                     <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                                    <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denunciaIph').submit();}">Siguiente</i></button>
+                                                    <button type="button" class="btn btn-success btn-mini btn-next" id="notification-trigger-expanding-loader" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){$('#denunciaIp').submit();}">Siguiente</i></button>
                                                 </div>
                                             </div>
                                             <div class="step-content">
-                                                <g:form controller="ces" action="guardarIph" name="denunciaIph" onsubmit="return validarCampos()">
+                                                <g:form controller="ces" action="guardarIp" name="denunciaIp" onsubmit="return validarCampos()">
                                                     <div class="step-pane active" id="step1">
                                                         <br/>
-                                                        <h4>1.- Datos del IPH</h4> 
+                                                        <h4>1.- Datos del IP</h4> 
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Fecha y hora del Evento</label>
                                                             <div class="col-lg-12">
@@ -386,7 +364,7 @@
                                                                         <div class="form-group col-md-12">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                                <input type="text" class="form-control" name="datosIph.fechaEvento" placeholder="Fecha del evento" id="datepickerDate">
+                                                                                <input type="text" class="form-control" name="datosIp.fechaEvento" placeholder="Fecha del evento" id="datepickerDate">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -395,7 +373,7 @@
                                                                     <div class="row">
                                                                         <div class="form-group col-md-12">
                                                                             <div class="input-group input-append bootstrap-timepicker">
-                                                                                <input type="text" class="form-control" name="datosIph.horaEvento" id="timepicker">
+                                                                                <input type="text" class="form-control" name="datosIp.horaEvento" id="timepicker">
                                                                                 <span class="add-on input-group-addon"><i class="fa fa-clock-o"></i></span>
                                                                             </div>
                                                                         </div>
@@ -405,11 +383,11 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Asunto</label>
-                                                            <input type="text" class="form-control" id="asunto" name="datosIph.asunto" placeholder="Asunto" required data-toggle="tooltip" data-placement="top" title="Escribir asunto">
+                                                            <input type="text" class="form-control" id="asunto" name="datosIp.asunto" placeholder="Asunto" required data-toggle="tooltip" data-placement="top" title="Escribir asunto">
                                                         </div>     
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Participación</label>
-                                                            <select class="form-control" name="datosIph.participacion">
+                                                            <select class="form-control" name="datosIp.participacion">
                                                               <option>Ejecucion</option>
                                                               <option>Apoyo</option>
                                                               <option>Conocimiento</option>
@@ -417,14 +395,14 @@
                                                         </div>     
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Operativo</label>
-                                                            <select class="form-control" name="datosIph.operativo">
+                                                            <select class="form-control" name="datosIp.operativo">
                                                               <option>Si</option>
                                                               <option>No</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Ubicación</label>
-                                                            <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
+                                                            <input type="text" class="form-control" name="datosIp.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
                                                         </div>
                                                         <div>
                                                              <table>
@@ -452,23 +430,23 @@
                                                         <h4>2.- Datos de la victima</h4>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                            <input type="text" class="form-control" id="apePatVict" name="victimaIph.apellidoPaterno" placeholder="Apellido paterno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno de la Victima">
+                                                            <input type="text" class="form-control" id="apePatVict" name="victimaIp.apellidoPaterno" placeholder="Apellido paterno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno de la Victima">
                                                         </div>                       
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Apellido Materno</label>
-                                                            <input type="text" class="form-control" id="apeMatVict" name="victimaIph.apellidoMaterno" placeholder="Apellido materno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno de Victima">
+                                                            <input type="text" class="form-control" id="apeMatVict" name="victimaIp.apellidoMaterno" placeholder="Apellido materno de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno de Victima">
                                                         </div>                       
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Nombre(s)</label>
-                                                            <input type="text" class="form-control" id="nomVict" name="victimaIph.nombre" placeholder="Nombres de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) de la Victima">
+                                                            <input type="text" class="form-control" id="nomVict" name="victimaIp.nombre" placeholder="Nombres de la victima" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) de la Victima">
                                                         </div>                  
                                                         <div class="form-group">      
                                                             <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control" id="edadVict" name="victimaIph.edad" placeholder="Edad de la victima" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad de la Victima">
+                                                            <input type="text" class="form-control" id="edadVict" name="victimaIp.edad" placeholder="Edad de la victima" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad de la Victima">
                                                         </div>                                                
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Sexo</label>
-                                                            <select class="form-control" name="victimaIph.sexo">
+                                                            <select class="form-control" name="victimaIp.sexo">
                                                               <option>Femenino</option>
                                                               <option>Masculino</option>
                                                             </select>
@@ -479,45 +457,9 @@
                                                             </a></center>
                                                         </div>  
                                                     </div>
-                                                    <div class="step-pane" id="step3">
-                                                        <br/>
-                                                        <h4>3.- Datos del probable responsable</h4>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Apellido Paterno</label>
-                                                            <input type="text" class="form-control" id="apePatResp" name="imputadoIph.apellidoPaterno" placeholder="Apellido paterno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Paterno Responsable">
-                                                        </div>                       
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Apellido Materno</label>
-                                                            <input type="text" class="form-control" id="apeMatResp" name="imputadoIph.apellidoMaterno" placeholder="Apellido materno del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Apellido Materno Responsable">
-                                                        </div>                       
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Nombre(s)</label>
-                                                            <input type="text" class="form-control" id="nomResp" name="imputadoIph.nombre" placeholder="Nombres del probable responsable" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre(s) Responsable">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control" id="edadResp" name="imputadoIph.edad" placeholder="Edad del probable responsable" onkeypress="ValidaSoloNumeros()" maxlength="2" required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Sexo </label>
-                                                            <select class="form-control" name="imputadoIph.sexo">
-                                                              <option>Femenino</option>
-                                                              <option>Masculino</option>
-                                                            </select>
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Probables delitos o faltas administrativas</label>
-                                                            <input type="text" class="form-control" id="delitoResp" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Probable Delito/Falta">
-                                                        </div>                                          
-                                                        <div class="form-group">
-                                                            <center><a href="#" class="not-active">
-                                                                <i class="fa fa-plus-circle fa-5x"></i>
-                                                            </a></center>
-                                                        </div>                                                   
-                                                    </div>
                                                 </g:form>
 
-                                                <div class="step-pane" id="step4">
+                                                <div class="step-pane" id="step3">
                                                     <br/>
                                                     <div class="panel-group accordion" id="accordion">
                                                         <!--<div class="panel panel-default">
@@ -566,8 +508,8 @@
                                                             </div>
                                                             <div id="collapseThree" class="panel-collapse collapse" style="height: 1px;">
                                                                 <div class="panel-body">
-                                                                    <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
-                                                                        <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                                                                    <a href=${resource(dir: 'Plantillas', file: 'PlantillaIp.docx')} title="Descargar">
+                                                                        <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IP
                                                                     </a>
                                                                     <!--<g:actionSubmit id="btnPlantilla" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="ces" />-->
                                                                 </div>

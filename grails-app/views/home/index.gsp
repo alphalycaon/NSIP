@@ -9,11 +9,7 @@
 <html>
     <head>        
 
-        <style type="text/css">
-            .not-active {
-            cursor: no-drop;
-            }
-        </style> 
+        
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-default.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'ns-style-growl.css')}"/>
@@ -294,40 +290,6 @@
                 </div>
             </div>
         </div>
-        <!--Modal-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
-                    </div>
-                    <div class="modal-body">
-                        <li>
-                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
-                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
-                            </a>
-                            <!--<g:form controller="home" action="plantillaIPH" name="plantillaIPH">
-                                <g:actionSubmit id="btnPlantillaIPH" class="btn btn-primary" value="Plantilla IPH" action="plantillaIPH" controller="home" />
-                            </g:form>-->
-                        </li>
-                        </br>
-                        <li>
-                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
-                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                            </a>
-                            <!--<g:form controller="home" action="plantillaDenuncia" name="plantillaDenuncia">
-                                <g:actionSubmit id="btnPlantillaDenuncia" class="btn btn-primary" value="Plantilla Denuncia" action="plantillaDenuncia" controller="home" />
-                            </g:form>-->
-                        </li>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-  <!--Fin Modal-->
         <!-- -->                                                        
         <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <g:form name="formCompartir">

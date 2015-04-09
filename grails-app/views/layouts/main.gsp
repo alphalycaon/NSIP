@@ -261,6 +261,11 @@
             z-index: -1;
             }
         </style>
+        <style type="text/css">
+            .not-active {
+            cursor: no-drop;
+            }
+        </style> 
     </head>
     <body class="pace-done fixed-header pace-done fixed-footer">
         <div id="theme-wrapper">
@@ -411,6 +416,246 @@
                                         </span>
                                     </div>
                                 </div>
+                                <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <shiro:hasRole name="Ministerio">
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-inbox"></i>
+                                                    <span style="font-size: 10px;">Denuncias/Querellas</span>               
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/Index_Corroboracion">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Mis Corroboraciones</span>
+                                                    <span class="label label-default pull-right">1</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Investigacion">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Mis Investigaciones</span> 
+                                                    <span class="label label-default pull-right">2</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Temporales">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Archivos Temporales</span> 
+                                                    <span class="label label-default pull-right">2</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Definitivos">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span style="font-size: 10px;">Archivos Definitivos</span> 
+                                                    <span class="label label-default pull-right">2</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <span style="font-size: 10px;">Puestas a Disposición</span>
+                                                </a>
+                                            </li>                                                                                      
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <span style="font-size: 10px;">Solicitud de Audiencia</span>                                                    
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-arrow-circle-o-up"></i>
+                                                    <span style="font-size: 10px;">Solicitar Defensor Público</span>       
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="${request.contextPath}/home/agenda">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span style="font-size: 10px;">Mi Calendario</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-exclamation-triangle"></i>
+                                                    <span style="font-size: 10px;">Mis Notificaciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-file-word-o"></i>
+                                                    <span style="font-size: 10px;">Mis Plantillas</span>
+                                                </a>
+                                            </li> 
+                                        </shiro:hasRole>
+                                        <shiro:hasRole name="CES">
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-folder-o"></i>
+                                                    <span style="font-size: 10px;">Mis Denuncias</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-link"></i>
+                                                    <span style="font-size: 10px;">Mis Cadena de Custodia</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-link"></i>
+                                                    <span style="font-size: 10px;">Mis Detenciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Iph">
+                                                    <i class="fa fa-inbox"></i>
+                                                    <span style="font-size: 10px;">Mis IPH</span>
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="${request.contextPath}/home/index_Ip">
+                                                    <i  class="fa fa-inbox"></i>
+                                                    <span style="font-size: 10px;">Mis Partes Policiales</span>
+                                                </a>
+                                            </li>                                           
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle"></i>
+                                                    <span style="font-size: 10px;">Mis Notificaciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i  class="fa fa-file-word-o"></i>
+                                                    <span style="font-size: 10px;">Mis Plantillas</span>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole> 
+                                        <shiro:hasRole name="Juez">
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i  class="fa fa-inbox"></i>
+                                                    <span style="font-size: 10px;">Causas de 1era y 2da Instancia</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-pencil"></i>
+                                                    <span style="font-size: 10px;">Registro de Causas</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-pencil"></i>
+                                                    <span style="font-size: 10px;">Registro de Salas de Audiencia</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-arrow-circle-o-up"></i>
+                                                    <span style="font-size: 10px;">Solicitar Defensor Público</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-arrow-circle-o-up"></i>
+                                                    <span style="font-size: 10px;">Solicitar Policia Procesal</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/calendar">
+                                                    <i  class="fa fa-calendar"></i>
+                                                    <span style="font-size: 10px;">Agendar Audiencias</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-envelope-o"></i>
+                                                    <span style="font-size: 10px;">Resolución de Audiencias</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>  
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle"></i>
+                                                    <span style="font-size: 10px;">Mis Notificaciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i  class="fa fa-file-word-o"></i>
+                                                    <span style="font-size: 10px;">Mis Plantillas</span>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole>                                         
+                                        <shiro:hasRole name="Defensor">
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-flag"></i>
+                                                    <span style="font-size: 10px;">Solicituar Audiencia</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-taxi"></i>
+                                                    <span style="font-size: 10px;">Solicitar Perito</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}">
+                                                    <i class="fa fa-inbox"></i>
+                                                    <span style="font-size: 10px;">Mis Asuntos</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="${request.contextPath}/home/agenda">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span style="font-size: 10px;">Mi Calendario</span>
+                                                </a>
+                                            </li>                                        
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    <span style="font-size: 10px;">Turnados por atender</span>
+                                                </a>
+                                            </li>  
+                                            <li>
+                                                <a href="#" class="not-active">
+                                                    <i  class="fa fa-exclamation-triangle"></i>
+                                                    <span style="font-size: 10px;">Mis Notificaciones</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-file-word-o"></i>
+                                                    <span style="font-size: 10px;">Mis Plantillas</span>
+                                                </a>
+                                            </li>
+                                        </shiro:hasRole>                                  
+                                    </ul>
+                                    
+                                </div>
+                                
                             </div>
                             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                 <ul class="nav nav-pills nav-stacked">
@@ -695,50 +940,83 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="config-tool" class="closed">
-        <a id="config-tool-cog">
-            <i class="fa fa-cog"></i>
-        </a>
-        <div id="config-tool-options">
-            <h4>Opcional</h4>
-            <h4>cambiar Color</h4>
-            <ul id="skin-colors" class="clearfix">
-                <li>
-                    <a class="skin-changer" data-skin="" data-toggle="tooltip" title="Default" style="background-color: #34495e;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-white" data-toggle="tooltip" title="White/Green" style="background-color: #2ecc71;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer blue-gradient" data-skin="theme-blue-gradient" data-toggle="tooltip" title="Gradient">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-turquoise" data-toggle="tooltip" title="Green Sea" style="background-color: #1abc9c;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-amethyst" data-toggle="tooltip" title="Amethyst" style="background-color: #9b59b6;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-blue" data-toggle="tooltip" title="Blue" style="background-color: #2980b9;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-red" data-toggle="tooltip" title="Red" style="background-color: #e74c3c;">
-                    </a>
-                </li>
-                <li>
-                    <a class="skin-changer" data-skin="theme-whbl" data-toggle="tooltip" title="White/Blue" style="background-color: #3498db;">
-                    </a>
-                </li>
-            </ul>
+        <div id="config-tool" class="closed">
+            <a id="config-tool-cog">
+                <i class="fa fa-cog"></i>
+            </a>
+            <div id="config-tool-options">
+                <h4>Opcional</h4>
+                <h4>cambiar Color</h4>
+                <ul id="skin-colors" class="clearfix">
+                    <li>
+                        <a class="skin-changer" data-skin="" data-toggle="tooltip" title="Default" style="background-color: #34495e;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-white" data-toggle="tooltip" title="White/Green" style="background-color: #2ecc71;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer blue-gradient" data-skin="theme-blue-gradient" data-toggle="tooltip" title="Gradient">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-turquoise" data-toggle="tooltip" title="Green Sea" style="background-color: #1abc9c;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-amethyst" data-toggle="tooltip" title="Amethyst" style="background-color: #9b59b6;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-blue" data-toggle="tooltip" title="Blue" style="background-color: #2980b9;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-red" data-toggle="tooltip" title="Red" style="background-color: #e74c3c;">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="skin-changer" data-skin="theme-whbl" data-toggle="tooltip" title="White/Blue" style="background-color: #3498db;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>        
+        <!--Modal-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIp.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IP
+                            </a>
+                        </li>
+                        </br>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                            </a>
+                        </li>
+                        </br>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                            </a>
+                        </li>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <!--Fin Modal-->
 
 <r:layoutResources />
 <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>

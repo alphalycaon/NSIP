@@ -40,7 +40,7 @@
                             <header id="email-header" class="clearfix">                                
                                
                                 <div id="email-header-title" class="visible-md visible-lg">
-                                        <i class="fa fa-inbox"></i> Lista de IPH
+                                        <i class="fa fa-inbox"></i> Lista de IP
                                     </div>
                                
                                 
@@ -79,7 +79,7 @@
 
                                         <shiro:hasRole name="CES">
                                             <div class="btn-group">
-                                                <g:link controller="ces" action="iph" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar IPH">
+                                                <g:link controller="ces" action="ip" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar IP">
                                                     <i class="fa fa-users"></i>
                                                 </g:link>
                                             </div>
@@ -157,26 +157,26 @@
                                             </div>
                                         </li-->    
                                         <shiro:hasRole name="CES"> 
-                                            <g:each in="${expedientesIphFiltrados}" var="expedienteIph" status="i">
-                                                <li class="unread" data-href="${request.contextPath}/home/detail_Iph">
+                                            <g:each in="${expedientesIpFiltrados}" var="expedienteIp" status="i">
+                                                <li class="unread" data-href="${request.contextPath}/home/detail_Ip">
                                                     <div class="chbox">
                                                         <div class="checkbox-nice">
-                                                            <input type="checkbox" name="checkbox${expedienteIph.id}" id="checkbox${expedienteIph.id}">
-                                                            <label for="checkbox${expedienteIph.id}"></label>
+                                                            <input type="checkbox" name="checkbox${expedienteIp.id}" id="checkbox${expedienteIp.id}">
+                                                            <label for="checkbox${expedienteIp.id}"></label>
                                                         </div>
                                                     </div>
                                                     <div class="star">
                                                         <a></a>
                                                     </div>
-                                                <g:link action="detail_Iph"  id="${expedienteIph.id}" style="color: #000000">
+                                                <g:link action="detail_Ip"  id="${expedienteIp.id}" style="color: #000000">
                                                     <div class="name">
-                                                        ${expedienteIph.numeroIph}
+                                                        ${expedienteIp.numeroIp}
                                                     </div>
                                                     <div class="meta-info">
                                                         <a href="#" class="attachment">
                                                             <i class="fa fa-paperclip"></i>
                                                         </a>
-                                                        <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIph.dateCreated}"/></span>
+                                                        <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expedienteIp.dateCreated}"/></span>
                                                     </div>
                                                 </li></g:link>                        
                                             </g:each>                                     
@@ -216,7 +216,7 @@
                              <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                                  <span  style="padding-right: 10px;"></span> Aceptar
                              </a> -->  
-                            <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirVariosExpIph" controller="home"/>
+                            <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirVariosExpIp" controller="home"/>
                             <a data-dismiss="modal" class="btn btn-danger">                                            
                                 <span style="padding-right: 10px;"></span> Cancelar
                             </a>
