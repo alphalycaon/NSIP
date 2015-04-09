@@ -157,12 +157,14 @@
             Chat.socket.onopen = function () {
                 Console.log('Info: WebSocket connection opened.');
                 
+                $('#estatusOnline').text('En linea' );
                 $('#ntf_Denuncia').text(varDenuncia );
                 
                 
             };
 
             Chat.socket.onclose = function () {
+            $('#estatusOnline').text('Fuera de linea' );
             //document.getElementById('chat').onkeydown = null;
             Console.log('Info: WebSocket closed.');
             };
@@ -188,6 +190,10 @@
                 $('#ntf_Temporales').text(contador);
             }else if(obj.notificacion==="DEFINITIVO"){
                 $('#ntf_Definitivos').text(contador);
+            }else if(obj.notificacion==="SOLICITUD_AUDIENCIA"){
+                $('#ntf_SolicitudAudiencia').text(contador);
+            }else if(obj.notificacion==="CAUSAS"){
+                $('#ntf_Causas').text(contador);
             }
 
             };
@@ -201,8 +207,8 @@
             }
             };
 
-            Chat.sendMessage = (function() {
-            var message = document.getElementById('chat').value;
+            Chat.sendMessage = (function(message) {
+            //alert("sendMessage:"+Chat.socket)
             if (message != '') {
             Chat.socket.send(message);
             //document.getElementById('chat').value = '';
@@ -392,7 +398,7 @@
 
                                     <div class="user-box">
                                         <span class="name">Hola<br><user:loggedInUser property="nombre"/><br></span>
-                                        <span class="status">
+                                        <span class="status" id="estatusOnline">
                                             <i class="fa fa-circle"></i> Online
                                         </span>
                                     </div>
@@ -559,7 +565,9 @@
                                         <li>
                                             <a href="${request.contextPath}">
                                                 <i  class="fa fa-inbox"></i>
-                                                <span style="font-size: 10px;">Causas de 1era y 2da Instancia</span>
+                                                <span style="font-size: 10px;">Causas 1ra y 2da instancia</span>
+                                                <span class="label label-primary label-circle pull-right" id="ntf_Causas"></span>
+                                            
                                             </a>
                                         </li>
                                         <li>
@@ -590,7 +598,7 @@
                                             <a href="${request.contextPath}/home/calendar">
                                                 <i  class="fa fa-calendar"></i>
                                                 <span style="font-size: 10px;">Agendar Audiencias</span>
-                                                <span class="label label-primary label-circle pull-right" id="ntf_Audiencia">4</span>
+                                                <span class="label label-primary label-circle pull-right" id="ntf_SolicitudAudiencia"></span>
                                             </a>
                                         </li>
                                         <li>
@@ -780,6 +788,10 @@
                         $('#ntf_Temporales').text(data.TEMPORAL);
                     if(data.DEFINITIVO!=0)
                         $('#ntf_Definitivos').text(data.DEFINITIVO);
+                    if(data.SOLICITUD_AUDIENCIA!=0)
+                        $('#ntf_SolicitudAudiencia').text(data.SOLICITUD_AUDIENCIA);
+                    if(data.CAUSAS!=0)
+                        $('#ntf_Causas').text(data.CAUSAS);
               });
           })();
     });

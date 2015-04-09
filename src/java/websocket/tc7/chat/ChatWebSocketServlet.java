@@ -96,6 +96,7 @@ public class ChatWebSocketServlet extends WebSocketServlet {
          notificaMap.put(TipoNotificacion.IPH, new AtomicInteger(0));
          notificaMap.put(TipoNotificacion.AUDIENCIA, new AtomicInteger(0));
          notificaMap.put(TipoNotificacion.SOLICITUD_AUDIENCIA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(0));
          return notificaMap;
          
     }

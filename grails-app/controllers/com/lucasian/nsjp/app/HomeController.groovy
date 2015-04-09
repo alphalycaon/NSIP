@@ -88,7 +88,10 @@ class HomeController {
         int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
         int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
         print(countC)
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC]        
+        String notifica = session.getAttribute("notifica");
+        session.removeAttribute("notifica");
+        //println("notifica:"+notifica)
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC, notifica:notifica]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal
@@ -187,6 +190,7 @@ class HomeController {
             }    
         }
         print("expediente " + Integer.parseInt(expediente))
+        session.setAttribute("notifica", "CAUSAS")
         redirect(action: "detail", id: expediente)
     }
     
@@ -236,6 +240,9 @@ class HomeController {
             
         }
         print("expediente " + Integer.parseInt(expedienteId))
+        
+        
+        session.setAttribute("notifica", "SOLICITUD_AUDIENCIA")
         redirect(action: "detail", id: expedienteId)
         
     }
@@ -445,7 +452,7 @@ class HomeController {
             def userName  = SecurityUtils.subject?.principal
             int userId = User.findByUsername(userName).getId()
 
-            //def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
             def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
             def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
             
@@ -454,13 +461,16 @@ class HomeController {
             def ExpIphFiltrado = Expediente.executeQuery("from ExpedienteIph where id in(select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + ")")
             def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'T')")
             def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'D')")
-            def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+            def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N' ")
         
             def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
         
            // def notificaMap = new HashMap();
             notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
             notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpCompartidos.size() ));
+            notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
+            
+            
             notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(ExpInvestigaciones.size()));
             notificaMap.put(TipoNotificacion.TEMPORAL, new AtomicInteger(ExpTemporales.size()));
             notificaMap.put(TipoNotificacion.DEFINITIVO, new AtomicInteger(ExpDefinitivos.size()));

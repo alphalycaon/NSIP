@@ -456,6 +456,7 @@
             type : 'success',
             onClose : function() {
             bttnNotificacionCompartir.disabled = false;
+            
             }
             });
             notification.show();
