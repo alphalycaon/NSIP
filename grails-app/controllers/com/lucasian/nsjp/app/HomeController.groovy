@@ -148,6 +148,17 @@ class HomeController {
         
         [SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
     }
+    
+    def consultaDatosCalendario(){
+        def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
+        Map mapa = new HashMap();
+        mapa.put("SolicitudesAudiencias", SolAudiencias);
+        mapa.put("jueces", jueces);
+        mapa.put("agendasAudiencias", AgendaAudiencias.list());
+        render  mapa as JSON
+    }
+    
     def agenda(){        
         
         [agendasAudiencias: AgendaAudiencias.list()]
@@ -548,6 +559,7 @@ class HomeController {
             
         redirect(action: "calendar")
     }
+
     
     def consultaNotificaciones(){
         //si trae el atributo de force obliga a consultar nuevamente la base de datos, si no se trae lo que tenga en session
