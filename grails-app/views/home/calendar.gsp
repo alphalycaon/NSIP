@@ -129,9 +129,7 @@
                     <div class="modal-body">
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="selectSolicitud">
-                                <g:each in="${SolicitudesAudiencias}" var="solicitud" status="i">
-                                    <option value="${solicitud.expediente.numeroExpediente},${solicitud.tipoAudiencia},${solicitud.id}">${solicitud.expediente.numeroExpediente},  Victima: ${solicitud.expediente.delito.victima.nombre},  Imputado: ${solicitud.expediente.delito.imputado.nombre},  Delito: ${solicitud.expediente.delito.clasificacionDelito.nombre}</option>
-                                </g:each>
+                                
                             </select>
                         </div>
                     </div>
@@ -258,7 +256,7 @@
 
             // store the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
-
+            
             // make the event draggable using jQuery UI
             $(this).draggable({
             zIndex: 999,
@@ -289,7 +287,7 @@
             selectHelper: true,
             select: function(start, end, allDay) {
             var title = prompt('Tipo de Audiencia:');
-
+            
             if (title) {
             title = 'Audiencia: ' + document.getElementById('tipoAudiencia').value + '\nJuez: ' + document.getElementById('selectJuez').value + '\nCausa: ' + document.getElementById('numCaso').value;
             calendar.fullCalendar('renderEvent',
@@ -307,7 +305,7 @@
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function(date, allDay) { // this function is called when something is dropped
-
+            
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
             
@@ -320,8 +318,9 @@
             
             //Se graba la informacion en la bd
             document.getElementById('inicio').value = date.toLocaleString();
-            document.getElementById('fin').value = (date.addHours(2)).toLocaleString();
-            $('#formGuardar').submit();
+            //document.getElementById('fin').value = (date.addHours(2)).toLocaleString();
+            //$('#formGuardar').submit();
+            guardarAudiencias();
             
             // copy label class from the event object
             var labelClass = $(this).data('eventclass');
@@ -357,7 +356,17 @@
             </g:each>
             {
             }
-            ]
+            ],
+            editable: true,
+            eventDrop: function(event, delta, revertFunc) {
+
+                alert(event.title + " fue cambiado a " + event.start + " y " + event.end);
+
+                if (!confirm("Are you sure about this change?")) {
+                    revertFunc();
+                }
+
+            }
             });
             });
         </script>
@@ -404,7 +413,50 @@
             $(this).data('eventObject', eventObject);
             });
             });
-        </script>        
+        </script> 
+        <script>
+            function guardarAudiencias(){
+                var vsolId = document.getElementById('solicitudId').value;
+                var vinicio = document.getElementById('inicio').value;
+                var vjuez = document.getElementById('selectJuez').value;
+                
+                var guardarAPI = "${request.contextPath}/home/guardarAudiencia?solicitudId="+vsolId+"&inicio="+vinicio+"&selectJuez="+vjuez;
+                $.getJSON( guardarAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   alert(data);
+                  });
+                  
+                consultaSolicitudesAudiencias();
+            }
+            function consultaSolicitudesAudiencias(){
+                var solicitudesAPI = "${request.contextPath}/home/consultaCalendar";
+                $.getJSON( solicitudesAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   
+                    var $select = $('#selectSolicitud');                        
+                    $select.find('option').remove();    
+                    var cont = 0;
+                    $.each(data, function(key, value) {              
+                        $select.append('<option value="' + data[cont].numeroExpediente+','+data[cont].tipoAudiencia+','+data[cont].id + '">' + data[cont].numeroExpediente+', Victima: '+data[cont].victima+', Imputado: '+data[cont].imputado+', Delito: '+data[cont].delito+ '</option>');     
+                        cont++;
+                    });
+                    
+                    document.getElementById('solicitudId').value = "";
+                    document.getElementById('inicio').value = "";
+                    document.getElementById('fin').value = "";
+                    document.getElementById('numCaso').value = "";
+                    document.getElementById('tipoAudiencia').value = "";
+                    
+                  });
+            }
+            $(document).ready(function(){
+                consultaSolicitudesAudiencias();
+            });
+        </script>
         <script>
             Date.prototype.addHours= function(h){
                 this.setHours(this.getHours()+h);

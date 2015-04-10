@@ -145,8 +145,36 @@ class HomeController {
     def calendar(){
         def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
-        
+                
         [SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
+    }
+    def consultaCalendar(){
+        def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
+        
+        Set<Map> solAudienciasSet = new HashSet<Map>();
+        Map<String, String> audiencia;
+        for(int i=0;i<SolAudiencias.size;i++){
+            audiencia = new HashMap<String, String>();
+            audiencia.put("numeroExpediente", SolAudiencias[i].expediente.numeroExpediente);
+            audiencia.put("tipoAudiencia", SolAudiencias[i].tipoAudiencia);
+            audiencia.put("id", SolAudiencias[i].id);
+            audiencia.put("victima", SolAudiencias[i].expediente.delito.victima.nombre);
+            audiencia.put("imputado", SolAudiencias[i].expediente.delito.imputado.nombre);
+            audiencia.put("delito", SolAudiencias[i].expediente.delito.clasificacionDelito.nombre);
+            
+            solAudienciasSet.add(audiencia);
+            //solAudienciasMap.put(""+SolAudiencias[i].expediente.numeroExpediente+","+SolAudiencias[i].tipoAudiencia+","+SolAudiencias[i].id,""+SolAudiencias[i].expediente.numeroExpediente+", Victima: "+SolAudiencias[i].expediente.delito.victima.nombre+", Imputado: "+SolAudiencias[i].expediente.delito.imputado.nombre+", Delito: "+SolAudiencias[i].expediente.delito.clasificacionDelito.nombre); 
+        }
+        
+        /*Iterator it = solAudienciasSet.keySet().iterator();
+        while(it.hasNext()){
+          String key = it.next();
+          System.out.println("ID: " + key + " -> Texto: " + solAudienciasSet.get(key));
+        }*/
+        //print(solAudienciasMap)
+        render  solAudienciasSet as JSON
+        //[SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
     }
     def agenda(){        
         
@@ -525,15 +553,19 @@ class HomeController {
         
         def idSolicitud = params.solicitudId
         def inicio = params.inicio
-        def fin = params.fin
         def juez = params.selectJuez
+        def resultado = "{Msg: 'No se ha guardado la audiencia'}"
+        
+        print('id='+idSolicitud+', inicio='+inicio+', juez='+juez)
         
         if(idSolicitud != null && idSolicitud!= ""){
             SolicitudAudiencia solicitudAudiencia = SolicitudAudiencia.get(idSolicitud)
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
             Date fechaInicio = sdf.parse(inicio)
-            Date fechaFin = sdf.parse(fin)
+             
+            Date fechaFin = new Date(fechaInicio.getTime());
+            fechaFin.setHours(fechaFin.getHours()+2);
             print('' + fechaInicio + ' a ' + fechaFin + '')
 
             AgendaAudiencias aud = new AgendaAudiencias();
@@ -544,9 +576,11 @@ class HomeController {
             aud.save()
 
             SolicitudAudiencia.executeUpdate("update SolicitudAudiencia set estatus='A' where id = " + idSolicitud)
+            resultado = "{Msg: 'Se ha guardado la audiencia'}"
         }
+        print(resultado)
             
-        redirect(action: "calendar")
+        render resultado
     }
     
     def consultaNotificaciones(){
