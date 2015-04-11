@@ -347,6 +347,7 @@
             events: [
             <g:each in="${agendasAudiencias}" var="audiencia" status="i">
              {   
+                id: '${audiencia.id}',
                 title: 'Audiencia: ${audiencia.solicitudAudiencia.tipoAudiencia}\nJuez: ${audiencia.juez}\nCausa: ${audiencia.solicitudAudiencia.expediente.numeroExpediente}',
                 start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
                 end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
@@ -359,13 +360,11 @@
             ],
             editable: true,
             eventDrop: function(event, delta, revertFunc) {
-
-                alert(event.title + " fue cambiado a " + event.start + " y " + event.end);
-
-                if (!confirm("Are you sure about this change?")) {
-                    revertFunc();
-                }
-
+                var id = event.id.toLocaleString();
+                var inicio = event.start.toLocaleString();
+                var fin = event.end.toLocaleString();
+                
+                updateAudiencia(id,inicio,fin);
             }
             });
             });
@@ -429,6 +428,15 @@
                   });
                   
                 consultaSolicitudesAudiencias();
+            }
+            function updateAudiencia(id,inicio,fin){                                
+                var updateAPI = "${request.contextPath}/home/updateAudiencia?id="+id+"&inicio="+inicio+"&fin="+fin;
+                $.getJSON( updateAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   alert(data);
+                  });
             }
             function consultaSolicitudesAudiencias(){
                 var solicitudesAPI = "${request.contextPath}/home/consultaCalendar";

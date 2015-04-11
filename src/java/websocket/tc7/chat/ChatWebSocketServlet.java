@@ -1,19 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package websocket.tc7.chat;
 
 import java.io.IOException;
@@ -162,6 +146,8 @@ public class ChatWebSocketServlet extends WebSocketServlet {
                 TipoNotificacion tipoNotificacion = NotificaBean.getNotificacion(dataParsed.get("notificacion").toString());
                 System.out.println("TipoNotificacion:" + tipoNotificacion);
                 String msgTo = dataParsed.get("msgTo").toString();
+                System.out.println("msgTo:" + msgTo);
+                
                 if ("*".equals(msgTo)) {
                     Enumeration en = mapNotifica.keys();
                     String key;
@@ -183,8 +169,8 @@ public class ChatWebSocketServlet extends WebSocketServlet {
         }
 
         private void broadcastNotificaciones(TipoNotificacion tipoNotificacion, String sMsgTo) {
-            System.out.println("msgToNotifica:" + mapNotifica.get(sMsgTo));
-            AtomicInteger contador = (AtomicInteger) mapNotifica.get(sMsgTo).get(tipoNotificacion);
+            System.out.println("msgToNotifica:" + mapNotifica.get(nickname));
+            AtomicInteger contador = (AtomicInteger) mapNotifica.get(nickname).get(tipoNotificacion);
 
             String responseMessageBroadcast = String.format("{\"%s\": \"%s\", \"%s\": \"%d\", \"%s\": \"%d\"}",
                     "notificacion", tipoNotificacion.toString(),

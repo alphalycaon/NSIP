@@ -18,6 +18,7 @@ import org.docx4j.wml.Document
 import org.apache.shiro.SecurityUtils
 import websocket.tc7.chat.TipoNotificacion
 import grails.converters.JSON
+import java.text.DateFormat
 
 class HomeController {
     
@@ -576,6 +577,35 @@ class HomeController {
             aud.save()
 
             SolicitudAudiencia.executeUpdate("update SolicitudAudiencia set estatus='A' where id = " + idSolicitud)
+            resultado = "{Msg: 'Se ha guardado la audiencia'}"
+        }
+        print(resultado)
+            
+        render resultado
+    }
+    
+    def updateAudiencia(){
+        
+        def idAgenda = params.id
+        def inicio = params.inicio
+        def fin = params.fin
+        def resultado = "{Msg: 'No se ha guardado la audiencia'}"
+        
+        print('id='+idAgenda+', inicio='+inicio+', fin='+fin)
+        
+        if(idAgenda != null && idAgenda!= ""){
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")            
+            Date fechaInicio = sdf.parse(inicio)
+            Date fechaFin = sdf.parse(fin)
+            
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            print('' + sdf2.format(fechaInicio) + ' a ' + sdf2.format(fechaFin) + '')
+
+            def audiencia = AgendaAudiencias.get(idAgenda)
+            audiencia.inicio = Date.parse('yyyy-MM-dd HH:mm:ss', sdf2.format(fechaInicio))
+            audiencia.fin = Date.parse('yyyy-MM-dd HH:mm:ss', sdf2.format(fechaFin))
+            audiencia.save()
+            
             resultado = "{Msg: 'Se ha guardado la audiencia'}"
         }
         print(resultado)
