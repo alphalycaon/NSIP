@@ -56,7 +56,7 @@
     <body>
         <div class="row" style="opacity: 1;">
             <div class="col-lg-12">
-                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 900px;">
+                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 950px;">
                     <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                         <div class="row">
                             <div class="col-lg-12">
@@ -108,7 +108,7 @@
                             <div class="col-md-9">
                                 <div class="main-box">
                                     <div class="main-box-body clearfix">
-                                        <div id="calendar"></div>
+                                        <div id="calendar" style="min-height: 820px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -283,6 +283,9 @@
             },
             isRTL: $('body').hasClass('rtl'), //rtl support for calendar
             defaultView: 'agendaWeek',
+            minTime: '09:00',
+            maxTime: '18:01',
+            contentHeight: 800,
             selectable: false,
             selectHelper: true,
             select: function(start, end, allDay) {
@@ -360,7 +363,14 @@
             ],
             editable: true,
             eventDrop: function(event, delta, revertFunc) {
-                var id = event.id.toLocaleString();
+                var id = event.id;
+                var inicio = event.start.toLocaleString();
+                var fin = event.end.toLocaleString();
+                
+                updateAudiencia(id,inicio,fin);
+            },
+            eventResize: function(event, delta, revertFunc) {
+                var id = event.id;
                 var inicio = event.start.toLocaleString();
                 var fin = event.end.toLocaleString();
                 

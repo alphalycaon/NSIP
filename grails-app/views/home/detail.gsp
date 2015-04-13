@@ -1295,7 +1295,7 @@
                                                         <label>Tipo de Audiencia:</label>
                                                         <select style="width:570px" class="form-control" name="listAudiencia" id="listAudiencia">
                                                             <option value="Audiencia privada">Audiencia privada</option>
-                                                            <option value="Vinculación al proceso">Vinculación al proceso</option>
+                                                            <option value="Vinculacion al proceso">Vinculación al proceso</option>
                                                         </select>
                                                     </div>
                                                 </form>      

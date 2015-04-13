@@ -594,7 +594,7 @@ class HomeController {
         print('id='+idAgenda+', inicio='+inicio+', fin='+fin)
         
         if(idAgenda != null && idAgenda!= ""){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")            
             Date fechaInicio = sdf.parse(inicio)
             Date fechaFin = sdf.parse(fin)
             
