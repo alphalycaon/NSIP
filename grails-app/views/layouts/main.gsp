@@ -542,7 +542,7 @@
                                             </a>
                                         </li>                                            
                                         <li>
-                                            <a href="#" class="not-active">
+                                            <a href="${request.contextPath}/home/index_Ip">
                                                 <i  class="fa fa-inbox"></i>
                                                 <span style="font-size: 10px;">Mis Partes Policiales</span>
                                             </a>

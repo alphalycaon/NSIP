@@ -176,7 +176,7 @@
                                                     <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
                                                     <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
                                                     <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
-                                                    <li data-target="#step4"><span class="badge">4</span>Presunto Responsable<span class="chevron"></span></li>
+                                                    <li data-target="#step4"><span class="badge">4</span>Imputado<span class="chevron"></span></li>
                                                     <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia/Querella<span class="chevron"></span></li>
                                                     <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
                                                 </ul>
@@ -270,10 +270,10 @@
                                                     </div>
                                                     <div class="step-pane" id="step4">
                                                         <br/>
-                                                        <h4>4.- Datos del presunto responsable</h4>
+                                                        <h4>4.- Datos del Imputado</h4>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Nombre </label>
-                                                            <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del presunto responsable" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
+                                                            <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del Imputado" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
                                                         </div>                                                
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Genero </label>
@@ -284,15 +284,15 @@
                                                         </div>                                                
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control"  id="edadImputado" name="imputado.edad" placeholder="Edad del presunto responsable" required required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                                            <input type="text" class="form-control"  id="edadImputado" name="imputado.edad" placeholder="Edad del Imputado" required required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable" onkeypress="ValidaSoloNumeros()" maxlength="2">
                                                         </div>                                                
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Estado Civil</label>
-                                                            <input type="text" class="form-control" id="estCivilImputado" name="imputado.estadoCivil" placeholder="Estado civil del presunto responsable" required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                                            <input type="text" class="form-control" id="estCivilImputado" name="imputado.estadoCivil" placeholder="Estado civil del Imputado" required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
                                                         </div>                                                
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Escolaridad</label>
-                                                            <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del presunto responsable" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                                            <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del Imputado" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                                         </div>                                          
                                                         <div class="form-group">
                                                             <center><a href="#" class="not-active">
