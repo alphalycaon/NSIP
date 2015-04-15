@@ -576,6 +576,18 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="${request.contextPath}/home/index_Solicitudes">
+                                                <i class="fa fa-inbox"></i>
+                                                <span style="font-size: 10px;">Mis Solicitudes de Audiencia</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="${request.contextPath}/home/index_Cuadernillos">
+                                                <i class="fa fa-inbox"></i>
+                                                <span style="font-size: 10px;">Mis Cuadernillos de Causa</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="#" class="not-active">
                                                 <i class="fa fa-pencil"></i>
                                                 <span style="font-size: 10px;">Registro de Causas</span>

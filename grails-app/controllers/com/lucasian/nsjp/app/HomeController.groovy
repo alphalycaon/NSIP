@@ -33,11 +33,29 @@ class HomeController {
         
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
-        
+        def ExpFiltradoJuez = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
         
         //session.get
         
-        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados]
+        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
+    }
+    
+    def index_Solicitudes() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'N')")
+        
+        [expedientesFiltrados: ExpFiltrado]
+    }
+    
+    def index_Cuadernillos() { 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        
+        def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) like '%PRIVADA%')")
+        
+        [expedientesFiltrados: ExpFiltrado]
     }
     
     def notifica() { 
@@ -92,7 +110,7 @@ class HomeController {
         String notifica = session.getAttribute("notifica");
         session.removeAttribute("notifica");
         //println("notifica:"+notifica)
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC, notifica:notifica]        
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC, notifica:notifica, tiposAudiencias: TipoAudiencia.list()]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal

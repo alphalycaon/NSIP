@@ -193,7 +193,7 @@
                                             </g:each>                                        
                                         </shiro:hasRole> 
                                         <shiro:hasRole name="Juez">
-                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
+                                            <g:each in="${expedientesFiltradosJuez}" var="expediente" status="i">
                                                     <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                         <div class="chbox">
                                                             <div class="checkbox-nice">
