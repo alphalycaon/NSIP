@@ -56,17 +56,17 @@
     <body>
         <div class="row" style="opacity: 1;">
             <div class="col-lg-12">
-                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 900px;">
+                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 950px;">
                     <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
                         <div class="row">
                             <div class="col-lg-12">
                                 </br>
-                                <h1>Agenda de Audencias</h1>
-                                <div class="col-lg-12" style="left: 1107px">  
+                                <h1>Agenda de Audiencias</h1>
+                                <div id="email-header-tools" class="pull-right">                                   
                                     <a href="${request.contextPath}" class="btn btn-primary">                                            
                                         <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
                                     </a>
-                                </div> 
+                                </div>
                             </div>
                         </div>   
                         </br>
@@ -74,10 +74,14 @@
                             <div class="col-md-3 hidden-xs hidden-sm" >
                                 <div class="main-box" id="external-events">
                                     <header class="main-box-header clearfix">
+                                      <g:form name="formGuardar" controller="home" action="guardarAudiencia">
                                         <h4>Número de causa</h4>
                                         <div>
                                             <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
                                             <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
+                                            <input type="hidden" id="solicitudId" name="solicitudId" class="form-control">
+                                            <input type="hidden" id="inicio" name="inicio" class="form-control">
+                                            <input type="hidden" id="fin" name="fin" class="form-control">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
                                         </div>
                                         </br>
@@ -97,13 +101,14 @@
                                             </div>
                                             </br>
                                         </div>
+                                      </g:form>
                                     </header>
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="main-box">
                                     <div class="main-box-body clearfix">
-                                        <div id="calendar"></div>
+                                        <div id="calendar" style="min-height: 820px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -124,9 +129,7 @@
                     <div class="modal-body">
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="selectSolicitud">
-                                <g:each in="${SolicitudesAudiencias}" var="solicitud" status="i">
-                                    <option value="${solicitud.expediente.numeroExpediente},${solicitud.tipoAudiencia}">${solicitud.expediente.numeroExpediente},  Victima: ${solicitud.expediente.delito.victima.nombre},  Imputado: ${solicitud.expediente.delito.imputado.nombre},  Delito: ${solicitud.expediente.delito.clasificacionDelito.nombre}</option>
-                                </g:each>
+                                
                             </select>
                         </div>
                     </div>
@@ -144,6 +147,7 @@
             var res = str.split(",");
             document.getElementById('numCaso').value = res[0];
             document.getElementById('tipoAudiencia').value = res[1];
+            document.getElementById('solicitudId').value = res[2];
             }
         </script>
         <script type="text/javascript">
@@ -172,7 +176,7 @@
         </script>       
 
         <script src="${request.contextPath}/centaurus/js/jquery.js"></script>
-        <script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>
+        <!--<script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>-->
         <script src="${request.contextPath}/centaurus/js/jquery.nanoscroller.min.js"></script>
         <script src="${request.contextPath}/centaurus/js/demo.js"></script>
         <script src="${request.contextPath}/centaurus/js/jquery-ui.custom.min.js"></script>
@@ -252,7 +256,7 @@
 
             // store the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
-
+            
             // make the event draggable using jQuery UI
             $(this).draggable({
             zIndex: 999,
@@ -279,11 +283,14 @@
             },
             isRTL: $('body').hasClass('rtl'), //rtl support for calendar
             defaultView: 'agendaWeek',
+            minTime: '09:00',
+            maxTime: '18:01',
+            contentHeight: 800,
             selectable: false,
             selectHelper: true,
             select: function(start, end, allDay) {
             var title = prompt('Tipo de Audiencia:');
-
+            
             if (title) {
             title = 'Audiencia: ' + document.getElementById('tipoAudiencia').value + '\nJuez: ' + document.getElementById('selectJuez').value + '\nCausa: ' + document.getElementById('numCaso').value;
             calendar.fullCalendar('renderEvent',
@@ -301,17 +308,23 @@
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function(date, allDay) { // this function is called when something is dropped
-
+            
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
-
+            
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
 
             // assign it the date that was reported
             copiedEventObject.start = date;
             copiedEventObject.allDay = allDay;
-
+            
+            //Se graba la informacion en la bd
+            document.getElementById('inicio').value = date.toLocaleString();
+            //document.getElementById('fin').value = (date.addHours(2)).toLocaleString();
+            //$('#formGuardar').submit();
+            guardarAudiencias();
+            
             // copy label class from the event object
             var labelClass = $(this).data('eventclass');
 
@@ -335,52 +348,34 @@
 				next: '<i class="fa fa-chevron-right"></i>'
             },
             events: [
+            <g:each in="${agendasAudiencias}" var="audiencia" status="i">
+             {   
+                id: '${audiencia.id}',
+                title: 'Audiencia: ${audiencia.solicitudAudiencia.tipoAudiencia}\nJuez: ${audiencia.juez}\nCausa: ${audiencia.solicitudAudiencia.expediente.numeroExpediente}',
+                start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
+                end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
+                allDay: false,
+                className: 'label-primary'
+            },                                          
+            </g:each>
             {
-            title: 'Audiencia privada',
-            start: new Date(y, m, 1),
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-5),
-            end: new Date(y, m, d-2),
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Audiencia privada',
-            start: new Date(y, m, d-3, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            id: 999,
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+4, 16, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Audiencia privada',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false,
-            className: 'label-primary'
-            },
-            {
-            title: 'Viculacion al proceso',
-            start: new Date(y, m, d+1, 19, 0),
-            end: new Date(y, m, d+1, 22, 30),
-            allDay: false,
-            className: 'label-primary'
             }
-            ]
+            ],
+            editable: true,
+            eventDrop: function(event, delta, revertFunc) {
+                var id = event.id;
+                var inicio = event.start.toLocaleString();
+                var fin = event.end.toLocaleString();
+                
+                updateAudiencia(id,inicio,fin);
+            },
+            eventResize: function(event, delta, revertFunc) {
+                var id = event.id;
+                var inicio = event.start.toLocaleString();
+                var fin = event.end.toLocaleString();
+                
+                updateAudiencia(id,inicio,fin);
+            }
             });
             });
         </script>
@@ -427,7 +422,64 @@
             $(this).data('eventObject', eventObject);
             });
             });
-        </script>        
-
+        </script> 
+        <script>
+            function guardarAudiencias(){
+                var vsolId = document.getElementById('solicitudId').value;
+                var vinicio = document.getElementById('inicio').value;
+                var vjuez = document.getElementById('selectJuez').value;
+                
+                var guardarAPI = "${request.contextPath}/home/guardarAudiencia?solicitudId="+vsolId+"&inicio="+vinicio+"&selectJuez="+vjuez;
+                $.getJSON( guardarAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   alert(data);
+                  });
+                  
+                consultaSolicitudesAudiencias();
+            }
+            function updateAudiencia(id,inicio,fin){                                
+                var updateAPI = "${request.contextPath}/home/updateAudiencia?id="+id+"&inicio="+inicio+"&fin="+fin;
+                $.getJSON( updateAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   alert(data);
+                  });
+            }
+            function consultaSolicitudesAudiencias(){
+                var solicitudesAPI = "${request.contextPath}/home/consultaCalendar";
+                $.getJSON( solicitudesAPI, {
+                  format: "json"
+                })
+                  .done(function( data ) {
+                   
+                    var $select = $('#selectSolicitud');                        
+                    $select.find('option').remove();    
+                    var cont = 0;
+                    $.each(data, function(key, value) {              
+                        $select.append('<option value="' + data[cont].numeroExpediente+','+data[cont].tipoAudiencia+','+data[cont].id + '">' + data[cont].numeroExpediente+', Victima: '+data[cont].victima+', Imputado: '+data[cont].imputado+', Delito: '+data[cont].delito+ '</option>');     
+                        cont++;
+                    });
+                    
+                    document.getElementById('solicitudId').value = "";
+                    document.getElementById('inicio').value = "";
+                    document.getElementById('fin').value = "";
+                    document.getElementById('numCaso').value = "";
+                    document.getElementById('tipoAudiencia').value = "";
+                    
+                  });
+            }
+            $(document).ready(function(){
+                consultaSolicitudesAudiencias();
+            });
+        </script>
+        <script>
+            Date.prototype.addHours= function(h){
+                this.setHours(this.getHours()+h);
+                return this;
+            }
+        </script>
     </body>
 </html>

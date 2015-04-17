@@ -472,8 +472,12 @@
                                                               <option>Femenino</option>
                                                               <option>Masculino</option>
                                                             </select>
-                                                        </div>                                                              
-
+                                                        </div>                                                        
+                                                        <div class="form-group">
+                                                            <center><a href="#" class="not-active">
+                                                                <i class="fa fa-plus-circle fa-5x"></i>
+                                                            </a></center>
+                                                        </div>  
                                                     </div>
                                                     <div class="step-pane" id="step3">
                                                         <br/>
@@ -504,6 +508,11 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Probables delitos o faltas administrativas</label>
                                                             <input type="text" class="form-control" id="delitoResp" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Probable Delito/Falta">
+                                                        </div>                                          
+                                                        <div class="form-group">
+                                                            <center><a href="#" class="not-active">
+                                                                <i class="fa fa-plus-circle fa-5x"></i>
+                                                            </a></center>
                                                         </div>                                                   
                                                     </div>
                                                 </g:form>
