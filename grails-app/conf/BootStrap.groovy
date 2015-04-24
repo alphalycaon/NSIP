@@ -91,6 +91,39 @@ class BootStrap {
             cesRole.addToUsers(ces1)
             cesRole.save()
         }
+        def ssp1 = User.findByUsername("ssp1")
+        println("usuario encontrado:"+ssp1)
+        if(!ssp1) {
+            ssp1 = new User(
+                username:'ssp1',
+                id: 7,
+                passwordHash: new Sha256Hash("ssp1").toHex(),
+                //passwordHash: '123ghj123',
+                nombre: 'Cesar Castillo',
+                institucion: 'SSP',
+                puesto: 'Procurador'
+            )
+            println("guardando usuario"+ssp1)
+            ssp1.save()
+            cesRole.addToUsers(ssp1)
+            cesRole.save()
+        }
+        def ces2 = User.findByUsername("ces2")
+        println("usuario encontrado:"+ces2)
+        if(!ces2) {
+            ces2 = new User(
+                username:'ces2',
+                id:'8',
+                passwordHash: new Sha256Hash("ces2").toHex(),
+                nombre: 'Jose de Jesus Sanchez Flores',
+                institucion: 'SSP',
+                puesto: 'Procurador'
+            )
+            println("guardando usuario"+ces2)
+            ces2.save(failOnError: true)
+            cesRole.addToUsers(ces2)
+            cesRole.save()
+        }
         def juez1 = User.findByUsername("juez1")
         println("usuario encontrado:"+juez1)
         if(!juez1) {
