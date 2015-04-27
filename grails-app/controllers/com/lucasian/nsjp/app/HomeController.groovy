@@ -102,15 +102,15 @@ class HomeController {
         def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
-        def countInv = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I'")
-        def countCorr = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C'")
-        int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
-        int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
-        print(countC)
+        def countInv = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I' group by usuarioId, expedienteId, tipoExpedienteId")
+        def countCorr = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C' group by usuarioId, expedienteId, tipoExpedienteId")
+        //int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
+        //int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
+        //print(countC)
         String notifica = session.getAttribute("notifica");
         session.removeAttribute("notifica");
         //println("notifica:"+notifica)
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countI, countC: countC, notifica:notifica, tiposAudiencias: TipoAudiencia.list()]        
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countInv, countC: countCorr, notifica:notifica, tiposAudiencias: TipoAudiencia.list()]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal
@@ -162,17 +162,19 @@ class HomeController {
         
     }
     def calendar(){
-        def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
                 
-        [SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
+        [SolicitudesAudiencias: solAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
     }
     def consultaCalendar(){
-        def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+        def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
         
-        Set<Map> solAudienciasSet = new HashSet<Map>();
-        Map<String, String> audiencia;
+        //Set<Map> solAudienciasSet = new HashSet<Map>();
+        //Map<String, String> audiencia;
+        def audiencia;
+        /*
         for(int i=0;i<SolAudiencias.size;i++){
             audiencia = new HashMap<String, String>();
             audiencia.put("numeroExpediente", SolAudiencias[i].expediente.numeroExpediente);
@@ -184,6 +186,17 @@ class HomeController {
             
             solAudienciasSet.add(audiencia);
             //solAudienciasMap.put(""+SolAudiencias[i].expediente.numeroExpediente+","+SolAudiencias[i].tipoAudiencia+","+SolAudiencias[i].id,""+SolAudiencias[i].expediente.numeroExpediente+", Victima: "+SolAudiencias[i].expediente.delito.victima.nombre+", Imputado: "+SolAudiencias[i].expediente.delito.imputado.nombre+", Delito: "+SolAudiencias[i].expediente.delito.clasificacionDelito.nombre); 
+        }*/
+        
+        def solAudienciasSet = solAudiencias.collect {
+            audiencia[
+                numeroExpediente:it.expediente.numeroExpediente,
+                tipoAudiencia:it.tipoAudiencia,
+                id:it.id,
+                victima:it.expediente.delito.victima.nombre,
+                imputado:it.expediente.delito.imputado.nombre,
+                delito:it.expediente.delito.clasificacionDelito.nombre
+            ]
         }
         
         /*Iterator it = solAudienciasSet.keySet().iterator();
@@ -192,7 +205,7 @@ class HomeController {
           System.out.println("ID: " + key + " -> Texto: " + solAudienciasSet.get(key));
         }*/
         //print(solAudienciasMap)
-        render  solAudienciasSet as JSON
+        render solAudienciasSet as JSON
         //[SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
     }
     def agenda(){        
@@ -406,14 +419,14 @@ class HomeController {
                 usuexp.save()
                 print("usuario " + userId)
             }else{
-                for(int i=0;i<params.listCompartirDef.size();i++){
-                    int userId = User.findByUsername(params.listCompartirDef[i]).getId()
+                params.listCompartirDef.each({
+                   int userId = User.findByUsername($it).getId()
                     UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIpId = Integer.parseInt(expediente)
                     usuexp.save()
-                    print("usuario " + userId)
-                }
+                    print("usuario " + userId)     
+                })
             }    
         }
         print("expediente " + Integer.parseInt(expediente))
@@ -486,8 +499,19 @@ class HomeController {
     def archivosTemporales() {
         def userName  = SecurityUtils.subject?.principal
         def userId = User.findByUsername(userName).getId()
-        def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
+        //def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
         print(params)
+        params.keySet().each({
+          def valores = params[it].split(":")
+          valores.each({
+                  if(it.contains('checkbox')){
+                      def idExpediente = valores[0].replace('checkbox', '')
+                      print(idExpediente)
+                      UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+                  }
+          })
+        })
+    /*
         for(int i=0;i<parametros.size();i++){
             //int userId = User.findByUsername(params[i]).getId()
             def valores = parametros[i].split(":")
@@ -502,10 +526,10 @@ class HomeController {
                 print(usuexp)
                 usuexp.tipoExpediente = "I"
                 usuexp.save()   
-                }*/
+                }
                 UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
             }
-        }
+        }*/
         
         redirect(action: "index_Investigacion")
     }
