@@ -32,10 +32,26 @@ environments {
     }
     test {
         dataSource {
+             dbCreate = "update"
+                     username = "nsip"
+                     password = "nsip"
+                     driverClassName = "com.mysql.jdbc.Driver"
+                     //url = "jdbc:mysql://cloud.lucasianmexico.com:3307/nsip4"      
+                     url = "jdbc:mysql://192.168.1.11/nsip2"
+                     properties { 
+                            validationQuery="select 1" 
+                            testWhileIdle=true 
+                            timeBetweenEvictionRunsMillis=60000 
+                     } 
+        }
+    }
+        /*
+    test {
+        dataSource {
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
-    }
+    }*/
     production {
         dataSource {
              dbCreate = "update"

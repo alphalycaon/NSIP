@@ -91,12 +91,28 @@ class BootStrap {
             cesRole.addToUsers(ces1)
             cesRole.save()
         }
+        def ssp1 = User.findByUsername("ssp1")
+        println("usuario encontrado:"+ssp1)
+        if(!ssp1) {
+            ssp1 = new User(
+                username:'ssp1',
+                passwordHash: new Sha256Hash("ssp1").toHex(),
+                nombre: 'Cesar Castillo',
+                institucion: 'SSP',
+                puesto: 'Procurador'
+            )
+            println("guardando usuario"+ssp1)
+            ssp1.save()
+            cesRole.addToUsers(ssp1)
+            cesRole.save()
+        }
+        
         def juez1 = User.findByUsername("juez1")
         println("usuario encontrado:"+juez1)
         if(!juez1) {
             juez1 = new User(
                 username:'juez1',
-                passwordHash: new Sha256Hash("juez1").toHex(),
+                passwordHash: new Sha256Hash('juez1').toHex(),
                 nombre: 'Miguel Angel Sanchez Camberos',
                 institucion: 'TSJ',
                 puesto: 'Juez'
@@ -106,19 +122,20 @@ class BootStrap {
             juezRole.addToUsers(juez1)
             juezRole.save()
         }
-        def juez2 = User.findByUsername("juez2")
-        println("usuario encontrado:"+juez2)
-        if(!juez2) {
-            juez2 = new User(
-                username:'juez2',
-                passwordHash: new Sha256Hash("juez2").toHex(),
+        
+        def tribunal1 = User.findByUsername("tribunal1")
+        println("usuario encontrado:"+tribunal1)
+        if(!tribunal1) {
+            tribunal1 = new User(
+                username:'tribunal1',
+                passwordHash: new Sha256Hash("tribunal1").toHex(),
                 nombre: 'Victor Manuel Perez Ramos',
                 institucion: 'TSJ',
                 puesto: 'Juez'
             )
-            println("guardando usuario"+juez2)
-            juez2.save(failOnError: true)
-            juezRole.addToUsers(juez2)
+            println("guardando usuario"+tribunal1)
+            tribunal1.save(failOnError: true)
+            juezRole.addToUsers(tribunal1)
             juezRole.save()
         }
         def defensor1 = User.findByUsername("defensor1")
