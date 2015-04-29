@@ -96,7 +96,7 @@ class BootStrap {
         if(!ssp1) {
             ssp1 = new User(
                 username:'ssp1',
-                id: 7,
+                //id: 7,
                 passwordHash: new Sha256Hash("ssp1").toHex(),
                 //passwordHash: '123ghj123',
                 nombre: 'Cesar Castillo',
@@ -108,28 +108,13 @@ class BootStrap {
             cesRole.addToUsers(ssp1)
             cesRole.save()
         }
-        def ces2 = User.findByUsername("ces2")
-        println("usuario encontrado:"+ces2)
-        if(!ces2) {
-            ces2 = new User(
-                username:'ces2',
-                id:'8',
-                passwordHash: new Sha256Hash("ces2").toHex(),
-                nombre: 'Jose de Jesus Sanchez Flores',
-                institucion: 'SSP',
-                puesto: 'Procurador'
-            )
-            println("guardando usuario"+ces2)
-            ces2.save(failOnError: true)
-            cesRole.addToUsers(ces2)
-            cesRole.save()
-        }
+        
         def juez1 = User.findByUsername("juez1")
         println("usuario encontrado:"+juez1)
         if(!juez1) {
             juez1 = new User(
                 username:'juez1',
-                passwordHash: new Sha256Hash("juez1").toHex(),
+                passwordHash: new Sha256Hash('juez1').toHex(),
                 nombre: 'Miguel Angel Sanchez Camberos',
                 institucion: 'TSJ',
                 puesto: 'Juez'
@@ -139,19 +124,20 @@ class BootStrap {
             juezRole.addToUsers(juez1)
             juezRole.save()
         }
-        def juez2 = User.findByUsername("juez2")
-        println("usuario encontrado:"+juez2)
-        if(!juez2) {
-            juez2 = new User(
-                username:'juez2',
-                passwordHash: new Sha256Hash("juez2").toHex(),
+        def tribunal1 = User.findByUsername("tribunal1")
+        println("usuario encontrado:"+tribunal1)
+        if(!tribunal1) {
+            tribunal1 = new User(
+                id: 8,
+                username:'tribunal1',
+                passwordHash: new Sha256Hash("tribunal1").toHex(),
                 nombre: 'Victor Manuel Perez Ramos',
                 institucion: 'TSJ',
                 puesto: 'Juez'
             )
-            println("guardando usuario"+juez2)
-            juez2.save(failOnError: true)
-            juezRole.addToUsers(juez2)
+            println("guardando usuario"+tribunal1)
+            tribunal1.save(failOnError: true)
+            juezRole.addToUsers(tribunal1)
             juezRole.save()
         }
         def defensor1 = User.findByUsername("defensor1")

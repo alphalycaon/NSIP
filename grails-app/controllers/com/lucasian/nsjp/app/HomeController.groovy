@@ -171,33 +171,51 @@ class HomeController {
         def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
         
-        //Set<Map> solAudienciasSet = new HashSet<Map>();
-        //Map<String, String> audiencia;
-        def audiencia;
         /*
-        for(int i=0;i<SolAudiencias.size;i++){
+        Set<Map> solAudienciasSet = new HashSet<Map>();
+        Map<String, String> audiencia;
+        */
+        def audiencia;
+        
+        /*
+        for(int i=0;i<solAudiencias.size;i++){
             audiencia = new HashMap<String, String>();
-            audiencia.put("numeroExpediente", SolAudiencias[i].expediente.numeroExpediente);
-            audiencia.put("tipoAudiencia", SolAudiencias[i].tipoAudiencia);
-            audiencia.put("id", SolAudiencias[i].id);
-            audiencia.put("victima", SolAudiencias[i].expediente.delito.victima.nombre);
-            audiencia.put("imputado", SolAudiencias[i].expediente.delito.imputado.nombre);
-            audiencia.put("delito", SolAudiencias[i].expediente.delito.clasificacionDelito.nombre);
+            audiencia.put("numeroExpediente", solAudiencias[i].expediente.numeroExpediente);
+            audiencia.put("tipoAudiencia", solAudiencias[i].tipoAudiencia);
+            audiencia.put("id", solAudiencias[i].id);
+            audiencia.put("victima", solAudiencias[i].expediente.delito.victima.nombre);
+            audiencia.put("imputado", solAudiencias[i].expediente.delito.imputado.nombre);
+            audiencia.put("delito", solAudiencias[i].expediente.delito.clasificacionDelito.nombre);
             
             solAudienciasSet.add(audiencia);
-            //solAudienciasMap.put(""+SolAudiencias[i].expediente.numeroExpediente+","+SolAudiencias[i].tipoAudiencia+","+SolAudiencias[i].id,""+SolAudiencias[i].expediente.numeroExpediente+", Victima: "+SolAudiencias[i].expediente.delito.victima.nombre+", Imputado: "+SolAudiencias[i].expediente.delito.imputado.nombre+", Delito: "+SolAudiencias[i].expediente.delito.clasificacionDelito.nombre); 
+            //solAudienciasMap.put(""+solAudiencias[i].expediente.numeroExpediente+","+solAudiencias[i].tipoAudiencia+","+solAudiencias[i].id,""+solAudiencias[i].expediente.numeroExpediente+", Victima: "+solAudiencias[i].expediente.delito.victima.nombre+", Imputado: "+solAudiencias[i].expediente.delito.imputado.nombre+", Delito: "+solAudiencias[i].expediente.delito.clasificacionDelito.nombre); 
+        }*/
+        /*
+        def solAudienciasSet = []
+        solAudiencias.each{ solAudiencia ->
+            audiencia = [
+                'numeroExpediente':solAudiencia.expediente.numeroExpediente,
+                'tipoAudiencia':solAudiencia.tipoAudiencia,
+                'id':solAudiencia.id,
+                'victima':solAudiencia.expediente.delito.victima.nombre,
+                'imputado':solAudiencia.expediente.delito.imputado.nombre,
+                'delito':solAudiencia.expediente.delito.clasificacionDelito.nombre
+            ]
+            solAudienciasSet << audiencia
         }*/
         
-        def solAudienciasSet = solAudiencias.collect {
-            audiencia[
-                numeroExpediente:it.expediente.numeroExpediente,
-                tipoAudiencia:it.tipoAudiencia,
-                id:it.id,
-                victima:it.expediente.delito.victima.nombre,
-                imputado:it.expediente.delito.imputado.nombre,
-                delito:it.expediente.delito.clasificacionDelito.nombre
+         def solAudienciasSet = solAudiencias.collect{ solAudiencia ->
+            audiencia = [
+                'numeroExpediente':solAudiencia.expediente.numeroExpediente,
+                'tipoAudiencia':solAudiencia.tipoAudiencia,
+                'id':solAudiencia.id,
+                'victima':solAudiencia.expediente.delito.victima.nombre,
+                'imputado':solAudiencia.expediente.delito.imputado.nombre,
+                'delito':solAudiencia.expediente.delito.clasificacionDelito.nombre
             ]
         }
+            
+        
         
         /*Iterator it = solAudienciasSet.keySet().iterator();
         while(it.hasNext()){

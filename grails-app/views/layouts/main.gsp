@@ -410,7 +410,7 @@
                                     <div class="user-box">
                                         <span class="name"><br>
                                             <shiro:hasRole name="Ministerio">Procuraduría General de Justicia </shiro:hasRole>
-                                            <shiro:hasRole name="CES"> Secretaria Estatal de Seguridad </shiro:hasRole>
+                                            <shiro:hasRole name="CES"> Secretaria de Seguridad Pública</shiro:hasRole>
                                             <shiro:hasRole name="Juez"> Tribunal Superior de Justicia </shiro:hasRole>
                                             <shiro:hasRole name="Defensor">Instituto Estatal de Defensoría Pública</shiro:hasRole>
                                         </span>
