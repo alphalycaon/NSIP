@@ -170,29 +170,9 @@ class HomeController {
     def consultaCalendar(){
         def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
         def jueces = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Juez'))")
-        
-        /*
-        Set<Map> solAudienciasSet = new HashSet<Map>();
-        Map<String, String> audiencia;
-        */
         def audiencia;
         
-        /*
-        for(int i=0;i<solAudiencias.size;i++){
-            audiencia = new HashMap<String, String>();
-            audiencia.put("numeroExpediente", solAudiencias[i].expediente.numeroExpediente);
-            audiencia.put("tipoAudiencia", solAudiencias[i].tipoAudiencia);
-            audiencia.put("id", solAudiencias[i].id);
-            audiencia.put("victima", solAudiencias[i].expediente.delito.victima.nombre);
-            audiencia.put("imputado", solAudiencias[i].expediente.delito.imputado.nombre);
-            audiencia.put("delito", solAudiencias[i].expediente.delito.clasificacionDelito.nombre);
-            
-            solAudienciasSet.add(audiencia);
-            //solAudienciasMap.put(""+solAudiencias[i].expediente.numeroExpediente+","+solAudiencias[i].tipoAudiencia+","+solAudiencias[i].id,""+solAudiencias[i].expediente.numeroExpediente+", Victima: "+solAudiencias[i].expediente.delito.victima.nombre+", Imputado: "+solAudiencias[i].expediente.delito.imputado.nombre+", Delito: "+solAudiencias[i].expediente.delito.clasificacionDelito.nombre); 
-        }*/
-        /*
-        def solAudienciasSet = []
-        solAudiencias.each{ solAudiencia ->
+        def solAudienciasSet = solAudiencias.collect{ solAudiencia ->
             audiencia = [
                 'numeroExpediente':solAudiencia.expediente.numeroExpediente,
                 'tipoAudiencia':solAudiencia.tipoAudiencia,
@@ -201,30 +181,9 @@ class HomeController {
                 'imputado':solAudiencia.expediente.delito.imputado.nombre,
                 'delito':solAudiencia.expediente.delito.clasificacionDelito.nombre
             ]
-            solAudienciasSet << audiencia
-        }*/
+        }   
         
-         def solAudienciasSet = solAudiencias.collect{ solAudiencia ->
-            audiencia = [
-                'numeroExpediente':solAudiencia.expediente.numeroExpediente,
-                'tipoAudiencia':solAudiencia.tipoAudiencia,
-                'id':solAudiencia.id,
-                'victima':solAudiencia.expediente.delito.victima.nombre,
-                'imputado':solAudiencia.expediente.delito.imputado.nombre,
-                'delito':solAudiencia.expediente.delito.clasificacionDelito.nombre
-            ]
-        }
-            
-        
-        
-        /*Iterator it = solAudienciasSet.keySet().iterator();
-        while(it.hasNext()){
-          String key = it.next();
-          System.out.println("ID: " + key + " -> Texto: " + solAudienciasSet.get(key));
-        }*/
-        //print(solAudienciasMap)
         render solAudienciasSet as JSON
-        //[SolicitudesAudiencias: SolAudiencias, jueces: jueces, agendasAudiencias: AgendaAudiencias.list()]
     }
     def agenda(){        
         

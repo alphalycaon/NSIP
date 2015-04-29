@@ -96,9 +96,7 @@ class BootStrap {
         if(!ssp1) {
             ssp1 = new User(
                 username:'ssp1',
-                //id: 7,
                 passwordHash: new Sha256Hash("ssp1").toHex(),
-                //passwordHash: '123ghj123',
                 nombre: 'Cesar Castillo',
                 institucion: 'SSP',
                 puesto: 'Procurador'
@@ -124,11 +122,11 @@ class BootStrap {
             juezRole.addToUsers(juez1)
             juezRole.save()
         }
+        
         def tribunal1 = User.findByUsername("tribunal1")
         println("usuario encontrado:"+tribunal1)
         if(!tribunal1) {
             tribunal1 = new User(
-                id: 8,
                 username:'tribunal1',
                 passwordHash: new Sha256Hash("tribunal1").toHex(),
                 nombre: 'Victor Manuel Perez Ramos',
