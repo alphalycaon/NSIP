@@ -7,7 +7,36 @@ import java.text.SimpleDateFormat
 import org.apache.commons.io.FileUtils
 import org.apache.shiro.SecurityUtils
 class MinisterioController {
-    def grailsApplication
+    def grailsApplication   
+    def valida()
+    {
+       // Expediente
+        //Delito delito = new Delito()
+        
+        /*
+        def clasificacionDelito
+clasificacionDelito.nombre='venta de drogas'
+clasificacionDelito.modalidad='en sitio'
+clasificacionDelito.modus='infraganti'
+victima.nombre='Bartolome Higuera'
+victima.genero='Femenino'
+victima.edad='34'
+victima.estadoCivil='Soltero'
+victima.escolaridad='Primaria'
+denunciante.nombre='Carlos Escobar'
+denunciante.genero='Femenino'
+denunciante.edad='44'
+denunciante.estadoCivil='Casado'
+denunciante.escolaridad='Primaria'
+imputado.nombre='Hermenegildo Morales'
+imputado.genero='Femenino'
+imputado.edad='55'
+imputado.estadoCivil='Soltero'
+imputado.escolaridad='Licenciatura'
+numeroExpediente='COA-FG-XX-PGU-2014-AA-'
+*/
+        
+    }
     def denuncia() { 
         [expedientesIph: ExpedienteIph.list()]
     }
@@ -15,12 +44,13 @@ class MinisterioController {
     def guardarDenuncia(Delito delito){       
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
-        
+        //delito.expediente=null
         delito.save()
         Expediente expediente = new Expediente(delito: delito);
         delito.expediente = expediente        
         expediente.numeroExpediente = params.numeroExpediente //'COA/FG/XX/PGU/2014/AA-'
         expediente.createdBy = userName
+        
         expediente.save()
         //Bloque que sirve para en caso de que no se modifique el numero de Expediente le agrega el id del mismo para que se lleve un consecutivo
         if((params.numeroExpediente.substring((params.numeroExpediente.length()-1), (params.numeroExpediente.length()))).equals("-")){
@@ -142,4 +172,6 @@ class MinisterioController {
       file.delete()
 
     }
+    
+    
 }

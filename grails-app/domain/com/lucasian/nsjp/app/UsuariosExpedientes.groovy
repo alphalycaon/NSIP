@@ -2,7 +2,7 @@ package com.lucasian.nsjp.app
 
 class UsuariosExpedientes {
     int usuarioId
-    int expedienteId
+    int expedienteId 
     String mensaje
     String tipoExpediente
     boolean leido

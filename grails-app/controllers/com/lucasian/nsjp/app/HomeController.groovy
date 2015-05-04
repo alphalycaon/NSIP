@@ -22,8 +22,17 @@ import java.text.DateFormat
 
 class HomeController {
     
-    def index() { 
-     //   consultaNotificaciones();
+    def index(){ 
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+      
+        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+        [expedientesCreados: ExpCreados]
+
+    }
+        
+    def denuncias() { 
+        //   consultaNotificaciones();
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
@@ -99,11 +108,12 @@ class HomeController {
         def userId = User.findByUsername(userName).getId()
         
         def expediente = Expediente.get(id)
+        println("expediente:"+expediente)
         def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
-        def countInv = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I' group by usuarioId, expedienteId, tipoExpedienteId")
-        def countCorr = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C' group by usuarioId, expedienteId, tipoExpedienteId")
+        def countInv = 0//UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I' group by usuarioId, expedienteId, tipoExpediente")
+        def countCorr = 0//UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C' group by usuarioId, expedienteId, tipoExpediente")
         //int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
         //int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
         //print(countC)
@@ -397,13 +407,13 @@ class HomeController {
                 print("usuario " + userId)
             }else{
                 params.listCompartirDef.each({
-                   int userId = User.findByUsername($it).getId()
-                    UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
-                    usuexp.usuarioId = userId
-                    usuexp.expedienteIpId = Integer.parseInt(expediente)
-                    usuexp.save()
-                    print("usuario " + userId)     
-                })
+                        int userId = User.findByUsername($it).getId()
+                        UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                        usuexp.usuarioId = userId
+                        usuexp.expedienteIpId = Integer.parseInt(expediente)
+                        usuexp.save()
+                        print("usuario " + userId)     
+                    })
             }    
         }
         print("expediente " + Integer.parseInt(expediente))
@@ -479,33 +489,33 @@ class HomeController {
         //def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
         print(params)
         params.keySet().each({
-          def valores = params[it].split(":")
-          valores.each({
-                  if(it.contains('checkbox')){
-                      def idExpediente = valores[0].replace('checkbox', '')
-                      print(idExpediente)
-                      UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
-                  }
-          })
-        })
-    /*
+                def valores = params[it].split(":")
+                valores.each({
+                        if(it.contains('checkbox')){
+                            def idExpediente = valores[0].replace('checkbox', '')
+                            print(idExpediente)
+                            UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+                        }
+                    })
+            })
+        /*
         for(int i=0;i<parametros.size();i++){
-            //int userId = User.findByUsername(params[i]).getId()
-            def valores = parametros[i].split(":")
-            if(valores[0].contains('checkbox')){
-                def idExpediente = valores[0].replace('checkbox', '')
-                print(idExpediente)
-                /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
-                int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
-                print(usuexpId2)
-                UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
-                if(usuexp) {
-                print(usuexp)
-                usuexp.tipoExpediente = "I"
-                usuexp.save()   
-                }
-                UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
-            }
+        //int userId = User.findByUsername(params[i]).getId()
+        def valores = parametros[i].split(":")
+        if(valores[0].contains('checkbox')){
+        def idExpediente = valores[0].replace('checkbox', '')
+        print(idExpediente)
+        /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+        int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
+        print(usuexpId2)
+        UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
+        if(usuexp) {
+        print(usuexp)
+        usuexp.tipoExpediente = "I"
+        usuexp.save()   
+        }
+        UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+        }
         }*/
         
         redirect(action: "index_Investigacion")
@@ -654,7 +664,7 @@ class HomeController {
         
             def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
         
-           // def notificaMap = new HashMap();
+            // def notificaMap = new HashMap();
             notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
             notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpCompartidos.size() ));
             notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
