@@ -30,6 +30,15 @@ class HomeController {
         [expedientesCreados: ExpCreados]
 
     }
+    
+    def entrada(){
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        //TODO: Falta incluir consultas de IPH Compartido, Solicitud Audiencia, Solucitud Defensores
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'E')")
+
+        [expedientesCompartidos: ExpCompartidos]
+    }
         
     def denuncias() { 
         //   consultaNotificaciones();
