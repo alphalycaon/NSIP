@@ -142,7 +142,7 @@
                                     <shiro:hasRole name="Ministerio">
                                         <li class="active">
 
-                                            <a href="${request.contextPath}/home/denuncias">
+                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -234,7 +234,7 @@
 
                                     <shiro:hasRole name="CES">
                                         <li class="active">
-                                            <a href="/">
+                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -279,7 +279,7 @@
 
                                     <shiro:hasRole name="Juez">
                                         <li class="active">
-                                            <a href="/">
+                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -350,7 +350,7 @@
 
                                     <shiro:hasRole name="Defensor">
                                         <li class="active">
-                                            <a href="/">
+                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right">28</span>

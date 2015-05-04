@@ -31,13 +31,14 @@ class HomeController {
 
     }
     
-    def entrada(){
+    def bandeja(String tc){
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
+        println ('userId:'+ userId + ' tc:' + tc)
         //TODO: Falta incluir consultas de IPH Compartido, Solicitud Audiencia, Solucitud Defensores
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'E')")
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
 
-        [expedientesCompartidos: ExpCompartidos]
+        [expedientesCompartidos: ExpCompartidos, tc: tc]
     }
         
     def denuncias() { 
@@ -84,7 +85,7 @@ class HomeController {
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
 
         [expedientesCompartidos: ExpCompartidos]
     }
@@ -222,7 +223,7 @@ class HomeController {
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'C'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
@@ -232,7 +233,7 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'C'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
                     usuexp.save()
                     print("usuario " + userId)

@@ -21,7 +21,7 @@
 
 
         <meta name="layout" content="main"/>
-        <title>Denuncias o Querellas</title>
+        <title>Bandeja de Entrada</title>
     </head>
     <body>
 
@@ -29,35 +29,83 @@
             <div class="col-lg-12">
                 <div class="main-box clearfix">
                     <header class="main-box-header clearfix">
-                        <h2>Denuncias o Querellas.</h2>
+                        <h2><g:if test="${tc == 'EE'}">
+                                Bandeja de Entrada
+                            </g:if>
+                            <g:elseif test="${tc == 'II'}">
+                                Carpeta de Indicios de Invetsigación
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CR'}">
+                                Carpeta de Corroboración
+                            </g:elseif>
+                            <g:elseif test="${tc == 'DQ'}">
+                                Denunucias o Querellas
+                            </g:elseif>
+                            <g:elseif test="${tc == 'IN'}">
+                                Investigaciones
+                            </g:elseif>
+                            <g:elseif test="${tc == 'AT'}">
+                                Archivos Temporales
+                            </g:elseif>    
+                            <g:elseif test="${tc == 'AD'}">
+                                Archivos Definitivos
+                            </g:elseif>
+                            <g:elseif test="${tc == 'AJ'}">
+                                Archivos Judicializados
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CC'}">
+                                Cuadernillo de Causa
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CA'}">
+                                Causa
+                            </g:elseif>
+                            <g:elseif test="${tc == 'PP'}">
+                                Acción Penal por Particular
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CO'}">
+                                Causa Concluida
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CI'}">
+                                Control Interno
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CS'}">
+                                Casos
+                            </g:elseif>
+                            <g:elseif test="${tc == 'CL'}">
+                                Concluidos
+                            </g:elseif>
+                            <g:else>
+                                Hello unknown person!
+                            </g:else>
+                        </h2>
 
 
                         <div class="btn-group  pull-left">
 
                             <g:link controller="home" action="denuncias" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Actualizar">
-                                <i class="fa fa-refresh"></i>
+                                <i class="fa fa-arrow-circle-o-left"></i>
                             </g:link>
 
                             <shiro:hasRole name="CES">
                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
-                                    <i class="fa fa-send"></i>
+                                    <i class="fa fa-slack"></i>
                                 </button>                                            
                                 <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir" title="Compartir Expediente">
-                                    <i class="fa fa-share-alt"></i>
+                                    <i class="fa fa-circle-o"></i>
                                 </button>
                             </shiro:hasRole>
                             <shiro:hasRole name="Ministerio">
                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
-                                    <i class="fa fa-send"></i>
+                                    <i class="fa fa-recycle"></i>
                                 </button>
                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
-                                    <i class="fa fa-life-bouy"></i>
+                                    <i class="fa fa-dot-circle-o"></i>
                                 </button>
                                 <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                     <i class="glyphicon glyphicon-folder-open"></i>
                                 </g:link>
                                 <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Compartir Expediente"> 
-                                    <i class="fa fa-share-alt"></i>
+                                    <i class="fa fa-legal"></i>
                                 </button> 
                             </shiro:hasRole>
                             <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
@@ -88,7 +136,7 @@
                                 </thead>
                                 <tbody>
 
-                                <shiro:hasRole name="Ministerio">
+
                                     <g:each in="${expedientesCompartidos}" var="expediente" status="i">
                                         <tr>
                                             <td>
@@ -132,8 +180,7 @@
                                                 </g:link>
                                             </td>
 
-                                        </g:each>                                        
-                                </shiro:hasRole> 
+                                        </g:each>
 
                                 </tbody>
                             </table>
@@ -218,7 +265,7 @@
                                                     </li></g:link>                                                
                                             </g:each>                                        
                                         </shiro:hasRole>
-                                        <shiro:hasRole name="CES"> 
+                                         
                                             <g:each in="${expedientesFiltrados}" var="expediente" status="i">
                                                 <li class="unread" data-href="${request.contextPath}/home/detail" >
                                                     <div class="chbox">
@@ -246,8 +293,7 @@
                                                             <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
                                                         </div>
                                                     </li></g:link>                                                
-                                            </g:each>                                     
-                                        </shiro:hasRole>
+                                            </g:each>     
                                     </ul>
                                 </div>
                                 <div class="nano-pane"><div class="nano-slider" style="height: 104px; transform: translate(0px, 0px);"></div></div></div>
