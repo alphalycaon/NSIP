@@ -26,8 +26,12 @@ class HomeController {
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
       
-        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
-        [expedientesCreados: ExpCreados]
+        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' order by dateCreated desc")
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+        def ExpAJ = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
+        def ExpAI = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AI')")
+    
+        [expedientes: ExpCreados, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
 
     }
     
@@ -43,20 +47,41 @@ class HomeController {
         
     def denuncias() { 
         //   consultaNotificaciones();
-        def userName  = SecurityUtils.subject?.principal
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
         int userId = User.findByUsername(userName).getId()
+         
+        def expedientes
+        if (subject.hasRole("Ministerio")){
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            
+        }else if (subject.hasRole("CES")){//ssp
+            //expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            
+            
+            
+        }else if (subject.hasRole("Juez")){
+           expedientes = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
+        }else if (subject.hasRole("Defensor")){//tribunal            
+          expedientes = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+          
+        }
+        println("expedientes:"+expedientes);
+       
         
-        def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+        //def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
         
-        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+        //def ExpCreados = 
         
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
-        def ExpFiltradoJuez = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
+        //def ExpFiltradoJuez = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
         
         //session.get
         
-        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
+        //[expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
+          [expedientes:expedientes, usuarios:usuarios]
     }
     
     def index_Solicitudes() { 
