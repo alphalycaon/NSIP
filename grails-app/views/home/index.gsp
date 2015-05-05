@@ -66,14 +66,14 @@
 
 
 
-                
+
 
                 <div class="row">
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-slack red-bg"></i>
                             <span class="headline">Denuncias o querellas</span>
-                            <span class="value">2,562</span>
+                            <span class="value">${expedientes?.size()}</span>
                         </div>
                     </div>
 
@@ -82,14 +82,14 @@
                         <div class="main-box infographic-box">
                             <i class="fa fa-arrow-circle-o-left emerald-bg"></i>
                             <span class="headline">Corroboraciones</span>
-                            <span class="value">658</span>
+                            <span class="value">${iCorroboraciones} </span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-circle-o green-bg"></i>
                             <span class="headline">Investigaciones</span>
-                            <span class="value">83</span>
+                            <span class="value">${iInvestigaciones}</span>
                         </div>
                     </div>
                     <!--div class="col-lg-3 col-sm-6 col-xs-12">
@@ -110,7 +110,7 @@
                         <div class="main-box infographic-box">
                             <i class="fa fa-legal yellow-bg"></i>
                             <span class="headline">Archivos Judicializados</span>
-                            <span class="value">12.526</span>
+                            <span class="value">${iJudicializados}</span>
                         </div>
                     </div>
                 </div>
@@ -125,154 +125,71 @@
                                         <input type="text" class="form-control" placeholder="Search...">
                                         <i class="fa fa-search search-icon"></i>
                                     </div-->
-                                    <a href="#" class="btn btn-primary pull-right">
+                                    <g:link action="denuncias"  class="btn btn-primary pull-right">    
                                         <i class="fa fa-eye fa-lg"></i> Mostrar todas las denuncias
-                                    </a>
+                                    </g:link>
+                                    
                                 </div>
-                            </header>
-                            <div class="main-box-body clearfix">
-                                <div class="table-responsive clearfix">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th><a href="#"><span>Denuncia</span></a></th>
-                                                <th><a href="#" class="desc"><span>Fecha</span></a></th>
-                                                <th><a href="#" class="asc"><span>Victima</span></a></th>
-                                                <th class="text-center"><span>Imputado</span></th>
-                                                <th class="text-right"><span>Prioridad</span></th>
-                                                <th>&nbsp;</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">#8002</a>
-                                                </td>
-                                                <td>
-                                                    2013/08/08
-                                                </td>
-                                                <td>
-                                                    <a href="#">Robert De Niro</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="label label-success">Completed</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    &dollar; 825.50
-                                                </td>
-                                                <td class="text-center" style="width: 15%;">
-                                                    <a href="#" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">#5832</a>
-                                                </td>
-                                                <td>
-                                                    2013/08/08
-                                                </td>
-                                                <td>
-                                                    <a href="#">John Wayne</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="label label-warning">On hold</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    &dollar; 923.93
-                                                </td>
-                                                <td class="text-center" style="width: 15%;">
-                                                    <a href="#" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">#2547</a>
-                                                </td>
-                                                <td>
-                                                    2013/08/08
-                                                </td>
-                                                <td>
-                                                    <a href="#">Anthony Hopkins</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="label label-info">Pending</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    &dollar; 1.625.50
-                                                </td>
-                                                <td class="text-center" style="width: 15%;">
-                                                    <a href="#" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">#9274</a>
-                                                </td>
-                                                <td>
-                                                    2013/08/08
-                                                </td>
-                                                <td>
-                                                    <a href="#">Charles Chaplin</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="label label-danger">Cancelled</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    &dollar; 35.34
-                                                </td>
-                                                <td class="text-center" style="width: 15%;">
-                                                    <a href="#" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">#8463</a>
-                                                </td>
-                                                <td>
-                                                    2013/08/08
-                                                </td>
-                                                <td>
-                                                    <a href="#">Gary Cooper</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="label label-success">Completed</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    &dollar; 34.199.99
-                                                </td>
-                                                <td class="text-center" style="width: 15%;">
-                                                    <a href="#" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                </header>
+                                <div class="main-box-body clearfix">
+                                    <div class="table-responsive clearfix">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Expediente</th>
+                                                    <th>Fecha Creacion</th>
+                                                    <th>Delito</th>
+                                                    <th>Imputado</th>
+                                                    <th>Modalidad</th>
+                                                    <th>Prioridad</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                <g:each in="${expedientes}" var="expediente" status="i">
+                                                    <tr>
+
+                                                        <td>
+                                                            <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                                ${expediente.numeroExpediente}
+                                                            </g:link>
+                                                        </td>
+                                                        <td>
+                                                            <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                                        </td>
+                                                        <td>
+                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                        </td>
+                                                        <td>  
+                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                        </td> 
+                                                        <td>
+                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
+                                                        </td>
+                                                        <td>
+                                                            <g:link action="detail"  id="${expediente.id}" class="table-link">  
+
+                                                                <span class="fa-stack">
+                                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                                </span>
+
+                                                            </g:link>
+                                                        </td>
+
+                                                    </g:each>     
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -331,18 +248,18 @@
                     </div-->
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="main-box">
-                            <div class="main-box-body clearfix">
-                                <div id="calendar"></div>
-                            </div>
+                     <div class="col-md-6">
+                     <div class="main-box">
+                        <div class="main-box-body clearfix">
+                            <div id="calendar"></div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
 
-        
-    </body>
+
+</body>
 </html>

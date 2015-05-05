@@ -88,8 +88,8 @@
                                 </thead>
                                 <tbody>
 
-                                <shiro:hasRole name="Ministerio">
-                                    <g:each in="${expedientesCreados}" var="expediente" status="i">
+                                    
+                                    <g:each in="${expedientes}" var="expediente" status="i">
                                         <tr>
                                             <td>
 
@@ -132,8 +132,8 @@
                                                 </g:link>
                                             </td>
 
-                                        </g:each>                                        
-                                </shiro:hasRole> 
+                                        </g:each>     
+                                            
 
                                 </tbody>
                             </table>
