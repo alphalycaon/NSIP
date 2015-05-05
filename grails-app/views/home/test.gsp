@@ -1,396 +1,640 @@
-<!--
-  To change this license header, choose License Headers in Project Properties.
-  To change this template file, choose Tools | Templates
-  and open the template in the editor.
--->
-
-<%@ page contentType="text/html;charset=UTF-8" %>
-
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="layout" content="main"/>
-        <script type="text/javascript">
+        <meta charset="utf-8">
+        <meta name="layout" content="main" />
+        <meta http-equiv="Content-Type" content="text/html">
 
-            // ref: http://diveintohtml5.org/detect.html
-            function supports_input_placeholder()
-            {
-            var i = document.createElement('input');
-            return 'placeholder' in i;
-            }
-
-            if(!supports_input_placeholder()) {
-            var fields = document.getElementsByTagName('INPUT');
-            for(var i=0; i < fields.length; i++) {
-            if(fields[i].hasAttribute('placeholder')) {
-            fields[i].defaultValue = fields[i].getAttribute('placeholder');
-            fields[i].onfocus = function() { if(this.value == this.defaultValue) this.value = ''; }
-            fields[i].onblur = function() { if(this.value == '') this.value = this.defaultValue; }
-            }
-            }
-            }
-
-        </script>
-
-        <script type="text/javascript">
-            //Función que permite solo Números
-            function ValidaSoloNumeros() {
-             if ((event.keyCode < 48) || (event.keyCode > 57)) 
-            event.returnValue = false;
-            }
-
-            function txNombres() {
-                if ((event.keyCode != 32) && (event.keyCode < 65) || (event.keyCode > 90) && (event.keyCode < 97) || (event.keyCode > 122))
-            event.returnValue = false;
-            }
-
-            function validarCampos(){
-            VNomDelito = document.getElementById("NomDelito").value;
-            VModalidadDelito = document.getElementById("ModalidadDelito").value;
-            VmodusDelito = document.getElementById("modusDelito").value;
-            VnombreVictima = document.getElementById("nombreVictima").value;
-            VedadVictima = document.getElementById("edadVictima").value;
-
-            VestCivilVictima = document.getElementById("estCivilVictima").value;
-            VescVictima = document.getElementById("escVictima").value;
-            VnombreImputado = document.getElementById("nombreImputado").value;
-            VedadImputado = document.getElementById("edadImputado").value;
-            VestCivilImputado = document.getElementById("estCivilImputado").value;
-            VescImputado = document.getElementById("escImputado").value;
-
-            if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
-            return false;   
-            }
-            else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
-            return false;   
-            }
-            else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
-            return false;   
-            }
-            else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
-            return false;   
-            }
-            else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
-            return false;   
-            }
-            else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
-            return false;   
-            }
-            else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
-            return false;   
-            }
-            else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
-            return false;   
-            }
-            else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
-            return false;   
-            }
-            else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
-            return false;   
-            }	
-            else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
-            return false;   
-            }	
-            {
-            return true;
-            }
-            }
-
-        </script> 
-
-        <style type="text/css">
-
-            input:required:invalid, input:focus:invalid {
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
-            background-position: right top;
-            background-repeat: no-repeat;
-            border-color:red;
-            -moz-box-shadow: none;
-            }
-            input:required:valid {
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
-            background-position: right top;
-            border-color:green;
-            background-repeat: no-repeat;
-            }
-
-        </style>
-
-        <title>Generar Denuncia/Querella</title>
-
+        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/>
         
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
+        
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
+        
+        <style type="text/css">
+            #myTab{border-bottom-color: transparent; }
+            #myTabArchivos{border-bottom-color: transparent; }            
+        </style>
+        
+        <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
+        
+        <style type="text/css">
+            .not-active {
+            cursor: no-drop;
+            }
+        </style--> 
 
-        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'theme_styles.css')}"/-->
-        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/-->
-        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}"-->
-
-
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'wizard.css')}">
-
+        <title>Detalles</title>
     </head>
     <body>
+
         <div class="row">
             <div class="col-lg-12">
-                <div id="email-detail" class="email-detail-nano" style="height: 627px;">
-                    <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <ol class="breadcrumb">
-                                    <li><a href="${request.contextPath}">Home</a></li>
-                                    <li class="active"><span>Denuncia/Querella</span></li>
-                                </ol>
-                                <h1>Generar Denuncia/Querella</h1>
+                <header class="main-box-header clearfix">
+                    <ol class="breadcrumb">
+                        <li><a href="${request.contextPath}">Inicio</a></li>
+                        <li>Denuncias</li>
+                        <li class="active"><span>Detalle</span></li>
+                    </ol>
+                    <h1>Caso: ${expediente.numeroExpediente}</h1>
+                </header>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="main-box-body clearfix">
+                    <div class="btn-group  pull-left">
+                        <a href="${request.contextPath}" class="btn btn-primary">                                            
+                            <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
+                        </a>
+                    </div>
+                    <div class="btn-group  pull-rigth">
+                        <g:form name="formMover">  
+                            <input type="hidden" name="idExpediente" value="${expediente.id}">
+                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>&nbsp; 
+                            <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>&nbsp; 
+                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>&nbsp;
+                            <g:if test="${countC > 0}">
+                                <g:actionSubmit id="btnEditar" controller="home" action="moverDenuncia" value="Documento Relacionado" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado"/>
+                            </g:if>
+                            <g:if test="${countI > 0}">
+                                <g:actionSubmit id="archivoTemporal" controller="home" action="archivoTemporal" value="Archivo Temporal" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo temporal"/>
+                                <g:actionSubmit id="archivoDefinitivo" controller="home" action="archivoDefinitivo" value="Archivo Definitivo" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear archivo definitivo"/>
+                            </g:if>
+                        </g:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">                                                        
+                        <h3>Datos de la Denuncia</h3>
+                    </header>
+                    <div class="main-box-body clearfix">
+
+<!--div class="row">
+<div class="col-lg-12">
+
+<div class="main-box-body clearfix" -->
+                        <div class="tabs-wrapper" >
+                            <div class="board-inner">
+                                <ul class="nav nav-tabs" id="myTab" style="">
+                                    <div class="liner"></div>
+                                    <li class="active">
+                                        <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
+                                            <span class="round-tabs one">
+                                                <i class="glyphicon glyphicon-fire"></i>
+                                            </span> 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
+                                            <span class="round-tabs two">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                            </span> 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
+                                            <span class="round-tabs three">
+                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                            </span> 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
+                                            <span class="round-tabs four">
+                                                <i class="glyphicon glyphicon-hand-right"></i>
+                                            </span> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="main-box clearfix" style="min-height: 820px;">
-                                    <header class="main-box-header clearfix">
-                                        <h2>Captura los datos en el orden presentado</h2>
-                                    </header>
-                                    <div class="main-box-body clearfix">
-                                        <div class="modal fade" id="myModalVentanaEmer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Cancelar Registro de Denuncia/Querella</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div>
-                                                            ¿Está seguro que desea cancelar el registro?
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="${request.contextPath}" class="btn btn-primary" >                                            
-                                                            <span  style="padding-right: 10px;"></span> Si
-                                                        </a>   
-                                                        <a data-dismiss="modal" class="btn btn-danger">                                            
-                                                            <span style="padding-right: 10px;"></span> No
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="myWizard" class="wizard">
-                                            <div class="wizard-inner">
-                                                <ul class="steps">
-                                                    <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
-                                                    <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                                    <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
-                                                    <li data-target="#step4"><span class="badge">4</span>Imputado<span class="chevron"></span></li>
-                                                    <li data-target="#step5"><span class="badge">5</span>Datos de la Denuncia/Querella<span class="chevron"></span></li>
-                                                    <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
-                                                </ul>
-                                                <div class="actions" style="z-index: 1">
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
-                                                    <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                                    <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){ $('#numeroExpediente').val($('#numExpediente').text()); $('#denuncia').submit();}">Siguiente</i></button>
-                                                </div>
-                                            </div>
-                                            <g:form controller="ministerio" action="guardarDenuncia" name="denuncia" onsubmit="return validarCampos()">
-                                                <div class="step-content">
-                                                    <div class="step-pane active" id="step1">
-                                                        <br/>
-                                                        <h4>1.- Datos del delito</h4>
-                                                        <div class="form-group">
-                                                            <label for="delito">Nombre</label>
-                                                            <input type="text" class="form-control" id="NomDelito" name="clasificacionDelito.nombre" placeholder="Nombre del delito" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Modalidad </label>
-                                                            <input type="text" class="form-control" id="ModalidadDelito" name="clasificacionDelito.modalidad" placeholder="Modalidad del delito" required data-toggle="tooltip" data-placement="top" title="Escribir Modalidad del Delito" onkeypress="txNombres()">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Modus</label>
-                                                            <input type="text" class="form-control" id="modusDelito" name="clasificacionDelito.modus" placeholder="Modus del delito" required data-toggle="tooltip" data-placement="top" title="Escribir Modus del Delito" onkeypress="txNombres()">
-                                                        </div>    
-                                                    </div>
-                                                    <div class="step-pane" id="step2">
-                                                        <br/>
-                                                        <h4>2.- Datos de la victima</h4>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                            <input type="text" class="form-control" id="nombreVictima" name="victima.nombre" placeholder="Nombre completo de la victima" required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo de la Victima" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Genero </label>
-                                                            <select class="form-control" name="victima.genero">
-                                                                <option>Femenino</option>
-                                                                <option>Masculino</option>
-                                                            </select>
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control" id="edadVictima" name="victima.edad" placeholder="Edad de la victima" required data-toggle="tooltip" data-placement="top" title="Escribir solo Número" onkeypress="ValidaSoloNumeros()" maxlength="2">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                            <input type="text" class="form-control" id="estCivilVictima" name="victima.estadoCivil" placeholder="Estado civil de la victima" required required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                            <input type="text" class="form-control" id="escVictima" name="victima.escolaridad" placeholder="Escolaridad de la victima" required required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
-                                                        </div>                                              
-                                                        <div class="form-group">
-                                                            <center><a href="#" class="not-active">
-                                                                <i class="fa fa-plus-circle fa-5x"></i>
-                                                            </a></center>
-                                                        </div>  
-                                                    </div>
-                                                    <div class="step-pane" id="step3">
-                                                        <br/>
-                                                        <h4>3.- Datos del denunciante</h4>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                            <input type="text" class="form-control" id="nombreDenunciante" name="denunciante.nombre" placeholder="Nombre completo del denunciante" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Denunciante" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Genero </label>
-                                                            <select class="form-control" name="denunciante.genero">
-                                                                <option>Femenino</option>
-                                                                <option>Masculino</option>
-                                                            </select>
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control"  id="edadDenunciante" name="denunciante.edad" placeholder="Edad del denunciante" required required data-toggle="tooltip" data-placement="top" title="Escribir Edad Denunciante" onkeypress="ValidaSoloNumeros()" maxlength="2">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                            <input type="text" class="form-control" id="estCivilDenunciante" name="denunciante.estadoCivil" placeholder="Estado civil del denunciante" required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                            <input type="text" class="form-control" id="escDenunciante" name="denunciante.escolaridad" placeholder="Escolaridad del denunciante" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
-                                                        </div>                                          
-                                                        <div class="form-group">
-                                                            <center><a href="#" class="not-active">
-                                                                <i class="fa fa-plus-circle fa-5x"></i>
-                                                            </a></center>
-                                                        </div>                                                 
-                                                    </div>
-                                                    <div class="step-pane" id="step4">
-                                                        <br/>
-                                                        <h4>4.- Datos del Imputado</h4>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Nombre </label>
-                                                            <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del Imputado" required required data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Genero </label>
-                                                            <select class="form-control" name="imputado.genero">
-                                                                <option>Femenino</option>
-                                                                <option>Masculino</option>
-                                                            </select>
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Edad</label>
-                                                            <input type="text" class="form-control"  id="edadImputado" name="imputado.edad" placeholder="Edad del Imputado" required required data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable" onkeypress="ValidaSoloNumeros()" maxlength="2">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Estado Civil</label>
-                                                            <input type="text" class="form-control" id="estCivilImputado" name="imputado.estadoCivil" placeholder="Estado civil del Imputado" required data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
-                                                        </div>                                                
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Escolaridad</label>
-                                                            <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del Imputado" required data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
-                                                        </div>                                          
-                                                        <div class="form-group">
-                                                            <center><a href="#" class="not-active">
-                                                                <i class="fa fa-plus-circle fa-5x"></i>
-                                                            </a></center>
-                                                        </div>                                                 
-                                                    </div>
-                                                    <div class="step-pane" id="step5">
-                                                        <br/>
-                                                        <h4>5.- Datos de la Denuncia/Querella</h4>
-                                                        <div class="form-group">
-                                                            <label for="expediente">Número de Denuncia/Querella</label>
-                                                            <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
-                                                            </br>
-                                                            <a href="#" id="numExpediente" name="numExpediente" data-type="text" data-title="Ingresar el numero de Denuncia/Querella" class="editable editable-click form-control">COA-FG-XX-PGU-2014-AA-</a>
-                                                        </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab-delito">
 
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">IPH de la Denuncia/Querella</label>
-                                                            <input type="text" class="form-control" id="textoIph" size="40" placeholder="Seleccione un IPH  " required>
-                                                            </br>
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar IPH</button>
-                                                        </div>
-                                                    </div>
-                                                </g:form>
-
-                                                <div class="step-pane" id="step6">
-                                                    <br/>
-                                                    <div class="panel-group accordion" id="accordion">                                                        
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading">
-                                                                <h4 class="panel-title">
-                                                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                                                        Plantillas
-                                                                    </a>
-                                                                </h4>
-                                                            </div>
-                                                            <div id="collapseFour" class="panel-collapse collapse in" style="height: 1px;">
-                                                                <div class="panel-body">
-                                                                    <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
-                                                                        <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>                                                                                        
-
-                                        </div>
-
+                                    <h3>Datos del delito</h3>
+                                    <div class="form-group">
+                                        <label for="delito">Nombre</label>
+                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
                                     </div>
-                                </div>                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Modalidad </label>
+                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="${expediente.delito.clasificacionDelito.modalidad}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Modus</label>
+                                        <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="${expediente.delito.clasificacionDelito.modus}">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-victima">
+                                    <br/>
+                                    <h3>Datos de la víctima</h3>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nombre </label>
+                                        <input disabled="" type="text" class="form-control" name="victima.nombre" value="${expediente.delito.victima.nombre}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Genero </label>
+                                        <input disabled="" type="text" class="form-control" name="victima.genero" value="${expediente.delito.victima.genero}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Edad</label>
+                                        <input disabled="" type="text" class="form-control" name="victima.edad" value="${expediente.delito.victima.edad}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                        <input disabled="" type="text" class="form-control" name="victima.estadoCivil" value="${expediente.delito.victima.estadoCivil}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                        <input disabled="" type="text" class="form-control" name="victima.escolaridad" value="${expediente.delito.victima.escolaridad}">
+                                    </div>
+                                </div> 
+                                <div class="tab-pane fade" id="tab-denunciante">
+                                    <br/>
+                                    <h3>Datos del denunciante</h3>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nombre </label>
+                                        <input disabled="" type="text" class="form-control" name="denunciante.nombre" value="${expediente.delito.denunciante.nombre}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Genero </label>
+                                        <input disabled="" type="text" class="form-control" name="denunciante.genero" value="${expediente.delito.denunciante.genero}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Edad</label>
+                                        <input disabled="" type="text" class="form-control" name="denunciante.edad" value="${expediente.delito.denunciante.edad}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                        <input disabled="" type="text" class="form-control" name="denunciante.estadoCivil" value="${expediente.delito.denunciante.estadoCivil}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                        <input disabled="" type="text" class="form-control" name="denunciante.escolaridad" value="${expediente.delito.denunciante.escolaridad}">
+                                    </div>
+                                </div>                                                                    
+                                <div class="tab-pane fade" id="tab-responsable">
+                                    <br/>
+                                    <h3>Datos del imputado</h3>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nombre </label>
+                                        <input disabled="" type="text" class="form-control" name="imputado.nombre" value="${expediente.delito.imputado.nombre}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Genero </label>
+                                        <input disabled="" type="text" class="form-control" name="imputado.genero" value="${expediente.delito.imputado.genero}" >
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Edad</label>
+                                        <input disabled="" type="text" class="form-control" name="imputado.edad" value="${expediente.delito.imputado.edad}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Estado Civil</label>
+                                        <input disabled="" type="text" class="form-control" name="imputado.estadoCivil" value="${expediente.delito.imputado.estadoCivil}">
+                                    </div>                                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Escolaridad</label>
+                                        <input disabled="" type="text" class="form-control" name="imputado.escolaridad" value="${expediente.delito.imputado.escolaridad}">
+                                    </div>
+                                </div>                                                                
                             </div>
                         </div>
                     </div>
-                </div> 
-            </div>                
-        </div>
-    </div>
-</div>
-<!--Modal-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
-                <input class="form-control" type="search" id="SearchBox" />
+                </div>
+
+
             </div>
-            <div class="modal-body">
-                <div class="scrollable" id="CustomerSelectDiv">
-                    <select size="2" class="form-control" id="CustomerSelect">
-                        <g:each in="${expedientesIph}" var="expediente" status="i">
-                            <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
-                        </g:each>
-                    </select>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">                                                        
+                        <h3>Documentos Relacionados</h3>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <div class="row cf nestable-lists" id="user-profile">                                                            
+                            <div class="col-lg-12" >                                                                
+                                <div class="main-box clearfix">                                                    
+                                    <div class="main-box-body clearfix">
+                                        <div class="tabs-wrapper" style="">
+                                            <div class="board-inner">
+                                                <ul class="nav nav-tabs2" id="myTabArchivos">
+                                                    <div class="liner2"></div>
+                                                    <li class="active">
+                                                        <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
+                                                            <span class="round-tabs five">
+                                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                                            </span> 
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
+                                                            <span class="round-tabs six">
+                                                                <i class="glyphicon glyphicon-picture"></i>
+                                                            </span> 
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                            <span class="round-tabs seven">
+                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                            </span> 
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade in active" id="tab-archivos">
+                                                    <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab-imagenes">
+                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab-videos">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-md-6 dd">
+                                                            <div>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                </br>
+                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 dd">
+                                                            </br>
+                                                            <div class="videoUiWrapper thumbnail">
+                                                                <video width="483" height="282" id="demo1">
+                                                                    <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>                                                                                                                        
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Grabacion de la Audiencia</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="//player.vimeo.com/video/73437656" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
+        </div>
+    <!--Modal-->
+        <div class="modal fade" id="myModalPlantillas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                            </a>
+                        </li>
+                        <li>
+                            <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                                <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                            </a>
+                        </li>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!--Fin Modal-->
+  <!--Fin Modal--> 
+        <!--    -->
+        <div class="modal fade" id="myModalDefensor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formAsignar">  
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Solicitar Defensor</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group form-group-select2">
+                                    <label>Asignar a:</label>
+                                    <input type="hidden" name="expedienteId2" value="${expediente.id}">
+                                    <select style="width:570px" name="listDefensor" id="listDefensor" multiple>
+                                        <g:each in="${defensores}" var="defensor" status="i">
+                                            <option value="${defensor.username}">${defensor.institucion} - ${defensor.puesto} - ${defensor.nombre}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>        
+                        </div> 
+                        <div class="modal-footer">
+                            <textarea class="form-control" rows="3" name="comment" id="comment" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                            <!--<a data-dismiss="modal" href="#"  class="btn btn-primary" id="notificacionDefensor">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a>  --> 
+                            <g:actionSubmit id="btnModalAsignar" class="btn btn-primary" value="Aceptar" action="asignarDefensor" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                             
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+            </g:form>
+        </div>
+<!-- -->                                                        
+        <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formCompartir">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group form-group-select2">
+                                    <label>Compartir a:</label>
+                                    <input type="hidden" name="expedienteId" value="${expediente.id}">
+                                    <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
+                                        <g:each in="${usuarios}" var="usuario" status="i">
+                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>      
+                        </div>
+                        <div class="modal-footer">                                                                           
+                            <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a> -->  
+                            <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirExpediente" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </g:form>
+        </div>
+     <!--  -->                                                 
+        <div class="modal fade" id="myModalCompartirDef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formCompartirDef">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group form-group-select2">
+                                    <label>Compartir a:</label>
+                                    <input type="hidden" name="expedienteId3" value="${expediente.id}">
+                                    <select style="width:570px" name="listCompartirDef" id="listCompartirDef" multiple >
+                                        <g:each in="${usuariosDef}" var="usuario" status="i">
+                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>      
+                        </div>
+                        <div class="modal-footer">                                                                           
+                            <textarea class="form-control" rows="3" name="commentCompartirDef" id="commentCompartirDef" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a> -->  
+                            <g:actionSubmit id="btnModalCompartirDef" class="btn btn-primary" value="Aceptar" action="compartirExpedienteDef" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </g:form>
+        </div>
+     <!--  --> 
+     <!-- -->                                                        
+        <div class="modal fade" id="myModalAudiencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formCompartir">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Solicitar Audiencia</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <input type="hidden" name="expedienteId4" value="${expediente.id}">
+                                <div class="form-group form-group-select2">
+                                    <label>Tipo de Audiencia:</label>
+                                    <select style="width:570px" class="form-control" name="listAudiencia" id="listAudiencia">
+                                        <g:each in="${tiposAudiencias}" var="tipo" status="i">
+                                            <option value="${tipo.descripcion}">${tipo.descripcion}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>      
+                        </div>
+                        <div class="modal-footer">                                                                           
+                            <textarea class="form-control" rows="3" name="commentAudiencia" id="commentAudiencia" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a> -->  
+                            <g:actionSubmit id="btnModalAudiencia" class="btn btn-primary" value="Aceptar" action="solicitarAudiencia" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </g:form>
+        </div>
+     <!--  -->                         
+
+                                
+
+
+
+
+
+
+<script type="text/javascript">
+    $('#demo1').videoUI({
+    'autoHide':false
+    });
+</script>
+
+<script type="text/javascript">
+    $('a.media').media({width:500, height:400});
+</script> 
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+
+
+
+
+    <g:if test="${notifica == 'SOLICITUD_AUDIENCIA'}" >
+        Chat.sendMessage("{'notificacion':'SOLICITUD_AUDIENCIA', 'msgTo':'juez1'}");
+    </g:if>
+    <g:elseif test="${notifica == 'CAUSAS'}" >
+        Chat.sendMessage("{'notificacion':'CAUSAS', 'msgTo':'juez1'}");
+    </g:elseif >
+    <g:elseif test="${notifica == 'CORROBORACION'}" >
+        Chat.sendMessage("{'notificacion':'CORROBORACION', 'msgTo':'*'}");
+    </g:elseif >
+    <g:elseif test="${notifica == 'DOC_RELACIONADO'}" >
+        Chat.sendMessage("{'notificacion':'DOC_RELACIONADO', 'msgTo':'ministerio1'}");
+    </g:elseif >
+<!--CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO-->
+
+		$('#email-list li > .star > a').on('click', function() {
+    $(this).toggleClass('starred');
+    });
+
+    $(".has-tooltip").each(function (index, el) {
+    $(el).tooltip({
+    placement: $(this).data("placement") || 'bottom'
+    });
+    });
+
+    setHeightEmailContent();
+
+    initEmailScroller();
+    });
+
+    $(window).smartresize(function(){
+    setHeightEmailContent();
+
+    initEmailScroller();
+    });
+
+    function setHeightEmailContent() {
+		if ($( document ).width() >= 992) {
+    var windowHeight = $(window).height();
+    var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+    staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+
+    $('#email-detail').css('height', windowHeight - staticContentH);
+    }
+    else {
+    $('#email-detail').css('height', '');
+    }
+    }
+
+    function initEmailScroller() {
+		if ($( document ).width() >= 992) {
+    $('#email-navigation').nanoScroller({
+    alwaysVisible: false,
+    iOSNativeScrolling: false,
+    preventPageScrolling: true,
+    contentClass: 'email-nav-nano-content'
+    });
+
+    $('#email-detail').nanoScroller({
+    alwaysVisible: false,
+    iOSNativeScrolling: false,
+    preventPageScrolling: true,
+    contentClass: 'email-detail-nano-content'
+    });
+    }
+    }
+</script> 
+<script>
+    $(document).ready(function() {
+
+    // activate Nestable for list 1
+    $('.nestable').nestable({
+    group: 1
+    });
+
+
+    // output initial serialised data
+    $('#nestable-menu').on('click', function(e){
+    var target = $(e.target),
+    action = target.data('action');
+    if (action === 'expand-all') {
+    $('.dd').nestable('expandAll');
+    }
+    if (action === 'collapse-all') {
+    $('.dd').nestable('collapseAll');
+    }
+    });
+    });
+</script>
+<script> 
+    function aceptarCaso() { 
+    document.getElementById('div_archivos').style.display='block';
+    document.getElementById('div_aceptar_rechazar').style.display='none';
+    } 
+</script>
+
 <script type="text/javascript">
     var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
     if (isCaseSensitive)
     str = str.toLowerCase();
-                // cache the jQuery object of the <select> element
+    // cache the jQuery object of the <select> element
     var $el = $(selectionEl);
     if (!$el.data("options")) {
-                    // cache all the options inside the <select> element for easy recover
+        // cache all the options inside the <select> element for easy recover
     $el.data("options", $el.find("option").clone());
     }
     var newOptions = $el.data("options").filter(function () {
@@ -406,82 +650,184 @@
     var userInput = $("#SearchBox").val();
     showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
     });
-</script>
-<script>            
-    $("#btnPlantilla").click(function () {
-    $('#numeroExpediente').val($('#numExpediente').text());
-    });
-</script>        
+</script>  
 
-
-
-    
 <script type="text/javascript">
-            $(document).ready(function() {
-		$('#email-list li > .star > a').on('click', function() {
-            $(this).toggleClass('starred');
-            });
+    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+    if (isCaseSensitive)
+    str = str.toLowerCase();
+    // cache the jQuery object of the <select> element
+    var $el = $(selectionEl);
+    if (!$el.data("options")) {
+        // cache all the options inside the <select> element for easy recover
+    $el.data("options", $el.find("option").clone());
+    }
+    var newOptions = $el.data("options").filter(function () {
+    var text = $(this).text();
+    if (isCaseSensitive)
+    text = text.toLowerCase();
+    return text.match(str);
+    });
+    $el.empty().append(newOptions);
+    };
 
-            $(".has-tooltip").each(function (index, el) {
-            $(el).tooltip({
-            placement: $(this).data("placement") || 'bottom'
-            });
-            });
+    $("#SearchCompartir").on("keyup", function () {
+    var userInput = $("#SearchCompartir").val();
+    showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
+    });
+</script>
+<script type="text/javascript">
+    function compartir(){
+    valor = document.getElementById('commentCompartir').value;
+    if(valor==''){
+    document.getElementById('commentCompartir').value += CompartirSelect.value;
+    }else{        
+    if(valor.indexOf(CompartirSelect.value)<0){
+    document.getElementById('commentCompartir').value += '\n'+CompartirSelect.value;
+    }
+    }
+    }
+</script>
+<script type="text/javascript">
+    $(function($) {		
+    $('#listDefensor').select2({
+    placeholder: 'Escribir defensor a asignar',
+    allowClear: true
+    });		
+    });
+</script>
 
-            setHeightEmailContent();
+<script type="text/javascript">
+    $(function($) {		
+    $('#listCompartir').select2({
+    placeholder: 'Nombre de la persona',
+    allowClear: true
+    });		
+    });
+</script> 
 
-            initEmailScroller();
-            });
+<script type="text/javascript">
+    $(function($) {		
+    $('#listCompartirDef').select2({
+    placeholder: 'Nombre de la persona',
+    allowClear: true
+    });		
+    });
+</script>   
 
-            $(window).smartresize(function(){
-            setHeightEmailContent();
+<script>
 
-            initEmailScroller();
-            });
+</script>
 
-            function setHeightEmailContent() {
-		if ($( document ).width() >= 992) {
-            var windowHeight = $(window).height();
-            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+<script>   
+    (function() {
+    var bttnNotificacionDefensor = document.getElementById( 'btnModalAsignar' );  
+    bttnNotificacionDefensor.disabled = false;
+    bttnNotificacionDefensor.addEventListener( 'click', function() {
+    var notification = new NotificationFx({       
+                                    message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
+    layout : 'bar',
+    effect : 'exploader',
+    type : 'success', 
+    onClose : function() {  
+    var userNombre = $('#usershiro').val();
+    var userAsignar = 1;
+    var userMensaje = "prueba";        
+    bttnNotificacionDefensor.disabled = false;
+    }
+    });
+    notification.show();
+    //this.disabled = true;
+    document.getElementById( 'myModalDefensor' ).close();
+    } );
+    })();
 
-            $('#email-detail').css('height', windowHeight - staticContentH);
-            }
-            else {
-            $('#email-detail').css('height', '');
-            }
-            }
+    (function() {
+    var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
+    bttnNotificacionCompartir.disabled = false;
+    bttnNotificacionCompartir.addEventListener( 'click', function() {
+    var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+    layout : 'bar',
+    effect : 'exploader',
+    type : 'success',
+    onClose : function() {
+    bttnNotificacionCompartir.disabled = false;
+    }
+    });
+    notification.show();
+    //this.disabled = true;
+    document.getElementById('myModalCompartir').close();
+    } );
+    })();
 
-            function initEmailScroller() {
-		if ($( document ).width() >= 992) {
-            $('#email-navigation').nanoScroller({
-            alwaysVisible: false,
-            iOSNativeScrolling: false,
-            preventPageScrolling: true,
-            contentClass: 'email-nav-nano-content'
-            });
+    (function() {
+    var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartirDef' );
+    bttnNotificacionCompartir.disabled = false;
+    bttnNotificacionCompartir.addEventListener( 'click', function() {
+    var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
+    layout : 'bar',
+    effect : 'exploader',
+    type : 'success',
+    onClose : function() {
 
-            $('#email-detail').nanoScroller({
-            alwaysVisible: false,
-            iOSNativeScrolling: false,
-            preventPageScrolling: true,
-            contentClass: 'email-detail-nano-content'
-            });
-            }
-            }
-        </script>    
+    bttnNotificacionCompartir.disabled = false;
+    }
+    });
+    notification.show();
+    //this.disabled = true;
+    document.getElementById('myModalCompartir').close();
+    } );
+    })();
+
+    (function() {
+    var bttnNotificacionCompartir = document.getElementById( 'btnModalAudiencia' );
+    bttnNotificacionCompartir.disabled = false;
+    bttnNotificacionCompartir.addEventListener( 'click', function() {
+    var notification = new NotificationFx({
+                                    message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se ha solicitado la audiencia correctamente.</p>',
+    layout : 'bar',
+    effect : 'exploader',
+    type : 'success',
+    onClose : function() {
+    btnModalAudiencia.disabled = false;
+    }
+    });
+    notification.show();
+    //this.disabled = true;
+    document.getElementById('myModalAsignar').close();
+
+    } );
+    })();
+</script>
 
 <script> 
-    $(document).ready(function(){
-    //toggle `popup` / `inline` mode
-    $.fn.editable.defaults.mode = 'popup';     
+    function mostrarImagenes() { 
+    document.getElementById('divImagenes').style.display='block'; 
+    document.getElementById('divVideos').style.display='none';
+    document.getElementById('sliderFrame2').style.display='none';
+    }
 
-    //make numExpediente editable
-    $("#numExpediente").editable();
+    function mostrarVideos() { 
+    document.getElementById('divVideos').style.display='block'; 
+    document.getElementById('divImagenes').style.display='none';
+    document.getElementById('sliderFrame2').style.display='none';
+    }
+
+    function mostrarArchivos() { 
+    document.getElementById('sliderFrame2').style.display='block'; 
+    document.getElementById('divVideos').style.display='none';
+    document.getElementById('divImagenes').style.display='none';
+    }
+</script>
+<script>
+    $(function(){
+    $('a[title]').tooltip();
     });
 </script>
+
+
+
 </body>
 </html>
-
-
-

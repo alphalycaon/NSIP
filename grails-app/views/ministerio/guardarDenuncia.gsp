@@ -24,7 +24,7 @@
                                         <li><a href="${request.contextPath}">Home</a></li>
                                         <li class="active"><span>Denuncia</span></li>
                                     </ol>
-                                    <h1>Denunicia guardada: ${expediente.numeroExpediente}</h1>
+                                    <h1>Denuncia guardada: ${expediente.numeroExpediente}</h1>
                                 </div>
                             </div>
                             <div class="row">

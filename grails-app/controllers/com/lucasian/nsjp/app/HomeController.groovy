@@ -75,11 +75,11 @@ class HomeController {
          
         def expedientes
         if (subject.hasRole("Ministerio")){
-            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
             
         }else if (subject.hasRole("CES")){//ssp
             //expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
-            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
             
             
             

@@ -97,8 +97,8 @@
                                                 <label for="checkbox${expediente.id}"></label>
                                             </td>
                                             <td>
-                                                <div class="star">
-                                                    <a></a>
+                                               <div class="star">
+                                                <a class="starred"></a>
                                                 </div>
                                             </td>
                                             <td>

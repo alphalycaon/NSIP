@@ -8,7 +8,7 @@
         <g:layoutHead/>
         <g:javascript library="application"/>		
     <r:layoutResources />
-    <title>Centaurus - Bootstrap Admin Template</title>
+    <title>MOPgp</title>
 
     <script type="text/javascript">
         //<![CDATA[
@@ -23,6 +23,11 @@
         }
         ;
             //]]>
+    </script>
+        <script type="text/javascript">
+            var contextPath = '${request.contextPath}';
+
+            
     </script>
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
     <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
@@ -41,7 +46,7 @@
 
 
 
-    <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
+    
 
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
@@ -561,10 +566,6 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
     <!--advanced tables-->
 
-    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script> 
-
-
     <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
 
@@ -573,6 +574,8 @@
     <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
 
     <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+<script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
 
 
 
@@ -594,7 +597,9 @@
         });
 
 
-
+        $('li > .star > a').on('click', function() {
+                    $(this).toggleClass('starred');
+                    });
 
 
         });

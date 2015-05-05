@@ -62,7 +62,7 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'hopscotch.css')}">
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'hopscotch.min.css')}">
 
-        <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
+        
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />

@@ -12,8 +12,8 @@
         <meta name="layout" content="main"/>
     </head>
     <body>
-        <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 750px;">
-            <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
+        <div id="email-detail" class="email-detail-nano has-scrollbar" >
+            <div class="email-detail-nano-content" tabindex="0" >
                 <br/>
                 <h1 style="padding: 0px 25px 25px; opacity: 1;">Agregar archivos al expediente</h1>
 

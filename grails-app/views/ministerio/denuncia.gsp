@@ -47,55 +47,57 @@
             }
 
             function validarCampos(){
-            VNomDelito = document.getElementById("NomDelito").value;
-            VModalidadDelito = document.getElementById("ModalidadDelito").value;
-            VmodusDelito = document.getElementById("modusDelito").value;
-            VnombreVictima = document.getElementById("nombreVictima").value;
-            VedadVictima = document.getElementById("edadVictima").value;
+            /*
+                VNomDelito = document.getElementById("NomDelito").value;
+                VModalidadDelito = document.getElementById("ModalidadDelito").value;
+                VmodusDelito = document.getElementById("modusDelito").value;
+                VnombreVictima = document.getElementById("nombreVictima").value;
+                VedadVictima = document.getElementById("edadVictima").value;
 
-            VestCivilVictima = document.getElementById("estCivilVictima").value;
-            VescVictima = document.getElementById("escVictima").value;
-            VnombreImputado = document.getElementById("nombreImputado").value;
-            VedadImputado = document.getElementById("edadImputado").value;
-            VestCivilImputado = document.getElementById("estCivilImputado").value;
-            VescImputado = document.getElementById("escImputado").value;
+                VestCivilVictima = document.getElementById("estCivilVictima").value;
+                VescVictima = document.getElementById("escVictima").value;
+                VnombreImputado = document.getElementById("nombreImputado").value;
+                VedadImputado = document.getElementById("edadImputado").value;
+                VestCivilImputado = document.getElementById("estCivilImputado").value;
+                VescImputado = document.getElementById("escImputado").value;
 
-            if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
-            return false;   
-            }
-            else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
-            return false;   
-            }
-            else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
-            return false;   
-            }
-            else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
-            return false;   
-            }
-            else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
-            return false;   
-            }
-            else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
-            return false;   
-            }
-            else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
-            return false;   
-            }
-            else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
-            return false;   
-            }
-            else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
-            return false;   
-            }
-            else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
-            return false;   
-            }	
-            else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
-            return false;   
-            }	
-            {
-            return true;
-            }
+                if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
+                return false;   
+                }
+                else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
+                return false;   
+                }
+                else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
+                return false;   
+                }
+                else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
+                return false;   
+                }
+                else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
+                return false;   
+                }
+                else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
+                return false;   
+                }
+                else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
+                return false;   
+                }
+                else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
+                return false;   
+                }
+                else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
+                return false;   
+                }
+                else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
+                    return false;   
+                }	
+                else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
+                    return false;   
+                }	
+                {
+                    return true;
+                }*/
+                return true;
             }
 
         </script> 
@@ -180,17 +182,29 @@
                         <div id="myWizard" class="wizard">
                             <div class="wizard-inner">
                                 <ul class="steps">
-                                    <li data-target="#step1" class="active"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
-                                    <li data-target="#step2"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                    <li data-target="#step3"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
-                                    <li data-target="#step4"><span class="badge">4</span>Imputado<span class="chevron"></span></li>
-                                    <li data-target="#step5"><span class="badge">5</span>Denuncia/Querella<span class="chevron"></span></li>
-                                    <li data-target="#step6"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
+                                    <li data-target="#step1" class="complete"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
+                                    <li data-target="#step2" class="complete"><span class="badge">2</span>Victima<span class="chevron"></span></li>
+                                    <li data-target="#step3" class="complete"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
+                                    <li data-target="#step4" class="complete"><span class="badge">4</span>Imputado<span class="chevron"></span></li>
+                                    <li data-target="#step5" class="complete"><span class="badge">5</span>Denuncia/Querella<span class="chevron"></span></li>
+                                    <li data-target="#step6" class="complete"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
                                 </ul>
+                                <script type="text/javascript">
+                                    function insertaDenuncia( obj){
+                                    console.log($(obj).html());
+                                        if($(obj).html().indexOf('Terminar')==0){ 
+                                        console.log($('#numExpediente').text())
+                                        console.log($('#denuncia'));
+                                            $('#numeroExpediente').val($('#numExpediente').text()); 
+                                            $('#denuncia').submit();
+                                            }
+                                    }
+                                    </script>
+                                    
                                 <div class="actions" style="z-index: 1">
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                     <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
-                                    <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="if($(this).html().indexOf('Terminar')==0){ $('#numeroExpediente').val($('#numExpediente').text()); $('#denuncia').submit();}">Siguiente</i></button>
+                                    <button type="button" class="btn btn-success btn-mini btn-next" data-last="Terminar" onclick="javascript:insertaDenuncia(this)">Siguiente</i></button>
                                 </div>
                             </div>
                             <g:form controller="ministerio" action="guardarDenuncia" name="denuncia" onsubmit="return validarCampos()">
@@ -402,16 +416,7 @@
 
 
                 </script>
-                <script  type="text/javascript">
-                    $(document).ready(function(){
-                    //toggle `popup` / `inline` mode
-                    $.fn.editable.defaults.mode = 'popup';     
-
-                    //make numExpediente editable
-                    $("#numExpediente").editable();
-                    });
-                </script>
-
+                
 
                 </body>
                 </html>
