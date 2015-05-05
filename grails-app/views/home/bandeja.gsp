@@ -233,116 +233,8 @@
 
 
 
-        <div class="row" style="opacity: 1;">
-            <div class="col-lg-12">
-                <div id="email-box" class="clearfix">
-
-
-                    <div class="row">
-                        <div class="col-lg-12">                           
-                            <div id="email-content" class="email-content-nano has-scrollbar" style="min-height: 650px;">
-                                <div class="email-content-nano-content" tabindex="0" style="right: -16px;">
-                                    <ul id="email-list">
-
-
-
-                                        <shiro:hasRole name="Juez">
-                                            <g:each in="${expedientesFiltradosJuez}" var="expediente" status="i">
-                                                <li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                    <div class="chbox">
-                                                        <div class="checkbox-nice">
-                                                            <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
-                                                            <label for="checkbox${expediente.id}"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="star">
-                                                        <a></a>
-                                                    </div>
-                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
-                                                        <div class="name">
-                                                            ${expediente.numeroExpediente}
-                                                        </div>
-                                                        <div class="message">
-                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                        </div>
-                                                        <div class="meta-info">
-                                                            <a href="#" class="attachment">
-                                                                <i class="fa fa-paperclip"></i>
-                                                            </a>
-                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                        </div>
-                                                    </li></g:link>                                                
-                                            </g:each>                                        
-                                        </shiro:hasRole> 
-                                        <shiro:hasRole name="Defensor">
-                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                                <li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                    <div class="chbox">
-                                                        <div class="checkbox-nice">
-                                                            <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
-                                                            <label for="checkbox${expediente.id}"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="star">
-                                                        <a></a>
-                                                    </div>
-                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
-                                                        <div class="name">
-                                                            ${expediente.numeroExpediente}
-                                                        </div>
-                                                        <div class="message">
-                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                        </div>
-                                                        <div class="meta-info">
-                                                            <a href="#" class="attachment">
-                                                                <i class="fa fa-paperclip"></i>
-                                                            </a>
-                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                        </div>
-                                                    </li></g:link>                                                
-                                            </g:each>                                        
-                                        </shiro:hasRole>
-                                         
-                                            <g:each in="${expedientesFiltrados}" var="expediente" status="i">
-                                                <li class="unread" data-href="${request.contextPath}/home/detail" >
-                                                    <div class="chbox">
-                                                        <div class="checkbox-nice">
-                                                            <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
-                                                            <label for="checkbox${expediente.id}"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="star">
-                                                        <a></a>
-                                                    </div>
-                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">
-                                                        <div class="name">
-                                                            ${expediente.numeroExpediente}
-                                                        </div>
-                                                        <div class="message">
-                                                            <span class="label label-danger">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                            <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                            <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                                        </div>
-                                                        <div class="meta-info">
-                                                            <a href="#" class="attachment">
-                                                                <i class="fa fa-paperclip"></i>
-                                                            </a>
-                                                            <span><g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/></span>
-                                                        </div>
-                                                    </li></g:link>                                                
-                                            </g:each>     
-                                    </ul>
-                                </div>
-                                <div class="nano-pane"><div class="nano-slider" style="height: 104px; transform: translate(0px, 0px);"></div></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
+        
         <!-- -->                                                        
         <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <g:form name="formCompartir">
@@ -379,33 +271,8 @@
                 </div>
             </g:form>
         </div>
-     <!--  -->
-
-
-
- <!--
- <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
-
- <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
- <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
- <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
- <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
- <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
- <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+        
 
     </body>
 </html>

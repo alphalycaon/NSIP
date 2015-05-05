@@ -72,7 +72,7 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-slack red-bg"></i>
-                            <span class="headline">Denuncias o querellas</span>
+                            <span class="headline">Denuncias / Querellas</span>
                             <span class="value">${expedientes?.size()}</span>
                         </div>
                     </div>
@@ -81,14 +81,14 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-arrow-circle-o-left emerald-bg"></i>
-                            <span class="headline">Corroboraciones</span>
+                            <span class="headline">Corroboraci&oacute;n</span>
                             <span class="value">${iCorroboraciones} </span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-circle-o green-bg"></i>
-                            <span class="headline">Investigaciones</span>
+                            <span class="headline">Investigaci&oacute;n</span>
                             <span class="value">${iInvestigaciones}</span>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="main-box infographic-box">
                             <i class="fa fa-legal yellow-bg"></i>
-                            <span class="headline">Archivos Judicializados</span>
+                            <span class="headline">Judicializado</span>
                             <span class="value">${iJudicializados}</span>
                         </div>
                     </div>

@@ -45,8 +45,16 @@ class HomeController {
             expedientes = ExpCompartidos
         }
         
-        [expedientes: expedientes, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
+        
+        [agendasAudiencias: AgendaAudiencias.list(), expedientes: expedientes, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
 
+    }
+    
+    def profile(){
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
+        def user = User.findByUsername(userName)
+        [usuario:user]
     }
     
     def bandeja(String tc){
