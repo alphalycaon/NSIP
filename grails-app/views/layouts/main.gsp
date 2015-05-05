@@ -103,7 +103,9 @@
                                     </span> <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="user-profile.html"><i class="fa fa-user"></i>Usuario</a></li>
+
+
+                                    <li><a href="${request.contextPath}/home/profile"><i class="fa fa-user"></i>Usuario</a></li>
                                     <li><a href="#"><i class="fa fa-cog"></i>Configuraciones</a></li>
                                     <li><a href="#"><i class="fa fa-envelope-o"></i>Mensajes</a></li>
                                     <li><g:link controller="auth" action="signOut"><i class="fa fa-power-off"></i>Salir</g:link></li>
@@ -132,7 +134,7 @@
                                 <div class="user-box">
                                     <span class="name">Hola<br><user:loggedInUser property="nombre"/><br></span>
                                     <span class="status">
-                                        <i class="fa fa-circle"></i> Online
+                                        <i class="fa fa-circle"></i> En linea
                                     </span>
                                 </div>
 
@@ -149,14 +151,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -241,14 +243,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -286,14 +288,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -357,14 +359,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/">
+                                            <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
                                                 <span class="label label-info label-circle pull-right">28</span>
@@ -439,13 +441,13 @@
             <i class="fa fa-cog"></i>
         </a>
         <div id="config-tool-options">
-            <h4>Layout Options</h4>
+            <h4>Opciones de la pagina</h4>
             <ul>
                 <li>
                     <div class="checkbox-nice">
                         <input type="checkbox" id="config-fixed-header"/>
                         <label for="config-fixed-header">
-                            Fixed Header
+                            Encabezado Fijo
                         </label>
                     </div>
                 </li>
@@ -453,7 +455,7 @@
                     <div class="checkbox-nice">
                         <input type="checkbox" id="config-fixed-sidebar"/>
                         <label for="config-fixed-sidebar">
-                            Fixed Left Menu
+                            Menu izquierdo fijo
                         </label>
                     </div>
                 </li>
@@ -461,7 +463,7 @@
                     <div class="checkbox-nice">
                         <input type="checkbox" id="config-fixed-footer"/>
                         <label for="config-fixed-footer">
-                            Fixed Footer
+                            Pie de pagina fijo
                         </label>
                     </div>
                 </li>
@@ -469,24 +471,24 @@
                     <div class="checkbox-nice">
                         <input type="checkbox" id="config-boxed-layout"/>
                         <label for="config-boxed-layout">
-                            Boxed Layout
+                            Encasillar
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="checkbox-nice">
+                    <!--div class="checkbox-nice">
                         <input type="checkbox" id="config-rtl-layout"/>
                         <label for="config-rtl-layout">
                             Right-to-Left
                         </label>
-                    </div>
+                    </div-->
                 </li>
             </ul>
             <br/>
-            <h4>Skin Color</h4>
+            <h4>Apariencia</h4>
             <ul id="skin-colors" class="clearfix">
                 <li>
-                    <a class="skin-changer" data-skin="" data-toggle="tooltip" title="Default" style="background-color: #34495e;">
+                    <a class="skin-changer" data-skin="" data-toggle="tooltip" title="Default" style="background-color: #2980b9;">
                     </a>
                 </li>
                 <li>
@@ -506,7 +508,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="skin-changer" data-skin="theme-blue" data-toggle="tooltip" title="Blue" style="background-color: #2980b9;">
+                    <a class="skin-changer" data-skin="theme-blue" data-toggle="tooltip" title="Blue" style="background-color: #34495e;">
                     </a>
                 </li>
                 <li>
@@ -526,7 +528,7 @@
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
-    
+
     <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
@@ -565,14 +567,14 @@
 
     <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
-    
-    
+
+
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
     <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
-    
+
     <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
-    
-    
+
+
 
     <script>
         $(document).ready(function() {
@@ -580,22 +582,113 @@
         'info': false,
 			'sDom': 'lTfr<"clearfix">tip',
         'oTableTools': {
-            'aButtons': [
-                {
-                'sExtends':    'collection',
+        'aButtons': [
+        {
+        'sExtends':    'collection',
                                     'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
-                'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
-                }
-                
-            ]
-            }
+        'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+        }
+
+        ]
+        }
         });
 
 
 
-        
-        
+
+
         });
     </script>
+    <script>
+         
+        
+        
+        $(document).ready(function () {
+        /* initialize the calendar
+        -----------------------------------------------------------------*/
+
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        var calendar = $('#calendar').fullCalendar({
+        header: {
+        left: '',
+        center: 'title',
+        right: 'prev,next'
+        },
+        isRTL: $('body').hasClass('rtl'), //rtl support for calendar
+        selectable: true,
+        selectHelper: true,
+        select: function (start, end, allDay) {
+        var title = prompt('Event Title:');
+        if (title) {
+        calendar.fullCalendar('renderEvent',
+        {
+        title: title,
+        start: start,
+        end: end,
+        allDay: allDay
+        },
+        true // make the event "stick"
+        );
+        }
+        calendar.fullCalendar('unselect');
+        },
+        editable: true,
+        droppable: true, // this allows things to be dropped onto the calendar !!!
+        drop: function (date, allDay) { // this function is called when something is dropped
+
+        // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject');
+
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject);
+
+        // assign it the date that was reported
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+
+        // copy label class from the event object
+        var labelClass = $(this).data('eventclass');
+
+        if (labelClass) {
+        copiedEventObject.className = labelClass;
+        }
+
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+        // is the "remove after drop" checkbox checked?
+        if ($('#drop-remove').is(':checked')) {
+        // if so, remove the element from the "Draggable Events" list
+        $(this).remove();
+        }
+
+        },
+        buttonText: {
+                        prev: '<i class="fa fa-chevron-left"></i>',
+                        next: '<i class="fa fa-chevron-right"></i>'
+        },
+        events: [
+         <g:each in="${agendasAudiencias}" var="audiencia" status="i">
+             {   
+                id: '${audiencia.id}',
+                title: 'Audiencia',
+                start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
+                end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
+                allDay: false,
+                className: 'label-primary'
+            },                                          
+            </g:each>
+        ]
+        });
+       
+        });
+    </script>
+    
+    
 </body>
 </html>

@@ -6,7 +6,7 @@ class User {
     String nombre
     String apPaterno
     String apMaterno
-    
+    Date fechaCreacion
     String institucion
     String puesto
     

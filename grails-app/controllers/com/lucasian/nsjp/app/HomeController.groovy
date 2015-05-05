@@ -23,16 +23,38 @@ import java.text.DateFormat
 class HomeController {
     
     def index(){ 
-        def userName  = SecurityUtils.subject?.principal
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
         int userId = User.findByUsername(userName).getId()
-      
+        
         def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' order by dateCreated desc")
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+        def ExpCompartidos// = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
         def ExpAJ = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
         def ExpAI = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AI')")
-    
-        [expedientes: ExpCreados, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
+        
 
+         
+        def expedientes
+        if (subject.hasRole("Ministerio")){
+            expedientes = ExpCreados
+            ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+        
+        }else{
+            ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " )")
+        
+            expedientes = ExpCompartidos
+        }
+        
+        
+        [agendasAudiencias: AgendaAudiencias.list(), expedientes: expedientes, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
+
+    }
+    
+    def profile(){
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
+        def user = User.findByUsername(userName)
+        [usuario:user]
     }
     
     def bandeja(String tc){
