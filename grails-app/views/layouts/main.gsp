@@ -170,35 +170,35 @@
                                             </a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="${request.contextPath}/home/Index_Corroboracion">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CR">
                                                         <i class="fa fa-arrow-circle-o-left"></i>
                                                         <span style="font-size: 10px;">Carpeta de corroboración</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Corroboracion"></span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="${request.contextPath}/home/denuncias">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=DQ">
                                                         <i class="fa fa-slack"></i>
                                                         <span style="font-size: 10px;">Denuncias o querellas</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Denuncia"></span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="${request.contextPath}/home/index_Investigacion">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=IN">
                                                         <i class="fa fa-circle-o"></i>
                                                         <span style="font-size: 10px;">Investigaciones</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="${request.contextPath}/home/index_Temporales">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=AT">
                                                         <i class="fa fa-recycle"></i>
                                                         <span style="font-size: 10px;">Archivos temporales</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="${request.contextPath}/home/index_Definitivos">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=AD">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Archivos definitivos</span> 
                                                         <g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}">
@@ -208,7 +208,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="${request.contextPath}/home/index_Judicializados">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=AJ">
                                                         <i class="fa fa-legal"></i>
                                                         <span style="font-size: 10px;">Archivos judicializados</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Definitivos"></span>
@@ -262,7 +262,7 @@
                                             </a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=II">
                                                         <i class="fa fa-folder-o"></i>
                                                         <span style="font-size: 10px;">Indicios de investigación</span>
                                                     </a>
@@ -307,26 +307,26 @@
                                             </a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="${request.contextPath}/home/index_Cuadernillos">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CC">
                                                         <i class="fa fa-bookmark"></i>
                                                         <span style="font-size: 10px;">Cuadernillos de Causa</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CA">
                                                         <i  class="fa fa-navicon"></i>
                                                         <span style="font-size: 10px;">Causa</span>
                                                         <span class="label label-primary label-circle pull-right" id="ntf_Causas"></span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=PP">
                                                         <i class="fa fa-user"></i>
                                                         <span style="font-size: 10px;">Acción penal por particular</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CO">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Causa concluida</span>
                                                     </a>
@@ -379,19 +379,19 @@
                                             </a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CI">
                                                         <i class="fa fa-archive"></i>
                                                         <span style="font-size: 10px;">Control Interno</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CS">
                                                         <i class="fa fa-folder"></i>
                                                         <span style="font-size: 10px;">Casos</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="${request.contextPath}/home/bandeja?tc=CL">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Concluidos</span>
                                                     </a>

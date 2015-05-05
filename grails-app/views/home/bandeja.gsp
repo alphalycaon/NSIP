@@ -78,45 +78,86 @@
                                 Hello unknown person!
                             </g:else>
                         </h2>
+                        
+                        <g:if test="${tc == 'EE'}">
+                            <div class="btn-group  pull-left">
+                                <!--
+                                <g:link controller="home" action="denuncias" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
+                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                </g:link>-->
 
-
-                        <div class="btn-group  pull-left">
-
-                            <g:link controller="home" action="denuncias" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Actualizar">
-                                <i class="fa fa-arrow-circle-o-left"></i>
-                            </g:link>
-
-                            <shiro:hasRole name="CES">
-                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
-                                    <i class="fa fa-slack"></i>
-                                </button>                                            
-                                <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir" title="Compartir Expediente">
-                                    <i class="fa fa-circle-o"></i>
+                                <shiro:hasRole name="CES">
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Indicios de Investigación">
+                                        <i class="fa fa-folder-o"></i>
+                                    </button>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Ministerio">
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
+                                        <i class="fa fa-arrow-circle-o-left"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Denuncias o Querellas">
+                                        <i class="fa fa-slack"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Investigaciones">
+                                        <i class="fa fa-circle-o"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos temporales">
+                                        <i class="fa fa-recycle"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos definitivos">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                    </button>
+                                    <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </g:link>
+                                    <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Archivos judicializdos"> 
+                                        <i class="fa fa-legal"></i>
+                                    </button> 
+                                </shiro:hasRole>
+                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
+                                    <i class="fa fa-trash-o"></i>
                                 </button>
-                            </shiro:hasRole>
-                            <shiro:hasRole name="Ministerio">
-                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad de atencion a victimas del delito">
-                                    <i class="fa fa-recycle"></i>
-                                </button>
-                                <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                </button>
-                                <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
-                                    <i class="glyphicon glyphicon-folder-open"></i>
-                                </g:link>
-                                <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Compartir Expediente"> 
-                                    <i class="fa fa-legal"></i>
-                                </button> 
-                            </shiro:hasRole>
-                            <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
-                                <i class="fa fa-trash-o"></i>
-                            </button>
-                            <shiro:hasRole name="Ministerio">
-                                <g:link controller="ministerio" action="denuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
-                                    <i class=" glyphicon glyphicon-user"></i> 
-                                </g:link>
-                            </shiro:hasRole>
-                        </div>
+                                <shiro:hasRole name="Ministerio">
+                                    <g:link controller="ministerio" action="denuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                        <i class=" glyphicon glyphicon-user"></i> 
+                                    </g:link>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Juez">
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cuadernillo de Causa">
+                                        <i class="fa fa-bookmark"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Causa">
+                                        <i class="fa fa-navicon"></i>
+                                    </button>
+                                    <!--
+                                    <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </g:link>-->
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Acción Penal Por Particular">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Causa Concluida"> 
+                                        <i class="fa fa-dot-circle-o"></i>
+                                    </button> 
+                                </shiro:hasRole>
+                                <shiro:hasRole name="Defensor">
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Control Interno">
+                                        <i class="fa fa-archive"></i>
+                                    </button>
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Casos">
+                                        <i class="fa fa-folder"></i>
+                                    </button>
+                                    <!--
+                                    <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </g:link>-->
+                                    <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Concluidos">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                    </button>
+                                </shiro:hasRole>
+                            </div>
+                        </g:if>
+                        
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
