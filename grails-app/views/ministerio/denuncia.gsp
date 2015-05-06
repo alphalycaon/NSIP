@@ -230,14 +230,14 @@
                                             <label for="delito">Nombre</label>
                                             <input type="text" class="form-control" id="NomDelito" required name="clasificacionDelito.nombre" placeholder="Nombre del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
                                         </div>
-                                        <div class="form-group">
+                                        <!--div class="form-group">
                                             <label for="exampleInputEmail1">Modalidad </label>
                                             <input type="text" class="form-control" id="ModalidadDelito" name="clasificacionDelito.modalidad" placeholder="Modalidad del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Modalidad del Delito" onkeypress="txNombres()">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Modus</label>
                                             <input type="text" class="form-control" id="modusDelito" name="clasificacionDelito.modus" placeholder="Modus del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Modus del Delito" onkeypress="txNombres()">
-                                        </div>    
+                                        </div-->    
                                     </div>
                                     <div class="step-pane" id="step2">
                                         <br/>
