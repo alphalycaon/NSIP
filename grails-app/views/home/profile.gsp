@@ -7,6 +7,16 @@
 
 <html>
     <head>        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
+
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dataTables.fixedHeader.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dataTables.tableTools.css')}" />
@@ -21,7 +31,7 @@
             <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="main-box clearfix">
                     <header class="main-box-header clearfix">
-                        <h2>${usuario.apPaterno} ${usuario.apMaterno} ${usuario.nombre}</h2>
+                        <h2>${usuario.nombre} ${usuario.apPaterno} ${usuario.apMaterno} </h2>
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="profile-status">
@@ -62,5 +72,11 @@
                 </div>
             </div>
         </div>
+        
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
     </body>
 </html>
