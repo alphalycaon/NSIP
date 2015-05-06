@@ -10,18 +10,18 @@
     <head>        
 
 
- <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
-    <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dataTables.fixedHeader.css')}"/>
@@ -91,7 +91,7 @@
                                 Hello unknown person!
                             </g:else>
                         </h2>
-                        
+
                         <g:if test="${tc == 'EE'}">
                             <div class="btn-group  pull-left">
                                 <!--
@@ -170,7 +170,7 @@
                                 </shiro:hasRole>
                             </div>
                         </g:if>
-                        
+
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
@@ -246,9 +246,9 @@
 
 
 
-       
-        
-        <!-- -->                                                        
+
+
+<!-- -->                                                        
         <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <g:form name="formCompartir">
                 <div class="modal-dialog">
@@ -284,8 +284,45 @@
                 </div>
             </g:form>
         </div>
-    
+ 
+
+
+ 
         
 
+<!--advanced tables-->
+    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>   
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+    <!--advanced tables-->
+
+    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>      
+    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+
+        <script>
+	$(document).ready(function() {
+		var table = $('#table-example').dataTable({
+			'info': false,
+			'sDom': 'lTfr<"clearfix">tip',
+			'oTableTools': {
+	            'aButtons': [
+	                {
+	                    'sExtends':    'collection',
+	                    'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
+	                    'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+	                }
+	            ]
+	        }
+		});
+		
+                
+	});
+	</script>
     </body>
 </html>

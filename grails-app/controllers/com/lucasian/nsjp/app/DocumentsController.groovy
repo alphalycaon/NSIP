@@ -46,6 +46,7 @@ class DocumentsController {
                 it.icon = defaultIcon
             }            
         }
+        println results
         render results as JSON
     }
     def file(){

@@ -10,7 +10,7 @@
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}/"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-rtl.js')}"></script>
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'font-awesome.css')}"/>
@@ -100,7 +100,7 @@
             </div>
         </div>        
 
-    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}/"></script>  
+    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>  
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>

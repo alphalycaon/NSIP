@@ -4,22 +4,22 @@
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
 
-        
-        
+
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
         <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
-        
-        
+
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs',file:'select2.css')}"/>
 
 
-        
+
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jcarousel.connected-carousels.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/>
+        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/-->
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
@@ -41,16 +41,14 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dropzone.css')}"/>
 
 
-        
-        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'themes_styles.css')}"/--
 
-                <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file:'token-input.css')}"/>
-                <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file:'token-input-facebook.css')}"/-->
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/documents', file:'fileExplorer.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'nsip.css')}">
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'hopscotch.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'hopscotch.min.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
 
 <!--
         <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
@@ -144,30 +142,30 @@
 <div class="main-box-body clearfix" -->
                         <div class="tabs-wrapper" >
                             <div class="board-inner">
-                                <ul class="nav nav-tabs" id="myTab" style="">
+                                <ul class="nav nav-tabs1" id="myTab" style="">
                                     <div class="liner"></div>
-                                    <li class="active">
+                                    <li class="nav-tabsli active">
                                         <a href="#tab-delito" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Delito">
                                             <span class="round-tabs one">
                                                 <i class="glyphicon glyphicon-fire"></i>
                                             </span> 
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="nav-tabsli"> 
                                         <a href="#tab-victima" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Víctima">
                                             <span class="round-tabs two">
                                                 <i class="glyphicon glyphicon-user"></i>
                                             </span> 
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="nav-tabsli">
                                         <a href="#tab-denunciante" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Denunciante">
                                             <span class="round-tabs three">
                                                 <i class="glyphicon glyphicon-bullhorn"></i>
                                             </span> 
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="nav-tabsli">
                                         <a href="#tab-responsable" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imputado">
                                             <span class="round-tabs four">
                                                 <i class="glyphicon glyphicon-hand-right"></i>
@@ -289,21 +287,21 @@
                                             <div class="board-inner">
                                                 <ul class="nav nav-tabs2" id="myTabArchivos">
                                                     <div class="liner2"></div>
-                                                    <li class="active">
+                                                    <li class="nav-tabsli active">
                                                         <a href="#tab-archivos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Archivos">
                                                             <span class="round-tabs five">
                                                                 <i class="glyphicon glyphicon-folder-open"></i>
                                                             </span> 
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="nav-tabsli">
                                                         <a href="#tab-imagenes" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Imágenes">
                                                             <span class="round-tabs six">
                                                                 <i class="glyphicon glyphicon-picture"></i>
                                                             </span> 
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="nav-tabsli">
                                                         <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
                                                             <span class="round-tabs seven">
                                                                 <i class="glyphicon glyphicon-facetime-video"></i>
@@ -565,31 +563,57 @@
 
 
 
-
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-        <!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>-->
+        <script src="${resource(dir: 'js', file: 'application.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'hopscotch.js')}"></script>
+        <!--script src="${resource(dir: 'centaurus/js', file: 'my_tour.js')}"></script-->
+        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+        <!--script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script-->
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+
+        <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'fileExplorer.js')}"></script>
+
+        <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
+
+<!--
+
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        
 
         <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
-        <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script-->
         <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
         <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
 
-<!--<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>-->
-        <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
         <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
-        <!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
 
         <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
         <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
         <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
-
+-->
 
 <!--
 
@@ -606,9 +630,9 @@
             });
         </script>
 
-        <script type="text/javascript">
+        <!--script type="text/javascript">
             $('a.media').media({width:500, height:400});
-        </script> 
+        </script--> 
 
         <script type="text/javascript">
 
@@ -643,8 +667,8 @@
             initEmailScroller();
             });
 
-            
-            
+
+
 
             function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
@@ -678,13 +702,13 @@
             }
         </script> 
         <script>
-           
-            
-            
-            
 
 
-            
+
+
+
+
+
         </script>
         <script> 
             function aceptarCaso() { 
@@ -693,30 +717,8 @@
             } 
         </script>
 
-        <script type="text/javascript">
-            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-            if (isCaseSensitive)
-            str = str.toLowerCase();
-    // cache the jQuery object of the <select> element
-            var $el = $(selectionEl);
-            if (!$el.data("options")) {
-        // cache all the options inside the <select> element for easy recover
-            $el.data("options", $el.find("option").clone());
-            }
-            var newOptions = $el.data("options").filter(function () {
-            var text = $(this).text();
-            if (isCaseSensitive)
-            text = text.toLowerCase();
-            return text.match(str);
-            });
-            $el.empty().append(newOptions);
-            };
 
-            $("#SearchBox").on("keyup", function () {
-            var userInput = $("#SearchBox").val();
-            showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
-            });
-        </script>  
+
 
         <script type="text/javascript">
             var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {

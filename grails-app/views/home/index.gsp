@@ -151,40 +151,45 @@
 
 
                                     <g:each in="${expedientes}" var="expediente" status="i">
-                                        <tr>
+                                        <g:if test="${i < 5}" >
+                                            <tr>
 
-                                            <td>
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
-                                                    ${expediente.numeroExpediente}
-                                                </g:link>
-                                            </td>
-                                            <td>
-                                                <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
-                                            </td>
-                                            <td>
-                                                <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                            </td>
-                                            <td>  
-                                                <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                            </td>
-                                            <td>
-                                                <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                            </td> 
-                                            <td>
-                                                <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
-                                            </td>
-                                            <td>
-                                                <g:link action="detail"  id="${expediente.id}" class="table-link">  
+                                                <td>
+                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                        ${expediente.numeroExpediente}
+                                                    </g:link>
+                                                </td>
+                                                <td>
+                                                    <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                                </td>
+                                                <td>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                </td>
+                                                <td>  
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
+                                                </td> 
+                                                <td>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
+                                                </td>
+                                                <td>
+                                                    <g:link action="detail"  id="${expediente.id}" class="table-link">  
 
-                                                    <span class="fa-stack">
-                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                    </span>
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                        </span>
 
-                                                </g:link>
-                                            </td>
+                                                    </g:link>
+                                                </td>
 
-                                        </g:each>     
+                                            </tr>
+                                        </g:if>
+
+
+                                    </g:each>     
 
 
                                 </tbody>
@@ -313,27 +318,7 @@
 
 
 
-        <script>
-            $(document).ready(function() {
-            var table = $('#table-example').dataTable({
-            'info': false,
-			'sDom': 'lTfr<"clearfix">tip',
-            'oTableTools': {
-            'aButtons': [
-            {
-            'sExtends':    'collection',
-                                    'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
-            'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
-            }
 
-            ]
-            }
-            });
-
-
-
-            //
-        </script>
         <script>
 
 

@@ -128,6 +128,7 @@ function closeCreateFolderModal(numeroExpediente){
 
 function searchType(numeroExpediente, tipo) {
     var url = contextPath + "/documents/search?numeroExpediente=" + numeroExpediente
+    console.log(url)
     if (tipo.length > 1) {
         url += "&tipo=" + tipo;
     }
