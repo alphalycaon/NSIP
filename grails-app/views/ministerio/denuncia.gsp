@@ -141,7 +141,7 @@
 
         <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'theme_styles.css')}"/-->
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
+        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}"-->
 
 
 
@@ -365,7 +365,7 @@
                                                         </a>
                                                     </h4>
                                                 </div>
-                                                <div id="collapseFour" class="panel-collapse collapse in" style="height: 1px;">
+                                                <div id="collapseFour" class="panel-collapse collapse" style="height: 1px;">
                                                     <div class="panel-body">
                                                         <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                                                             <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
@@ -373,66 +373,70 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br/>
                                         </div>
                                     </div>
-                                </g:form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-<!--Modal-->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
-                                <input class="form-control" type="search" id="SearchBox" />
-                            </div>
-                            <div class="modal-body">
-                                <div class="scrollable" id="CustomerSelectDiv">
-                                    <select size="2" class="form-control" id="CustomerSelect">
-                                        <g:each in="${expedientesIph}" var="expediente" status="i">
-                                            <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
-                                        </g:each>
-                                    </select>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
-                            </div>
+                            </g:form>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    
+    <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
+                    <input class="form-control" type="search" id="SearchBox" />
+                </div>
+                <div class="modal-body">
+                    <div class="scrollable" id="CustomerSelectDiv">
+                        <select size="2" class="form-control" id="CustomerSelect">
+                            <g:each in="${expedientesIph}" var="expediente" status="i">
+                                <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
+                            </g:each>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--Fin Modal-->
-                <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
+    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
 
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
-                <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
+    <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
 
     <!--advanced tables-->
     <!--script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
@@ -440,59 +444,59 @@
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script-->   
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
-                <!--advanced tables-->
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+    <!--advanced tables-->
 
-                <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
-
-
-                <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
-
-                <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
-                <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-                <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
 
 
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
 
-                <script type="text/javascript">
-                    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-                    if (isCaseSensitive)
-                    str = str.toLowerCase();
+    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+
+
+
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
                 // cache the jQuery object of the <select> element
-                    var $el = $(selectionEl);
-                    if (!$el.data("options")) {
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
                     // cache all the options inside the <select> element for easy recover
-                    $el.data("options", $el.find("option").clone());
-                    }
-                    var newOptions = $el.data("options").filter(function () {
-                    var text = $(this).text();
-                    if (isCaseSensitive)
-                    text = text.toLowerCase();
-                    return text.match(str);
-                    });
-                    $el.empty().append(newOptions);
-                    };
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
+        };
 
 
-                </script>
-                <script>            
-                    $("#btnPlantilla").click(function () {
-                    $('#numeroExpediente').val($('#numExpediente').text());
-                    });
-                </script> 
-                <script>
-                    $(document).ready(function(){
-                    //toggle `popup` / `inline` mode
-                    $.fn.editable.defaults.mode = 'popup';     
+    </script>
+    <script>            
+        $("#btnPlantilla").click(function () {
+        $('#numeroExpediente').val($('#numExpediente').text());
+        });
+    </script> 
+    <script>
+        $(document).ready(function(){
+        //toggle `popup` / `inline` mode
+        $.fn.editable.defaults.mode = 'popup';     
 
-                    //make numExpediente editable
-                    $("#numExpediente").editable();
-                    });
-                </script>
-                </body>
-                </html>
+        //make numExpediente editable
+        $("#numExpediente").editable();
+        });
+    </script>
+</body>
+</html>
