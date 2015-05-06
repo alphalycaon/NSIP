@@ -4,14 +4,65 @@
         <meta name="layout" content="main"/>
         <meta http-equiv="Content-Type" content="text/html">
 
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
+        
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs',file:'select2.css')}"/>
 
+
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jcarousel.connected-carousels.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'tabs.css')}">
 
+        <style type="text/css">
+            #myTab{border-bottom-color: transparent; }
+            #myTabArchivos{border-bottom-color: transparent; }            
+        </style>
+        <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
+
+        <style type="text/css">
+            .not-active {
+            cursor: no-drop;
+            }
+        </style>
+
+        <script src="${resource(dir: 'centaurus/js',file:'jquery.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dropzone.css')}"/>
 
 
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jcarousel.connected-carousels.css')}"/>
+        
+        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'themes_styles.css')}"/--
+
+                <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file:'token-input.css')}"/>
+                <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file:'token-input-facebook.css')}"/-->
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/documents', file:'fileExplorer.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'nsip.css')}">
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'hopscotch.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'hopscotch.min.css')}"/>
+
+<!--
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" /-->
+
+
+
+
+
+
+
+
         <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style.css')}"/>
         
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
@@ -20,10 +71,7 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
         
-        <style type="text/css">
-            #myTab{border-bottom-color: transparent; }
-            #myTabArchivos{border-bottom-color: transparent; }            
-        </style>
+
         
         <link href="${resource(dir: 'centaurus/assets/css/', file: 'video-default.css')}" rel="stylesheet">
         
@@ -515,32 +563,32 @@
         </div>
      <!--  -->                         
 
-                                
 
 
-<script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-<!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>-->
-<script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 
-<script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
-<!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script-->
-<script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <!--<script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>-->
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+
+        <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
+        <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script-->
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
 
 <!--<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>-->
-<script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
-<script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
-<script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
-<!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
+        <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
+        <!--<script src="${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}"></script>-->
 
-<script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
-<script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
+        <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
-<script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
+        <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script>
 
 
 <!--
@@ -550,313 +598,297 @@
 -->
 
 
-<script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
 
-<script type="text/javascript">
-    $('#demo1').videoUI({
-    'autoHide':false
-    });
-</script>
+        <script type="text/javascript">
+            $('#demo1').videoUI({
+            'autoHide':false
+            });
+        </script>
 
-<script type="text/javascript">
-    $('a.media').media({width:500, height:400});
-</script> 
+        <script type="text/javascript">
+            $('a.media').media({width:500, height:400});
+        </script> 
 
-<script type="text/javascript">
+        <script type="text/javascript">
 
-    $(document).ready(function() {
-
-
+            $(document).ready(function() {
 
 
 
-    <g:if test="${notifica == 'SOLICITUD_AUDIENCIA'}" >
-        Chat.sendMessage("{'notificacion':'SOLICITUD_AUDIENCIA', 'msgTo':'juez1'}");
-    </g:if>
-    <g:elseif test="${notifica == 'CAUSAS'}" >
-        Chat.sendMessage("{'notificacion':'CAUSAS', 'msgTo':'juez1'}");
-    </g:elseif >
-    <g:elseif test="${notifica == 'CORROBORACION'}" >
-        Chat.sendMessage("{'notificacion':'CORROBORACION', 'msgTo':'*'}");
-    </g:elseif >
-    <g:elseif test="${notifica == 'DOC_RELACIONADO'}" >
-        Chat.sendMessage("{'notificacion':'DOC_RELACIONADO', 'msgTo':'ministerio1'}");
-    </g:elseif >
-<!--CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO-->
+
+
+            <g:if test="${notifica == 'SOLICITUD_AUDIENCIA'}" >
+                Chat.sendMessage("{'notificacion':'SOLICITUD_AUDIENCIA', 'msgTo':'juez1'}");
+            </g:if>
+            <g:elseif test="${notifica == 'CAUSAS'}" >
+                Chat.sendMessage("{'notificacion':'CAUSAS', 'msgTo':'juez1'}");
+            </g:elseif >
+            <g:elseif test="${notifica == 'CORROBORACION'}" >
+                Chat.sendMessage("{'notificacion':'CORROBORACION', 'msgTo':'*'}");
+            </g:elseif >
+            <g:elseif test="${notifica == 'DOC_RELACIONADO'}" >
+                Chat.sendMessage("{'notificacion':'DOC_RELACIONADO', 'msgTo':'ministerio1'}");
+            </g:elseif >
+        <!--CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO-->
 
 		$('#email-list li > .star > a').on('click', function() {
-    $(this).toggleClass('starred');
-    });
+            $(this).toggleClass('starred');
+            });
 
-    
 
-    setHeightEmailContent();
 
-    initEmailScroller();
-    });
+            setHeightEmailContent();
 
-    $(window).smartresize(function(){
-    setHeightEmailContent();
+            initEmailScroller();
+            });
 
-    initEmailScroller();
-    });
+            
+            
 
-    function setHeightEmailContent() {
+            function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
-    var windowHeight = $(window).height();
-    var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-    staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+            var windowHeight = $(window).height();
+            var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+            staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-    $('#email-detail').css('height', windowHeight - staticContentH);
-    }
-    else {
-    $('#email-detail').css('height', '');
-    }
-    }
+            $('#email-detail').css('height', windowHeight - staticContentH);
+            }
+            else {
+            $('#email-detail').css('height', '');
+            }
+            }
 
-    function initEmailScroller() {
+            function initEmailScroller() {
 		if ($( document ).width() >= 992) {
-    $('#email-navigation').nanoScroller({
-    alwaysVisible: false,
-    iOSNativeScrolling: false,
-    preventPageScrolling: true,
-    contentClass: 'email-nav-nano-content'
-    });
+            $('#email-navigation').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-nav-nano-content'
+            });
 
-    $('#email-detail').nanoScroller({
-    alwaysVisible: false,
-    iOSNativeScrolling: false,
-    preventPageScrolling: true,
-    contentClass: 'email-detail-nano-content'
-    });
-    }
-    }
-</script> 
-<script>
-    $(document).ready(function() {
-
-    // activate Nestable for list 1
-    $('.nestable').nestable({
-    group: 1
-    });
+            $('#email-detail').nanoScroller({
+            alwaysVisible: false,
+            iOSNativeScrolling: false,
+            preventPageScrolling: true,
+            contentClass: 'email-detail-nano-content'
+            });
+            }
+            }
+        </script> 
+        <script>
+           
+            
+            
+            
 
 
-    // output initial serialised data
-    $('#nestable-menu').on('click', function(e){
-    var target = $(e.target),
-    action = target.data('action');
-    if (action === 'expand-all') {
-    $('.dd').nestable('expandAll');
-    }
-    if (action === 'collapse-all') {
-    $('.dd').nestable('collapseAll');
-    }
-    });
-    });
-</script>
-<script> 
-    function aceptarCaso() { 
-    document.getElementById('div_archivos').style.display='block';
-    document.getElementById('div_aceptar_rechazar').style.display='none';
-    } 
-</script>
+            
+        </script>
+        <script> 
+            function aceptarCaso() { 
+            document.getElementById('div_archivos').style.display='block';
+            document.getElementById('div_aceptar_rechazar').style.display='none';
+            } 
+        </script>
 
-<script type="text/javascript">
-    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-    if (isCaseSensitive)
-    str = str.toLowerCase();
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+            if (isCaseSensitive)
+            str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-    var $el = $(selectionEl);
-    if (!$el.data("options")) {
+            var $el = $(selectionEl);
+            if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-    $el.data("options", $el.find("option").clone());
-    }
-    var newOptions = $el.data("options").filter(function () {
-    var text = $(this).text();
-    if (isCaseSensitive)
-    text = text.toLowerCase();
-    return text.match(str);
-    });
-    $el.empty().append(newOptions);
-    };
+            $el.data("options", $el.find("option").clone());
+            }
+            var newOptions = $el.data("options").filter(function () {
+            var text = $(this).text();
+            if (isCaseSensitive)
+            text = text.toLowerCase();
+            return text.match(str);
+            });
+            $el.empty().append(newOptions);
+            };
 
-    $("#SearchBox").on("keyup", function () {
-    var userInput = $("#SearchBox").val();
-    showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
-    });
-</script>  
+            $("#SearchBox").on("keyup", function () {
+            var userInput = $("#SearchBox").val();
+            showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+            });
+        </script>  
 
-<script type="text/javascript">
-    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-    if (isCaseSensitive)
-    str = str.toLowerCase();
+        <script type="text/javascript">
+            var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+            if (isCaseSensitive)
+            str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-    var $el = $(selectionEl);
-    if (!$el.data("options")) {
+            var $el = $(selectionEl);
+            if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-    $el.data("options", $el.find("option").clone());
-    }
-    var newOptions = $el.data("options").filter(function () {
-    var text = $(this).text();
-    if (isCaseSensitive)
-    text = text.toLowerCase();
-    return text.match(str);
-    });
-    $el.empty().append(newOptions);
-    };
+            $el.data("options", $el.find("option").clone());
+            }
+            var newOptions = $el.data("options").filter(function () {
+            var text = $(this).text();
+            if (isCaseSensitive)
+            text = text.toLowerCase();
+            return text.match(str);
+            });
+            $el.empty().append(newOptions);
+            };
 
-    $("#SearchCompartir").on("keyup", function () {
-    var userInput = $("#SearchCompartir").val();
-    showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
-    });
-</script>
-<script type="text/javascript">
-    function compartir(){
-    valor = document.getElementById('commentCompartir').value;
-    if(valor==''){
-    document.getElementById('commentCompartir').value += CompartirSelect.value;
-    }else{        
-    if(valor.indexOf(CompartirSelect.value)<0){
-    document.getElementById('commentCompartir').value += '\n'+CompartirSelect.value;
-    }
-    }
-    }
-</script>
-<script type="text/javascript">
-    $(function($) {		
-    $('#listDefensor').select2({
-    placeholder: 'Escribir defensor a asignar',
-    allowClear: true
-    });		
-    });
-</script>
+            $("#SearchCompartir").on("keyup", function () {
+            var userInput = $("#SearchCompartir").val();
+            showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
+            });
+        </script>
+        <script type="text/javascript">
+            function compartir(){
+            valor = document.getElementById('commentCompartir').value;
+            if(valor==''){
+            document.getElementById('commentCompartir').value += CompartirSelect.value;
+            }else{        
+            if(valor.indexOf(CompartirSelect.value)<0){
+            document.getElementById('commentCompartir').value += '\n'+CompartirSelect.value;
+            }
+            }
+            }
+        </script>
+        <script type="text/javascript">
+            $(function($) {		
+            $('#listDefensor').select2({
+            placeholder: 'Escribir defensor a asignar',
+            allowClear: true
+            });		
+            });
+        </script>
 
-<script type="text/javascript">
-    $(function($) {		
-    $('#listCompartir').select2({
-    placeholder: 'Nombre de la persona',
-    allowClear: true
-    });		
-    });
-</script> 
+        <script type="text/javascript">
+            $(function($) {		
+            $('#listCompartir').select2({
+            placeholder: 'Nombre de la persona',
+            allowClear: true
+            });		
+            });
+        </script> 
 
-<script type="text/javascript">
-    $(function($) {		
-    $('#listCompartirDef').select2({
-    placeholder: 'Nombre de la persona',
-    allowClear: true
-    });		
-    });
-</script>   
+        <script type="text/javascript">
+            $(function($) {		
+            $('#listCompartirDef').select2({
+            placeholder: 'Nombre de la persona',
+            allowClear: true
+            });		
+            });
+        </script>   
 
-<script>
+        <script>
 
-</script>
+        </script>
 
-<script>   
-    (function() {
-    var bttnNotificacionDefensor = document.getElementById( 'btnModalAsignar' );  
-    bttnNotificacionDefensor.disabled = false;
-    bttnNotificacionDefensor.addEventListener( 'click', function() {
-    var notification = new NotificationFx({       
+        <script>   
+            (function() {
+            var bttnNotificacionDefensor = document.getElementById( 'btnModalAsignar' );  
+            bttnNotificacionDefensor.disabled = false;
+            bttnNotificacionDefensor.addEventListener( 'click', function() {
+            var notification = new NotificationFx({       
                                     message : '<span class="icon fa fa-users fa-2x"></span><p>Se asigno correctamente al defesor o defesores.</p>',
-    layout : 'bar',
-    effect : 'exploader',
-    type : 'success', 
-    onClose : function() {  
-    var userNombre = $('#usershiro').val();
-    var userAsignar = 1;
-    var userMensaje = "prueba";        
-    bttnNotificacionDefensor.disabled = false;
-    }
-    });
-    notification.show();
-    //this.disabled = true;
-    document.getElementById( 'myModalDefensor' ).close();
-    } );
-    })();
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success', 
+            onClose : function() {  
+            var userNombre = $('#usershiro').val();
+            var userAsignar = 1;
+            var userMensaje = "prueba";        
+            bttnNotificacionDefensor.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById( 'myModalDefensor' ).close();
+            } );
+            })();
 
-    (function() {
-    var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
-    bttnNotificacionCompartir.disabled = false;
-    bttnNotificacionCompartir.addEventListener( 'click', function() {
-    var notification = new NotificationFx({
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartir' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
                                     message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
-    layout : 'bar',
-    effect : 'exploader',
-    type : 'success',
-    onClose : function() {
-    bttnNotificacionCompartir.disabled = false;
-    }
-    });
-    notification.show();
-    //this.disabled = true;
-    document.getElementById('myModalCompartir').close();
-    } );
-    })();
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            bttnNotificacionCompartir.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById('myModalCompartir').close();
+            } );
+            })();
 
-    (function() {
-    var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartirDef' );
-    bttnNotificacionCompartir.disabled = false;
-    bttnNotificacionCompartir.addEventListener( 'click', function() {
-    var notification = new NotificationFx({
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'btnModalCompartirDef' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
                                     message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se compartieron los archivo(s) correctamente.</p>',
-    layout : 'bar',
-    effect : 'exploader',
-    type : 'success',
-    onClose : function() {
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
 
-    bttnNotificacionCompartir.disabled = false;
-    }
-    });
-    notification.show();
-    //this.disabled = true;
-    document.getElementById('myModalCompartir').close();
-    } );
-    })();
+            bttnNotificacionCompartir.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById('myModalCompartir').close();
+            } );
+            })();
 
-    (function() {
-    var bttnNotificacionCompartir = document.getElementById( 'btnModalAudiencia' );
-    bttnNotificacionCompartir.disabled = false;
-    bttnNotificacionCompartir.addEventListener( 'click', function() {
-    var notification = new NotificationFx({
+            (function() {
+            var bttnNotificacionCompartir = document.getElementById( 'btnModalAudiencia' );
+            bttnNotificacionCompartir.disabled = false;
+            bttnNotificacionCompartir.addEventListener( 'click', function() {
+            var notification = new NotificationFx({
                                     message : '<span class="icon fa fa-inbox fa-2x"></span><p>Se ha solicitado la audiencia correctamente.</p>',
-    layout : 'bar',
-    effect : 'exploader',
-    type : 'success',
-    onClose : function() {
-    btnModalAudiencia.disabled = false;
-    }
-    });
-    notification.show();
-    //this.disabled = true;
-    document.getElementById('myModalAsignar').close();
+            layout : 'bar',
+            effect : 'exploader',
+            type : 'success',
+            onClose : function() {
+            btnModalAudiencia.disabled = false;
+            }
+            });
+            notification.show();
+            //this.disabled = true;
+            document.getElementById('myModalAsignar').close();
 
-    } );
-    })();
-</script>
+            } );
+            })();
+        </script>
 
-<script> 
-    function mostrarImagenes() { 
-    document.getElementById('divImagenes').style.display='block'; 
-    document.getElementById('divVideos').style.display='none';
-    document.getElementById('sliderFrame2').style.display='none';
-    }
+        <script> 
+            function mostrarImagenes() { 
+            document.getElementById('divImagenes').style.display='block'; 
+            document.getElementById('divVideos').style.display='none';
+            document.getElementById('sliderFrame2').style.display='none';
+            }
 
-    function mostrarVideos() { 
-    document.getElementById('divVideos').style.display='block'; 
-    document.getElementById('divImagenes').style.display='none';
-    document.getElementById('sliderFrame2').style.display='none';
-    }
+            function mostrarVideos() { 
+            document.getElementById('divVideos').style.display='block'; 
+            document.getElementById('divImagenes').style.display='none';
+            document.getElementById('sliderFrame2').style.display='none';
+            }
 
-    function mostrarArchivos() { 
-    document.getElementById('sliderFrame2').style.display='block'; 
-    document.getElementById('divVideos').style.display='none';
-    document.getElementById('divImagenes').style.display='none';
-    }
-</script>
+            function mostrarArchivos() { 
+            document.getElementById('sliderFrame2').style.display='block'; 
+            document.getElementById('divVideos').style.display='none';
+            document.getElementById('divImagenes').style.display='none';
+            }
+        </script>
 
 
 
-</body>
+    </body>
 </html>
