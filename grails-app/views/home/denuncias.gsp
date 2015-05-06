@@ -252,11 +252,11 @@
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
     <!--advanced tables-->
 
-    <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
+    <!--script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script--> 
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
 
 
-    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
+    <!--script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script--> 
     <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
 
     <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
@@ -270,7 +270,25 @@
 
 
 
-
+    <script>
+	$(document).ready(function() {
+		var table = $('#table-example').dataTable({
+			'info': false,
+			'sDom': 'lTfr<"clearfix">tip',
+			'oTableTools': {
+	            'aButtons': [
+	                {
+	                    'sExtends':    'collection',
+	                    'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
+	                    'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+	                }
+	            ]
+	        }
+		});
+		
+                
+	});
+	</script>
 
 
 

@@ -24,16 +24,16 @@
         ;
             //]]>
     </script>
-        <script type="text/javascript">
+    <script type="text/javascript">
             var contextPath = '${request.contextPath}';
 
-            
+
     </script>
-   
 
 
 
-    
+
+
 
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
@@ -131,11 +131,11 @@
                                 </div>
 
                             </div>
+
                             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                 <ul class="nav nav-pills nav-stacked">
                                     <shiro:hasRole name="Ministerio">
-                                        <li class="active">
-
+                                        <li <g:if test="${tc=='EE'}">class="active"</g:if> >
                                             <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
@@ -156,42 +156,42 @@
                                                 <span class="label label-info label-circle pull-right">28</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="dropdown-toggle">
-                                                <i class="fa fa-cubes"></i>
-                                                <span>Expedientes RED</span>
-                                                <i class="fa fa-chevron-circle-right drop-icon"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li>
+                                        <li <g:if test="${tc=='CR'}">class="open"</g:if>>
+                                                <a href="#" class="dropdown-toggle">
+                                                    <i class="fa fa-cubes"></i>
+                                                    <span>Expedientes RED</span>
+                                                    <i class="fa fa-chevron-circle-right drop-icon"></i>
+                                                </a>
+                                                <ul class="submenu" <g:if test="${tc=='CR' || tc=='DQ'|| tc=='IN'|| tc=='AT'|| tc=='AD'|| tc=='AJ'}">style="display: block;"</g:if>>
+                                                <li <g:if test="${tc=='CR'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CR">
                                                         <i class="fa fa-arrow-circle-o-left"></i>
                                                         <span style="font-size: 10px;">Carpeta de corroboración</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Corroboracion"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='DQ'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=DQ">
                                                         <i class="fa fa-slack"></i>
                                                         <span style="font-size: 10px;">Denuncias o querellas</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Denuncia"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='IN'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=IN">
                                                         <i class="fa fa-circle-o"></i>
                                                         <span style="font-size: 10px;">Investigaciones</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AT'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AT">
                                                         <i class="fa fa-recycle"></i>
                                                         <span style="font-size: 10px;">Archivos temporales</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AD'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AD">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Archivos definitivos</span> 
@@ -201,7 +201,7 @@
                                                         </g:if>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AJ'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AJ">
                                                         <i class="fa fa-legal"></i>
                                                         <span style="font-size: 10px;">Archivos judicializados</span> 
@@ -515,7 +515,7 @@
         </div>
     </div>
 
-    
-    
+
+
 </body>
 </html>

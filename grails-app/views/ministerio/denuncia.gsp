@@ -48,56 +48,56 @@
 
             function validarCampos(){
             /*
-                VNomDelito = document.getElementById("NomDelito").value;
-                VModalidadDelito = document.getElementById("ModalidadDelito").value;
-                VmodusDelito = document.getElementById("modusDelito").value;
-                VnombreVictima = document.getElementById("nombreVictima").value;
-                VedadVictima = document.getElementById("edadVictima").value;
+            VNomDelito = document.getElementById("NomDelito").value;
+            VModalidadDelito = document.getElementById("ModalidadDelito").value;
+            VmodusDelito = document.getElementById("modusDelito").value;
+            VnombreVictima = document.getElementById("nombreVictima").value;
+            VedadVictima = document.getElementById("edadVictima").value;
 
-                VestCivilVictima = document.getElementById("estCivilVictima").value;
-                VescVictima = document.getElementById("escVictima").value;
-                VnombreImputado = document.getElementById("nombreImputado").value;
-                VedadImputado = document.getElementById("edadImputado").value;
-                VestCivilImputado = document.getElementById("estCivilImputado").value;
-                VescImputado = document.getElementById("escImputado").value;
+            VestCivilVictima = document.getElementById("estCivilVictima").value;
+            VescVictima = document.getElementById("escVictima").value;
+            VnombreImputado = document.getElementById("nombreImputado").value;
+            VedadImputado = document.getElementById("edadImputado").value;
+            VestCivilImputado = document.getElementById("estCivilImputado").value;
+            VescImputado = document.getElementById("escImputado").value;
 
-                if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
-                return false;   
-                }
-                else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
-                return false;   
-                }
-                else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
-                return false;   
-                }
-                else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
-                return false;   
-                }
-                else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
-                return false;   
-                }
-                else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
-                return false;   
-                }
-                else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
-                return false;   
-                }
-                else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
-                return false;   
-                }
-                else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
-                return false;   
-                }
-                else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
-                    return false;   
-                }	
-                else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
-                    return false;   
-                }	
-                {
-                    return true;
-                }*/
-                return true;
+            if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
+            return false;   
+            }
+            else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
+            return false;   
+            }
+            else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
+            return false;   
+            }
+            else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
+            return false;   
+            }
+            else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
+            return false;   
+            }
+            else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
+            return false;   
+            }
+            else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
+            return false;   
+            }
+            else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
+            return false;   
+            }
+            else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
+            return false;   
+            }
+            else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
+            return false;   
+            }	
+            else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
+            return false;   
+            }	
+            {
+            return true;
+            }*/
+            return true;
             }
 
         </script> 
@@ -122,19 +122,19 @@
 
         <title>Generar Denuncia/Querella</title>
 
-        
-         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
-    <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
@@ -206,15 +206,15 @@
                                 <script type="text/javascript">
                                     function insertaDenuncia( obj){
                                     console.log($(obj).html());
-                                        if($(obj).html().indexOf('Terminar')==0){ 
-                                        console.log($('#numExpediente').text())
-                                        console.log($('#denuncia'));
-                                            $('#numeroExpediente').val($('#numExpediente').text()); 
-                                            $('#denuncia').submit();
-                                            }
+                                    if($(obj).html().indexOf('Terminar')==0){ 
+                                    console.log($('#numExpediente').text())
+                                    console.log($('#denuncia'));
+                                    $('#numeroExpediente').val($('#numExpediente').text()); 
+                                    $('#denuncia').submit();
                                     }
-                                    </script>
-                                    
+                                    }
+                                </script>
+
                                 <div class="actions" style="z-index: 1">
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                     <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
@@ -228,7 +228,7 @@
                                         <h4>1.- Datos del delito</h4>
                                         <div class="form-group">
                                             <label for="delito">Nombre</label>
-                                            <input type="text" class="form-control" id="NomDelito" name="clasificacionDelito.nombre" placeholder="Nombre del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="NomDelito" required name="clasificacionDelito.nombre" placeholder="Nombre del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Modalidad </label>
@@ -408,31 +408,31 @@
                 </div>
 
 <!--Fin Modal-->
-    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
+                <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
-    <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
+                <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
 
     <!--advanced tables-->
     <!--script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
@@ -440,22 +440,22 @@
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script-->   
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
-    <!--advanced tables-->
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+                <!--advanced tables-->
 
-    <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
 
 
-    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
 
-    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
+                <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+                <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
 
 
 
@@ -480,7 +480,19 @@
 
 
                 </script>
-                
+                <script>            
+                    $("#btnPlantilla").click(function () {
+                    $('#numeroExpediente').val($('#numExpediente').text());
+                    });
+                </script> 
+                <script>
+                    $(document).ready(function(){
+                    //toggle `popup` / `inline` mode
+                    $.fn.editable.defaults.mode = 'popup';     
 
+                    //make numExpediente editable
+                    $("#numExpediente").editable();
+                    });
+                </script>
                 </body>
                 </html>
