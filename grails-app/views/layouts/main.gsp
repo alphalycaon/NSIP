@@ -212,7 +212,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="not-active">
+                                            <a href="${request.contextPath}/home/agenda" class="not-active">
                                                 <i class="fa fa-calendar"></i>
                                                 <span style="font-size: 10px;">Itinerario de Audiencias</span>                                                    
                                             </a>
