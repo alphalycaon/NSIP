@@ -249,6 +249,15 @@
                                                             </a>
                                                         </li>
                                                     </shiro:hasRole>
+                                                    <shiro:hasRole name="Ministerio">
+                                                        <li>
+                                                            <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                <span class="round-tabs seven">
+                                                                    <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                </span> 
+                                                            </a>
+                                                        </li>
+                                                    </shiro:hasRole>
                                                 </ul>
                                             </div>
                                             <div class="tab-content">
@@ -258,7 +267,8 @@
                                                 <div class="tab-pane fade" id="tab-imagenes">
                                                     <doc:gallery  numeroExpediente="${expedienteIph.numeroIph}"/>
                                                 </div>
-                                                <div class="tab-pane fade" id="tab-videos">
+                                                <shiro:hasRole name="Juez">
+                                                    <div class="tab-pane fade" id="tab-videos">
                                                     <div class="col-lg-12">
                                                         <div class="col-md-6 dd">
                                                             <div>
@@ -294,7 +304,27 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    </div>
+                                                </shiro:hasRole>
+                                                <shiro:hasRole name="Juez">
+                                                    <div class="tab-pane fade" id="tab-videos">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-md-6 dd">
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 dd">
+                                                            </br>
+                                                            <div class="videoUiWrapper thumbnail">
+                                                                <video width="483" height="282" id="demo1">
+                                                                    <source src="${request.contextPath}/videos/ministerio/Pelea_entre_civiles_y_policias_en_Guadalajara.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </shiro:hasRole>
                                             </div>
                                         </div>
                                     </div>
