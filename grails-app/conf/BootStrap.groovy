@@ -160,6 +160,7 @@ class BootStrap {
         if(!juezRole){
             juezRole = new Role(name:"Juez")
             juezRole.addToPermissions("home:*")
+            juezRole.addToPermissions("ministerio:*")
             juezRole.addToPermissions("busqueda:*")
             juezRole.addToPermissions("documents:*")
             juezRole.save()
@@ -169,6 +170,7 @@ class BootStrap {
         if(!defensorRole){
             defensorRole = new Role(name:"Defensor")
             defensorRole.addToPermissions("home:*")
+            defensorRole.addToPermissions("ministerio:*")
             defensorRole.addToPermissions("busqueda:*")
             defensorRole.addToPermissions("documents:*")
             defensorRole.save()

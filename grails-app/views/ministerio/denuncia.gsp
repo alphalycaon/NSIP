@@ -197,11 +197,13 @@
                             <div class="wizard-inner">
                                 <ul class="steps">
                                     <li data-target="#step1" class="complete"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
-                                    <li data-target="#step2" class="complete"><span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                    <li data-target="#step3" class="complete"><span class="badge">3</span>Denunciante<span class="chevron"></span></li>
-                                    <li data-target="#step4" class="complete"><span class="badge">4</span>Imputado<span class="chevron"></span></li>
-                                    <li data-target="#step5" class="complete"><span class="badge">5</span>Denuncia/Querella<span class="chevron"></span></li>
-                                    <li data-target="#step6" class="complete"><span class="badge">6</span>Plantillas<span class="chevron"></span></li>
+                                    <li data-target="#step2" class="complete"><span class="badge">2</span>Denunciante<span class="chevron"></span></li>
+                                    <li data-target="#step3" class="complete"><span class="badge">3</span>Victima<span class="chevron"></span></li>
+                                    <li data-target="#step4" class="complete"><span class="badge">4</span>Testigo<span class="chevron"></span></li>
+
+                                    <li data-target="#step5" class="complete"><span class="badge">5</span>Imputado<span class="chevron"></span></li>
+                                    <li data-target="#step6" class="complete"><span class="badge">6</span>Doc. Relacionados<span class="chevron"></span></li>
+                                    <li data-target="#step7" class="complete"><span class="badge">7</span>Plantillas<span class="chevron"></span></li>
                                 </ul>
                                 <script type="text/javascript">
                                     function insertaDenuncia( obj){
@@ -239,31 +241,64 @@
                                             <input type="text" class="form-control" id="modusDelito" name="clasificacionDelito.modus" placeholder="Modus del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Modus del Delito" onkeypress="txNombres()">
                                         </div-->    
                                     </div>
+                                    
                                     <div class="step-pane" id="step2">
                                         <br/>
-                                        <h4>2.- Datos de la victima</h4>
+                                        <h4>2.- Datos del denunciante</h4>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nombre </label>
-                                            <input type="text" class="form-control" id="nombreVictima" name="victima.nombre" placeholder="Nombre completo de la victima"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo de la Victima" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="nombreDenunciante" required name="denunciante.nombre" placeholder="Nombre completo del denunciante"   data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Denunciante" onkeypress="txNombres()">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Genero </label>
-                                            <select class="form-control" name="victima.genero">
-                                                <option>Femenino</option>
+                                            <select class="form-control" name="denunciante.genero">
                                                 <option>Masculino</option>
+                                                <option>Femenino</option>
                                             </select>
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Edad</label>
-                                            <input type="text" class="form-control" id="edadVictima" name="victima.edad" placeholder="Edad de la victima"  data-toggle="tooltip" data-placement="top" title="Escribir solo Número" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                            <input type="text" class="form-control"  id="edadDenunciante" required name="denunciante.edad" placeholder="Edad del denunciante"   data-toggle="tooltip" data-placement="top" title="Escribir Edad Denunciante" onkeypress="ValidaSoloNumeros()" maxlength="2">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Estado Civil</label>
-                                            <input type="text" class="form-control" id="estCivilVictima" name="victima.estadoCivil" placeholder="Estado civil de la victima"   data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="estCivilDenunciante" required name="denunciante.estadoCivil" placeholder="Estado civil del denunciante"  data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Escolaridad</label>
-                                            <input type="text" class="form-control" id="escVictima" name="victima.escolaridad" placeholder="Escolaridad de la victima"   data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="escDenunciante" required name="denunciante.escolaridad" placeholder="Escolaridad del denunciante"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                        </div>                                          
+                                        <div class="form-group">
+                                            <center><a href="#" class="not-active">
+                                                    <i class="fa fa-plus-circle fa-5x"></i>
+                                                </a></center>
+                                        </div>                                                 
+                                    </div>
+                                    <div class="step-pane" id="step3">
+                                        <br/>
+                                        <h4>3.- Datos de la victima</h4>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Nombre </label>
+                                            <input type="text" class="form-control" id="nombreVictima" required  name="victima.nombre" placeholder="Nombre completo de la victima"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo de la Victima" onkeypress="txNombres()">
+                                        </div>                                                
+                                        <div class="form-group" required>
+                                            <label for="exampleInputEmail1">Genero </label>
+                                            <select class="form-control" name="victima.genero">
+                                               <option>Masculino</option>
+                                                <option>Femenino</option>
+                                            </select>
+                                        </div>                                                
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Edad</label>
+                                            <input type="text" class="form-control" id="edadVictima" required name="victima.edad" placeholder="Edad de la victima"  data-toggle="tooltip" data-placement="top" title="Escribir solo Número" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                        </div>                                                
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Estado Civil</label>
+                                            <input type="text" class="form-control" id="estCivilVictima" required name="victima.estadoCivil" placeholder="Estado civil de la victima"   data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                        </div>                                                
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Escolaridad</label>
+                                            <input type="text" class="form-control" id="escVictima" required name="victima.escolaridad" placeholder="Escolaridad de la victima"   data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                              
                                         <div class="form-group">
                                             <center><a href="#" class="not-active">
@@ -271,63 +306,64 @@
                                                 </a></center>
                                         </div>  
                                     </div>
-                                    <div class="step-pane" id="step3">
+                                    <div class="step-pane" id="step4">
                                         <br/>
-                                        <h4>3.- Datos del denunciante</h4>
+                                        <h4>4.- Datos del Testigo(s)</h4>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nombre </label>
-                                            <input type="text" class="form-control" id="nombreDenunciante" name="denunciante.nombre" placeholder="Nombre completo del denunciante"   data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Denunciante" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="nombreTestigo" required  name="testigo.nombre" placeholder="Nombre completo del testigo"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo de la Victima" onkeypress="txNombres()">
                                         </div>                                                
-                                        <div class="form-group">
+                                        <div class="form-group" required>
                                             <label for="exampleInputEmail1">Genero </label>
-                                            <select class="form-control" name="denunciante.genero">
-                                                <option>Femenino</option>
+                                            <select class="form-control" name="testigo.genero">
                                                 <option>Masculino</option>
+                                                <option>Femenino</option>
                                             </select>
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Edad</label>
-                                            <input type="text" class="form-control"  id="edadDenunciante" name="denunciante.edad" placeholder="Edad del denunciante"   data-toggle="tooltip" data-placement="top" title="Escribir Edad Denunciante" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                            <input type="text" class="form-control" id="edadTestigo" required name="testigo.edad" placeholder="Edad del Testigo"  data-toggle="tooltip" data-placement="top" title="Escribir solo Número" onkeypress="ValidaSoloNumeros()" maxlength="2">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Estado Civil</label>
-                                            <input type="text" class="form-control" id="estCivilDenunciante" name="denunciante.estadoCivil" placeholder="Estado civil del denunciante"  data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="estCivilTestigo" required name="testigo.estadoCivil" placeholder="Estado civil del testigo"   data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Escolaridad</label>
-                                            <input type="text" class="form-control" id="escDenunciante" name="denunciante.escolaridad" placeholder="Escolaridad del denunciante"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
-                                        </div>                                          
+                                            <input type="text" class="form-control" id="escTestigo" required name="testigo.escolaridad" placeholder="Escolaridad del testigo"   data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                        </div>                                              
                                         <div class="form-group">
                                             <center><a href="#" class="not-active">
                                                     <i class="fa fa-plus-circle fa-5x"></i>
                                                 </a></center>
-                                        </div>                                                 
+                                        </div>  
                                     </div>
-                                    <div class="step-pane" id="step4">
+                                    
+                                    <div class="step-pane" id="step5">
                                         <br/>
-                                        <h4>4.- Datos del Imputado</h4>
+                                        <h4>5.- Datos del Imputado</h4>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nombre </label>
-                                            <input type="text" class="form-control" id="nombreImputado" name="imputado.nombre" placeholder="Nombre completo del Imputado"   data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="nombreImputado" required name="imputado.nombre" placeholder="Nombre completo del Imputado"   data-toggle="tooltip" data-placement="top" title="Escribir Nombre Completo del Responsable" onkeypress="txNombres()">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Genero </label>
                                             <select class="form-control" name="imputado.genero">
-                                                <option>Femenino</option>
                                                 <option>Masculino</option>
+                                                <option>Femenino</option>
                                             </select>
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Edad</label>
-                                            <input type="text" class="form-control"  id="edadImputado" name="imputado.edad" placeholder="Edad del Imputado"   data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable" onkeypress="ValidaSoloNumeros()" maxlength="2">
+                                            <input type="text" class="form-control"  id="edadImputado" required name="imputado.edad" placeholder="Edad del Imputado"   data-toggle="tooltip" data-placement="top" title="Escribir Edad Responsable" onkeypress="ValidaSoloNumeros()" maxlength="2">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Estado Civil</label>
-                                            <input type="text" class="form-control" id="estCivilImputado" name="imputado.estadoCivil" placeholder="Estado civil del Imputado"  data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="estCivilImputado" required name="imputado.estadoCivil" placeholder="Estado civil del Imputado"  data-toggle="tooltip" data-placement="top" title="Escribir Estado Civil" onkeypress="txNombres()">
                                         </div>                                                
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Escolaridad</label>
-                                            <input type="text" class="form-control" id="escImputado" name="imputado.escolaridad" placeholder="Escolaridad del Imputado"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="escImputado" required name="imputado.escolaridad" placeholder="Escolaridad del Imputado"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                          
                                         <div class="form-group">
                                             <center><a href="#" class="not-active">
@@ -335,9 +371,9 @@
                                                 </a></center>
                                         </div>                                                 
                                     </div>
-                                    <div class="step-pane" id="step5">
+                                    <div class="step-pane" id="step6">
                                         <br/>
-                                        <h4>5.- Datos de la Denuncia/Querella</h4>
+                                        <h4>6.- Documentos Relacionados</h4>
                                         <div class="form-group">
                                             <label for="expediente">Número de Denuncia/Querella</label>
                                             <input type="text" hidden="true" id="numeroExpediente" name="numeroExpediente">
@@ -354,7 +390,7 @@
                                     </div>
 
 
-                                    <div class="step-pane" id="step6">
+                                    <div class="step-pane" id="step7">
                                         <br/>
                                         <div class="panel-group accordion" id="accordion">                                                        
                                             <div class="panel panel-default">

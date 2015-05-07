@@ -107,23 +107,21 @@
                                     </g:link>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Ministerio">
-                                    <g:link  class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
+                                    <a href="javascript:enviarJav('CR');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
                                         <i class="fa fa-arrow-circle-o-left"></i>
-                                    </g:link>
-                                    
-                                    
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Investigaciones">
+                                    </a>                                                                        
+                                    <a href="javascript:enviarJav('II');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Investigaciones">
                                         <i class="fa fa-circle-o"></i>
-                                    </g:link>
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos temporales">
+                                    </a>
+                                    <a href="javascript:enviarJav('AT');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos temporales">
                                         <i class="fa fa-recycle"></i>
-                                    </g:link>
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos definitivos">
+                                    </a>
+                                    <a href="javascript:enviarJav('AD');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos definitivos">
                                         <i class="fa fa-dot-circle-o"></i>
-                                    </g:link>
-                                    <g:link type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir"  title="Archivos judicializdos"> 
+                                    </a>
+                                    <a href="javascript:enviarJav('AJ');" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos judicializados"> 
                                         <i class="fa fa-legal"></i>
-                                    </g:link> 
+                                    </a> 
                                     
                                 </shiro:hasRole>
                           <shiro:hasRole name="Ministerio">
@@ -133,37 +131,37 @@
                                 </shiro:hasRole>
       
                                 <shiro:hasRole name="Juez">
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cuadernillo de Causa">
+                                    <a href="javascript:enviarJav('CC');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cuadernillo de Causa">
                                         <i class="fa fa-bookmark"></i>
-                                    </g:link>
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Causa">
+                                    </a>
+                                    <a href="javascript:enviarJav('CA');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Causa">
                                         <i class="fa fa-navicon"></i>
-                                    </g:link>
+                                    </a>
                                     <!--
                                     <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                         <i class="glyphicon glyphicon-folder-open"></i>
                                     </g:link>-->
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Acción Penal Por Particular">
+                                    <a href="javascript:enviarJav('PP');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Acción Penal Por Particular">
                                         <i class="fa fa-user"></i>
-                                    </g:link>
-                                    <g:link type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Causa Concluida"> 
+                                    </a>
+                                    <a href="javascript:enviarJav('CO');" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Causa Concluida"> 
                                         <i class="fa fa-dot-circle-o"></i>
-                                    </g:link> 
+                                    </a> 
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Defensor">
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Control Interno">
+                                    <a href="javascript:enviarJav('CI');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Control Interno">
                                         <i class="fa fa-archive"></i>
-                                    </g:link>
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Casos">
+                                    </a>
+                                    <a href="javascript:enviarJav('CS');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Casos">
                                         <i class="fa fa-folder"></i>
-                                    </g:link>
+                                    </a>
                                     <!--
                                     <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                         <i class="glyphicon glyphicon-folder-open"></i>
                                     </g:link>-->
-                                    <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Concluidos">
+                                    <a href="javascript:enviarJav('CL');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Concluidos">
                                         <i class="fa fa-dot-circle-o"></i>
-                                    </g:link>
+                                    </a>
                                 </shiro:hasRole>
                             </div>
                         </g:if>
@@ -171,6 +169,9 @@
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
+                            
+                            <g:form name="accionesJav" controller="ministerio" action="cambiarEstatus">
+                            
                             <table id="table-example" class="table table-hover">
                                 <thead>
                                     <tr>
@@ -185,13 +186,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
+                            
                                     <g:each in="${expedientesCompartidos}" var="expediente" status="i">
+                                                                                
                                         <tr>
+                                            <g:hiddenField id="expedienteLista[${expediente.id}].ide" name="expedienteLista[${expediente.id}].ide" value="${expediente.id}"/>
+                                            <g:hiddenField class="valorN" id="expedienteLista[${expediente.id}].valor" name="expedienteLista[${expediente.id}].valor" value="ninguno"/>
                                             <td>
-
-                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                <input type="checkbox" name="expedienteLista[${expediente.id}].chk" id="expedienteLista[${expediente.id}].chk">
                                                 <label for="checkbox${expediente.id}"></label>
                                             </td>
                                             <td>
@@ -229,9 +231,12 @@
                                             </td>
 
                                         </g:each>
-
+                                            
                                 </tbody>
                             </table>
+                            <g:submitButton name="Enviar" id="Enviar" style="visibility:hidden;"/>
+                        </g:form>
+
                         </div>
                     </div>
                 </div>
@@ -299,7 +304,19 @@
     <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>      
     <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
 
-        <script>
+        
+
+<script type="text/javascript">  
+
+            function enviarJav(estatusDB){   
+                var XX = document.getElementsByClassName("valorN");
+                var i;
+                for (i = 0; i < XX.length; i++) {
+                    XX[i].value = estatusDB;
+                }
+                document.getElementsByName("accionesJav")[0].submit();                
+            }
+            
 	$(document).ready(function() {
 		var table = $('#table-example').dataTable({
 			'info': false,

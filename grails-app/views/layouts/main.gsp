@@ -193,9 +193,9 @@
                                     <i class="fa fa-search"></i>
                                 </a>
                                 <div class="drowdown-search">
-                                    <form role="search">
+                                    <form action="index">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Search...">
+                                            <input type="text" class="form-control" placeholder="Buscar...">
                                             <i class="fa fa-search nav-search-icon"></i>
                                         </div>
                                     </form>
@@ -336,7 +336,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                 <i class="fa fa-file-word-o"></i>
                                                 <span style="font-size: 10px;">Plantillas</span>
                                             </a>
@@ -383,7 +383,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                 <i  class="fa fa-file-word-o"></i>
                                                 <span style="font-size: 10px;">Plantillas</span>
                                             </a>
@@ -456,7 +456,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                 <i  class="fa fa-file-word-o"></i>
                                                 <span style="font-size: 10px;">Mis Plantillas</span>
                                             </a>
@@ -526,7 +526,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                            <a href="#" data-toggle="modal" data-target="#myModalPlantillas">
                                                 <i class="fa fa-file-word-o"></i>
                                                 <span style="font-size: 10px;">Mis Plantillas</span>
                                             </a>
@@ -553,6 +553,41 @@
             </div>
         </div>
     </div>
+    <!--Modal-->
+    <div class="modal fade" id="myModalPlantillas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Plantillas</h4>
+                </div>
+                <div class="modal-body">
+                    <li>
+                        <a href=${resource(dir: 'Plantillas', file: 'PlantillaIp.docx')} title="Descargar">
+                            <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IP
+                        </a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                            <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
+                        </a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
+                            <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                        </a>
+                    </li>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin Modal-->
+
     <div id="config-tool" class="closed">
         <a id="config-tool-cog">
             <i class="fa fa-cog"></i>

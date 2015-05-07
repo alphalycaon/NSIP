@@ -31,7 +31,7 @@ Wizard.prototype = {constructor: Wizard, setState: function () {
             }
         }
         var $steps = this.$element.find('.steps li');
-       // $steps.removeClass('active').removeClass('complete');
+        $steps.removeClass('active')//.removeClass('complete');
         $steps.find('span.badge').removeClass('badge-primary').removeClass('badge-success');
         var prevSelector = '.steps li:lt(' + (this.currentStep - 1) + ')';
         var $prevSteps = this.$element.find(prevSelector);

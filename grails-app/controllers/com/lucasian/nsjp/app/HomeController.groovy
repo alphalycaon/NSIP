@@ -177,7 +177,7 @@ class HomeController {
         String notifica = session.getAttribute("notifica");
         session.removeAttribute("notifica");
         //println("notifica:"+notifica)
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countInv, countC: countCorr, notifica:notifica, tiposAudiencias: TipoAudiencia.list()]        
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countInv, countC: countCorr, notifica:notifica, tiposAudiencias: TipoAudiencia.list(sort: "descripcion")]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal

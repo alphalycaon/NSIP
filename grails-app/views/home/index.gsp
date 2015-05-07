@@ -149,8 +149,8 @@
                                         <th>Fecha Creacion</th>
                                         <th>Delito</th>
                                         <th>Imputado</th>
-                                        <th>Modalidad</th>
-                                        <th>Prioridad</th>
+                                        
+                                        
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -175,12 +175,8 @@
                                                 <td>  
                                                     <span class="subject">${expediente.delito.imputado.nombre}</span>
                                                 </td>
-                                                <td>
-                                                    <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                                </td> 
-                                                <td>
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
-                                                </td>
+                                               
+                                                
                                                 <td>
                                                     <g:link action="detail"  id="${expediente.id}" class="table-link">  
 
