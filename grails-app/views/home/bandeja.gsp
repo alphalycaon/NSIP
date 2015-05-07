@@ -134,7 +134,7 @@
                                 </shiro:hasRole>
                                 <shiro:hasRole name="CES">
                                     <g:link controller="ces" action="iph" style=" margin-left: 3px"  class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
-                                        <i class=" glyphicon glyphicon-user"></i> Generar IPH
+                                        <i class=" glyphicon glyphicon-user"></i> Generar Informe
                                     </g:link>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Juez">
@@ -197,11 +197,11 @@
                                         <g:each in="${expedientesCompartidos}" var="expediente" status="i">
 
                                             <tr>
-                                                <g:hiddenField id="expedienteLista[${expediente.id}].ide" name="expedienteLista[${expediente.id}].ide" value="${expediente.id}"/>
-                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.id}].valor" name="expedienteLista[${expediente.id}].valor" value="ninguno"/>
+                                                <g:hiddenField id="expedienteLista[${expediente.expedienteId}].ide" name="expedienteLista[${expediente.expedienteId}].ide" value="${expediente.expedienteId}"/>
+                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.expedienteId}].valor" name="expedienteLista[${expediente.expedienteId}].valor" value="ninguno"/>
                                                 <td>
-                                                    <input type="checkbox" name="expedienteLista[${expediente.id}].chk" id="expedienteLista[${expediente.id}].chk">
-                                                    <label for="checkbox${expediente.id}"></label>
+                                                    <input type="checkbox" name="expedienteLista[${expediente.expedienteId}].chk" id="expedienteLista[${expediente.expedienteId}].chk">
+                                                    <label for="checkbox${expediente.expedienteId}"></label>
                                                 </td>
                                                 <td>
                                                     <div class="star">
@@ -209,25 +209,24 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
-                                                        ${expediente.numeroExpediente}
+                                                    <g:link action="detail"  id="${expediente.expedienteId}" style="color: #000000; text-decoration: none;">    
+                                                        ${expediente.expedienteNombre}
                                                     </g:link>
                                                 </td>
                                                 <td>
                                                     <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
                                                 </td>
                                                 <td>
-                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                    <span class="body">${expediente.mensaje}</span>
                                                 </td>
-                                                <td>  
-                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                                </td>
+                                                
+                                                
 
                                                 <td>
-                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
+                                                    <span class="label label-danger">${expediente.urgencia}</span>
                                                 </td>
                                                 <td>
-                                                    <g:link action="detail"  id="${expediente.id}" class="table-link">  
+                                                    <g:link action="detail"  id="${expediente.expedienteId}" class="table-link">  
 
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
@@ -263,10 +262,7 @@
                                                 <td>
                                                     <span class="body">${expediente.mensaje}</span>
                                                 </td>
-                                                <td>  
-                                                    <span class="subject">${expediente.urgencia}</span>
-                                                </td>
-
+                                                
                                                 <td>
                                                     <span class="label label-danger"></span>
                                                 </td>

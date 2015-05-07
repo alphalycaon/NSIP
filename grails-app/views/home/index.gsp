@@ -131,7 +131,7 @@
             <div class="col-lg-12">
                 <div class="main-box clearfix">
                     <header class="main-box-header clearfix">
-                        <h2 class="pull-left">Últimas denuncias</h2>
+                        <h2 class="pull-left">Últimos Expedientes</h2>
                         <div class="filter-block pull-right">
                             <!--div class="form-group pull-left">
                                 <input type="text" class="form-control" placeholder="Search...">
@@ -144,11 +144,11 @@
                             </shiro:hasRole>
                             <shiro:hasRole name="CES">
                                 <g:link controller="ces" action="iph" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
-                                    <i class="glyphicon glyphicon-user"></i> Generar IPH 
+                                    <i class="glyphicon glyphicon-user"></i> Generar Informe 
                                 </g:link>
                             </shiro:hasRole>
                             <g:link action="denuncias"  class="btn btn-primary pull-right">    
-                                <i class="fa fa-slack"></i> Mostrar todas las denuncias
+                                <i class="fa fa-slack"></i> Mostrar todos
                             </g:link>
 
                         </div>

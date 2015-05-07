@@ -41,7 +41,7 @@
             <div class="col-lg-12">
                 <div class="main-box clearfix">
                     <header class="main-box-header clearfix">
-                        <h2>Denuncias o Querellas.</h2>
+                        <h2>Expedientes RED.</h2>
 
 
                         <div class="btn-group  pull-left">
@@ -123,7 +123,7 @@
                                                 <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
                                             </td>
                                             <td>  
-                                                <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                <span class="subject">${expediente.delito.imputado.nombre} </span>
                                             </td>
                                             <td>
                                                 <span class="label label-danger">denuncia</span>
@@ -163,7 +163,7 @@
                                                 <span class="body">${expediente.iph.datosIph.asunto}</span>
                                             </td>
                                             <td>  
-                                                <span class="subject">${expediente.iph.imputadoIph.nombre}</span>
+                                                <span class="subject">${expediente.iph.imputadoIph.nombre} ${expediente.iph.imputadoIph.apellidoPaterno}</span>
                                             </td>
                                             <td>
                                                 <span class="label label-danger">iph/ip</span>

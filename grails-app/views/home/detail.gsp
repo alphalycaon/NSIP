@@ -114,6 +114,7 @@
                             <input type="hidden" name="idExpediente" value="${expediente.id}">
                             <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalDefensor">Solicitar Defensor</button>&nbsp; 
                             <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir">Compartir Documento</button>&nbsp; 
+                            
                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAudiencia">Solicitar Audiencia</button>&nbsp;
                             <g:if test="${countC > 0}">
                                 <g:actionSubmit id="btnEditar" controller="home" action="moverDenuncia" value="Documento Relacionado" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado"/>
@@ -467,9 +468,19 @@
                                         </g:each>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail1">Urgencia</label>
+                                <select class="form-control" name="urgenciaCompartir" id="urgenciaCompartir">
+                                    <option>baja</option>
+                                    <option>media</option>
+                                    <option>alta</option>
+                                </select>
+                            </div> 
                             </form>      
                         </div>
-                        <div class="modal-footer">                                                                           
+                        <div class="modal-footer">                              
+                        <input type="hidden" id="expedienteNombreCompartir" name="expedienteNombreCompartir" value="${expediente.numeroExpediente}">
+
                             <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
                             </br>
                              <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            

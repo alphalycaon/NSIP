@@ -8,6 +8,15 @@ class UsuariosExpedientes {
     boolean leido
     String urgencia
     
+    
+    String expedienteNombre
+    Date dateCreated 
+    Date lastUpdated 
+    String compartidoPor
+    
+    
+    
+    
     static constraints = {
         mensaje (nullable: true, blank: true)
         tipoExpediente (nullable: true, blank: true)

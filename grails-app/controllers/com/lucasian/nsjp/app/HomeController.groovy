@@ -63,7 +63,7 @@ class HomeController {
         int userId = User.findByUsername(userName).getId()
         println ('userId:'+ userId + ' tc:' + tc)
         //TODO: Falta incluir consultas de IPH Compartido, Solicitud Audiencia, Solucitud Defensores
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
+        def ExpCompartidos = Expediente.executeQuery("from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
         //def expedientesIPH = ExpedienteIph.executeQuery("from ExpedienteIph  where id in (select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
         def expedientesIPH = ExpedienteIph.executeQuery("from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
 
@@ -89,9 +89,9 @@ class HomeController {
             expedientesIPH = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "' order by dateCreated desc")
 
         }else if (subject.hasRole("Juez")){
-           expedientes = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
+            expedientes = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
         }else if (subject.hasRole("Defensor")){//tribunal            
-          expedientes = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+            expedientes = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
           
         }
         //println("expedientes:"+expedientes);
@@ -108,7 +108,7 @@ class HomeController {
         //session.get
         
         //[expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
-          [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH]
+        [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH]
     }
     
     def index_Solicitudes() { 
@@ -269,6 +269,10 @@ class HomeController {
         print(params.listCompartir)
         def expediente = params.expedienteId
         def mensajeExp = params.commentCompartir
+        def urgencia = params.urgenciaCompartir
+        def expedienteNombre = params.expedienteNombreCompartir
+        def today = new Date()
+
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
                 int userId = User.findByUsername(params.listCompartir).getId()
@@ -277,6 +281,10 @@ class HomeController {
                 usuexp.expedienteId = Integer.parseInt(expediente)
                 usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
+                usuexp.urgencia=urgencia
+                usuexp.expedienteNombre=expedienteNombre
+                usuexp.dateCreated=today
+                usuexp.leido = false
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -287,6 +295,9 @@ class HomeController {
                     usuexp.expedienteId = Integer.parseInt(expediente)
                     usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
+                    usuexp.urgencia=urgencia
+                    usuexp.expedienteNombre=expedienteNombre
+                    usuexp.dateCreated=today
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -386,6 +397,7 @@ class HomeController {
         def mensajeExp = params.commentCompartir
         def urgencia = params.urgenciaCompartir
         def expedienteIphNombre = params.expedienteIphNombreCompartir
+        def today = new Date()
 
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
@@ -398,6 +410,8 @@ class HomeController {
                 usuexp.urgencia=urgencia
                 usuexp.expedienteIphNombre=expedienteIphNombre
                 usuexp.leido = false
+                usuexp.dateCreated = today
+                
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -411,6 +425,8 @@ class HomeController {
                     usuexp.mensaje=mensajeExp
                     usuexp.urgencia=urgencia
                     usuexp.expedienteIphNombre=expedienteIphNombre
+                    usuexp.dateCreated = today
+                
                     usuexp.save()
                     print("usuario " + userId)
                 }
