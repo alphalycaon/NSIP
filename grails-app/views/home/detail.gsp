@@ -182,14 +182,14 @@
                                         <label for="delito">Nombre</label>
                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.nombre" value="${expediente.delito.clasificacionDelito.nombre}">
                                     </div>
-                                    <div class="form-group">
+                                    <!--div class="form-group">
                                         <label for="exampleInputEmail1">Modalidad </label>
                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.modalidad" value="${expediente.delito.clasificacionDelito.modalidad}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Modus</label>
                                         <input disabled="" type="text" class="form-control" name="clasificacionDelito.modus" value="${expediente.delito.clasificacionDelito.modus}">
-                                    </div>
+                                    </div-->
                                 </div>
                                 <div class="tab-pane fade" id="tab-victima">
                                     <br/>

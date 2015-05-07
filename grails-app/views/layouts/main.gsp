@@ -24,16 +24,135 @@
         ;
             //]]>
     </script>
-        <script type="text/javascript">
+    <script type="text/javascript">
             var contextPath = '${request.contextPath}';
 
-            
+
     </script>
-   
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+    <script type="text/javascript">
 
+                
+                var Chat = {};
 
+                Chat.socket = null;
+
+                Chat.connect = (function(host) {
+                if ('WebSocket' in window) {
+                Chat.socket = new WebSocket(host);
+                } else if ('MozWebSocket' in window) {
+                Chat.socket = new MozWebSocket(host);
+                } else {
+                Console.log('Error: WebSocket is not supported by this browser.');
+                return;
+                }
+
+                Chat.socket.onopen = function () {
+                Console.log('Info: WebSocket connection opened.');
+
+                //$('#estatusOnline').text('En linea' );
 
     
+                };
+
+                Chat.socket.onclose = function () {
+                //$('#estatusOnline').text('Fuera de linea' );
+                //document.getElementById('chat').onkeydown = null;
+                Console.log('Info: WebSocket closed.');
+                };
+                //            contador = $('#ntf_Audiencia').text();
+                //            contador++;
+
+                Chat.socket.onmessage = function (message) {
+                 //alert(message);
+                console.log(message.data);
+                //DENUNCIA, CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO, IP, IPH, AUDIENCIA, SOLICITUD_AUDIENCIA
+                var obj = jQuery.parseJSON( message.data );
+                var contador=obj.numNotificaciones;
+                
+                console.log(obj.notificacion);
+                console.log(contador);
+                
+                //INDICIOS_INVESTIGACION, CONTROL_INTERNO, CASOS, CONCLUIDOS, CAUSA_CONCLUIDA, CAUSA, CUADERNILLO_CAUSA, PENAL_PARTICULAR, JUDICIALIZADOS
+                if(obj.notificacion==="AUDIENCIA"){
+                $('#ntf_Audiencia').text(contador);
+                }else if(obj.notificacion==="BANDEJA_ENTRADA"){
+                $('#ntf_Entrada').text(contador);
+                }else if(obj.notificacion==="JUDICIALIZADOS"){
+                $('#ntf_Judicializados').text(contador);
+                }else if(obj.notificacion==="PENAL_PARTICULAR"){
+                $('#ntf_Penal_Particular').text(contador);
+                }else if(obj.notificacion==="CUADERNILLO_CAUSA"){
+                $('#ntf_Cuadernillo_Causa').text(contador);
+                }else if(obj.notificacion==="CAUSA"){
+                $('#ntf_Causa').text(contador);
+                }else if(obj.notificacion==="CAUSA_CONCLUIDA"){
+                $('#ntf_Causa_Concluida').text(contador);
+                }else if(obj.notificacion==="CONCLUIDOS"){
+                $('#ntf_Concluidos').text(contador);
+                }else if(obj.notificacion==="CASOS"){
+                $('#ntf_Casos').text(contador);
+                }else if(obj.notificacion==="CONTROL_INTERNO"){
+                $('#ntf_Control_Interno').text(contador);
+                }else if(obj.notificacion==="INDICIOS_INVESTIGACION"){
+                $('#ntf_Indicios_Investigacion').text(contador);
+                }else if(obj.notificacion==="CORROBORACION"){
+                $('#ntf_Corroboracion').text(contador);
+                }else if(obj.notificacion==="DOC_RELACIONADO"){
+                $('#ntf_Investigacion').text(contador);
+                }else if(obj.notificacion==="TEMPORAL"){
+                $('#ntf_Temporales').text(contador);
+                }else if(obj.notificacion==="DEFINITIVO"){
+                $('#ntf_Definitivos').text(contador);
+                }else if(obj.notificacion==="SOLICITUD_AUDIENCIA"){
+                $('#ntf_SolicitudAudiencia').text(contador);
+                }else if(obj.notificacion==="CAUSAS"){
+                $('#ntf_Causas').text(contador);
+                }
+
+                };
+                });
+
+                Chat.initialize = function() {
+                if (window.location.protocol == 'http:') {
+                            Chat.connect('ws://' + window.location.host  + '/nsip/websocket/chat');
+                } else {
+                Chat.connect('wss://' + window.location.host + '/nsip/websocket/chat');
+                }
+                };
+
+                Chat.sendMessage = (function(message) {
+                //alert("sendMessage:"+Chat.socket)
+                if (message != '') {
+                Chat.socket.send(message);
+                //document.getElementById('chat').value = '';
+                }
+                });
+
+                var Console = {};
+                Console.log = (function(message) {});
+                /*
+                Console.log = (function(message) {
+                //var console = document.getElementById('console');
+                var p = document.createElement('p');
+                p.style.wordWrap = 'break-word';
+                p.innerHTML = message;
+                Console.log(message);
+                //console.appendChild(p);
+            //while (console.childNodes.length > 25) {
+                //console.removeChild(console.firstChild);
+                //}
+                //console.scrollTop = console.scrollHeight;
+                });*/
+
+                Chat.initialize();
+
+            </script>
+            
+        
+
+
+
 
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
@@ -91,7 +210,7 @@
                                         <shiro:hasRole name="Ministerio">Procuraduría General de Justicia </shiro:hasRole>
                                         <shiro:hasRole name="CES"> Secretaria de Seguridad Pública</shiro:hasRole>
                                         <shiro:hasRole name="Juez"> Tribunal Superior de Justicia </shiro:hasRole>
-                                        <shiro:hasRole name="Defensor">Instituto Estatal de Defensoría Pública</shiro:hasRole>
+                                        <shiro:hasRole name="Defensor">Defensoría Pública</shiro:hasRole>
                                     </span> <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -131,88 +250,87 @@
                                 </div>
 
                             </div>
+
                             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                 <ul class="nav nav-pills nav-stacked">
                                     <shiro:hasRole name="Ministerio">
-                                        <li class="active">
-
+                                        <li <g:if test="${tc=='EE'}">class="active"</g:if> >
                                             <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
+                                                
+                                                
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="dropdown-toggle">
-                                                <i class="fa fa-cubes"></i>
-                                                <span>Expedientes RED</span>
-                                                <i class="fa fa-chevron-circle-right drop-icon"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li>
+                                        <li <g:if test="${tc=='CR'}">class="open"</g:if>>
+                                                <a href="#" class="dropdown-toggle">
+                                                    <i class="fa fa-cubes"></i>
+                                                    <span>Expedientes RED</span>
+                                                    <i class="fa fa-chevron-circle-right drop-icon"></i>
+                                                </a>
+                                                <ul class="submenu" <g:if test="${tc=='CR' || tc=='DQ'|| tc=='IN'|| tc=='AT'|| tc=='AD'|| tc=='AJ'}">style="display: block;"</g:if>>
+                                                <li <g:if test="${tc=='CR'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CR">
                                                         <i class="fa fa-arrow-circle-o-left"></i>
                                                         <span style="font-size: 10px;">Carpeta de corroboración</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Corroboracion"></span>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a href="${request.contextPath}/home/bandeja?tc=DQ">
+                                                <li <g:if test="${tc=='DQ'}">class="active"</g:if>>
+                                                    <a href="${request.contextPath}/home/denuncias">
                                                         <i class="fa fa-slack"></i>
                                                         <span style="font-size: 10px;">Denuncias o querellas</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Denuncia"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='IN'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=IN">
                                                         <i class="fa fa-circle-o"></i>
                                                         <span style="font-size: 10px;">Investigaciones</span> 
                                                         <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AT'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AT">
                                                         <i class="fa fa-recycle"></i>
                                                         <span style="font-size: 10px;">Archivos temporales</span> 
-                                                        <span class="label label-default label-circle pull-right" id="ntf_Investigacion"></span>
+                                                        <span class="label label-default label-circle pull-right" id="ntf_Temporales"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AD'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AD">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Archivos definitivos</span> 
-                                                        <g:if test="${session.getAttribute("NSIP_NOTIFICACIONES") != null}">
-
-                                                            <span class="label label-default label-circle pull-right" id="ntf_Definitivos"></span>
-                                                        </g:if>
+                                                        <span class="label label-default label-circle pull-right" id="ntf_Definitivos"></span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li <g:if test="${tc=='AJ'}">class="active"</g:if>>
                                                     <a href="${request.contextPath}/home/bandeja?tc=AJ">
                                                         <i class="fa fa-legal"></i>
                                                         <span style="font-size: 10px;">Archivos judicializados</span> 
-                                                        <span class="label label-default label-circle pull-right" id="ntf_Definitivos"></span>
+                                                        <span class="label label-default label-circle pull-right" id="ntf_Judicializados"></span>
 
                                                     </a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="not-active">
+                                            <a href="${request.contextPath}/home/agenda" class="not-active">
                                                 <i class="fa fa-calendar"></i>
                                                 <span style="font-size: 10px;">Itinerario de Audiencias</span>                                                    
                                             </a>
@@ -231,21 +349,21 @@
                                             <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
@@ -259,6 +377,7 @@
                                                     <a href="${request.contextPath}/home/bandeja?tc=II">
                                                         <i class="fa fa-folder-o"></i>
                                                         <span style="font-size: 10px;">Indicios de investigación</span>
+                                                        <span class="label label-info label-circle pull-right" id="ntf_Indicios_Investigacion"></span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -276,21 +395,21 @@
                                             <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
@@ -303,26 +422,29 @@
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CC">
                                                         <i class="fa fa-bookmark"></i>
-                                                        <span style="font-size: 10px;">Cuadernillos de Causa</span>
+                                                        <span style="font-size: 10px;">Cuadernillo de Causa</span>
+                                                        <span class="label label-primary label-circle pull-right" id="ntf_Cuadernillo_Causa"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CA">
                                                         <i  class="fa fa-navicon"></i>
                                                         <span style="font-size: 10px;">Causa</span>
-                                                        <span class="label label-primary label-circle pull-right" id="ntf_Causas"></span>
+                                                        <span class="label label-primary label-circle pull-right" id="ntf_Causa"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=PP">
                                                         <i class="fa fa-user"></i>
                                                         <span style="font-size: 10px;">Acción penal por particular</span>
+                                                        <span class="label label-primary label-circle pull-right" id="ntf_Penal_Particular"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CO">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Causa concluida</span>
+                                                        <span class="label label-primary label-circle pull-right" id="ntf_Causa_Concluida"></span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -347,21 +469,21 @@
                                             <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-send"></i>
                                                 <span>Docs. Enviados</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-exchange"></i>
                                                 <span>Docs. Compartidos</span>
-                                                <span class="label label-info label-circle pull-right">28</span>
+                                                <span class="label label-info label-circle pull-right"></span>
                                             </a>
                                         </li>
 
@@ -376,18 +498,21 @@
                                                     <a href="${request.contextPath}/home/bandeja?tc=CI">
                                                         <i class="fa fa-archive"></i>
                                                         <span style="font-size: 10px;">Control Interno</span>
+                                                        <span class="label label-info label-circle pull-right" id="ntf_Control_Interno"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CS">
                                                         <i class="fa fa-folder"></i>
                                                         <span style="font-size: 10px;">Casos</span>
+                                                        <span class="label label-info label-circle pull-right" id="ntf_Casos"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="${request.contextPath}/home/bandeja?tc=CL">
                                                         <i class="fa fa-dot-circle-o"></i>
                                                         <span style="font-size: 10px;">Concluidos</span>
+                                                        <span class="label label-info label-circle pull-right" id="ntf_Concluidos"></span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -514,8 +639,57 @@
             </ul>
         </div>
     </div>
-
     
-    
+    <script type="text/javascript">
+                $(document).ready(function() {
+                
+                (function() {
+            var notificacionesAPI = "${request.contextPath}/home/consultaNotificaciones";
+            console.log('Antes de las notificaciones');
+                $.getJSON( notificacionesAPI, {
+                format: "json"
+                })
+                .done(function( data ) {
+                //DENUNCIA, CORROBORACION, DOC_RELACIONADO, TEMPORAL, DEFINITIVO, IP, IPH, AUDIENCIA, SOLICITUD_AUDIENCIA
+                    if(data.AUDIENCIA!=0)
+                        $('#ntf_Audiencia').text(data.AUDIENCIA);
+                    if(data.DENUNCIA!=0)
+                        $('#ntf_Denuncia').text(data.DENUNCIA);
+                    if(data.CORROBORACION!=0)
+                        $('#ntf_Corroboracion').text(data.CORROBORACION);
+                    if(data.DOC_RELACIONADO!=0)
+                        $('#ntf_Investigacion').text(data.DOC_RELACIONADO);
+                    if(data.TEMPORAL!=0)    
+                        $('#ntf_Temporales').text(data.TEMPORAL);
+                    if(data.DEFINITIVO!=0)
+                        $('#ntf_Definitivos').text(data.DEFINITIVO);
+                    if(data.SOLICITUD_AUDIENCIA!=0)
+                        $('#ntf_SolicitudAudiencia').text(data.SOLICITUD_AUDIENCIA);
+                    if(data.BANDEJA_ENTRADA!=0)
+                        $('#ntf_Entrada').text(data.BANDEJA_ENTRADA);
+                    if(data.JUDICIALIZADOS!=0)
+                        $('#ntf_Judicializados').text(data.JUDICIALIZADOS);
+                    if(data.CAUSA!=0)
+                        $('#ntf_Causa').text(data.CAUSA);
+                    if(data.CUADERNILLO_CAUSA!=0)
+                        $('#ntf_Cuadernillo_Causa').text(data.CUADERNILLO_CAUSA);
+                    if(data.PENAL_PARTICULAR!=0)
+                        $('#ntf_Penal_Particular').text(data.PENAL_PARTICULAR);
+                    if(data.CONTROL_INTERNO!=0)
+                        $('#ntf_Control_Interno').text(data.CONTROL_INTERNO);
+                    if(data.CASOS!=0)
+                        $('#ntf_Casos').text(data.CASOS);
+                    if(data.CONCLUIDOS!=0)
+                        $('#ntf_Concluidos').text(data.CONCLUIDOS);
+                    if(data.CAUSA_CONCLUIDA!=0)
+                        $('#ntf_Causa_Concluida').text(data.CAUSA_CONCLUIDA);
+                    if(data.INDICIOS_INVESTIGACION!=0)
+                        $('#ntf_Indicios_Investigacion').text(data.INDICIOS_INVESTIGACION);
+                });
+                })();
+                });
+                console.log('Después de las notificaciones');
+            </script>
+            
 </body>
 </html>

@@ -98,19 +98,20 @@
                                 <g:link controller="home" action="denuncias" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
                                     <i class="fa fa-arrow-circle-o-left"></i>
                                 </g:link>-->
-
+                                <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
+                                    <i class="fa fa-trash-o"></i>
+                                </g:link>
                                 <shiro:hasRole name="CES">
                                     <g:link controller="home" action="index_Investigacion" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Indicios de Investigación">
                                         <i class="fa fa-folder-o"></i>
                                     </g:link>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Ministerio">
-                                    <g:link controller="home" action="Index_Corroboracion" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
+                                    <g:link  class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
                                         <i class="fa fa-arrow-circle-o-left"></i>
                                     </g:link>
-                                    <g:link controller="home" action="Index_Corroboracion" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Denuncias o Querellas">
-                                        <i class="fa fa-slack"></i>
-                                    </g:link>
+                                    
+                                    
                                     <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Investigaciones">
                                         <i class="fa fa-circle-o"></i>
                                     </g:link>
@@ -120,21 +121,17 @@
                                     <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos definitivos">
                                         <i class="fa fa-dot-circle-o"></i>
                                     </g:link>
-                                    <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
-                                        <i class="glyphicon glyphicon-folder-open"></i>
-                                    </g:link>
-                                    <g:link type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Archivos judicializdos"> 
+                                    <g:link type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCompartir"  title="Archivos judicializdos"> 
                                         <i class="fa fa-legal"></i>
                                     </g:link> 
+                                    
                                 </shiro:hasRole>
-                                <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Borrar">
-                                    <i class="fa fa-trash-o"></i>
-                                </g:link>
-                                <shiro:hasRole name="Ministerio">
-                                    <g:link controller="ministerio" action="denuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
-                                        <i class=" glyphicon glyphicon-user"></i> 
+                          <shiro:hasRole name="Ministerio">
+                                    <g:link controller="ministerio" action="denuncia" style=" margin-left: 3px"  class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                        <i class=" glyphicon glyphicon-user"></i> Generar Denuncia/Querella 
                                     </g:link>
                                 </shiro:hasRole>
+      
                                 <shiro:hasRole name="Juez">
                                     <g:link class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cuadernillo de Causa">
                                         <i class="fa fa-bookmark"></i>
@@ -183,7 +180,6 @@
                                         <th>Fecha Creacion</th>
                                         <th>Delito</th>
                                         <th>Imputado</th>
-                                        <th>Modalidad</th>
                                         <th>Prioridad</th>
                                         <th></th>
                                     </tr>
@@ -217,9 +213,7 @@
                                             <td>  
                                                 <span class="subject">${expediente.delito.imputado.nombre}</span>
                                             </td>
-                                            <td>
-                                                <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                            </td> 
+
                                             <td>
                                                 <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
                                             </td>

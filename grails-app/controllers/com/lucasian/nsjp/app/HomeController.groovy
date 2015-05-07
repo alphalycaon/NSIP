@@ -701,6 +701,7 @@ class HomeController {
     
     def consultaNotificaciones(){
         //si trae el atributo de force obliga a consultar nuevamente la base de datos, si no se trae lo que tenga en session
+        println('consultaNotificaciones()')
         def force = request.getParameter("force")
         def notificaMap = session.getAttribute("NSIP_NOTIFICACIONES")
         if(notificaMap==null || force!=null){
@@ -710,21 +711,48 @@ class HomeController {
 
             def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
             def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
-            def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
+            def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+            def ExpBandeja = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'EE')")
             
             def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "'")
         
             def ExpIphFiltrado = Expediente.executeQuery("from ExpedienteIph where id in(select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + ")")
-            def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'T')")
-            def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'D')")
+            def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AT')")
+            def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AD')")
             def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N' ")
         
-            def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
+            def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'IN')")
+            def ExpJudicializados = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
+            
+            def ExpCuadernilloCausa= Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CC')")
+            def ExpCausa = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CA')")
+            def ExpPenalParticular = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'PP')")
+            def ExpCausaConcluida = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CO')")
+            
+            def ExpControlInterno= Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CI')")
+            def ExpCasos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CS')")
+            def ExpConcluidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CL')")
+            
+            def ExpIndiciosInvestigacion = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'II')")
         
             // def notificaMap = new HashMap();
+            notificaMap.put(TipoNotificacion.BANDEJA_ENTRADA, new AtomicInteger(ExpBandeja.size()));
+            notificaMap.put(TipoNotificacion.JUDICIALIZADOS, new AtomicInteger(ExpJudicializados.size()));
+            
+            notificaMap.put(TipoNotificacion.CAUSA, new AtomicInteger(ExpCausa.size()));
+            notificaMap.put(TipoNotificacion.CUADERNILLO_CAUSA, new AtomicInteger(ExpCuadernilloCausa.size()));
+            notificaMap.put(TipoNotificacion.PENAL_PARTICULAR, new AtomicInteger(ExpPenalParticular.size()));
+            notificaMap.put(TipoNotificacion.CAUSA_CONCLUIDA, new AtomicInteger(ExpCausaConcluida.size()));
+            
+            notificaMap.put(TipoNotificacion.CONTROL_INTERNO, new AtomicInteger(ExpControlInterno.size()));
+            notificaMap.put(TipoNotificacion.CASOS, new AtomicInteger(ExpCasos.size()));
+            notificaMap.put(TipoNotificacion.CONCLUIDOS, new AtomicInteger(ExpConcluidos.size()));
+            
+            notificaMap.put(TipoNotificacion.INDICIOS_INVESTIGACION, new AtomicInteger(ExpIndiciosInvestigacion.size()));
+            
             notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
             notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpCompartidos.size() ));
-            notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
+            //notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
             
             
             notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(ExpInvestigaciones.size()));

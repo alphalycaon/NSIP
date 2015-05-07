@@ -48,56 +48,56 @@
 
             function validarCampos(){
             /*
-                VNomDelito = document.getElementById("NomDelito").value;
-                VModalidadDelito = document.getElementById("ModalidadDelito").value;
-                VmodusDelito = document.getElementById("modusDelito").value;
-                VnombreVictima = document.getElementById("nombreVictima").value;
-                VedadVictima = document.getElementById("edadVictima").value;
+            VNomDelito = document.getElementById("NomDelito").value;
+            VModalidadDelito = document.getElementById("ModalidadDelito").value;
+            VmodusDelito = document.getElementById("modusDelito").value;
+            VnombreVictima = document.getElementById("nombreVictima").value;
+            VedadVictima = document.getElementById("edadVictima").value;
 
-                VestCivilVictima = document.getElementById("estCivilVictima").value;
-                VescVictima = document.getElementById("escVictima").value;
-                VnombreImputado = document.getElementById("nombreImputado").value;
-                VedadImputado = document.getElementById("edadImputado").value;
-                VestCivilImputado = document.getElementById("estCivilImputado").value;
-                VescImputado = document.getElementById("escImputado").value;
+            VestCivilVictima = document.getElementById("estCivilVictima").value;
+            VescVictima = document.getElementById("escVictima").value;
+            VnombreImputado = document.getElementById("nombreImputado").value;
+            VedadImputado = document.getElementById("edadImputado").value;
+            VestCivilImputado = document.getElementById("estCivilImputado").value;
+            VescImputado = document.getElementById("escImputado").value;
 
-                if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
-                return false;   
-                }
-                else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
-                return false;   
-                }
-                else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
-                return false;   
-                }
-                else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
-                return false;   
-                }
-                else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
-                return false;   
-                }
-                else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
-                return false;   
-                }
-                else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
-                return false;   
-                }
-                else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
-                return false;   
-                }
-                else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
-                return false;   
-                }
-                else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
-                    return false;   
-                }	
-                else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
-                    return false;   
-                }	
-                {
-                    return true;
-                }*/
-                return true;
+            if(VNomDelito.length == 0 || /^\s+$/.test(VNomDelito)){
+            return false;   
+            }
+            else if(VModalidadDelito.length == 0 || /^\s+$/.test(VModalidadDelito)){
+            return false;   
+            }
+            else if(VmodusDelito.length == 0 || /^\s+$/.test(VmodusDelito)){
+            return false;   
+            }
+            else if(VnombreVictima.length == 0 || /^\s+$/.test(VnombreVictima)){
+            return false;   
+            }
+            else if(VedadVictima.length == 0 || /^\s+$/.test(VedadVictima)){
+            return false;   
+            }
+            else if(VestCivilVictima.length == 0 || /^\s+$/.test(VestCivilVictima)){
+            return false;   
+            }
+            else if(VescVictima.length == 0 || /^\s+$/.test(VescVictima)){
+            return false;   
+            }
+            else if(VnombreImputado.length == 0 || /^\s+$/.test(VnombreImputado)){
+            return false;   
+            }
+            else if(VestCivilImputado.length == 0 || /^\s+$/.test(VestCivilImputado)){
+            return false;   
+            }
+            else if(VescImputado.length == 0 || /^\s+$/.test(VescImputado)){
+            return false;   
+            }	
+            else if(VedadImputado.length == 0 || /^\s+$/.test(VedadImputado)){
+            return false;   
+            }	
+            {
+            return true;
+            }*/
+            return true;
             }
 
         </script> 
@@ -122,26 +122,26 @@
 
         <title>Generar Denuncia/Querella</title>
 
-        
-         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
-    <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
+
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
 
         <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'theme_styles.css')}"/-->
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file: 'select2.css')}"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}">
+        <!--link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs/', file: 'bootstrap-editable.css')}"-->
 
 
 
@@ -206,15 +206,15 @@
                                 <script type="text/javascript">
                                     function insertaDenuncia( obj){
                                     console.log($(obj).html());
-                                        if($(obj).html().indexOf('Terminar')==0){ 
-                                        console.log($('#numExpediente').text())
-                                        console.log($('#denuncia'));
-                                            $('#numeroExpediente').val($('#numExpediente').text()); 
-                                            $('#denuncia').submit();
-                                            }
+                                    if($(obj).html().indexOf('Terminar')==0){ 
+                                    console.log($('#numExpediente').text())
+                                    console.log($('#denuncia'));
+                                    $('#numeroExpediente').val($('#numExpediente').text()); 
+                                    $('#denuncia').submit();
                                     }
-                                    </script>
-                                    
+                                    }
+                                </script>
+
                                 <div class="actions" style="z-index: 1">
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalVentanaEmer"></i>Cancelar</button>
                                     <button type="button" class="btn btn-default btn-mini btn-prev"></i>Anterior</button>
@@ -228,16 +228,16 @@
                                         <h4>1.- Datos del delito</h4>
                                         <div class="form-group">
                                             <label for="delito">Nombre</label>
-                                            <input type="text" class="form-control" id="NomDelito" name="clasificacionDelito.nombre" placeholder="Nombre del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
+                                            <input type="text" class="form-control" id="NomDelito" required name="clasificacionDelito.nombre" placeholder="Nombre del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Nombre del Delito" onkeypress="txNombres()">
                                         </div>
-                                        <div class="form-group">
+                                        <!--div class="form-group">
                                             <label for="exampleInputEmail1">Modalidad </label>
                                             <input type="text" class="form-control" id="ModalidadDelito" name="clasificacionDelito.modalidad" placeholder="Modalidad del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Modalidad del Delito" onkeypress="txNombres()">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Modus</label>
                                             <input type="text" class="form-control" id="modusDelito" name="clasificacionDelito.modus" placeholder="Modus del delito"  data-toggle="tooltip" data-placement="top" title="Escribir Modus del Delito" onkeypress="txNombres()">
-                                        </div>    
+                                        </div-->    
                                     </div>
                                     <div class="step-pane" id="step2">
                                         <br/>
@@ -365,7 +365,7 @@
                                                         </a>
                                                     </h4>
                                                 </div>
-                                                <div id="collapseFour" class="panel-collapse collapse in" style="height: 1px;">
+                                                <div id="collapseFour" class="panel-collapse collapse" style="height: 1px;">
                                                     <div class="panel-body">
                                                         <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                                                             <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
@@ -373,39 +373,43 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br/>
                                         </div>
                                     </div>
-                                </g:form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-<!--Modal-->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
-                                <input class="form-control" type="search" id="SearchBox" />
-                            </div>
-                            <div class="modal-body">
-                                <div class="scrollable" id="CustomerSelectDiv">
-                                    <select size="2" class="form-control" id="CustomerSelect">
-                                        <g:each in="${expedientesIph}" var="expediente" status="i">
-                                            <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
-                                        </g:each>
-                                    </select>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
-                            </div>
+                            </g:form>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    
+    <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Número de IPH</h4>
+                    <input class="form-control" type="search" id="SearchBox" />
+                </div>
+                <div class="modal-body">
+                    <div class="scrollable" id="CustomerSelectDiv">
+                        <select size="2" class="form-control" id="CustomerSelect">
+                            <g:each in="${expedientesIph}" var="expediente" status="i">
+                                <option value="${expediente.numeroIph}">${expediente.numeroIph}</option>
+                            </g:each>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('textoIph').value = CustomerSelect.value;" data-dismiss="modal">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--Fin Modal-->
     <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
@@ -455,32 +459,44 @@
 
     <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
     <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
 
 
 
-                <script type="text/javascript">
-                    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-                    if (isCaseSensitive)
-                    str = str.toLowerCase();
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
                 // cache the jQuery object of the <select> element
-                    var $el = $(selectionEl);
-                    if (!$el.data("options")) {
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
                     // cache all the options inside the <select> element for easy recover
-                    $el.data("options", $el.find("option").clone());
-                    }
-                    var newOptions = $el.data("options").filter(function () {
-                    var text = $(this).text();
-                    if (isCaseSensitive)
-                    text = text.toLowerCase();
-                    return text.match(str);
-                    });
-                    $el.empty().append(newOptions);
-                    };
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
+        };
 
 
-                </script>
-                
+    </script>
+    <script>            
+        $("#btnPlantilla").click(function () {
+        $('#numeroExpediente').val($('#numExpediente').text());
+        });
+    </script> 
+    <script>
+        $(document).ready(function(){
+        //toggle `popup` / `inline` mode
+        $.fn.editable.defaults.mode = 'popup';     
 
-                </body>
-                </html>
+        //make numExpediente editable
+        $("#numExpediente").editable();
+        });
+    </script>
+</body>
+</html>

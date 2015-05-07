@@ -69,7 +69,9 @@
 
         </div>
 
+
         <div class="row">
+
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="main-box infographic-box">
                     <i class="fa fa-slack red-bg"></i>
@@ -126,8 +128,13 @@
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <i class="fa fa-search search-icon"></i>
                             </div-->
+                            <shiro:hasRole name="Ministerio">
+                                <g:link controller="ministerio" action="denuncia" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                    <i class="glyphicon glyphicon-user"></i>Generar Denuncia/Querella 
+                                </g:link>
+                            </shiro:hasRole>
                             <g:link action="denuncias"  class="btn btn-primary pull-right">    
-                                <i class="fa fa-eye fa-lg"></i> Mostrar todas las denuncias
+                                <i class="fa fa-slack"></i> Mostrar todas las denuncias
                             </g:link>
 
                         </div>
