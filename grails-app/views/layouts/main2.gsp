@@ -15,9 +15,8 @@
             <meta charset="UTF-8"/>
             <g:layoutHead/>
             <g:javascript library="application"/>		
-        <r:layoutResources />
-
-
+        
+            
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap/', file: 'bootstrap.min.css')}"/>
 
@@ -843,7 +842,6 @@
             </div>
             <!--Fin Modal-->
 
-            <r:layoutResources />
             <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
             <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
             <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>  

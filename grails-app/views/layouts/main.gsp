@@ -327,6 +327,8 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        
+                                         
                                         <li>
                                             <a href="${request.contextPath}/home/agenda" class="not-active">
                                                 <i class="fa fa-calendar"></i>
@@ -390,7 +392,7 @@
 
                                     <shiro:hasRole name="Juez">
                                         <li class="active">
-                                            <a href="${request.contextPath}/home/calendar">
+                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
@@ -446,6 +448,12 @@
                                                     </a>
                                                 </li>
                                             </ul>
+                                        </li>
+                                        <li>
+                                            <a href="${request.contextPath}/home/calendar" class="not-active">
+                                                <i class="fa fa-calendar"></i>
+                                                <span style="font-size: 10px;">Agendar Audiencias</span>                                                    
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="${request.contextPath}/home/agenda" class="not-active">
