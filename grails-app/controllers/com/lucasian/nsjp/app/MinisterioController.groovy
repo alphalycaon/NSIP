@@ -49,12 +49,19 @@ class MinisterioController {
             if (it!=null){                                
                 def subject = SecurityUtils.subject
                 def userName  = subject?.principal
-                int userId = User.findByUsername(userName).getId()                                                                
-                def exps = UsuariosExpedientes.executeQuery("from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = "+ it.ide +")")
+                int userId = User.findByUsername(userName).getId()                                                                                
                 def cambioEstatus = it.chk
                 def nuevoEstatus = it.valor
+                def tipoCaso = it.tipo  
+                def exps
+                if(tipoCaso.equals("IPH")){
+                    exps = UsuariosExpedientesIph.executeQuery("from UsuariosExpedientesIph where usuarioId = " + userId + " and expedienteIphId = "+ it.ide +")")
+                }
+                if(tipoCaso.equals("EXP")){
+                    exps = UsuariosExpedientes.executeQuery("from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = "+ it.ide +")")
+                }                                                
                 exps.each {
-                    if (cambioEstatus){                                                 
+                    if (cambioEstatus){                                                                                                                         
                         it.tipoExpediente = nuevoEstatus
                         it.save()                        
                     }                  
@@ -203,6 +210,7 @@ class MinisterioController {
         Integer ide
         boolean chk
         String valor
+        String tipo
     }
     class MultipleExpediente {
         List<SingleExpediente> expedienteLista = [].withDefault({ new SingleExpediente() } )
