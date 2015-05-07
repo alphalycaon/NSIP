@@ -653,7 +653,7 @@
         <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
 
 
-        <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
+        
 
         <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
         <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
@@ -666,6 +666,8 @@
     <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script> 
     <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script> 
 -->
+        
+        <script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
 
 
         <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
