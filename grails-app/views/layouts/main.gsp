@@ -131,19 +131,8 @@
 
                 var Console = {};
                 Console.log = (function(message) {});
-                /*
-                Console.log = (function(message) {
-                //var console = document.getElementById('console');
-                var p = document.createElement('p');
-                p.style.wordWrap = 'break-word';
-                p.innerHTML = message;
-                Console.log(message);
-                //console.appendChild(p);
-            //while (console.childNodes.length > 25) {
-                //console.removeChild(console.firstChild);
-                //}
-                //console.scrollTop = console.scrollHeight;
-                });*/
+               
+                
 
                 Chat.initialize();
 
@@ -676,11 +665,14 @@
     </div>
     
     <script type="text/javascript">
-                $(document).ready(function() {
-                
-                (function() {
-            var notificacionesAPI = "${request.contextPath}/home/consultaNotificaciones";
-            console.log('Antes de las notificaciones');
+        function consultaContadores(force) {
+            var notificacionesAPI 
+            if(force)
+             notificacionesAPI = "${request.contextPath}/home/consultaNotificaciones?force=true";
+            else
+             notificacionesAPI = "${request.contextPath}/home/consultaNotificaciones";
+             
+            console.log('Antes de las notificaciones:'+notificacionesAPI);
                 $.getJSON( notificacionesAPI, {
                 format: "json"
                 })
@@ -721,9 +713,16 @@
                     if(data.INDICIOS_INVESTIGACION!=0)
                         $('#ntf_Indicios_Investigacion').text(data.INDICIOS_INVESTIGACION);
                 });
-                })();
+                
+                  console.log('Después de las notificaciones');
+                }
+                
+                
+                $(document).ready(function() {
+                    consultaContadores();
                 });
-                console.log('Después de las notificaciones');
+                //();
+               
             </script>
             
 </body>
