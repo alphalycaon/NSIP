@@ -79,43 +79,52 @@
                     <span class="value">${expedientes?.size()}</span>
                 </div>
             </div>
-
-
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="main-box infographic-box">
-                    <i class="fa fa-arrow-circle-o-left emerald-bg"></i>
-                    <span class="headline">Corroboraci&oacute;n</span>
-                    <span class="value">${iCorroboraciones} </span>
+            <shiro:hasRole name="CES">
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-arrow-circle-o-left emerald-bg"></i>
+                        <span class="headline">Informes Policiales Homologados</span>
+                        <span class="value">${iIPH} </span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="main-box infographic-box">
-                    <i class="fa fa-circle-o green-bg"></i>
-                    <span class="headline">Investigaci&oacute;n</span>
-                    <span class="value">${iInvestigaciones}</span>
+            </shiro:hasRole>
+            <shiro:hasRole name="Ministerio">
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-arrow-circle-o-left emerald-bg"></i>
+                        <span class="headline">Corroboraci&oacute;n</span>
+                        <span class="value">${iCorroboraciones} </span>
+                    </div>
                 </div>
-            </div>
-            <!--div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="main-box infographic-box">
-                    <i class="fa fa-eye yellow-bg"></i>
-                    <span class="headline">Archivos Temporales</span>
-                    <span class="value">12.526</span>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-circle-o green-bg"></i>
+                        <span class="headline">Investigaci&oacute;n</span>
+                        <span class="value">${iInvestigaciones}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="main-box infographic-box">
-                    <i class="fa fa-eye yellow-bg"></i>
-                    <span class="headline">Archivos Definitivos</span>
-                    <span class="value">12.526</span>
+                <!--div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-eye yellow-bg"></i>
+                        <span class="headline">Archivos Temporales</span>
+                        <span class="value">12.526</span>
+                    </div>
                 </div>
-            </div-->
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="main-box infographic-box">
-                    <i class="fa fa-legal yellow-bg"></i>
-                    <span class="headline">Judicializado</span>
-                    <span class="value">${iJudicializados}</span>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-eye yellow-bg"></i>
+                        <span class="headline">Archivos Definitivos</span>
+                        <span class="value">12.526</span>
+                    </div>
+                </div-->
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="main-box infographic-box">
+                        <i class="fa fa-legal yellow-bg"></i>
+                        <span class="headline">Judicializado</span>
+                        <span class="value">${iJudicializados}</span>
+                    </div>
                 </div>
-            </div>
+            </shiro:hasRole>
         </div>
 
         <div class="row">
@@ -131,6 +140,11 @@
                             <shiro:hasRole name="Ministerio">
                                 <g:link controller="ministerio" action="denuncia" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
                                     <i class="glyphicon glyphicon-user"></i>Generar Denuncia/Querella 
+                                </g:link>
+                            </shiro:hasRole>
+                            <shiro:hasRole name="CES">
+                                <g:link controller="ces" action="iph" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                    <i class="glyphicon glyphicon-user"></i> Generar IPH 
                                 </g:link>
                             </shiro:hasRole>
                             <g:link action="denuncias"  class="btn btn-primary pull-right">    
@@ -149,18 +163,15 @@
                                         <th>Fecha Creacion</th>
                                         <th>Delito</th>
                                         <th>Imputado</th>
-                                        
-                                        
+                                        <th>Tipo</th>
+
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
                                     <g:each in="${expedientes}" var="expediente" status="i">
                                         <g:if test="${i < 5}" >
                                             <tr>
-
                                                 <td>
                                                     <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
                                                         ${expediente.numeroExpediente}
@@ -175,8 +186,10 @@
                                                 <td>  
                                                     <span class="subject">${expediente.delito.imputado.nombre}</span>
                                                 </td>
-                                               
-                                                
+                                                <td>  
+                                                    <span class="subject">Denuncia</span>
+                                                </td>
+
                                                 <td>
                                                     <g:link action="detail"  id="${expediente.id}" class="table-link">  
 
@@ -184,10 +197,8 @@
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                                         </span>
-
                                                     </g:link>
                                                 </td>
-
                                             </tr>
                                         </g:if>
 

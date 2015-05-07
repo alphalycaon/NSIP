@@ -9,18 +9,18 @@
 <html>
     <head>        
 
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
-    <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
-    <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
 
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'dataTables.fixedHeader.css')}"/>
@@ -93,8 +93,7 @@
                                         <th>Fecha Creacion</th>
                                         <th>Delito</th>
                                         <th>Imputado</th>
-                                        <th>Modalidad</th>
-                                        <th>Prioridad</th>
+                                        <th>Tipo</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -104,13 +103,12 @@
                                     <g:each in="${expedientes}" var="expediente" status="i">
                                         <tr>
                                             <td>
-
                                                 <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
                                                 <label for="checkbox${expediente.id}"></label>
                                             </td>
                                             <td>
-                                               <div class="star">
-                                                <a class="starred"></a>
+                                                <div class="star">
+                                                    <a class="starred"></a>
                                                 </div>
                                             </td>
                                             <td>
@@ -128,10 +126,7 @@
                                                 <span class="subject">${expediente.delito.imputado.nombre}</span>
                                             </td>
                                             <td>
-                                                <span class="subject">${expediente.delito.clasificacionDelito.modalidad}</span>
-                                            </td> 
-                                            <td>
-                                                <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
+                                                <span class="label label-danger">denuncia</span>
                                             </td>
                                             <td>
                                                 <g:link action="detail"  id="${expediente.id}" class="table-link">  
@@ -145,7 +140,46 @@
                                             </td>
 
                                         </g:each>     
+                                        <g:each in="${expedientesIPH}" var="expediente" status="i">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="checkbox${expediente.id}" id="checkbox${expediente.id}">
+                                                <label for="checkbox${expediente.id}"></label>
+                                            </td>
+                                            <td>
+                                                <div class="star">
+                                                    <a class="starred"></a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                    ${expediente.numeroIph}
+                                                </g:link>
+                                            </td>
+                                            <td>
+                                                <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                            </td>
+                                            <td>
+                                                <span class="body">${expediente.iph.datosIph.asunto}</span>
+                                            </td>
+                                            <td>  
+                                                <span class="subject">${expediente.iph.imputadoIph.nombre}</span>
+                                            </td>
+                                            <td>
+                                                <span class="label label-danger">iph/ip</span>
+                                            </td>
+                                            <td>
+                                                <g:link action="detail"  id="${expediente.id}" class="table-link">  
 
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                    </span>
+
+                                                </g:link>
+                                            </td>
+
+                                        </g:each> 
 
                                 </tbody>
                             </table>
@@ -160,44 +194,44 @@
 
 
 
-        
+
 <!-- -->                                                        
-<div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <g:form name="formCompartir">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form">
-                        <div class="form-group form-group-select2">
-                            <label>Compartir a:</label>
-                            <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
-                                <g:each in="${usuarios}" var="usuario" status="i">
-                                    <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
-                                </g:each>
-                            </select>
+        <div class="modal fade" id="myModalCompartir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <g:form name="formCompartir">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Compartir Documento</h4>
                         </div>
-                    </form>      
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group form-group-select2">
+                                    <label>Compartir a:</label>
+                                    <select style="width:570px" name="listCompartir" id="listCompartir" multiple >
+                                        <g:each in="${usuarios}" var="usuario" status="i">
+                                            <option value="${usuario.username}">${usuario.institucion} - ${usuario.puesto} - ${usuario.nombre}</option>
+                                        </g:each>
+                                    </select>
+                                </div>
+                            </form>      
+                        </div>
+                        <div class="modal-footer">                                                                           
+                            <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                            </br>
+                             <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
+                                 <span  style="padding-right: 10px;"></span> Aceptar
+                             </a> -->  
+                            <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirVariosExp" controller="home"/>
+                            <a data-dismiss="modal" class="btn btn-danger">                                            
+                                <span style="padding-right: 10px;"></span> Cancelar
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">                                                                           
-                    <textarea class="form-control" rows="3" name="commentCompartir" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
-                    </br>
-                     <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
-                         <span  style="padding-right: 10px;"></span> Aceptar
-                     </a> -->  
-                    <g:actionSubmit id="btnModalCompartir" class="btn btn-primary" value="Aceptar" action="compartirVariosExp" controller="home"/>
-                    <a data-dismiss="modal" class="btn btn-danger">                                            
-                        <span style="padding-right: 10px;"></span> Cancelar
-                    </a>
-                </div>
-            </div>
+            </g:form>
         </div>
-    </g:form>
-</div>
-<!--  -->
+        <!--  -->
 
 
 
@@ -214,31 +248,31 @@
 
 
 
-    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
-    <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
+        <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
 
     <!--advanced tables-->
     <!--script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
@@ -246,52 +280,52 @@
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script-->   
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
-    <!--advanced tables-->
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+        <!--advanced tables-->
 
     <!--script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script--> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
 
 
     <!--script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script--> 
-    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
 
-    <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-<script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
-
-
+        <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
 
 
 
 
 
 
-    <script>
-	$(document).ready(function() {
-		var table = $('#table-example').dataTable({
-			'info': false,
+
+
+        <script>
+            $(document).ready(function() {
+            var table = $('#table-example').dataTable({
+            'info': false,
 			'sDom': 'lTfr<"clearfix">tip',
-			'oTableTools': {
-	            'aButtons': [
-	                {
-	                    'sExtends':    'collection',
+            'oTableTools': {
+            'aButtons': [
+            {
+            'sExtends':    'collection',
 	                    'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
-	                    'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
-	                }
-	            ]
-	        }
-		});
-		
-                
-	});
-	</script>
+            'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+            }
+            ]
+            }
+            });
+
+
+            });
+        </script>
 
 
 
 
-</body>
+    </body>
 </html>

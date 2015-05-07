@@ -54,7 +54,7 @@
             <div class="col-lg-12">
 
                 <header class="main-box-header clearfix">                                                        
-                    <h3>Datos de la Denuncia</h3>
+                    <h3>Agregar archivos a la Denuncia</h3>
                 </header>
                
                 

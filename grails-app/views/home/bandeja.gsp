@@ -102,9 +102,12 @@
                                     <i class="fa fa-trash-o"></i>
                                 </g:link>
                                 <shiro:hasRole name="CES">
-                                    <g:link controller="home" action="index_Investigacion" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Indicios de Investigación">
+                                    <a href="javascript:enviarJav('II');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Indicios de Investigación">
                                         <i class="fa fa-folder-o"></i>
-                                    </g:link>
+                                    </a> 
+
+
+
                                 </shiro:hasRole>
                                 <shiro:hasRole name="Ministerio">
                                     <a href="javascript:enviarJav('CR');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Carpeta de Corroboración">
@@ -122,14 +125,18 @@
                                     <a href="javascript:enviarJav('AJ');" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Archivos judicializados"> 
                                         <i class="fa fa-legal"></i>
                                     </a> 
-                                    
+
                                 </shiro:hasRole>
-                          <shiro:hasRole name="Ministerio">
+                                <shiro:hasRole name="Ministerio">
                                     <g:link controller="ministerio" action="denuncia" style=" margin-left: 3px"  class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
                                         <i class=" glyphicon glyphicon-user"></i> Generar Denuncia/Querella 
                                     </g:link>
                                 </shiro:hasRole>
-      
+                                <shiro:hasRole name="CES">
+                                    <g:link controller="ces" action="iph" style=" margin-left: 3px"  class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                        <i class=" glyphicon glyphicon-user"></i> Generar IPH
+                                    </g:link>
+                                </shiro:hasRole>
                                 <shiro:hasRole name="Juez">
                                     <a href="javascript:enviarJav('CC');" class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cuadernillo de Causa">
                                         <i class="fa fa-bookmark"></i>
@@ -169,73 +176,73 @@
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
-                            
+
                             <g:form name="accionesJav" controller="ministerio" action="cambiarEstatus">
-                            
-                            <table id="table-example" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th>Expediente</th>
-                                        <th>Fecha Creacion</th>
-                                        <th>Delito</th>
-                                        <th>Imputado</th>
-                                        <th>Prioridad</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                            
-                                    <g:each in="${expedientesCompartidos}" var="expediente" status="i">
-                                                                                
+
+                                <table id="table-example" class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <g:hiddenField id="expedienteLista[${expediente.id}].ide" name="expedienteLista[${expediente.id}].ide" value="${expediente.id}"/>
-                                            <g:hiddenField class="valorN" id="expedienteLista[${expediente.id}].valor" name="expedienteLista[${expediente.id}].valor" value="ninguno"/>
-                                            <td>
-                                                <input type="checkbox" name="expedienteLista[${expediente.id}].chk" id="expedienteLista[${expediente.id}].chk">
-                                                <label for="checkbox${expediente.id}"></label>
-                                            </td>
-                                            <td>
-                                                <div class="star">
-                                                    <a></a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
-                                                    ${expediente.numeroExpediente}
-                                                </g:link>
-                                            </td>
-                                            <td>
-                                                <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
-                                            </td>
-                                            <td>
-                                                <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
-                                            </td>
-                                            <td>  
-                                                <span class="subject">${expediente.delito.imputado.nombre}</span>
-                                            </td>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Expediente</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Delito</th>
+                                            <th>Imputado</th>
+                                            <th>Prioridad</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                            <td>
-                                                <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
-                                            </td>
-                                            <td>
-                                                <g:link action="detail"  id="${expediente.id}" class="table-link">  
+                                        <g:each in="${expedientesCompartidos}" var="expediente" status="i">
 
-                                                    <span class="fa-stack">
-                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                    </span>
+                                            <tr>
+                                                <g:hiddenField id="expedienteLista[${expediente.id}].ide" name="expedienteLista[${expediente.id}].ide" value="${expediente.id}"/>
+                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.id}].valor" name="expedienteLista[${expediente.id}].valor" value="ninguno"/>
+                                                <td>
+                                                    <input type="checkbox" name="expedienteLista[${expediente.id}].chk" id="expedienteLista[${expediente.id}].chk">
+                                                    <label for="checkbox${expediente.id}"></label>
+                                                </td>
+                                                <td>
+                                                    <div class="star">
+                                                        <a></a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                        ${expediente.numeroExpediente}
+                                                    </g:link>
+                                                </td>
+                                                <td>
+                                                    <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                                </td>
+                                                <td>
+                                                    <span class="body">${expediente.delito.clasificacionDelito.nombre}</span>
+                                                </td>
+                                                <td>  
+                                                    <span class="subject">${expediente.delito.imputado.nombre}</span>
+                                                </td>
 
-                                                </g:link>
-                                            </td>
+                                                <td>
+                                                    <span class="label label-danger">${expediente.delito.clasificacionDelito.prioridad}</span>
+                                                </td>
+                                                <td>
+                                                    <g:link action="detail"  id="${expediente.id}" class="table-link">  
 
-                                        </g:each>
-                                            
-                                </tbody>
-                            </table>
-                            <g:submitButton name="Enviar" id="Enviar" style="visibility:hidden;"/>
-                        </g:form>
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                        </span>
+
+                                                    </g:link>
+                                                </td>
+
+                                            </g:each>
+
+                                    </tbody>
+                                </table>
+                                <g:submitButton name="Enviar" id="Enviar" style="visibility:hidden;"/>
+                            </g:form>
 
                         </div>
                     </div>
@@ -283,57 +290,57 @@
                 </div>
             </g:form>
         </div>
- 
 
 
- 
-        
+
+
+
 
 <!--advanced tables-->
-    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>   
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
-    <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
-    <!--advanced tables-->
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>   
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+        <!--advanced tables-->
 
-    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>      
-    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>      
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
 
-        
 
-<script type="text/javascript">  
+
+        <script type="text/javascript">  
 
             function enviarJav(estatusDB){   
-                var XX = document.getElementsByClassName("valorN");
-                var i;
-                for (i = 0; i < XX.length; i++) {
-                    XX[i].value = estatusDB;
-                }
-                document.getElementsByName("accionesJav")[0].submit();                
+            var XX = document.getElementsByClassName("valorN");
+            var i;
+            for (i = 0; i < XX.length; i++) {
+            XX[i].value = estatusDB;
             }
-            
-	$(document).ready(function() {
-		var table = $('#table-example').dataTable({
-			'info': false,
+            document.getElementsByName("accionesJav")[0].submit();                
+            }
+
+            $(document).ready(function() {
+            var table = $('#table-example').dataTable({
+            'info': false,
 			'sDom': 'lTfr<"clearfix">tip',
-			'oTableTools': {
-	            'aButtons': [
-	                {
-	                    'sExtends':    'collection',
+            'oTableTools': {
+            'aButtons': [
+            {
+            'sExtends':    'collection',
 	                    'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
-	                    'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
-	                }
-	            ]
-	        }
-		});
-		
-                
-	});
-	</script>
+            'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+            }
+            ]
+            }
+            });
+
+
+            });
+        </script>
     </body>
 </html>

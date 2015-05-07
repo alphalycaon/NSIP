@@ -32,6 +32,7 @@ class HomeController {
         def ExpAJ = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
         def ExpAI = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AI')")
         
+        def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "' order by dateCreated desc")
 
          
         def expedientes
@@ -46,7 +47,7 @@ class HomeController {
         }
         
         
-        [agendasAudiencias: AgendaAudiencias.list(), expedientes: expedientes, iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
+        [agendasAudiencias: AgendaAudiencias.list(), expedientes: expedientes, expIPH: ExpIphCreados, iIPH:ExpIphCreados.size(), iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
 
     }
     
@@ -74,6 +75,7 @@ class HomeController {
         int userId = User.findByUsername(userName).getId()
          
         def expedientes
+        def expedientesIPH
         if (subject.hasRole("Ministerio")){
             expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
             
@@ -81,15 +83,15 @@ class HomeController {
             //expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
             expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
             
-            
-            
+            expedientesIPH = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "' order by dateCreated desc")
+
         }else if (subject.hasRole("Juez")){
            expedientes = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
         }else if (subject.hasRole("Defensor")){//tribunal            
           expedientes = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
           
         }
-        println("expedientes:"+expedientes);
+        //println("expedientes:"+expedientes);
        
         
         //def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
@@ -103,7 +105,7 @@ class HomeController {
         //session.get
         
         //[expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
-          [expedientes:expedientes, usuarios:usuarios]
+          [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH]
     }
     
     def index_Solicitudes() { 
