@@ -185,9 +185,9 @@
                                             <th></th>
                                             <th></th>
                                             <th>Expediente</th>
-                                            <th>Fecha Creacion</th>
-                                            <th>Delito</th>
-                                            <th>Imputado</th>
+                                            <th>Fecha Enviado</th>
+                                            <th>Comentario</th>
+                                           
                                             <th>Prioridad</th>
                                             <th></th>
                                         </tr>
@@ -228,6 +228,50 @@
                                                 </td>
                                                 <td>
                                                     <g:link action="detail"  id="${expediente.id}" class="table-link">  
+
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                        </span>
+
+                                                    </g:link>
+                                                </td>
+
+                                            </g:each>
+                                            <g:each in="${expCompartidosIPH}" var="expediente" status="i">
+
+                                            <tr>
+                                                <g:hiddenField id="expedienteListaIPH[${expediente.expedienteIphId}].ide" name="expedienteListaIPH[${expediente.expedienteIphId}].ide" value="${expediente.expedienteIphId}"/>
+                                                <g:hiddenField class="valorN" id="expedienteListaIPH[${expediente.expedienteIphId}].valor" name="expedienteListaIPH[${expediente.expedienteIphId}].valor" value="ninguno"/>
+                                                <td>
+                                                    <input type="checkbox" name="expedienteLista[${expediente.expedienteIphId}].chk" id="expedienteLista[${expediente.expedienteIphId}].chk">
+                                                    <label for="checkbox${expediente.expedienteIphId}"></label>
+                                                </td>
+                                                <td>
+                                                    <div class="star">
+                                                        <a></a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <g:link action="detail_Iph"  id="${expediente.expedienteIphId}" style="color: #000000; text-decoration: none;">    
+                                                        ${expediente.expedienteIphNombre}
+                                                    </g:link>
+                                                </td>
+                                                <td>
+                                                    <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                                </td>
+                                                <td>
+                                                    <span class="body">${expediente.mensaje}</span>
+                                                </td>
+                                                <td>  
+                                                    <span class="subject">${expediente.urgencia}</span>
+                                                </td>
+
+                                                <td>
+                                                    <span class="label label-danger"></span>
+                                                </td>
+                                                <td>
+                                                    <g:link action="detail_iph"  id="${expediente.id}" class="table-link">  
 
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>

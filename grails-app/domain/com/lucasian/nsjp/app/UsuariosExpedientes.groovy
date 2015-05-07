@@ -6,6 +6,7 @@ class UsuariosExpedientes {
     String mensaje
     String tipoExpediente
     boolean leido
+    String urgencia
     
     static constraints = {
         mensaje (nullable: true, blank: true)

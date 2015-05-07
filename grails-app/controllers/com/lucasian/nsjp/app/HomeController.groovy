@@ -64,8 +64,11 @@ class HomeController {
         println ('userId:'+ userId + ' tc:' + tc)
         //TODO: Falta incluir consultas de IPH Compartido, Solicitud Audiencia, Solucitud Defensores
         def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
+        //def expedientesIPH = ExpedienteIph.executeQuery("from ExpedienteIph  where id in (select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
+        def expedientesIPH = ExpedienteIph.executeQuery("from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
 
-        [expedientesCompartidos: ExpCompartidos, tc: tc]
+        
+        [expedientesCompartidos: ExpCompartidos,expCompartidosIPH:expedientesIPH, tc: tc]
     }
         
     def denuncias() { 
@@ -302,7 +305,7 @@ class HomeController {
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'C'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
@@ -312,7 +315,7 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'C'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
                     usuexp.save()
                     print("usuario " + userId)
@@ -334,7 +337,7 @@ class HomeController {
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'D'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
@@ -344,7 +347,7 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'D'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -380,12 +383,21 @@ class HomeController {
     def compartirExpedienteIph() {
         print(params.listCompartir)
         def expediente = params.expedienteId
+        def mensajeExp = params.commentCompartir
+        def urgencia = params.urgenciaCompartir
+        def expedienteIphNombre = params.expedienteIphNombreCompartir
+
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
                 int userId = User.findByUsername(params.listCompartir).getId()
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
+                usuexp.mensaje=mensajeExp
+                usuexp.urgencia=urgencia
+                usuexp.expedienteIphNombre=expedienteIphNombre
+                usuexp.leido = false
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -394,6 +406,11 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
+                    usuexp.leido = false
+                    usuexp.mensaje=mensajeExp
+                    usuexp.urgencia=urgencia
+                    usuexp.expedienteIphNombre=expedienteIphNombre
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -411,6 +428,7 @@ class HomeController {
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -419,6 +437,7 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -437,6 +456,8 @@ class HomeController {
                 UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIpId = Integer.parseInt(expediente)
+                //usuexp.tipoExpediente = 'EE'
+
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -445,6 +466,7 @@ class HomeController {
                     UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIpId = Integer.parseInt(expediente)
+                    //usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -488,6 +510,8 @@ class HomeController {
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
+
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -496,6 +520,8 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
+
                     usuexp.save()
                     print("usuario " + userId)
                 }

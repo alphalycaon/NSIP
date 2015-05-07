@@ -73,6 +73,7 @@
 
 
 
+    <shiro:hasRole name="CES">
         <div class="row">
             <div class="col-lg-12">
 
@@ -87,7 +88,9 @@
                 </div>
             </div>
         </div>
-    <shiro:hasRole name="CES">
+        
+    </shiro:hasRole>
+    <!--shiro:hasRole name="CES"-->
         <div class="row">
             <div class="col-lg-12">                       
 
@@ -176,7 +179,7 @@
                                 </div>                                                                
                                 <div class="tab-pane fade" id="tab-responsable">
                                     <br/>
-                                    <h3>Datos del responsable</h3>
+                                    <h3>Datos del Imputado</h3>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nombre(s) </label>
                                         <input disabled="" type="text" class="form-control" name="imputadoIph.nombre" value="${expedienteIph.iph.imputadoIph.nombre}">
@@ -237,15 +240,15 @@
                                                             </span> 
                                                         </a>
                                                     </li>
-                                                     <shiro:hasRole name="Juez">
-                                                    <li>
-                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
-                                                            <span class="round-tabs seven">
-                                                                <i class="glyphicon glyphicon-facetime-video"></i>
-                                                            </span> 
-                                                        </a>
-                                                    </li>
-                                                     </shiro:hasRole>
+                                                    <shiro:hasRole name="Juez">
+                                                        <li>
+                                                            <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                <span class="round-tabs seven">
+                                                                    <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                </span> 
+                                                            </a>
+                                                        </li>
+                                                    </shiro:hasRole>
                                                 </ul>
                                             </div>
                                             <div class="tab-content">
@@ -305,7 +308,7 @@
 
 
 
-    </shiro:hasRole>
+    <!--/shiro:hasRole-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -389,10 +392,19 @@
                                     </g:each>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Urgencia</label>
+                                <select class="form-control" name="urgenciaCompartir" id="urgenciaCompartir">
+                                    <option>baja</option>
+                                    <option>media</option>
+                                    <option>alta</option>
+                                </select>
+                            </div>     
                         </form>      
                     </div>
-                    <div class="modal-footer">                                                                           
-                        <textarea class="form-control" rows="3" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
+                    <div class="modal-footer">      
+                        <input type="hidden" id="expedienteIphNombreCompartir" name="expedienteIphNombreCompartir" value="${expedienteIph.numeroIph}">
+                        <textarea class="form-control" name="commentCompartir" rows="3" id="commentCompartir" placeholder="Mensaje (Opcional)"></textarea>
                         </br>
                          <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            
                              <span  style="padding-right: 10px;"></span> Aceptar
@@ -408,7 +420,7 @@
     </div>
     <!--  -->
 
-                            
+
 
 
 <!--script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
@@ -431,219 +443,219 @@
 <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
 <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script-->
-        <script src="${resource(dir: 'js', file: 'application.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'hopscotch.js')}"></script>
-        <!--script src="${resource(dir: 'centaurus/js', file: 'my_tour.js')}"></script-->
-        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
-        <!--script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script-->
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'application.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'hopscotch.js')}"></script>
+    <!--script src="${resource(dir: 'centaurus/js', file: 'my_tour.js')}"></script-->
+    <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
+    <!--script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script-->
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'typeahead.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nestable.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script>
 
-        <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'modernizr.custom.js')}"></script>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'snap.svg-min.js')}"></script>
 
-        <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
-        <script src="${resource(dir: 'centaurus/js', file: 'fileExplorer.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'classie.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'notificationFx.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'fileExplorer.js')}"></script>
 
-        <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
-        <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
+    <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 <!--script>
 
-    $('#contenedor').jstree({  
-    "plugins" : ["checkbox"] 
-    });
+$('#contenedor').jstree({  
+"plugins" : ["checkbox"] 
+});
 
 </script-->   
 
 <!--<script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery-1.8.1.min.js')}"></script>-->
-<script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'centaurus/assets/js/', file: 'jquery.video-ui.js')}"></script>
 
-<script type="text/javascript">
-    $('#demo1').videoUI({
-    'autoHide':false
-    });
-</script>
+    <script type="text/javascript">
+        $('#demo1').videoUI({
+        'autoHide':false
+        });
+    </script>
 
 <!--script type="text/javascript">
     $('a.media').media({width:500, height:400});
 </script-->
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function() {
+        $(document).ready(function() {
 		$('#email-list li > .star > a').on('click', function() {
-    $(this).toggleClass('starred');
-    });
+        $(this).toggleClass('starred');
+        });
 
-    $(".has-tooltip").each(function (index, el) {
-    $(el).tooltip({
-    placement: $(this).data("placement") || 'bottom'
-    });
-    });
+        $(".has-tooltip").each(function (index, el) {
+        $(el).tooltip({
+        placement: $(this).data("placement") || 'bottom'
+        });
+        });
 
-    setHeightEmailContent();
+        setHeightEmailContent();
 
-    initEmailScroller();
-    });
+        initEmailScroller();
+        });
 
-    $(window).smartresize(function(){
-    setHeightEmailContent();
+        $(window).smartresize(function(){
+        setHeightEmailContent();
 
-    initEmailScroller();
-    });
+        initEmailScroller();
+        });
 
-    function setHeightEmailContent() {
+        function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
-    var windowHeight = $(window).height();
-    var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-    staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+        var windowHeight = $(window).height();
+        var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
+        staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 
-    $('#email-detail').css('height', windowHeight - staticContentH);
-    }
-    else {
-    $('#email-detail').css('height', '');
-    }
-    }
+        $('#email-detail').css('height', windowHeight - staticContentH);
+        }
+        else {
+        $('#email-detail').css('height', '');
+        }
+        }
 
-    function initEmailScroller() {
+        function initEmailScroller() {
 		if ($( document ).width() >= 992) {
-    $('#email-navigation').nanoScroller({
-    alwaysVisible: false,
-    iOSNativeScrolling: false,
-    preventPageScrolling: true,
-    contentClass: 'email-nav-nano-content'
-    });
+        $('#email-navigation').nanoScroller({
+        alwaysVisible: false,
+        iOSNativeScrolling: false,
+        preventPageScrolling: true,
+        contentClass: 'email-nav-nano-content'
+        });
 
-    $('#email-detail').nanoScroller({
-    alwaysVisible: false,
-    iOSNativeScrolling: false,
-    preventPageScrolling: true,
-    contentClass: 'email-detail-nano-content'
-    });
-    }
-    }
-</script> 
-<!--script>
-    $(document).ready(function() {
-
-    // activate Nestable for list 1
-    $('.nestable').nestable({
-    group: 1
-    });
-
-
-    // output initial serialised data
-    $('#nestable-menu').on('click', function(e){
-    var target = $(e.target),
-    action = target.data('action');
-    if (action === 'expand-all') {
-    $('.dd').nestable('expandAll');
-    }
-    if (action === 'collapse-all') {
-    $('.dd').nestable('collapseAll');
-    }
-    });
-    });
-</script-->
-<script> 
-    function aceptarCaso() { 
-    document.getElementById('div_archivos').style.display='block';
-    document.getElementById('div_aceptar_rechazar').style.display='none';
-    } 
-</script>
-<script type="text/javascript">
-    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-    if (isCaseSensitive)
-    str = str.toLowerCase();
+        $('#email-detail').nanoScroller({
+        alwaysVisible: false,
+        iOSNativeScrolling: false,
+        preventPageScrolling: true,
+        contentClass: 'email-detail-nano-content'
+        });
+        }
+        }
+    </script> 
+    <!--script>
+        $(document).ready(function() {
+    
+        // activate Nestable for list 1
+        $('.nestable').nestable({
+        group: 1
+        });
+    
+    
+        // output initial serialised data
+        $('#nestable-menu').on('click', function(e){
+        var target = $(e.target),
+        action = target.data('action');
+        if (action === 'expand-all') {
+        $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+        $('.dd').nestable('collapseAll');
+        }
+        });
+        });
+    </script-->
+    <script> 
+        function aceptarCaso() { 
+        document.getElementById('div_archivos').style.display='block';
+        document.getElementById('div_aceptar_rechazar').style.display='none';
+        } 
+    </script>
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-    var $el = $(selectionEl);
-    if (!$el.data("options")) {
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-    $el.data("options", $el.find("option").clone());
-    }
-    var newOptions = $el.data("options").filter(function () {
-    var text = $(this).text();
-    if (isCaseSensitive)
-    text = text.toLowerCase();
-    return text.match(str);
-    });
-    $el.empty().append(newOptions);
-    };
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
+        };
 
-    $("#SearchBox").on("keyup", function () {
-    var userInput = $("#SearchBox").val();
-    showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
-    });
-</script>  
+        $("#SearchBox").on("keyup", function () {
+        var userInput = $("#SearchBox").val();
+        showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput.toUpperCase());
+        });
+    </script>  
 
-<script type="text/javascript">
-    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-    if (isCaseSensitive)
-    str = str.toLowerCase();
+    <script type="text/javascript">
+        var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+        str = str.toLowerCase();
     // cache the jQuery object of the <select> element
-    var $el = $(selectionEl);
-    if (!$el.data("options")) {
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
         // cache all the options inside the <select> element for easy recover
-    $el.data("options", $el.find("option").clone());
-    }
-    var newOptions = $el.data("options").filter(function () {
-    var text = $(this).text();
-    if (isCaseSensitive)
-    text = text.toLowerCase();
-    return text.match(str);
-    });
-    $el.empty().append(newOptions);
-    };
+        $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+        var text = $(this).text();
+        if (isCaseSensitive)
+        text = text.toLowerCase();
+        return text.match(str);
+        });
+        $el.empty().append(newOptions);
+        };
 
-    $("#SearchCompartir").on("keyup", function () {
-    var userInput = $("#SearchCompartir").val();
-    showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
-    });
-</script>
-<script type="text/javascript">
-    function compartir(){
-    valor = document.getElementById('comment').value;
-    if(valor==''){
-    document.getElementById('comment').value += CompartirSelect.value;
-    }else{        
-    if(valor.indexOf(CompartirSelect.value)<0){
-    document.getElementById('comment').value += '\n'+CompartirSelect.value;
-    }
-    }
-    }
-</script>
-<!--script type="text/javascript">
-    $(function($) {		
-    $('#listDefensor').select2({
-    placeholder: 'Escribir defensor a asignar',
-    allowClear: true
-    });		
-    });
-</script-->
+        $("#SearchCompartir").on("keyup", function () {
+        var userInput = $("#SearchCompartir").val();
+        showOnlyOptionsSimilarToText($("#CompartirSelect"), userInput.toUpperCase());
+        });
+    </script>
+    <script type="text/javascript">
+        function compartir(){
+        valor = document.getElementById('comment').value;
+        if(valor==''){
+        document.getElementById('comment').value += CompartirSelect.value;
+        }else{        
+        if(valor.indexOf(CompartirSelect.value)<0){
+        document.getElementById('comment').value += '\n'+CompartirSelect.value;
+        }
+        }
+        }
+    </script>
+    <!--script type="text/javascript">
+        $(function($) {		
+        $('#listDefensor').select2({
+        placeholder: 'Escribir defensor a asignar',
+        allowClear: true
+        });		
+        });
+    </script-->
 
-<script type="text/javascript">
-    $(function($) {		
-    $('#listCompartir').select2({
-    placeholder: 'Nombre de la persona',
-    allowClear: true
-    });		
-    });
-</script>
+    <script type="text/javascript">
+        $(function($) {		
+        $('#listCompartir').select2({
+        placeholder: 'Nombre de la persona',
+        allowClear: true
+        });		
+        });
+    </script>
 
 <!--script>
     (function() {
@@ -702,25 +714,25 @@
     })();
 </script--> 
 
-<script> 
-    function mostrarImagenes() { 
-    document.getElementById('divImagenes').style.display='block'; 
-    document.getElementById('divVideos').style.display='none';
-    document.getElementById('sliderFrame2').style.display='none';
-    }
+    <script> 
+        function mostrarImagenes() { 
+        document.getElementById('divImagenes').style.display='block'; 
+        document.getElementById('divVideos').style.display='none';
+        document.getElementById('sliderFrame2').style.display='none';
+        }
 
-    function mostrarVideos() { 
-    document.getElementById('divVideos').style.display='block'; 
-    document.getElementById('divImagenes').style.display='none';
-    document.getElementById('sliderFrame2').style.display='none';
-    }
+        function mostrarVideos() { 
+        document.getElementById('divVideos').style.display='block'; 
+        document.getElementById('divImagenes').style.display='none';
+        document.getElementById('sliderFrame2').style.display='none';
+        }
 
-    function mostrarArchivos() { 
-    document.getElementById('sliderFrame2').style.display='block'; 
-    document.getElementById('divVideos').style.display='none';
-    document.getElementById('divImagenes').style.display='none';
-    }
-</script>
+        function mostrarArchivos() { 
+        document.getElementById('sliderFrame2').style.display='block'; 
+        document.getElementById('divVideos').style.display='none';
+        document.getElementById('divImagenes').style.display='none';
+        }
+    </script>
 
 
 </body>
