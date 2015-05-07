@@ -174,6 +174,45 @@
                         </g:if>
 
                     </header>
+                    <shiro:hasRole name="Juez">
+                        <div class="main-box-body clearfix">
+                            <div class="table-responsive">
+
+
+
+                                <table id="table-example-aud" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Audiencia</th>
+
+
+                                            <th>Comentarios</th>
+
+                                            <th>Solicitada por</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <g:each in="${solicitudesAudiencias}" var="audiencias" status="i">
+
+                                            <tr>
+                                                <td>
+                                                    <span class="body">${audiencias.tipoAudiencia}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="body">${audiencias.comentarios}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="body">${audiencias.createdBy}</span>
+                                                    </td>
+
+                                            </tr>
+                                        </g:each>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </shiro:hasRole>
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
 
@@ -187,7 +226,7 @@
                                             <th>Expediente</th>
                                             <th>Fecha Enviado</th>
                                             <th>Comentario</th>
-                                           
+
                                             <th>Prioridad</th>
                                             <th></th>
                                         </tr>
@@ -220,8 +259,8 @@
                                                 <td>
                                                     <span class="body">${expediente.mensaje}</span>
                                                 </td>
-                                                
-                                                
+
+
 
                                                 <td>
                                                     <span class="label label-danger">${expediente.urgencia}</span>
@@ -264,7 +303,7 @@
                                                 <td>
                                                     <span class="body">${expediente.mensaje}</span>
                                                 </td>
-                                                
+
                                                 <td>
                                                     <span class="label label-danger"></span>
                                                 </td>

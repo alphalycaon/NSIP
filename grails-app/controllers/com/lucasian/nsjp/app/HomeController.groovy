@@ -66,9 +66,13 @@ class HomeController {
         def ExpCompartidos = Expediente.executeQuery("from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
         //def expedientesIPH = ExpedienteIph.executeQuery("from ExpedienteIph  where id in (select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
         def expedientesIPH = ExpedienteIph.executeQuery("from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
+        def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
 
         
-        [expedientesCompartidos: ExpCompartidos,expCompartidosIPH:expedientesIPH, tc: tc]
+        [expedientesCompartidos: ExpCompartidos,expCompartidosIPH:expedientesIPH, tc: tc, solicitudesAudiencias:solAudiencias]
+        
+        
+    
     }
         
     def denuncias() { 
