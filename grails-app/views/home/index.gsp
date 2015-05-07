@@ -143,7 +143,7 @@
                                 </g:link>
                             </shiro:hasRole>
                             <shiro:hasRole name="CES">
-                                <g:link controller="ces" action="iph" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Denuncia/Querella">
+                                <g:link controller="ces" action="iph" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Generar Informe">
                                     <i class="glyphicon glyphicon-user"></i> Generar Informe 
                                 </g:link>
                             </shiro:hasRole>
