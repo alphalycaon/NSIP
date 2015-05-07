@@ -302,6 +302,7 @@
                                                             </span> 
                                                         </a>
                                                     </li>
+                                                    <shiro:hasRole name="Ministerio">
                                                     <li class="nav-tabsli">
                                                         <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
                                                             <span class="round-tabs seven">
@@ -309,53 +310,87 @@
                                                             </span> 
                                                         </a>
                                                     </li>
+                                                    </shiro:hasRole>
+                                                    <shiro:hasRole name="Juez">
+                                                    <li class="nav-tabsli">
+                                                        <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                            <span class="round-tabs seven">
+                                                                <i class="glyphicon glyphicon-facetime-video"></i>
+                                                            </span> 
+                                                        </a>
+                                                    </li>
+                                                    </shiro:hasRole>
                                                 </ul>
                                             </div>
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active" id="tab-archivos">
-                                                    <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
-                                                </div>
-                                                <div class="tab-pane fade" id="tab-imagenes">
-                                                    <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
-                                                </div>
-                                                <div class="tab-pane fade" id="tab-videos">
-                                                    <div class="col-lg-12">
-                                                        <div class="col-md-6 dd">
-                                                            <div>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
-                                                                </br>
-                                                                <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                            
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade in active" id="tab-archivos">
+                                                        <doc:explorerAndUpload numeroExpediente="${expediente.numeroExpediente}"/>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="tab-imagenes">
+                                                        <doc:gallery  numeroExpediente="${expediente.numeroExpediente}"/>
+                                                    </div>
+                                                    <shiro:hasRole name="Juez">
+                                                    <div class="tab-pane fade" id="tab-videos">
+                                                        <div class="col-lg-12">
+                                                            <div class="col-md-6 dd">
+                                                                <div>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4'">1.- Introducción</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video2.mp4'">2.- Audiencia Inicial</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video3.mp4'">3.- Apertura de la audiencia</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video4.mp4'">4.- Control de la detención</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video5.mp4'">5.- Formulación de la imputación y declaración del imputado</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video6.mp4'">6.- Vinculación a proceso</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video7.mp4'">7.- Medidas cautelares</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video8.mp4'">8.- Plazo de cierre de la investigación</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video9.mp4'">9.- Ultimas manifestaciones y cierre de la audiencia</a></b>
+                                                                    </br>
+                                                                    <b><a href="#" onclick="document.getElementById('demo1').src = 'http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video10.mp4'">10.- Etapa intermedia</a></b>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6 dd">
-                                                            </br>
-                                                            <div class="videoUiWrapper thumbnail">
-                                                                <video width="483" height="282" id="demo1">
-                                                                    <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
-                                                                    Your browser does not support the video tag.
-                                                                </video>
+                                                            <div class="col-md-6 dd">
+                                                                </br>
+                                                                <div class="videoUiWrapper thumbnail">
+                                                                    <video width="483" height="282" id="demo1">
+                                                                        <source src="http://www.setec.gob.mx/work/models/SETEC/Macroflujo_conceptual/videos/video1.mp4" type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    </shiro:hasRole>
+                                                    <shiro:hasRole name="Ministerio">
+                                                    <div class="tab-pane fade" id="tab-videos">
+                                                        <div class="col-lg-12">
+                                                            <div class="col-md-6 dd">
+                                                                <div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 dd">
+                                                                </br>
+                                                                <div class="videoUiWrapper thumbnail">
+                                                                    <video width="483" height="282" id="demo1">
+                                                                        <source src="${request.contextPath}/videos/ministerio/Pelea_entre_civiles_y_policias_en_Guadalajara.mp4" type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </shiro:hasRole>
                                                 </div>
-                                            </div>
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>
