@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
 -->
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
+        
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
         <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
@@ -437,12 +440,15 @@
 <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
-<script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
+
 
 <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
 <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
 <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script-->
+                            
+<script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>                            
+                            
     <script src="${resource(dir: 'js', file: 'application.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
