@@ -65,9 +65,9 @@
                                 <button class="btn btn-primary" type="button" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Notificar a unidad justicia alternativa restaurativa">
                                     <i class="fa fa-life-bouy"></i>
                                 </button>
-                                <g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
+                                <!--g:link controller="home" action="moverDenuncia" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Crear documento relacionado">
                                     <i class="glyphicon glyphicon-folder-open"></i>
-                                </g:link>
+                                </g:link-->
                                 <button type="button" class="btn btn-primary pull-right" style=" margin-left: 3px" data-toggle="modal" data-target="#myModalCompartir"  title="Compartir Expediente"> 
                                     <i class="fa fa-share-alt"></i>
                                 </button> 
