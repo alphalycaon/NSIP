@@ -375,7 +375,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <a href="${request.contextPath}/home/index_Iph" class="btn btn-primary" >                                            
+                                                <a href="${request.contextPath}/home/index" class="btn btn-primary" >                                            
                                                     <span  style="padding-right: 10px;"></span> Si
                                                 </a>   
                                                 <a data-dismiss="modal" class="btn btn-danger">                                            
