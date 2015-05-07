@@ -197,8 +197,9 @@
                                         <g:each in="${expedientesCompartidos}" var="expediente" status="i">
 
                                             <tr>
-                                                <g:hiddenField id="expedienteLista[${expediente.expedienteId}].ide" name="expedienteLista[${expediente.expedienteId}].ide" value="${expediente.expedienteId}"/>
-                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.expedienteId}].valor" name="expedienteLista[${expediente.expedienteId}].valor" value="ninguno"/>
+                                                <g:hiddenField id="expedienteLista[${expediente.id}].ide" name="expedienteLista[${expediente.id}].ide" value="${expediente.id}"/>
+                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.id}].valor" name="expedienteLista[${expediente.id}].valor" value="ninguno"/>
+                                                <g:hiddenField id="expedienteLista[${expediente.id}].tipo" name="expedienteLista[${expediente.id}].tipo" value="EXP"/>
                                                 <td>
                                                     <input type="checkbox" name="expedienteLista[${expediente.expedienteId}].chk" id="expedienteLista[${expediente.expedienteId}].chk">
                                                     <label for="checkbox${expediente.expedienteId}"></label>
@@ -240,8 +241,9 @@
                                             <g:each in="${expCompartidosIPH}" var="expediente" status="i">
 
                                             <tr>
-                                                <g:hiddenField id="expedienteListaIPH[${expediente.expedienteIphId}].ide" name="expedienteListaIPH[${expediente.expedienteIphId}].ide" value="${expediente.expedienteIphId}"/>
-                                                <g:hiddenField class="valorN" id="expedienteListaIPH[${expediente.expedienteIphId}].valor" name="expedienteListaIPH[${expediente.expedienteIphId}].valor" value="ninguno"/>
+                                                <g:hiddenField id="expedienteLista[${expediente.expedienteIphId}].ide" name="expedienteLista[${expediente.expedienteIphId}].ide" value="${expediente.expedienteIphId}"/>
+                                                <g:hiddenField class="valorN" id="expedienteLista[${expediente.expedienteIphId}].valor" name="expedienteLista[${expediente.expedienteIphId}].valor" value="ninguno"/>
+                                                <g:hiddenField id="expedienteLista[${expediente.expedienteIphId}].tipo" name="expedienteLista[${expediente.expedienteIphId}].tipo" value="IPH"/>
                                                 <td>
                                                     <input type="checkbox" name="expedienteLista[${expediente.expedienteIphId}].chk" id="expedienteLista[${expediente.expedienteIphId}].chk">
                                                     <label for="checkbox${expediente.expedienteIphId}"></label>

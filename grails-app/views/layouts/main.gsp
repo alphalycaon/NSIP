@@ -558,7 +558,7 @@
                     </li>
                     </br>
                     <li>
-                        <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph.docx')} title="Descargar">
+                        <a href=${resource(dir: 'Plantillas', file: 'PlantillaIph_1.docx')} title="Descargar">
                             <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla IPH
                         </a>
                     </li>
@@ -566,6 +566,13 @@
                     <li>
                         <a href=${resource(dir: 'Plantillas', file: 'PlantillaDenuncia.docx')} title="Descargar">
                             <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Plantilla Denuncia
+                        </a>
+                    </li>
+                    <!--Nuevas Plantillas-->
+                    </br>
+                    <li>
+                        <a href=${resource(dir: 'Plantillas', file: 'Modelo_Averiguacion-Denuncia.docx')} title="Descargar">
+                            <span class="fa fa-file-word-o" style="padding-right: 10px;"></span> Modelo Averiguación-Denuncia
                         </a>
                     </li>
                 </div>
