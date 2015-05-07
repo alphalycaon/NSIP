@@ -54,7 +54,7 @@ class DocumentsTagLib {
         out<<'</div>'
         out<<'</div>'
         out<<'<div>'
-        out<<'<input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Refentes" data-role="tagsinput"/>'
+        out<<'<input type="text" value="Imagen de aprobatoria,Imagen de la defensoria,Anexos al caso,Imagenes Referentes" data-role="tagsinput"/>'
         out<<'</div>'
         out<<'</div>'
         out<<'</div>'

@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'js-image-slider.css')}"/>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css/', file: 'tabs.css')}">
 -->
+        
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap-tagsinput.css')}"/>
+        
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
         <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
@@ -249,6 +252,15 @@
                                                             </a>
                                                         </li>
                                                     </shiro:hasRole>
+                                                    <shiro:hasRole name="Ministerio">
+                                                        <li>
+                                                            <a href="#tab-videos" style="margin-left: auto; margin-right: auto;" data-toggle="tab" title="Vídeos">
+                                                                <span class="round-tabs seven">
+                                                                    <i class="glyphicon glyphicon-facetime-video"></i>
+                                                                </span> 
+                                                            </a>
+                                                        </li>
+                                                    </shiro:hasRole>
                                                 </ul>
                                             </div>
                                             <div class="tab-content">
@@ -258,7 +270,8 @@
                                                 <div class="tab-pane fade" id="tab-imagenes">
                                                     <doc:gallery  numeroExpediente="${expedienteIph.numeroIph}"/>
                                                 </div>
-                                                <div class="tab-pane fade" id="tab-videos">
+                                                <shiro:hasRole name="Juez">
+                                                    <div class="tab-pane fade" id="tab-videos">
                                                     <div class="col-lg-12">
                                                         <div class="col-md-6 dd">
                                                             <div>
@@ -294,7 +307,27 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    </div>
+                                                </shiro:hasRole>
+                                                <shiro:hasRole name="Juez">
+                                                    <div class="tab-pane fade" id="tab-videos">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-md-6 dd">
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 dd">
+                                                            </br>
+                                                            <div class="videoUiWrapper thumbnail">
+                                                                <video width="483" height="282" id="demo1">
+                                                                    <source src="${request.contextPath}/videos/ministerio/Pelea_entre_civiles_y_policias_en_Guadalajara.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </shiro:hasRole>
                                             </div>
                                         </div>
                                     </div>
@@ -437,12 +470,15 @@
 <script src="${resource(dir: 'js', file: 'jquery.jcarousel.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'jcarousel.connected-carousels.js')}"></script>
 
-<script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>
+
 
 <script src="${resource(dir: 'js', file: 'js-image-slider.js')}"></script>
 <script src="${resource(dir: 'js', file: 'mcVideoPlugin.js')}"></script>  
 
 <script src="${resource(dir: 'js', file: 'jquery.media.js')}"></script-->
+                            
+<script src="${resource(dir: 'js', file: 'bootstrap-tagsinput.min.js')}"></script>                            
+                            
     <script src="${resource(dir: 'js', file: 'application.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
     <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script>
