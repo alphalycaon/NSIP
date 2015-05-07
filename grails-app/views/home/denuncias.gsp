@@ -152,7 +152,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <g:link action="detail"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                <g:link action="detail_Iph"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
                                                     ${expediente.numeroIph}
                                                 </g:link>
                                             </td>
@@ -169,7 +169,7 @@
                                                 <span class="label label-danger">iph/ip</span>
                                             </td>
                                             <td>
-                                                <g:link action="detail"  id="${expediente.id}" class="table-link">  
+                                                <g:link action="detail_Iph"  id="${expediente.id}" class="table-link">  
 
                                                     <span class="fa-stack">
                                                         <i class="fa fa-square fa-stack-2x"></i>

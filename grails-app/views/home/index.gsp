@@ -204,7 +204,41 @@
 
 
                                     </g:each>     
+                                    <g:each in="${expIPH}" var="expediente" status="i">
+                                        <g:if test="${i < 5}" >
+                                            <tr>
+                                                <td>
+                                                    <g:link action="detail_Iph"  id="${expediente.id}" style="color: #000000; text-decoration: none;">    
+                                                        ${expediente.numeroIph}
+                                                    </g:link>
+                                                </td>
+                                                <td>
+                                                    <g:formatDate format="dd/MM/yyyy HH:mm" date="${expediente.dateCreated}"/>
+                                                </td>
+                                                <td>
+                                                <span class="body">${expediente.iph.datosIph.asunto}</span>
+                                                </td>
+                                                <td>  
+                                                <span class="subject">${expediente.iph.imputadoIph.nombre}</span>
+                                                </td>
+                                                <td>  
+                                                    <span class="subject">IPH</span>
+                                                </td>
 
+                                                <td>
+                                                    <g:link action="detail_Iph"  id="${expediente.id}" class="table-link">  
+
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </g:link>
+                                                </td>
+                                            </tr>
+                                        </g:if>
+
+
+                                    </g:each>  
 
                                 </tbody>
                             </table>
