@@ -517,7 +517,9 @@
                                 </div>
                             </form>      
                         </div>
-                        <div class="modal-footer">                                                                           
+                        <div class="modal-footer">   
+                        <input type="hidden" id="expedienteNombreCompartirDef" name="expedienteNombreCompartirDef" value="${expediente.numeroExpediente}">
+
                             <textarea class="form-control" rows="3" name="commentCompartirDef" id="commentCompartirDef" placeholder="Mensaje (Opcional)"></textarea>
                             </br>
                              <!--<a data-dismiss="modal" class="btn btn-primary" id="notificacionCompartir">                                            

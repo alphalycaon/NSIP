@@ -38,8 +38,9 @@ class MinisterioController {
         
     }
     def denuncia() { 
+        
         [expedientesIph: ExpedienteIph.list()]
-        System.out.println("Hola");
+        
     }
     def documentService ={}
     

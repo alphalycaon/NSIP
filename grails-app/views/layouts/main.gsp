@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <g:layoutHead/>
         <g:javascript library="application"/>		
-    <r:layoutResources />
-    <title>MOPgp</title>
+
+        <title>MOPgp</title>
 
     <script type="text/javascript">
         //<![CDATA[
@@ -381,7 +381,7 @@
 
                                     <shiro:hasRole name="Juez">
                                         <li class="active">
-                                            <a href="${request.contextPath}/home/bandeja?tc=EE">
+                                            <a href="${request.contextPath}/home/calendar">
                                                 <i class="fa fa-inbox"></i>
                                                 <span>Bandeja de Entrada</span>
                                                 <span class="label label-info label-circle pull-right" id="ntf_Entrada"></span>
@@ -439,7 +439,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="not-active">
+                                            <a href="${request.contextPath}/home/agenda" class="not-active">
                                                 <i  class="fa fa-calendar"></i>
                                                 <span style="font-size: 10px;">Itinerario de audiencias</span>
                                             </a>
@@ -508,7 +508,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="#" class="not-active">
+                                            <a href="${request.contextPath}/home/agenda" class="not-active">
                                                 <i  class="fa fa-calendar"></i>
                                                 <span style="font-size: 10px;">Itinerario de audiencias</span>
                                             </a>

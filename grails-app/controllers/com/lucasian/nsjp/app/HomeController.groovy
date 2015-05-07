@@ -298,6 +298,7 @@ class HomeController {
                     usuexp.urgencia=urgencia
                     usuexp.expedienteNombre=expedienteNombre
                     usuexp.dateCreated=today
+                    usuexp.leido = false
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -310,6 +311,8 @@ class HomeController {
     def compartirExpedienteDef() {
         def expediente = params.expedienteId3
         def mensajeExp = params.commentCompartirDef
+        def expedienteNombre = params.expedienteNombreCompartirDef
+        def today = new Date()
         if(params.listCompartirDef != null && params.listCompartirDef != ""){
             if(params.listCompartirDef instanceof String){
                 int userId = User.findByUsername(params.listCompartirDef).getId()
@@ -318,6 +321,10 @@ class HomeController {
                 usuexp.expedienteId = Integer.parseInt(expediente)
                 usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
+                usuexp.urgencia='alta'
+                usuexp.expedienteNombre=expedienteNombre
+                usuexp.dateCreated=today
+                usuexp.leido = false
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -328,6 +335,10 @@ class HomeController {
                     usuexp.expedienteId = Integer.parseInt(expediente)
                     usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
+                    usuexp.urgencia='alta'
+                    usuexp.expedienteNombre=expedienteNombre
+                    usuexp.dateCreated=today
+                    usuexp.leido = false
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -691,7 +702,7 @@ class HomeController {
         
         if(idSolicitud != null && idSolicitud!= ""){
             SolicitudAudiencia solicitudAudiencia = SolicitudAudiencia.get(idSolicitud)
-
+            inicio = inicio.replace(",", "")
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
             Date fechaInicio = sdf.parse(inicio)
              
@@ -724,7 +735,11 @@ class HomeController {
         print('id='+idAgenda+', inicio='+inicio+', fin='+fin)
         
         if(idAgenda != null && idAgenda!= ""){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+            fin = fin.replace(",", "")
+            inicio = inicio.replace(",", "")
+
+            
             Date fechaInicio = sdf.parse(inicio)
             Date fechaFin = sdf.parse(fin)
             

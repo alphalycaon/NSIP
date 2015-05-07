@@ -358,7 +358,8 @@
 <script>
             $(function($) {	
                     //masked inputs
-                    $("#maskedDate").mask("99/99/9999");
+                   // $("#maskedDate").mask("99/99/9999");
+                      $("#maskedDate").mask("9999-99-99");
 
                     $.fn.datepicker.dates['es'] = {
 			days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
@@ -376,7 +377,7 @@
                         language: 'es',
                         clearBtn: true
                     });
-
+/*
                     $('#datepickerDateComponent').datepicker();
 
                     //timepicker
@@ -387,7 +388,7 @@
                             showWidget: true
                     }).focus(function() {
                             $(this).next().trigger('click');
-                    });		
+                    });	*/	
             });
 	</script>
         <script>  
