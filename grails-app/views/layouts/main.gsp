@@ -25,8 +25,17 @@
             //]]>
     </script>
     <script type="text/javascript">
-            var contextPath = '${request.contextPath}';
-
+        function peticionDenuncia(){
+            var url = '${request.contextPath}'/home/denuncia;
+            $.ajax({
+                url: url,
+                type: 'POST',
+                success: function(){
+                    console.log('exito');
+                }
+            })
+        }
+            
 
     </script>
     <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
@@ -281,7 +290,7 @@
                                                     </a>
                                                 </li>
                                                 <li <g:if test="${tc=='DQ'}">class="active"</g:if>>
-                                                    <a href="${request.contextPath}/home/denuncias">
+                                                    <a href="${request.contextPath}/home/denuncias?tc=DQ">
                                                         <i class="fa fa-slack"></i>
                                                         <span style="font-size: 10px;">Denuncias o querellas</span>
                                                         <span class="label label-default label-circle pull-right" id="ntf_Denuncia"></span>

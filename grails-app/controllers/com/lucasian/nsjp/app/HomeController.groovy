@@ -71,7 +71,7 @@ class HomeController {
         [expedientesCompartidos: ExpCompartidos,expCompartidosIPH:expedientesIPH, tc: tc]
     }
         
-    def denuncias() { 
+    def denuncias(String tc) {
         //   consultaNotificaciones();
         def subject = SecurityUtils.subject
         def userName  = subject?.principal
@@ -108,7 +108,7 @@ class HomeController {
         //session.get
         
         //[expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
-        [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH]
+        [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH, tc:tc]
     }
     
     def index_Solicitudes() { 
