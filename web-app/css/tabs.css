@@ -2,10 +2,10 @@
 /* written by riliwan balogun http://www.facebook.com/riliwan.rabo*/
 .board{
     width: 75%;
-margin: 60px auto;
-height: 500px;
-background: #FFFFFF;
-/*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
+    margin: 60px auto;
+    height: 500px;
+    background: #FFFFFF;
+    /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
 }
 .board .nav-tabs {
     position: relative;
@@ -14,7 +14,7 @@ background: #FFFFFF;
     margin: 40px auto;
     margin-bottom: 0;
     box-sizing: border-box;
-	background: #FFFFFF;
+    background: #FFFFFF;
 }
 .board .nav-tabs2 {
     position: relative;
@@ -23,7 +23,7 @@ background: #FFFFFF;
     margin: 40px auto;
     margin-bottom: 0;
     box-sizing: border-box;
-	background: #FFFFFF;
+    background: #FFFFFF;
 
 }
 .board .nav-tabs3 {
@@ -33,7 +33,7 @@ background: #FFFFFF;
     margin: 40px auto;
     margin-bottom: 0;
     box-sizing: border-box;
-	background: #FFFFFF;
+    background: #FFFFFF;
 }
 
 .board > div.board-inner{
@@ -54,7 +54,7 @@ p.narrow{
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 57px;
+    top: 145px;
     z-index: 1;
 }
 
@@ -82,7 +82,7 @@ p.narrow{
     z-index: 1;
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+.nav-tabs1 > li.active > a, .nav-tabs1 > li.active > a:hover, .nav-tabs1 > li.active > a:focus {
     color: #555555;
     cursor: default;
     background-color: #ffffff;
@@ -192,7 +192,7 @@ li.active span.round-tabs.seven{
     color: #60e554;
 }
 
-.nav-tabs > li.active > a span.round-tabs{
+.nav-tabs1 > li.active > a span.round-tabs{
     background: #fff;
 }
 
@@ -204,7 +204,7 @@ li.active span.round-tabs.seven{
     background: #fff;
 }
 
-.nav-tabs > li {
+.nav-tabs1 > li {
     width: 25%;
 }
 
@@ -215,64 +215,62 @@ li.active span.round-tabs.seven{
 .nav-tabs3 > li {
     width: 50%;
 }
-/*li.active:before {
+.nav-tabsli.active:before {
+    content: " ";
+    position: absolute;
+    left: 45%;
+    opacity:1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #ddd;
+}
+.nav-tabsli:after {
     content: " ";
     position: absolute;
     left: 45%;
     opacity:0;
     margin: 0 auto;
-    bottom: -2px;
-    border: 10px solid transparent;
-    border-bottom-color: #fff;
-    z-index: 1;
-    transition:0.2s ease-in-out;
-}*/
-li:after {
-    content: " ";
-    position: absolute;
-    left: 45%;
-   opacity:0;
-    margin: 0 auto;
     bottom: 0px;
     border: 5px solid transparent;
     border-bottom-color: #ddd;
     transition:0.1s ease-in-out;
-    
+
 }
-li.active:after {
+.nav-tabsli.active:after {
     content: " ";
     position: absolute;
     left: 45%;
-   opacity:1;
+    opacity:1;
     margin: 0 auto;
     bottom: 0px;
     border: 10px solid transparent;
     border-bottom-color: #ddd;
-    
+
 }
-.nav-tabs > li a{
-   width: 70px;
-   height: 70px;
-   margin: 20px auto;
-   border-radius: 100%;
-   padding: 0;
+.nav-tabs1 > li a{
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
 }
 .nav-tabs2 > li a{
-   width: 70px;
-   height: 70px;
-   margin: 20px auto;
-   border-radius: 100%;
-   padding: 0;
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
 }
 .nav-tabs3 > li a{
-   width: 70px;
-   height: 70px;
-   margin: 20px auto;
-   border-radius: 100%;
-   padding: 0;
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
 }
 
-.nav-tabs > li a:hover{
+.nav-tabs1 > li a:hover{
     background: #FFFFFF;
 }
 
@@ -287,8 +285,8 @@ li.active:after {
 .tab-content{
 }
 .tab-pane{
-   position: relative;
-padding-top: 50px;
+    position: relative;
+    padding-top: 50px;
 }
 .tab-content .head{
     font-family: 'Roboto Condensed', sans-serif;
@@ -312,41 +310,41 @@ padding-top: 50px;
 
 
 @media( max-width : 585px ){
-    
+
     .board {
-width: 90%;
-height:auto !important;
-}
+        width: 90%;
+        height:auto !important;
+    }
     span.round-tabs {
         font-size:16px;
-width: 50px;
-height: 50px;
-line-height: 50px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
     }
     .tab-content .head{
         font-size:20px;
-        }
+    }
     .nav-tabs > li a {
-width: 50px;
-height: 50px;
-line-height:50px;
-}.nav-tabs2 > li a {
-width: 50px;
-height: 50px;
-line-height:50px;
-}.nav-tabs3 > li a {
-width: 50px;
-height: 50px;
-line-height:50px;
-}
+        width: 50px;
+        height: 50px;
+        line-height:50px;
+    }.nav-tabs2 > li a {
+        width: 50px;
+        height: 50px;
+        line-height:50px;
+    }.nav-tabs3 > li a {
+        width: 50px;
+        height: 50px;
+        line-height:50px;
+    }
 
-li.active:after {
-content: " ";
-position: absolute;
-left: 35%;
-}
+    li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
 
-.btn-outline-rounded {
-    padding:12px 20px;
+    .btn-outline-rounded {
+        padding:12px 20px;
     }
 }

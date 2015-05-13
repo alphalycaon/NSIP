@@ -17,20 +17,20 @@
             try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1422370982,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"644815e7f35929d560576408cdb41087",petok:"fa3566be061578204952751ff8c13cf9513fba22-1422562621-1800",zone:"adbee.technology",rocket:"0",apps:{"ga_key":{"ua":"UA-49262924-2","ga_bs":"2"}}}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=919620257c/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
 //]]>
         </script>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css"/>
 
-        <script src="js/demo-rtl.js"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/bootstrap',file:'bootstrap.min.css')}"/>
+        <script src="${resource(dir: 'centaurus/js',file:'demo-rtl.js')}"></script>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'font-awesome.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'nanoscroller.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'layout.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled', file:'elements.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.css')}"  type="text/css"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/libs/fullcalendar.print.css')}"  type="text/css" media="print"/>
+        <link rel="stylesheet" href="${resource(dir: 'centaurus/css/compiled/calendar.css')}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'morris.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'daterangepicker.css')}"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/libs', file:'jquery-jvectormap-1.2.2.css')}" />
 
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/libs/font-awesome.css"/>
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/libs/nanoscroller.css"/>
-
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/compiled/theme_styles.css"/>
-
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/libs/fullcalendar.css" type="text/css"/>
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/libs/fullcalendar.print.css" type="text/css" media="print"/>
-        <link rel="stylesheet" href="${request.contextPath}/centaurus/css/compiled/calendar.css" type="text/css" media="screen"/>
-
-        <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
         <!--[if lt IE 9]>
@@ -54,70 +54,67 @@
         </script>
     </head>
     <body>
-        <div class="row" style="opacity: 1;">
+        <div class="row">
             <div class="col-lg-12">
-                <div id="email-detail" class="email-detail-nano has-scrollbar" style="min-height: 950px;">
-                    <div class="email-detail-nano-content" tabindex="0" style="right: -16px;">
-                        <div class="row">
-                            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 class="pull-left">Agenda de Audiencias</h2>
+                        <div class="filter-block pull-right">
+
+                            <a href="${request.contextPath}" class="btn btn-primary">                                            
+                                <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
+                            </a>
+                        </div>
+                </div>
+            </div>   
+            </br>
+            <div class="row">
+                <div class="col-md-3 hidden-xs hidden-sm" >
+                    <div class="main-box" id="external-events">
+                        <header class="main-box-header clearfix">
+                            <g:form name="formGuardar" controller="home" action="guardarAudiencia">
+                                <h4>Número de causa</h4>
+                                <div>
+                                    <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
+                                    <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
+                                    <input type="hidden" id="solicitudId" name="solicitudId" class="form-control">
+                                    <input type="hidden" id="inicio" name="inicio" class="form-control">
+                                    <input type="hidden" id="fin" name="fin" class="form-control">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
+                                </div>
                                 </br>
-                                <h1>Agenda de Audiencias</h1>
-                                <div id="email-header-tools" class="pull-right">                                   
-                                    <a href="${request.contextPath}" class="btn btn-primary">                                            
-                                        <span class="fa fa-chevron-left" style="padding-right: 10px;"></span> Regresar
-                                    </a>
+                                <h4>Juez</h4>
+                                <div>
+                                    <select class="form-control" name="selectJuez" id="selectJuez">
+                                        <g:each in="${jueces}" var="juez" status="i">
+                                            <option value="${juez.nombre}">${juez.nombre}</option>
+                                        </g:each>
+                                    </select>
                                 </div>
-                            </div>
-                        </div>   
-                        </br>
-                        <div class="row">
-                            <div class="col-md-3 hidden-xs hidden-sm" >
-                                <div class="main-box" id="external-events">
-                                    <header class="main-box-header clearfix">
-                                      <g:form name="formGuardar" controller="home" action="guardarAudiencia">
-                                        <h4>Número de causa</h4>
-                                        <div>
-                                            <input type="text" id="numCaso" name="numCaso" class="form-control"></br>
-                                            <input type="hidden" id="tipoAudiencia" name="tipoAudiencia" class="form-control">
-                                            <input type="hidden" id="solicitudId" name="solicitudId" class="form-control">
-                                            <input type="hidden" id="inicio" name="inicio" class="form-control">
-                                            <input type="hidden" id="fin" name="fin" class="form-control">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Buscar</button>
-                                        </div>
-                                        </br>
-                                        <h4>Juez</h4>
-                                        <div>
-                                            <select class="form-control" name="selectJuez" id="selectJuez">
-                                                <g:each in="${jueces}" var="juez" status="i">
-                                                    <option value="${juez.nombre}">${juez.nombre}</option>
-                                                </g:each>
-                                            </select>
-                                        </div>
-                                        </br>
-                                        <h4>Audiencias</h4>
-                                        <div class="main-box-body clearfix">
-                                            <div class="form-group">
-                                                <div class="external-event label-primary" data-eventclass="label-primary">Agendar Audiencia</div>
-                                            </div>
-                                            </br>
-                                        </div>
-                                      </g:form>
-                                    </header>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="main-box">
-                                    <div class="main-box-body clearfix">
-                                        <div id="calendar" style="min-height: 820px;"></div>
+                                </br>
+                                <h4>Audiencias</h4>
+                                <div class="main-box-body clearfix">
+                                    <div class="form-group">
+                                        <div class="external-event label-primary" data-eventclass="label-primary">Agendar Audiencia</div>
                                     </div>
+                                    </br>
                                 </div>
-                            </div>
+                            </g:form>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="main-box">
+                        <div class="main-box-body clearfix">
+                            <div id="calendar" style="min-height: 820px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-         <!--Modal-->
+
+
+<!--Modal-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="alignment-adjust:auto">
             <div class="modal-dialog">
                 <div class="modal-content" style="width:820px">
@@ -129,7 +126,7 @@
                     <div class="modal-body">
                         <div class="scrollable" id="CustomerSelectDiv">
                             <select size="2" class="form-control" id="selectSolicitud">
-                                
+
                             </select>
                         </div>
                     </div>
@@ -175,14 +172,56 @@
             });
         </script>       
 
-        <script src="${request.contextPath}/centaurus/js/jquery.js"></script>
-        <!--<script src="${request.contextPath}/centaurus/js/bootstrap.js"></script>-->
-        <script src="${request.contextPath}/centaurus/js/jquery.nanoscroller.min.js"></script>
-        <script src="${request.contextPath}/centaurus/js/demo.js"></script>
-        <script src="${request.contextPath}/centaurus/js/jquery-ui.custom.min.js"></script>
-        <script src="${request.contextPath}/centaurus/js/fullcalendar.min.js"></script>
-        <script src="${request.contextPath}/centaurus/js/scripts.js"></script>
-        <script src="${request.contextPath}/centaurus/js/pace.min.js"></script>
+
+
+        <script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script>  
+
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-ui.custom.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'fullcalendar.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.slimscroll.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'raphael-min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'morris.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'daterangepicker.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-1.2.2.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery-jvectormap-world-merc-en.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'gdp-data.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.pie.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.stack.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.resize.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.time.min.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js/flot', file: 'jquery.flot.threshold.js')}"></script>
+        <!--script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'pace.min.js')}"></script-->
+
+    <!--advanced tables-->
+    <!--script src="${resource(dir: 'centaurus/js', file: 'demo-skin-changer.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script> 
+    <script src="${resource(dir: 'centaurus/js', file: 'bootstrap.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'jquery.nanoscroller.min.js')}"></script>
+    <script src="${resource(dir: 'centaurus/js', file: 'demo.js')}"></script-->   
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.fixedHeader.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'dataTables.tableTools.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.dataTables.bootstrap.js')}"></script> 
+        <!--advanced tables-->
+
+        <script src="${resource(dir: 'centaurus/js', file: 'wizard.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.maskedinput.min.js')}"></script> 
+
+
+        <script src="${resource(dir: 'centaurus/js', file: 'bootstrap-editable.min.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'select2.min.js')}"></script> 
+
+        <script src="${resource(dir: 'centaurus/js', file: 'moment.min.js')}"></script> 
+        <script src="${resource(dir: 'centaurus/js', file: 'scripts.js')}"></script>
+        <script src="${resource(dir: 'centaurus/js', file: 'dropzone.js')}"></script>
 
         <script type="text/javascript">
 
@@ -256,7 +295,7 @@
 
             // store the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
-            
+
             // make the event draggable using jQuery UI
             $(this).draggable({
             zIndex: 999,
@@ -290,7 +329,7 @@
             selectHelper: true,
             select: function(start, end, allDay) {
             var title = prompt('Tipo de Audiencia:');
-            
+
             if (title) {
             title = 'Audiencia: ' + document.getElementById('tipoAudiencia').value + '\nJuez: ' + document.getElementById('selectJuez').value + '\nCausa: ' + document.getElementById('numCaso').value;
             calendar.fullCalendar('renderEvent',
@@ -308,23 +347,23 @@
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function(date, allDay) { // this function is called when something is dropped
-            
+
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
-            
+
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
 
             // assign it the date that was reported
             copiedEventObject.start = date;
             copiedEventObject.allDay = allDay;
-            
+
             //Se graba la informacion en la bd
             document.getElementById('inicio').value = date.toLocaleString();
             //document.getElementById('fin').value = (date.addHours(2)).toLocaleString();
             //$('#formGuardar').submit();
             guardarAudiencias();
-            
+
             // copy label class from the event object
             var labelClass = $(this).data('eventclass');
 
@@ -349,32 +388,32 @@
             },
             events: [
             <g:each in="${agendasAudiencias}" var="audiencia" status="i">
-             {   
+                {   
                 id: '${audiencia.id}',
                 title: 'Audiencia: ${audiencia.solicitudAudiencia.tipoAudiencia}\nJuez: ${audiencia.juez}\nCausa: ${audiencia.solicitudAudiencia.expediente.numeroExpediente}',
-                start: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
-                end: '<g:formatDate format="yyyy-MM-dd" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
+                start: '<g:formatDate format="yyyy-dd-MM" date="${audiencia.inicio}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.inicio}"/>',
+                end: '<g:formatDate format="yyyy-dd-MM" date="${audiencia.fin}"/>T<g:formatDate format="HH:mm:ss" date="${audiencia.fin}"/>',
                 allDay: false,
                 className: 'label-primary'
-            },                                          
+                },                                          
             </g:each>
             {
             }
             ],
             editable: true,
             eventDrop: function(event, delta, revertFunc) {
-                var id = event.id;
-                var inicio = event.start.toLocaleString();
-                var fin = event.end.toLocaleString();
-                
-                updateAudiencia(id,inicio,fin);
+            var id = event.id;
+            var inicio = event.start.toLocaleString();
+            var fin = event.end.toLocaleString();
+
+            updateAudiencia(id,inicio,fin);
             },
             eventResize: function(event, delta, revertFunc) {
-                var id = event.id;
-                var inicio = event.start.toLocaleString();
-                var fin = event.end.toLocaleString();
-                
-                updateAudiencia(id,inicio,fin);
+            var id = event.id;
+            var inicio = event.start.toLocaleString();
+            var fin = event.end.toLocaleString();
+
+            updateAudiencia(id,inicio,fin);
             }
             });
             });
@@ -425,60 +464,60 @@
         </script> 
         <script>
             function guardarAudiencias(){
-                var vsolId = document.getElementById('solicitudId').value;
-                var vinicio = document.getElementById('inicio').value;
-                var vjuez = document.getElementById('selectJuez').value;
-                
+            var vsolId = document.getElementById('solicitudId').value;
+            var vinicio = document.getElementById('inicio').value;
+            var vjuez = document.getElementById('selectJuez').value;
+
                 var guardarAPI = "${request.contextPath}/home/guardarAudiencia?solicitudId="+vsolId+"&inicio="+vinicio+"&selectJuez="+vjuez;
-                $.getJSON( guardarAPI, {
-                  format: "json"
-                })
-                  .done(function( data ) {
-                   alert(data);
-                  });
-                  
-                consultaSolicitudesAudiencias();
+            $.getJSON( guardarAPI, {
+            format: "json"
+            })
+            .done(function( data ) {
+            alert(data);
+            });
+
+            consultaSolicitudesAudiencias();
             }
             function updateAudiencia(id,inicio,fin){                                
                 var updateAPI = "${request.contextPath}/home/updateAudiencia?id="+id+"&inicio="+inicio+"&fin="+fin;
-                $.getJSON( updateAPI, {
-                  format: "json"
-                })
-                  .done(function( data ) {
-                   alert(data);
-                  });
+            $.getJSON( updateAPI, {
+            format: "json"
+            })
+            .done(function( data ) {
+            alert(data);
+            });
             }
             function consultaSolicitudesAudiencias(){
                 var solicitudesAPI = "${request.contextPath}/home/consultaCalendar";
-                $.getJSON( solicitudesAPI, {
-                  format: "json"
-                })
-                  .done(function( data ) {
-                   
-                    var $select = $('#selectSolicitud');                        
-                    $select.find('option').remove();    
-                    var cont = 0;
-                    $.each(data, function(key, value) {              
+            $.getJSON( solicitudesAPI, {
+            format: "json"
+            })
+            .done(function( data ) {
+
+            var $select = $('#selectSolicitud');                        
+            $select.find('option').remove();    
+            var cont = 0;
+            $.each(data, function(key, value) {              
                         $select.append('<option value="' + data[cont].numeroExpediente+','+data[cont].tipoAudiencia+','+data[cont].id + '">' + data[cont].numeroExpediente+', Victima: '+data[cont].victima+', Imputado: '+data[cont].imputado+', Delito: '+data[cont].delito+ '</option>');     
-                        cont++;
-                    });
-                    
-                    document.getElementById('solicitudId').value = "";
-                    document.getElementById('inicio').value = "";
-                    document.getElementById('fin').value = "";
-                    document.getElementById('numCaso').value = "";
-                    document.getElementById('tipoAudiencia').value = "";
-                    
-                  });
+            cont++;
+            });
+
+            document.getElementById('solicitudId').value = "";
+            document.getElementById('inicio').value = "";
+            document.getElementById('fin').value = "";
+            document.getElementById('numCaso').value = "";
+            document.getElementById('tipoAudiencia').value = "";
+
+            });
             }
             $(document).ready(function(){
-                consultaSolicitudesAudiencias();
+            consultaSolicitudesAudiencias();
             });
         </script>
         <script>
             Date.prototype.addHours= function(h){
-                this.setHours(this.getHours()+h);
-                return this;
+            this.setHours(this.getHours()+h);
+            return this;
             }
         </script>
     </body>

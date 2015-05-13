@@ -71,6 +71,15 @@ public class ChatWebSocketServlet extends WebSocketServlet {
     }
     private HashMap createEmptyMapNotificaciones(){
          HashMap notificaMap = new HashMap();
+         notificaMap.put(TipoNotificacion.INDICIOS_INVESTIGACION, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CONCLUIDOS, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CONTROL_INTERNO, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CAUSA_CONCLUIDA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.PENAL_PARTICULAR, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CUADERNILLO_CAUSA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.CAUSA, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.JUDICIALIZADOS, new AtomicInteger(0));
+         notificaMap.put(TipoNotificacion.BANDEJA_ENTRADA, new AtomicInteger(0));
          notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(0));
          notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(0));
          notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(0));

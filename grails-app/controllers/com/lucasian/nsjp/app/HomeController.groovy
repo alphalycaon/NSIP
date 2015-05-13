@@ -22,22 +22,97 @@ import java.text.DateFormat
 
 class HomeController {
     
-    def index() { 
-     //   consultaNotificaciones();
-        def userName  = SecurityUtils.subject?.principal
+    def index(){ 
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
         int userId = User.findByUsername(userName).getId()
         
-        def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' order by dateCreated desc")
+        def ExpCompartidos// = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+        def ExpAJ = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
+        def ExpAI = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AI')")
         
-        def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+        def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "' order by dateCreated desc")
+
+         
+        def expedientes
+        if (subject.hasRole("Ministerio")){
+            expedientes = ExpCreados
+            ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+        
+        }else{
+            ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " )")
+        
+            expedientes = ExpCompartidos
+        }
+        
+        
+        [agendasAudiencias: AgendaAudiencias.list(), expedientes: expedientes, expIPH: ExpIphCreados, iIPH:ExpIphCreados.size(), iCorroboraciones:ExpCompartidos.size(), iInvestigaciones:ExpAI.size(), iJudicializados:ExpAJ.size()]
+
+    }
+    
+    def profile(){
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
+        def user = User.findByUsername(userName)
+        [usuario:user]
+    }
+    
+    def bandeja(String tc){
+        def userName  = SecurityUtils.subject?.principal
+        int userId = User.findByUsername(userName).getId()
+        println ('userId:'+ userId + ' tc:' + tc)
+        //TODO: Falta incluir consultas de IPH Compartido, Solicitud Audiencia, Solucitud Defensores
+        def ExpCompartidos = Expediente.executeQuery("from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
+        //def expedientesIPH = ExpedienteIph.executeQuery("from ExpedienteIph  where id in (select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "')")
+        def expedientesIPH = ExpedienteIph.executeQuery("from UsuariosExpedientesIph where usuarioId = " + userId + " and tipoExpediente = '" + tc + "'")
+        def solAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N'")
+
+        
+        [expedientesCompartidos: ExpCompartidos,expCompartidosIPH:expedientesIPH, tc: tc, solicitudesAudiencias:solAudiencias]
+        
+        
+    
+    }
+        
+    def denuncias(String tc) {
+        //   consultaNotificaciones();
+        def subject = SecurityUtils.subject
+        def userName  = subject?.principal
+        int userId = User.findByUsername(userName).getId()
+         
+        def expedientes
+        def expedientesIPH
+        if (subject.hasRole("Ministerio")){
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
+            
+        }else if (subject.hasRole("CES")){//ssp
+            //expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
+            expedientes = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "' or id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ") order by dateCreated desc")
+            
+            expedientesIPH = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "' order by dateCreated desc")
+
+        }else if (subject.hasRole("Juez")){
+            expedientes = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
+        }else if (subject.hasRole("Defensor")){//tribunal            
+            expedientes = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+          
+        }
+        //println("expedientes:"+expedientes);
+       
+        
+        //def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
+        
+        //def ExpCreados = 
         
         def usuarios = User.executeQuery("from User where id <> " + userId + " order by institucion, puesto, nombre")
         
-        def ExpFiltradoJuez = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
+        //def ExpFiltradoJuez = Expediente.executeQuery("from Expediente where id in(select expediente from SolicitudAudiencia where estatus = 'A' and upper(tipoAudiencia) not like '%PRIVADA%')")
         
         //session.get
         
-        [expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
+        //[expedientes: Expediente.list(), expedientesIph: ExpedienteIph.list(), usuarios: usuarios, expedientesFiltrados: ExpFiltrado, expedientesCreados: ExpCreados, expedientesFiltradosJuez: ExpFiltradoJuez]
+        [expedientes:expedientes, usuarios:usuarios, expedientesIPH:expedientesIPH, tc:tc]
     }
     
     def index_Solicitudes() { 
@@ -66,7 +141,7 @@ class HomeController {
         def userName  = SecurityUtils.subject?.principal
         int userId = User.findByUsername(userName).getId()
         
-        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
+        def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
 
         [expedientesCompartidos: ExpCompartidos]
     }
@@ -99,18 +174,19 @@ class HomeController {
         def userId = User.findByUsername(userName).getId()
         
         def expediente = Expediente.get(id)
+        println("expediente:"+expediente)
         def defensores = User.executeQuery("from User where id in(select userId from UserRoles where roleId = (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuarios = User.executeQuery("from User where id <> " + userId + " and id in(select userId from UserRoles where roleId <> (select id from Role where name = 'Defensor')) and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
         def usuariosDef = User.executeQuery("from User where id <> " + userId + " and id not in (select usuarioId from UsuariosExpedientes where expedienteId = " + id + ") order by institucion, puesto, nombre")
-        def countInv = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I' group by usuarioId, expedienteId, tipoExpedienteId")
-        def countCorr = UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C' group by usuarioId, expedienteId, tipoExpedienteId")
+        def countInv = 0//UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'I' group by usuarioId, expedienteId, tipoExpediente")
+        def countCorr = 0//UsuariosExpedientes.executeQuery("select count(*) from UsuariosExpedientes where usuarioId = " + userId + " and expedienteId = " + id + " and tipoExpediente = 'C' group by usuarioId, expedienteId, tipoExpediente")
         //int countI = Integer.parseInt(countInv.toString().replace("[", "").replace("]", ""))
         //int countC = Integer.parseInt(countCorr.toString().replace("[", "").replace("]", ""))
         //print(countC)
         String notifica = session.getAttribute("notifica");
         session.removeAttribute("notifica");
         //println("notifica:"+notifica)
-        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countInv, countC: countCorr, notifica:notifica, tiposAudiencias: TipoAudiencia.list()]        
+        [expediente: expediente, usuarios: usuarios, defensores: defensores, usuariosDef: usuariosDef, countI: countInv, countC: countCorr, notifica:notifica, tiposAudiencias: TipoAudiencia.list(sort: "descripcion")]        
     }
     def index_Iph() { 
         def userName  = SecurityUtils.subject?.principal
@@ -197,14 +273,22 @@ class HomeController {
         print(params.listCompartir)
         def expediente = params.expedienteId
         def mensajeExp = params.commentCompartir
+        def urgencia = params.urgenciaCompartir
+        def expedienteNombre = params.expedienteNombreCompartir
+        def today = new Date()
+
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
                 int userId = User.findByUsername(params.listCompartir).getId()
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'C'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
+                usuexp.urgencia=urgencia
+                usuexp.expedienteNombre=expedienteNombre
+                usuexp.dateCreated=today
+                usuexp.leido = false
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -213,8 +297,12 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'C'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
+                    usuexp.urgencia=urgencia
+                    usuexp.expedienteNombre=expedienteNombre
+                    usuexp.dateCreated=today
+                    usuexp.leido = false
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -227,14 +315,20 @@ class HomeController {
     def compartirExpedienteDef() {
         def expediente = params.expedienteId3
         def mensajeExp = params.commentCompartirDef
+        def expedienteNombre = params.expedienteNombreCompartirDef
+        def today = new Date()
         if(params.listCompartirDef != null && params.listCompartirDef != ""){
             if(params.listCompartirDef instanceof String){
                 int userId = User.findByUsername(params.listCompartirDef).getId()
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'C'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
+                usuexp.urgencia='alta'
+                usuexp.expedienteNombre=expedienteNombre
+                usuexp.dateCreated=today
+                usuexp.leido = false
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -243,8 +337,12 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'C'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.mensaje = mensajeExp
+                    usuexp.urgencia='alta'
+                    usuexp.expedienteNombre=expedienteNombre
+                    usuexp.dateCreated=today
+                    usuexp.leido = false
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -265,7 +363,7 @@ class HomeController {
                 UsuariosExpedientes usuexp = new UsuariosExpedientes();
                 usuexp.usuarioId = userId
                 usuexp.expedienteId = Integer.parseInt(expediente)
-                usuexp.tipoExpediente = 'D'
+                usuexp.tipoExpediente = 'EE'
                 usuexp.mensaje = mensajeExp
                 usuexp.save()
                 print("usuario " + userId)
@@ -275,7 +373,7 @@ class HomeController {
                     UsuariosExpedientes usuexp = new UsuariosExpedientes();
                     usuexp.usuarioId = userId
                     usuexp.expedienteId = Integer.parseInt(expediente)
-                    usuexp.tipoExpediente = 'D'
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -311,12 +409,24 @@ class HomeController {
     def compartirExpedienteIph() {
         print(params.listCompartir)
         def expediente = params.expedienteId
+        def mensajeExp = params.commentCompartir
+        def urgencia = params.urgenciaCompartir
+        def expedienteIphNombre = params.expedienteIphNombreCompartir
+        def today = new Date()
+
         if(params.listCompartir != null && params.listCompartir != ""){
             if(params.listCompartir instanceof String){
                 int userId = User.findByUsername(params.listCompartir).getId()
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
+                usuexp.mensaje=mensajeExp
+                usuexp.urgencia=urgencia
+                usuexp.expedienteIphNombre=expedienteIphNombre
+                usuexp.leido = false
+                usuexp.dateCreated = today
+                
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -325,6 +435,13 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
+                    usuexp.leido = false
+                    usuexp.mensaje=mensajeExp
+                    usuexp.urgencia=urgencia
+                    usuexp.expedienteIphNombre=expedienteIphNombre
+                    usuexp.dateCreated = today
+                
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -342,6 +459,7 @@ class HomeController {
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -350,6 +468,7 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -368,6 +487,8 @@ class HomeController {
                 UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIpId = Integer.parseInt(expediente)
+                //usuexp.tipoExpediente = 'EE'
+
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -376,6 +497,7 @@ class HomeController {
                     UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIpId = Integer.parseInt(expediente)
+                    //usuexp.tipoExpediente = 'EE'
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -397,13 +519,13 @@ class HomeController {
                 print("usuario " + userId)
             }else{
                 params.listCompartirDef.each({
-                   int userId = User.findByUsername($it).getId()
-                    UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
-                    usuexp.usuarioId = userId
-                    usuexp.expedienteIpId = Integer.parseInt(expediente)
-                    usuexp.save()
-                    print("usuario " + userId)     
-                })
+                        int userId = User.findByUsername($it).getId()
+                        UsuariosExpedientesIp usuexp = new UsuariosExpedientesIp();
+                        usuexp.usuarioId = userId
+                        usuexp.expedienteIpId = Integer.parseInt(expediente)
+                        usuexp.save()
+                        print("usuario " + userId)     
+                    })
             }    
         }
         print("expediente " + Integer.parseInt(expediente))
@@ -419,6 +541,8 @@ class HomeController {
                 UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                 usuexp.usuarioId = userId
                 usuexp.expedienteIphId = Integer.parseInt(expediente)
+                usuexp.tipoExpediente = 'EE'
+
                 usuexp.save()
                 print("usuario " + userId)
             }else{
@@ -427,6 +551,8 @@ class HomeController {
                     UsuariosExpedientesIph usuexp = new UsuariosExpedientesIph();
                     usuexp.usuarioId = userId
                     usuexp.expedienteIphId = Integer.parseInt(expediente)
+                    usuexp.tipoExpediente = 'EE'
+
                     usuexp.save()
                     print("usuario " + userId)
                 }
@@ -479,33 +605,33 @@ class HomeController {
         //def parametros = params.toString().replace("[", "").replace("]", "").split(", ")
         print(params)
         params.keySet().each({
-          def valores = params[it].split(":")
-          valores.each({
-                  if(it.contains('checkbox')){
-                      def idExpediente = valores[0].replace('checkbox', '')
-                      print(idExpediente)
-                      UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
-                  }
-          })
-        })
-    /*
+                def valores = params[it].split(":")
+                valores.each({
+                        if(it.contains('checkbox')){
+                            def idExpediente = valores[0].replace('checkbox', '')
+                            print(idExpediente)
+                            UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+                        }
+                    })
+            })
+        /*
         for(int i=0;i<parametros.size();i++){
-            //int userId = User.findByUsername(params[i]).getId()
-            def valores = parametros[i].split(":")
-            if(valores[0].contains('checkbox')){
-                def idExpediente = valores[0].replace('checkbox', '')
-                print(idExpediente)
-                /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
-                int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
-                print(usuexpId2)
-                UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
-                if(usuexp) {
-                print(usuexp)
-                usuexp.tipoExpediente = "I"
-                usuexp.save()   
-                }
-                UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
-            }
+        //int userId = User.findByUsername(params[i]).getId()
+        def valores = parametros[i].split(":")
+        if(valores[0].contains('checkbox')){
+        def idExpediente = valores[0].replace('checkbox', '')
+        print(idExpediente)
+        /*def usuexpId = UsuariosExpedientes.executeQuery("select id from UsuariosExpedientes where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'C'")
+        int usuexpId2 = Integer.parseInt(usuexpId.toString().replace("[", "").replace("]", ""))
+        print(usuexpId2)
+        UsuariosExpedientes usuexp = UsuariosExpedientes.get(usuexpId2)
+        if(usuexp) {
+        print(usuexp)
+        usuexp.tipoExpediente = "I"
+        usuexp.save()   
+        }
+        UsuariosExpedientes.executeUpdate("update UsuariosExpedientes set tipoExpediente='T' where expedienteId = " + idExpediente + " and usuarioId = " + userId + " and tipoExpediente = 'I'")
+        }
         }*/
         
         redirect(action: "index_Investigacion")
@@ -580,7 +706,7 @@ class HomeController {
         
         if(idSolicitud != null && idSolicitud!= ""){
             SolicitudAudiencia solicitudAudiencia = SolicitudAudiencia.get(idSolicitud)
-
+            inicio = inicio.replace(",", "")
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
             Date fechaInicio = sdf.parse(inicio)
              
@@ -613,7 +739,11 @@ class HomeController {
         print('id='+idAgenda+', inicio='+inicio+', fin='+fin)
         
         if(idAgenda != null && idAgenda!= ""){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+            fin = fin.replace(",", "")
+            inicio = inicio.replace(",", "")
+
+            
             Date fechaInicio = sdf.parse(inicio)
             Date fechaFin = sdf.parse(fin)
             
@@ -634,6 +764,7 @@ class HomeController {
     
     def consultaNotificaciones(){
         //si trae el atributo de force obliga a consultar nuevamente la base de datos, si no se trae lo que tenga en session
+        println('consultaNotificaciones()')
         def force = request.getParameter("force")
         def notificaMap = session.getAttribute("NSIP_NOTIFICACIONES")
         if(notificaMap==null || force!=null){
@@ -643,21 +774,48 @@ class HomeController {
 
             def ExpFiltrado = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + ")")
             def ExpCreados = Expediente.executeQuery("from Expediente where createdBy = '" + userName + "'")
-            def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'C')")
+            def ExpCompartidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CR')")
+            def ExpBandeja = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'EE')")
             
             def ExpIphCreados = Expediente.executeQuery("from ExpedienteIph where createdBy = '" + userName + "'")
         
             def ExpIphFiltrado = Expediente.executeQuery("from ExpedienteIph where id in(select expedienteIphId from UsuariosExpedientesIph where usuarioId = " + userId + ")")
-            def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'T')")
-            def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'D')")
+            def ExpTemporales = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AT')")
+            def ExpDefinitivos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AD')")
             def SolAudiencias = SolicitudAudiencia.executeQuery("from SolicitudAudiencia where estatus = 'N' ")
         
-            def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'I')")
+            def ExpInvestigaciones = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'IN')")
+            def ExpJudicializados = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'AJ')")
+            
+            def ExpCuadernilloCausa= Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CC')")
+            def ExpCausa = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CA')")
+            def ExpPenalParticular = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'PP')")
+            def ExpCausaConcluida = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CO')")
+            
+            def ExpControlInterno= Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CI')")
+            def ExpCasos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CS')")
+            def ExpConcluidos = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'CL')")
+            
+            def ExpIndiciosInvestigacion = Expediente.executeQuery("from Expediente where id in(select expedienteId from UsuariosExpedientes where usuarioId = " + userId + " and tipoExpediente = 'II')")
         
-           // def notificaMap = new HashMap();
+            // def notificaMap = new HashMap();
+            notificaMap.put(TipoNotificacion.BANDEJA_ENTRADA, new AtomicInteger(ExpBandeja.size()));
+            notificaMap.put(TipoNotificacion.JUDICIALIZADOS, new AtomicInteger(ExpJudicializados.size()));
+            
+            notificaMap.put(TipoNotificacion.CAUSA, new AtomicInteger(ExpCausa.size()));
+            notificaMap.put(TipoNotificacion.CUADERNILLO_CAUSA, new AtomicInteger(ExpCuadernilloCausa.size()));
+            notificaMap.put(TipoNotificacion.PENAL_PARTICULAR, new AtomicInteger(ExpPenalParticular.size()));
+            notificaMap.put(TipoNotificacion.CAUSA_CONCLUIDA, new AtomicInteger(ExpCausaConcluida.size()));
+            
+            notificaMap.put(TipoNotificacion.CONTROL_INTERNO, new AtomicInteger(ExpControlInterno.size()));
+            notificaMap.put(TipoNotificacion.CASOS, new AtomicInteger(ExpCasos.size()));
+            notificaMap.put(TipoNotificacion.CONCLUIDOS, new AtomicInteger(ExpConcluidos.size()));
+            
+            notificaMap.put(TipoNotificacion.INDICIOS_INVESTIGACION, new AtomicInteger(ExpIndiciosInvestigacion.size()));
+            
             notificaMap.put(TipoNotificacion.DENUNCIA, new AtomicInteger(ExpCreados.size()));
             notificaMap.put(TipoNotificacion.CORROBORACION, new AtomicInteger(ExpCompartidos.size() ));
-            notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
+            //notificaMap.put(TipoNotificacion.CAUSAS, new AtomicInteger(ExpFiltrado.size() ));
             
             
             notificaMap.put(TipoNotificacion.DOC_RELACIONADO, new AtomicInteger(ExpInvestigaciones.size()));

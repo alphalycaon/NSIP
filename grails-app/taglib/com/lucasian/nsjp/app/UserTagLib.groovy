@@ -14,7 +14,7 @@ class UserTagLib {
         if (!user) return
 
         def prop = user[attrs.property]
-        prop = prop.substring(0,prop.indexOf(" ")) 
+        //prop = prop.substring(0,prop.indexOf(" ")) 
         
         if (prop) out << prop.encodeAsHTML()
     }

@@ -3,6 +3,7 @@ package com.lucasian.nsjp.app
 class Expediente {
 
     static constraints = {
+        id {nullable:true }
     }
     Date dateCreated 
     Date lastUpdated 
@@ -10,4 +11,7 @@ class Expediente {
     static hasMany = [solicitudAudiencia: SolicitudAudiencia]
     String numeroExpediente
     String createdBy
+    String toString(){
+        "{numeroExpediente:"+numeroExpediente+" createdBy:"+createdBy+"}"
+    } 
 }

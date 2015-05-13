@@ -4,6 +4,9 @@ class User {
     String username
     String passwordHash
     String nombre
+    String apPaterno
+    String apMaterno
+    Date fechaCreacion
     String institucion
     String puesto
     
