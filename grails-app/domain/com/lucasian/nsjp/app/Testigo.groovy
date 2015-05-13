@@ -11,6 +11,7 @@ class Testigo {
     String escolaridad
     String estadoCivil
     String genero
+    String direccion
     String toString(){
         "Testigo: "+nombre+":"+edad
     }

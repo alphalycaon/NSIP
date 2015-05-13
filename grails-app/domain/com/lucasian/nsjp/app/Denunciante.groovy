@@ -10,6 +10,8 @@ class Denunciante {
     String escolaridad
     String estadoCivil
     String genero
+    String direccion
+    
     String toString(){
         ""+nombre+":"+edad
     }

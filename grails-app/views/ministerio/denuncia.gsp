@@ -1,5 +1,4 @@
-
-
+<!DOCTYPE html>
 <!--
   To change this license header, choose License Headers in Project Properties.
   To change this template file, choose Tools | Templates
@@ -12,6 +11,231 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="layout" content="main"/>
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&sensor=false"></script>
+        <script>
+            // VARIABLES GLOBALES JAVASCRIPT
+            var componentesUI_Rol = {};
+            var rolesDenuncia = ['denunciante', 'victima', 'testigo', 'imputado'];
+            //var tiposId = ['direccion', 'latitud', 'longitud', 'mapCanvas'];
+            //var tiposComponentesUI = ['mapaGoogle', 'cuadroBusqueda'];
+            var idsCamposRol = {
+                denunciante: {
+                    direccion: 'denuncianteDireccion',
+                    latitud: 'denuncianteLatitud',
+                    longitud: 'denuncianteLongitud',
+                    mapCanvas: 'denuncianteMapCanvas', 
+                    contenedorMapa: 'denuncianteContenedorMapa',
+                    seccion: 'pasoDenunciante',
+                    btnBuscarDireccion : 'btnBuscarDirDenunciante'},
+                victima: {
+                    direccion: 'victimaDireccion',
+                    latitud: 'victimaLatitud',
+                    longitud: 'victimaLongitud',
+                    mapCanvas: 'victimaMapCanvas', 
+                    contenedorMapa: 'victimaContenedorMapa',
+                    seccion: 'pasoVictima',
+                    btnBuscarDireccion : 'btnBuscarDirVicitma'},
+                testigo: {
+                    direccion: 'testigoDireccion',
+                    latitud: 'testigoLatitud',
+                    longitud: 'testigoLongitud',
+                    mapCanvas: 'testigoMapCanvas',
+                    contenedorMapa: 'testigoContenedorMapa', 
+                    seccion: 'pasoTestigo',
+                    btnBuscarDireccion : 'btnBuscarDirTestigo'},
+                imputado: {
+                    direccion: 'imputadoDireccion',
+                    latitud: 'imputadoLatitud',
+                    longitud: 'imputadoLongitud',
+                    mapCanvas: 'imputadoMapCanvas',
+                    contenedorMapa: 'imputadoContenedorMapa', 
+                    seccion: 'pasoImputado',
+                    btnBuscarDireccion : 'btnBuscarDirImputado'}
+            };
+
+            /**
+                Ejecutada en el evento en que el DOM está listo ($(document).ready())
+                ; es decir, antes de mostrar la página
+            **/
+            function initComponentesUIBusqueda(){
+              console.log('Inicio initComponentesUIBusqueda()');
+              rolesDenuncia.forEach(function(rolDenuncia) {
+                //Inicializar mapa de Google y campo de búsqueda por cada rol en denuncia
+                var mapaRol = new MapaRol(idsCamposRol[rolDenuncia].mapCanvas, rolDenuncia);
+                var campoBusquedaRol = crearCampoBusqueda(idsCamposRol[rolDenuncia].direccion, mapaRol.mapaGoogle);
+            
+                configInicialMarcadorMapa(mapaRol);
+                configInicialBotonesBusqueda(mapaRol);
+                configRenderizadoMapa(mapaRol);
+                configAccionesMapa(mapaRol);
+                
+                componentesUI_Rol[rolDenuncia] = {
+                  mapaRol:  mapaRol,
+                  campoBusquedaRol: campoBusquedaRol
+                };
+              });
+              //configRenderizadoMapa();
+              console.log('Fin initComponentesUIBusqueda()');
+            }
+
+
+            function MapaRol(idContenedorMapa, rolDenuncia) {
+                this.geocoder = new google.maps.Geocoder();
+                this.latLng = new google.maps.LatLng(19.4288627,-99.16178658);
+                this.mapOpt = {
+                    zoom: 13,
+                    center: this.latLng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    disableDoubleClickZoom: true,
+                    draggable: false,
+                    scrollwheel: false
+                };
+                this.mapaGoogle = new google.maps.Map(document.getElementById(idContenedorMapa), this.mapOpt);
+                this.marcador = crearMarcador(this.mapaGoogle, this.latLng, 'Arrastra el marcador si quieres moverlo');
+                this.rolDenuncia = rolDenuncia;
+            }
+
+            function crearCampoBusqueda(idCampoDireccion, mapaGoogle){
+              var input = /** @type {HTMLInputElement} */(
+                  document.getElementById(idCampoDireccion));
+
+              return new google.maps.places.SearchBox(
+                  /** @type {HTMLInputElement} */(input));
+            }
+
+            function crearMarcador(mapaGoogle, latLng, titulo){
+              return new google.maps.Marker({
+                  position: latLng,
+                  title: titulo,
+                  map: mapaGoogle,
+                  draggable: true
+              });
+            }
+
+            function configInicialMarcadorMapa(mapaRol){
+              var idCampoDireccion = idsCamposRol[mapaRol.rolDenuncia].direccion;
+              var idCampoLatitud = idsCamposRol[mapaRol.rolDenuncia].latitud;
+              var idCampoLongitud = idsCamposRol[mapaRol.rolDenuncia].longitud;
+
+              // Escucho el CLICK sobre el mapa y si se produce actualizo la posicion del marcador
+              google.maps.event.addListener(mapaRol.mapaGoogle, 'click', function(event) {
+                updateMarker(event.latLng, mapaRol.marcador, mapaRol.geocoder, idCampoDireccion, idCampoLatitud, idCampoLongitud);
+              });
+
+              // Inicializo los datos del marcador
+              // updateMarkerPosition(latLng);
+              geocodePosition(mapaRol.latLng, mapaRol.geocoder, idCampoDireccion);
+
+              // Permito los eventos drag/drop sobre el marcador
+              google.maps.event.addListener(mapaRol.marcador, 'dragstart', function() {
+                  updateMarkerAddress('Arrastrando...', idCampoDireccion);
+              });
+
+              google.maps.event.addListener(mapaRol.marcador, 'drag', function() {
+                  updateMarkerStatus('Arrastrando...', idCampoDireccion);
+                  updateMarkerPosition(mapaRol.marcador.getPosition(), idCampoLatitud, idCampoLongitud);
+              });
+
+              google.maps.event.addListener(mapaRol.marcador, 'dragend', function() {
+                  updateMarkerStatus('Arrastre finalizado', idCampoDireccion);
+                  geocodePosition(mapaRol.marcador.getPosition(), mapaRol.geocoder, idCampoDireccion);
+              });
+            }
+            
+            function configInicialBotonesBusqueda(mapaRol){
+                var idBtnBuscarDir = idsCamposRol[mapaRol.rolDenuncia].btnBuscarDireccion;
+              $('#' + idBtnBuscarDir).on('click',function(){
+                console.log('entro al click handler');
+                var idCampoDireccion = idsCamposRol[mapaRol.rolDenuncia].direccion;
+                var idCampoLatitud = idsCamposRol[mapaRol.rolDenuncia].latitud;
+                var idCampoLongitud = idsCamposRol[mapaRol.rolDenuncia].longitud;
+                codeAddress(idCampoDireccion, mapaRol, idCampoLatitud, idCampoLongitud);
+              });
+            }
+             
+            function configRenderizadoMapa(mapaRol){
+                var idSeccionRol = idsCamposRol[mapaRol.rolDenuncia].seccion; 
+                $('#' + idSeccionRol).on('click', function(){
+                    console.log('Ejecución manejador click sección ' + mapaRol.rolDenuncia);
+                    setTimeout(function(){ 
+                            google.maps.event.trigger(mapaRol.mapaGoogle, 'resize'); 
+                            mapaRol.mapaGoogle.setCenter(mapaRol.marcador.getPosition());
+                        }, 50);
+                });
+            }
+            
+            function configAccionesMapa(mapaRol){
+                var idMapCanvas = idsCamposRol[mapaRol.rolDenuncia].mapCanvas;
+                $('#' + idMapCanvas).on('click', function(){
+                    mapaRol.mapaGoogle.setOptions({
+                        disableDoubleClickZoom: false,
+                        draggable: true,
+                        scrollwheel: true
+                    });
+                });
+            }
+
+            // ESTA FUNCION OBTIENE LA DIRECCION A PARTIR DE LAS COORDENADAS POS
+            function geocodePosition(pos, geocoder, idCampoDireccion) {
+                geocoder.geocode({ latLng: pos }, function(responses) {
+                    if (responses && responses.length > 0) {
+                        updateMarkerAddress(responses[0].formatted_address, idCampoDireccion);
+                    }else {
+                        updateMarkerAddress('No puedo encontrar esta direccion.', idCampoDireccion);
+                    }
+                });
+            }
+
+            // OBTIENE LA DIRECCION A PARTIR DEL LAT y LON DEL FORMULARIO
+            function codeLatLon(idCampoLongitud, idCampoLatitud, mapaRol) {
+                var str = document.getElementById(idCampoLongitud).value + " , " + document.getElementById(idCampoLatitud).value;
+                var latLng2 = new google.maps.LatLng(document.getElementById(idCampoLatitud).value ,document.getElementById(idCampoLongitud).value);
+                mapaRol.marcador.setPosition(latLng2);
+                mapaRol.mapaGoogle.setCenter(latLng2);
+                geocodePosition (latLng2, mapaRol.geocoder, idsCamposRol[mapaRol.rolDenuncia].direccion);
+                // document.getElementById('direccion').value = str+" OK";
+            }
+
+            // OBTIENE LAS COORDENADAS DESDE lA DIRECCION EN LA CAJA DEL FORMULARIO
+            function codeAddress(idCampoDireccion, mapaRol, idCampoLatitud, idCampoLongitud) {
+                var address = document.getElementById(idCampoDireccion).value;
+                mapaRol.geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        updateMarkerPosition(results[0].geometry.location, idCampoLatitud, idCampoLongitud);
+                        mapaRol.marcador.setPosition(results[0].geometry.location);
+                        mapaRol.mapaGoogle.setCenter(results[0].geometry.location);
+                        mapaRol.mapaGoogle.setZoom(16);
+                    } else {
+                        alert('ERROR : ' + status);
+                    }
+                });
+            }
+
+            function updateMarkerStatus(msg, idCampoDireccion) {
+                document.getElementById(idCampoDireccion).value = msg;
+            }
+
+            // RECUPERO LOS DATOS LON LAT Y DIRECCION Y LOS PONGO EN EL FORMULARIO
+            function updateMarkerPosition (latLng, idCampoLatitud, idCampoLongitud) {
+                document.getElementById(idCampoLongitud).value = latLng.lng();
+                document.getElementById(idCampoLatitud).value = latLng.lat();
+            }
+
+            function updateMarkerAddress(msg, idCampoDireccion) {
+                document.getElementById(idCampoDireccion).value = msg;
+            }
+
+            // ACTUALIZO LA POSICION DEL MARCADOR
+            function updateMarker(location, marcador, geocoder, idCampoDireccion, idCampoLatitud, idCampoLongitud) {
+                marcador.setPosition(location);
+                updateMarkerPosition(location, idCampoLatitud, idCampoLongitud);
+                geocodePosition(location, geocoder, idCampoDireccion);
+            }
+        </script>
+        
+        
+        
         <script type="text/javascript">
 
             // ref: http://diveintohtml5.org/detect.html
@@ -150,6 +374,18 @@
 
     </head>
     <body>
+        <style>
+            .mapCanvas {
+            width: 1065px;
+                height: 540px;
+                margin: 0 auto;
+            }
+            
+            .btn-buscarDireccion{}
+            .rolDenuncia{}
+            .mapContainer{
+            }
+        </style>
         <div class="row">
             <div class="col-lg-12">
                 <div class="main-box clearfix">
@@ -195,13 +431,13 @@
                         </div>
                         <div id="myWizard" class="wizard">
                             <div class="wizard-inner">
-                                <ul class="steps">
+                                <ul id="contenedorPasosDenuncia" class="steps">
                                     <li data-target="#step1" class="complete"><span class="badge badge-primary">1</span>Delito<span class="chevron"></span></li>
-                                    <li data-target="#step2" class="complete"><span class="badge">2</span>Denunciante<span class="chevron"></span></li>
-                                    <li data-target="#step3" class="complete"><span class="badge">3</span>Victima<span class="chevron"></span></li>
-                                    <li data-target="#step4" class="complete"><span class="badge">4</span>Testigo<span class="chevron"></span></li>
+                                    <li id="pasoDenunciante" data-target="#step2" class="complete rolDenuncia"><span class="badge">2</span>Denunciante<span class="chevron"></span></li>
+                                    <li id="pasoVictima" data-target="#step3" class="complete rolDenuncia"><span class="badge">3</span>Victima<span class="chevron"></span></li>
+                                    <li id="pasoTestigo" data-target="#step4" class="complete rolDenuncia"><span class="badge">4</span>Testigo<span class="chevron"></span></li>
 
-                                    <li data-target="#step5" class="complete"><span class="badge">5</span>Imputado<span class="chevron"></span></li>
+                                    <li id="pasoImputado" data-target="#step5" class="complete rolDenuncia"><span class="badge">5</span>Imputado<span class="chevron"></span></li>
                                     <li data-target="#step6" class="complete"><span class="badge">6</span>Doc. Relacionados<span class="chevron"></span></li>
                                     <li data-target="#step7" class="complete"><span class="badge">7</span>Plantillas<span class="chevron"></span></li>
                                 </ul>
@@ -269,10 +505,30 @@
                                             <input type="text" class="form-control" id="escDenunciante" required name="denunciante.escolaridad" placeholder="Escolaridad del denunciante"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                          
                                         <div class="form-group">
-                                            <center><a href="#" class="not-active">
-                                                    <i class="fa fa-plus-circle fa-5x"></i>
-                                                </a></center>
-                                        </div>                                                 
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="denunciante.ubicacion" id="denuncianteDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirDenunciante"type="button" class="btn btn-success btn-buscarDireccion" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="denunciante.latitud" id="denuncianteLatitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="denunciante.longitud" id="denuncianteLongitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+                                                    <div id="denuncianteMapCanvas" class="mapCanvas"></div>
+                                                 
+                                                                                                 
                                     </div>
                                     <div class="step-pane" id="step3">
                                         <br/>
@@ -301,10 +557,30 @@
                                             <input type="text" class="form-control" id="escVictima" required name="victima.escolaridad" placeholder="Escolaridad de la victima"   data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                              
                                         <div class="form-group">
-                                            <center><a href="#" class="not-active">
-                                                    <i class="fa fa-plus-circle fa-5x"></i>
-                                                </a></center>
-                                        </div>  
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="victima.ubicacion" id="victimaDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirVictima" type="button" class="btn btn-success btn-buscarDireccion" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="victima.latitud" id="victimaLatitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="vctima.longitud" id="victimaLongitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+                                                    <div id="victimaMapCanvas" class="mapCanvas"></div>
+                                                
+                                                
                                     </div>
                                     <div class="step-pane" id="step4">
                                         <br/>
@@ -333,10 +609,30 @@
                                             <input type="text" class="form-control" id="escTestigo" required name="testigo.escolaridad" placeholder="Escolaridad del testigo"   data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                              
                                         <div class="form-group">
-                                            <center><a href="#" class="not-active">
-                                                    <i class="fa fa-plus-circle fa-5x"></i>
-                                                </a></center>
-                                        </div>  
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="testigo.ubicacion" id="testigoDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirTestigo" type="button" class="btn btn-success btn-buscarDireccion" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="testigo.latitud" id="testigoLatitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="testigo.longitud" id="testigoLongitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                </div> 
+                                                    <div id="testigoMapCanvas" class="mapCanvas"></div> 
+                                                
+                                                
                                     </div>
                                     
                                     <div class="step-pane" id="step5">
@@ -366,10 +662,30 @@
                                             <input type="text" class="form-control" id="escImputado" required name="imputado.escolaridad" placeholder="Escolaridad del Imputado"  data-toggle="tooltip" data-placement="top" title="Escribir Escolaridad" onkeypress="txNombres()">
                                         </div>                                          
                                         <div class="form-group">
-                                            <center><a href="#" class="not-active">
-                                                    <i class="fa fa-plus-circle fa-5x"></i>
-                                                </a></center>
-                                        </div>                                                 
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="imputado.ubicacion" id="imputadoDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirImputado" type="button" class="btn btn-success btn-buscarDireccion" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="imputado.latitud" id="imputadoLatitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="imputado.longitud" id="imputadoLongitud" hidden="true" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                </div> 
+                                                    <div id="imputadoMapCanvas" class="mapCanvas"></div>
+                                                
+                                                
                                     </div>
                                     <div class="step-pane" id="step6">
                                         <br/>
@@ -527,12 +843,29 @@
     </script> 
     <script>
         $(document).ready(function(){
-        //toggle `popup` / `inline` mode
-        $.fn.editable.defaults.mode = 'popup';     
+            //toggle `popup` / `inline` mode
+            $.fn.editable.defaults.mode = 'popup';     
 
-        //make numExpediente editable
-        $("#numExpediente").editable();
+            //make numExpediente editable
+            $("#numExpediente").editable();
+            
+            initComponentesUIBusqueda();
         });
+        /*
+        $(window).load(function(){
+            initComponentesUIBusqueda();
+        })*/
+        
+        /*
+        $("#btnBuscarDirDenuncia").on( "click", function() {
+        console.log('Inside handler click button');
+    var mapProp = {
+            center:new google.maps.LatLng(53.6721226, -10.547924),
+            zoom:13,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+          };
+    var map=new google.maps.Map(document.getElementById("denuncianteMapCanvas"),mapProp);
+})*/
     </script>
 </body>
 </html>
