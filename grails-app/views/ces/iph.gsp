@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
   To change this license header, choose License Headers in Project Properties.
   To change this template file, choose Tools | Templates
@@ -45,188 +46,218 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'centaurus/css/compiled/', file: 'wizard.css')}">
 
 
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-        <script type="text/javascript">
-
+        <script src="${resource(dir: 'centaurus/js', file: 'jquery.js')}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&sensor=false"></script>
+        <script>
             // VARIABLES GLOBALES JAVASCRIPT
-            var geocoder;
-            var marker;
-            var latLng;
-            var latLng2;
-            var map;
-
-            // INICiALIZACION DE MAPA
-            function initialize() {
-            geocoder = new google.maps.Geocoder();	
-            latLng = new google.maps.LatLng(23.782967498640414 ,-102.28738495624998);
-            map = new google.maps.Map(document.getElementById('mapCanvas'), {
-            zoom:5,
-            center: latLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP  });
-
-            //Nuevo codigo
-            var input = /** @type {HTMLInputElement} */(
-            document.getElementById('direccion'));
-
-            var searchBox = new google.maps.places.SearchBox(
-            /** @type {HTMLInputElement} */(input));
-
-            // [START region_getplaces]
-            // Listen for the event fired when the user selects an item from the
-            // pick list. Retrieve the matching places for that item.
-            google.maps.event.addListener(searchBox, 'places_changed', function() {
-            var places = searchBox.getPlaces();
-
-            if (places.length == 0) {
-            return;
-            }
-            for (var i = 0, marker; marker = markers[i]; i++) {
-            marker.setMap(null);
-            }
-
-            // For each place, get the icon, place name, and location.
-            markers = [];
-            var bounds = new google.maps.LatLngBounds();
-            for (var i = 0, place; place = places[i]; i++) {
-            var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
+            var componentesUI_Rol = {};
+            var rolesDenuncia = ['iph', 'victima', 'imputado'];
+            //var tiposId = ['direccion', 'latitud', 'longitud', 'mapCanvas'];
+            //var tiposComponentesUI = ['mapaGoogle', 'cuadroBusqueda'];
+            var idsCamposRol = {
+                iph: {
+                    direccion: 'iphDireccion',
+                    latitud: 'iphLatitud',
+                    longitud: 'iphLongitud',
+                    mapCanvas: 'iphMapCanvas', 
+                    contenedorMapa: 'iphContenedorMapa',
+                    seccion: 'pasoIph',
+                    btnBuscarDireccion : 'btnBuscarDirIph'},
+                victima: {
+                    direccion: 'victimaIphDireccion',
+                    latitud: 'victimaIphLatitud',
+                    longitud: 'victimaIphLongitud',
+                    mapCanvas: 'victimaIphMapCanvas', 
+                    contenedorMapa: 'victimaIphContenedorMapa',
+                    seccion: 'pasoVictima',
+                    btnBuscarDireccion : 'btnBuscarDirVictimaIph'},
+                imputado: {
+                    direccion: 'imputadoIphDireccion',
+                    latitud: 'imputadoIphLatitud',
+                    longitud: 'imputadoIphLongitud',
+                    mapCanvas: 'imputadoIphMapCanvas',
+                    contenedorMapa: 'imputadoIphContenedorMapa', 
+                    seccion: 'pasoImputado',
+                    btnBuscarDireccion : 'btnBuscarDirImputadoIph'}
             };
-            // Create a marker for each place.
-            var marker = new google.maps.Marker({
-            map: map,
-            icon: image,
-            title: place.name,
-            position: place.geometry.location
-            });
-            markers.push(marker);
-            bounds.extend(place.geometry.location);
-            }
-            map.fitBounds(bounds);
-            });
-            //Fin nuevo codigo
 
-            // CREACION DEL MARCADOR  
-            marker = new google.maps.Marker({
-            position: latLng,
-            title: 'Arrastra el marcador si quieres moverlo',
-            map: map,
-            draggable: true
-            });
-
-
-
-
-            // Escucho el CLICK sobre el mapa y si se produce actualizo la posicion del marcador 
-            google.maps.event.addListener(map, 'click', function(event) {
-            updateMarker(event.latLng);
-            });
-
-            // Inicializo los datos del marcador
-            //    updateMarkerPosition(latLng);
-
-            geocodePosition(latLng);
-
-            // Permito los eventos drag/drop sobre el marcador
-            google.maps.event.addListener(marker, 'dragstart', function() {
-            updateMarkerAddress('Arrastrando...');
-            });
-
-            google.maps.event.addListener(marker, 'drag', function() {
-            updateMarkerStatus('Arrastrando...');
-            updateMarkerPosition(marker.getPosition());
-            });
-
-            google.maps.event.addListener(marker, 'dragend', function() {
-            updateMarkerStatus('Arrastre finalizado');
-            geocodePosition(marker.getPosition());
-            });
-
-
-
+            /**
+                Ejecutada en el evento en que el DOM está listo ($(document).ready())
+                ; es decir, antes de mostrar la página
+            **/
+            function initComponentesUIBusqueda(){
+              console.log('Inicio initComponentesUIBusqueda()');
+              rolesDenuncia.forEach(function(rolDenuncia) {
+                //Inicializar mapa de Google y campo de búsqueda por cada rol en denuncia
+                var mapaRol = new MapaRol(idsCamposRol[rolDenuncia].mapCanvas, rolDenuncia);
+                var campoBusquedaRol = crearCampoBusqueda(idsCamposRol[rolDenuncia].direccion, mapaRol.mapaGoogle);
+            
+                configInicialMarcadorMapa(mapaRol);
+                configInicialBotonesBusqueda(mapaRol);
+                configRenderizadoMapa(mapaRol);
+                configAccionesMapa(mapaRol);
+                
+                componentesUI_Rol[rolDenuncia] = {
+                  mapaRol:  mapaRol,
+                  campoBusquedaRol: campoBusquedaRol
+                };
+              });
+              //configRenderizadoMapa();
+              console.log('Fin initComponentesUIBusqueda()');
             }
 
 
-            // Permito la gesti¢n de los eventos DOM
-            google.maps.event.addDomListener(window, 'load', initialize);
+            function MapaRol(idContenedorMapa, rolDenuncia) {
+                this.geocoder = new google.maps.Geocoder();
+                this.latLng = new google.maps.LatLng(19.4288627,-99.16178658);
+                this.mapOpt = {
+                    zoom: 13,
+                    center: this.latLng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    disableDoubleClickZoom: true,
+                    draggable: false,
+                    scrollwheel: false
+                };
+                this.mapaGoogle = new google.maps.Map(document.getElementById(idContenedorMapa), this.mapOpt);
+                this.marcador = crearMarcador(this.mapaGoogle, this.latLng, 'Arrastra el marcador si quieres moverlo');
+                this.rolDenuncia = rolDenuncia;
+            }
+
+            function crearCampoBusqueda(idCampoDireccion, mapaGoogle){
+              var input = /** @type {HTMLInputElement} */(
+                  document.getElementById(idCampoDireccion));
+
+              return new google.maps.places.SearchBox(
+                  /** @type {HTMLInputElement} */(input));
+            }
+
+            function crearMarcador(mapaGoogle, latLng, titulo){
+              return new google.maps.Marker({
+                  position: latLng,
+                  title: titulo,
+                  map: mapaGoogle,
+                  draggable: true
+              });
+            }
+
+            function configInicialMarcadorMapa(mapaRol){
+              var idCampoDireccion = idsCamposRol[mapaRol.rolDenuncia].direccion;
+              var idCampoLatitud = idsCamposRol[mapaRol.rolDenuncia].latitud;
+              var idCampoLongitud = idsCamposRol[mapaRol.rolDenuncia].longitud;
+
+              // Escucho el CLICK sobre el mapa y si se produce actualizo la posicion del marcador
+              google.maps.event.addListener(mapaRol.mapaGoogle, 'click', function(event) {
+                updateMarker(event.latLng, mapaRol.marcador, mapaRol.geocoder, idCampoDireccion, idCampoLatitud, idCampoLongitud);
+              });
+
+              // Inicializo los datos del marcador
+              // updateMarkerPosition(latLng);
+              geocodePosition(mapaRol.latLng, mapaRol.geocoder, idCampoDireccion);
+
+              // Permito los eventos drag/drop sobre el marcador
+              google.maps.event.addListener(mapaRol.marcador, 'dragstart', function() {
+                  updateMarkerAddress('Arrastrando...', idCampoDireccion);
+              });
+
+              google.maps.event.addListener(mapaRol.marcador, 'drag', function() {
+                  updateMarkerStatus('Arrastrando...', idCampoDireccion);
+                  updateMarkerPosition(mapaRol.marcador.getPosition(), idCampoLatitud, idCampoLongitud);
+              });
+
+              google.maps.event.addListener(mapaRol.marcador, 'dragend', function() {
+                  updateMarkerStatus('Arrastre finalizado', idCampoDireccion);
+                  geocodePosition(mapaRol.marcador.getPosition(), mapaRol.geocoder, idCampoDireccion);
+              });
+            }
+            
+            function configInicialBotonesBusqueda(mapaRol){
+                var idBtnBuscarDir = idsCamposRol[mapaRol.rolDenuncia].btnBuscarDireccion;
+              $('#' + idBtnBuscarDir).on('click',function(){
+                console.log('entro al click handler');
+                var idCampoDireccion = idsCamposRol[mapaRol.rolDenuncia].direccion;
+                var idCampoLatitud = idsCamposRol[mapaRol.rolDenuncia].latitud;
+                var idCampoLongitud = idsCamposRol[mapaRol.rolDenuncia].longitud;
+                codeAddress(idCampoDireccion, mapaRol, idCampoLatitud, idCampoLongitud);
+              });
+            }
+             
+            function configRenderizadoMapa(mapaRol){
+                var idSeccionRol = idsCamposRol[mapaRol.rolDenuncia].seccion; 
+                $('#' + idSeccionRol).on('click', function(){
+                    console.log('Ejecución manejador click sección ' + mapaRol.rolDenuncia);
+                    setTimeout(function(){ 
+                            google.maps.event.trigger(mapaRol.mapaGoogle, 'resize'); 
+                            mapaRol.mapaGoogle.setCenter(mapaRol.marcador.getPosition());
+                        }, 50);
+                });
+            }
+            
+            function configAccionesMapa(mapaRol){
+                var idMapCanvas = idsCamposRol[mapaRol.rolDenuncia].mapCanvas;
+                $('#' + idMapCanvas).on('click', function(){
+                    mapaRol.mapaGoogle.setOptions({
+                        disableDoubleClickZoom: false,
+                        draggable: true,
+                        scrollwheel: true
+                    });
+                });
+            }
 
             // ESTA FUNCION OBTIENE LA DIRECCION A PARTIR DE LAS COORDENADAS POS
-            function geocodePosition(pos) {
-            geocoder.geocode({
-            latLng: pos
-            }, function(responses) {
-            if (responses && responses.length > 0) {
-            updateMarkerAddress(responses[0].formatted_address);
-            } else {
-            updateMarkerAddress('No puedo encontrar esta direccion.');
-            }
-            });
+            function geocodePosition(pos, geocoder, idCampoDireccion) {
+                geocoder.geocode({ latLng: pos }, function(responses) {
+                    if (responses && responses.length > 0) {
+                        updateMarkerAddress(responses[0].formatted_address, idCampoDireccion);
+                    }else {
+                        updateMarkerAddress('No puedo encontrar esta direccion.', idCampoDireccion);
+                    }
+                });
             }
 
             // OBTIENE LA DIRECCION A PARTIR DEL LAT y LON DEL FORMULARIO
-            function codeLatLon() { 
-            str= document.getElementById('longitud').value+" , "+document.getElementById('latitud').value;
-            latLng2 = new google.maps.LatLng(document.getElementById('latitud').value ,document.getElementById('longitud').value);
-            marker.setPosition(latLng2);
-            map.setCenter(latLng2);
-            geocodePosition (latLng2);
-            // document.getElementById('direccion').value = str+" OK";
+            function codeLatLon(idCampoLongitud, idCampoLatitud, mapaRol) {
+                var str = document.getElementById(idCampoLongitud).value + " , " + document.getElementById(idCampoLatitud).value;
+                var latLng2 = new google.maps.LatLng(document.getElementById(idCampoLatitud).value ,document.getElementById(idCampoLongitud).value);
+                mapaRol.marcador.setPosition(latLng2);
+                mapaRol.mapaGoogle.setCenter(latLng2);
+                geocodePosition (latLng2, mapaRol.geocoder, idsCamposRol[mapaRol.rolDenuncia].direccion);
+                // document.getElementById('direccion').value = str+" OK";
             }
 
             // OBTIENE LAS COORDENADAS DESDE lA DIRECCION EN LA CAJA DEL FORMULARIO
-            function codeAddress() {
-            var address = document.getElementById('direccion').value;
-            geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-            updateMarkerPosition(results[0].geometry.location);
-            marker.setPosition(results[0].geometry.location);
-            map.setCenter(results[0].geometry.location);
-            map.setZoom(16);
-            } else {
-            alert('ERROR : ' + status);
-            }
-            });
-            }
-
-            // OBTIENE LAS COORDENADAS DESDE lA DIRECCION EN LA CAJA DEL FORMULARIO
-            function codeAddress2 (address) {
-
-            geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-            updateMarkerPosition(results[0].geometry.location);
-            marker.setPosition(results[0].geometry.location);
-            map.setCenter(results[0].geometry.location);
-            document.getElementById('direccion').value = address;
-            } else {
-            alert('ERROR : ' + status);
-            }
-            });
+            function codeAddress(idCampoDireccion, mapaRol, idCampoLatitud, idCampoLongitud) {
+                var address = document.getElementById(idCampoDireccion).value;
+                mapaRol.geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        updateMarkerPosition(results[0].geometry.location, idCampoLatitud, idCampoLongitud);
+                        mapaRol.marcador.setPosition(results[0].geometry.location);
+                        mapaRol.mapaGoogle.setCenter(results[0].geometry.location);
+                        mapaRol.mapaGoogle.setZoom(16);
+                    } else {
+                        alert('ERROR : ' + status);
+                    }
+                });
             }
 
-            function updateMarkerStatus(str) {
-            document.getElementById('direccion').value = str;
+            function updateMarkerStatus(msg, idCampoDireccion) {
+                document.getElementById(idCampoDireccion).value = msg;
             }
 
             // RECUPERO LOS DATOS LON LAT Y DIRECCION Y LOS PONGO EN EL FORMULARIO
-            function updateMarkerPosition (latLng) {
-            document.getElementById('longitud').value =latLng.lng();
-            document.getElementById('latitud').value = latLng.lat();
+            function updateMarkerPosition (latLng, idCampoLatitud, idCampoLongitud) {
+                document.getElementById(idCampoLongitud).value = latLng.lng();
+                document.getElementById(idCampoLatitud).value = latLng.lat();
             }
 
-            function updateMarkerAddress(str) {
-            document.getElementById('direccion').value = str;
+            function updateMarkerAddress(msg, idCampoDireccion) {
+                document.getElementById(idCampoDireccion).value = msg;
             }
 
             // ACTUALIZO LA POSICION DEL MARCADOR
-            function updateMarker(location) {
-            marker.setPosition(location);
-            updateMarkerPosition(location);
-            geocodePosition(location);
+            function updateMarker(location, marcador, geocoder, idCampoDireccion, idCampoLatitud, idCampoLongitud) {
+                marcador.setPosition(location);
+                updateMarkerPosition(location, idCampoLatitud, idCampoLongitud);
+                geocodePosition(location, geocoder, idCampoDireccion);
             }
         </script>
 
@@ -337,10 +368,10 @@
     </head>
     <body>
         <style>
-            #mapCanvas {
-            width: 1065px;
-            height: 540px;
-            float: center;
+            .mapCanvas {
+                width: 1065px;
+                height: 540px;
+                margin: 0 auto;
             }
         </style>
 
@@ -388,9 +419,9 @@
                                 <div id="myWizard" class="wizard">
                                     <div class="wizard-inner">
                                         <ul class="steps">
-                                            <li data-target="#step1" class="active"  class="complete"><span class="badge badge-primary">1</span>IPH<span class="chevron"></span></li>
-                                            <li data-target="#step2" class="complete"> <span class="badge">2</span>Victima<span class="chevron"></span></li>
-                                            <li data-target="#step3" class="complete"><span class="badge">3</span>Imputado<span class="chevron"></span></li>
+                                            <li id="pasoIph" data-target="#step1" class="active"  class="complete"><span class="badge badge-primary">1</span>IPH<span class="chevron"></span></li>
+                                            <li id="pasoVictima" data-target="#step2" class="complete"> <span class="badge">2</span>Victima<span class="chevron"></span></li>
+                                            <li id="pasoImputado" data-target="#step3" class="complete"><span class="badge">3</span>Imputado<span class="chevron"></span></li>
                                             <li data-target="#step4" class="complete"><span class="badge">4</span>Plantillas<span class="chevron"></span></li>
                                         </ul>
                                         <div class="actions" style="z-index: 1">
@@ -450,28 +481,28 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Ubicación</label>
-                                                    <input type="text" class="form-control" name="datosIph.ubicacion" id="direccion" placeholder="Ubicación" required>                                              
+                                                    <input type="text" class="form-control" name="datosIph.ubicacion" id="iphDireccion" placeholder="Ubicación" required>                                              
                                                 </div>
                                                 <div>
                                                     <table>
                                                         <tr>
                                                             <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                                    <input type="button" class="btn btn-success" value="Buscar" onclick="codeAddress()" required/>
+                                                                    <input id="btnBuscarDirIph" type="button" class="btn btn-success" value="Buscar" required/>
                                                                 </p>
                                                             </td>
                                                             <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                                    <input type="text" name="latitud" id="latitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                    <input type="text" name="iph.latitud" id="iphLatitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
                                                                 </p>
                                                             </td>
                                                             <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
-                                                                    <input type="text" name="longitud" id="longitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                    <input type="text" name="iph.longitud" id="iphLongitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
                                                                 </p>
                                                             </td>	
                                                         </tr>
                                                     </table> 
                                                     </center>       
                                                 </div> 
-                                                <div id="mapCanvas"></div>
+                                                <div id="iphMapCanvas" class="mapCanvas"></div>
                                             </div>
                                             <div class="step-pane" id="step2">
                                                 <br/>
@@ -500,10 +531,29 @@
                                                     </select>
                                                 </div>                                                        
                                                 <div class="form-group">
-                                                    <center><a href="#" class="not-active">
-                                                            <i class="fa fa-plus-circle fa-5x"></i>
-                                                        </a></center>
-                                                </div>  
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="datosVicitmaIph.ubicacion" id="victimaIphDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirVictimaIph" type="button" class="btn btn-success" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="victimaIph.latitud" id="victimaIphLatitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="victimaIph.longitud" id="victimaIphLongitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                    </center>       
+                                                </div> 
+                                                <div id="victimaIphMapCanvas" class="mapCanvas"></div>  
                                             </div>
                                             <div class="step-pane" id="step3">
                                                 <br/>
@@ -536,10 +586,29 @@
                                                     <input type="text" class="form-control" id="delitoResp" name="imputadoIph.delito" placeholder="Probable delito/falta administrativa" onkeypress="txNombres()" required data-toggle="tooltip" data-placement="top" title="Escribir Probable Delito/Falta">
                                                 </div>                                          
                                                 <div class="form-group">
-                                                    <center><a href="#" class="not-active">
-                                                            <i class="fa fa-plus-circle fa-5x"></i>
-                                                        </a></center>
-                                                </div>                                                   
+                                                    <label for="exampleInputEmail1">Ubicación</label>
+                                                    <input type="text" class="form-control" name="datosImputadoIph.ubicacion" id="imputadoIphDireccion" placeholder="Ubicación" required>                                              
+                                                </div>
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input id="btnBuscarDirImputadoIph" type="button" class="btn btn-success" value="Buscar" required/>
+                                                                </p>
+                                                            </td>
+                                                            <td><p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="imputadoIph.latitud" id="imputadoIphLatitud" hidden="true" value="23.782967498640414" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	    
+                                                                </p>
+                                                            </td>
+                                                            <td> <p style="font-size: 10px;font-family: verdana;font-weight: bold;">
+                                                                    <input type="text" name="imputadoIph.longitud" id="imputadoIphLongitud" hidden="true" value="-102.28738495624998" style="width: 100px;font-size: 10px;font-family: verdana;font-weight: bold;" required/>	
+                                                                </p>
+                                                            </td>	
+                                                        </tr>
+                                                    </table> 
+                                                    </center>       
+                                                </div> 
+                                                <div id="imputadoIphMapCanvas" class="mapCanvas"></div>                                                   
                                             </div>
                                         </g:form>
 
@@ -647,6 +716,7 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
+                initComponentesUIBusqueda();
 		$('#email-list li > .star > a').on('click', function() {
             $(this).toggleClass('starred');
             });
