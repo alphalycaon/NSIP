@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
   To change this license header, choose License Headers in Project Properties.
   To change this template file, choose Tools | Templates
@@ -266,6 +267,7 @@
                                                     <span class="label label-danger">${expediente.urgencia}</span>
                                                 </td>
                                                 <td>
+                                                    
                                                     <g:link action="detail"  id="${expediente.expedienteId}" class="table-link">  
 
                                                         <span class="fa-stack">
@@ -308,7 +310,7 @@
                                                     <span class="label label-danger"></span>
                                                 </td>
                                                 <td>
-                                                    <g:link action="detail_iph"  id="${expediente.id}" class="table-link">  
+                                                    <g:link action="detail_Iph"  id="${expediente.expedienteIphId}" class="table-link">  
 
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
